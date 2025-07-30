@@ -1,0 +1,5 @@
+@import url('https://fontsapi.zeoseven.com/159/main/result.css');
+
+html {
+  --pst-font-family-monospace: 'Sarasa Mono SC', var(--pst-font-family-monospace-system);
+}
