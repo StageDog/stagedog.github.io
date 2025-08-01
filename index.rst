@@ -11,8 +11,7 @@
 - `青空莉资源仓库 <https://gitgud.io/StageDog/tavern_resource>`_
 
 .. toctree::
-  :maxdepth: 1
-  :hidden:
+  :maxdepth: 2
   :caption: 络络
 
   络络/教程/index
