@@ -460,7 +460,7 @@ format: |-
 
 AI 输出的 `<update>` 没必要再发给 AI
 : `<update>` 已经被 MVU 脚本使用了, 而 AI 在后续回复中不需要参考它: 我们会发给 AI 变量更新规则, 不是吗?
-: 如果我们保留所有楼层的 `<update>` 已经发给 AI:
+: 如果我们保留所有楼层的 `<update>` 还发给 AI:
   <!-- markdownlint-disable MD032 MD007 -->
   - 首先, 这浪费了 token
   - 其次, AI 可能不必要地花费注意力去学习之前的 `<update>` 而更少地将注意力放在剧情上
