@@ -8,6 +8,8 @@
 </center>
 :::
 
+上方视频若无法查看, <a href="https://www.youtube.com/watch?v=YEr6ivYzpqY" target="_blank" rel="noopener noreferrer">点击跳转 Youtube</a>
+
 如今, 越来越多的人会使用 AI 写卡工具写卡, 而自己对酒馆、提示词缺乏理解 (**忆涟杯参赛作品绿灯错误率高达 70%**). \
 结果是, 一些人的有趣想法只能经由 AI 生成的、质量无法保证的提示词来实现. \
 这样的提示词往往不够定制化, 因而效果不理想或占用过多的注意力.
@@ -878,6 +880,8 @@ if (设定的条件1) {
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Roh8oa2kbas?si=fEm_U27qU2h3Be15" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </center>
 :::
+
+上方视频若无法查看, <a href="https://www.youtube.com/watch?v=Roh8oa2kbas" target="_blank" rel="noopener noreferrer">点击跳转 Youtube</a>
 
 ## 附录
 
