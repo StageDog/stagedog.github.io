@@ -21,3 +21,25 @@ img.zoom-image {
 img:hover {
   transform: scale(1.01);
 }
+
+/* 响应式样式的嵌入16:9的视频 */
+/* 外部容器 */
+.responsive-video-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+}
+/* 容器内部的 iframe */
+.responsive-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+/* 覆盖主题中可能存在的样式。 */
+  max-height: none;
+  margin: 0;
+}

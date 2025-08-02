@@ -3,9 +3,14 @@
 > 如何在不使用 AI 的情况下, 编写用变量与 EJS 控制的提示词?
 
 :::{raw} html
-<center>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YEr6ivYzpqY?si=JNOK3sqkk-07xUtC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</center>
+<div class="responsive-video-container">
+  <iframe 
+    src="https://www.youtube.com/embed/YEr6ivYzpqY?si=JNOK3sqkk-07xUtC" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
+</div>
 :::
 
 上方视频若无法查看, <a href="https://www.youtube.com/watch?v=YEr6ivYzpqY" target="_blank" rel="noopener noreferrer">点击跳转 Youtube</a>
@@ -876,9 +881,14 @@ if (设定的条件1) {
 目前仅提供试运行视频:
 
 :::{raw} html
-<center>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Roh8oa2kbas?si=fEm_U27qU2h3Be15" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</center>
+<div class="responsive-video-container">
+  <iframe 
+    src="https://www.youtube.com/embed/Roh8oa2kbas?si=fEm_U27qU2h3Be15" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
+</div>
 :::
 
 上方视频若无法查看, <a href="https://www.youtube.com/watch?v=Roh8oa2kbas" target="_blank" rel="noopener noreferrer">点击跳转 Youtube</a>
