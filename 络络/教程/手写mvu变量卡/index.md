@@ -62,9 +62,10 @@ import 'https://fastly.jsdelivr.net/gh/MagicalAstrogy/MagVarUpdate@master/artifa
 在 YAML 中, 英文冒号 (`:`) 用于建立归属关系, 而缩进则用来表示层级. 你可以将上面的代码理解为: 我们创建了名为 "角色" 和 "世界" 的两个顶层 "文件夹".
 
 ::::{hint}
-如果实在不想手动写 YAML, 你可以用 <https://guifier.com/yaml> 网站.
+如果实在不想手动写 YAML
 
-:::{figure} ./guifier.png
+- 你可以用 <https://guifier.com/yaml> 网站图形化地编写 YAML (就像你在电脑新建文件夹那样!)
+- 也可以用[我在类脑的直播教程](https://discord.com/channels/1134557553011998840/1372487825471176805)或[青空莉的文档](https://sillytavern-stage-girls-dog.readthedocs.io/工具经验/酒馆助手编写环境配置/)配置好 Cursor, 创建一个 `initvar.yaml` 文件, 让 ai 帮你写和改正 (青空莉说你甚至可以这样让 ai 直接帮你写世界书qwq)
 :::
 ::::
 
