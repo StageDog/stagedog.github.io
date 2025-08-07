@@ -36,7 +36,7 @@ MVU 变量框架的结构更为特殊, 更是这种情况的重灾区.
 然后我们新建一个角色卡, 在{menuselection}`酒馆右上角积木按钮 --> 酒馆助手 --> 脚本库`中{guilabel}`+ 脚本`来新建一个新的局部脚本, 命名随意, 内容填写为:
 
 ```ts
-import 'https://fastly.jsdelivr.net/gh/MagicalAstrogy/MagVarUpdate@master/artifact/bundle.js';
+import 'https://testingcf.jsdelivr.net/gh/MagicalAstrogy/MagVarUpdate@master/artifact/bundle.js';
 ```
 
 ## 设置与初始化变量
