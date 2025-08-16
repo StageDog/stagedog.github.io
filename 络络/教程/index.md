@@ -1,8 +1,8 @@
 # 教程
 
-```{toctree}
+:::{toctree}
 :maxdepth: 1
 :glob:
 
 */index
-```
+:::
