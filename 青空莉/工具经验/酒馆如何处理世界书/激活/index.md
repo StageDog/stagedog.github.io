@@ -1,4 +1,4 @@
-# 世界书条目的激活
+# 激活
 
 首先, 强烈建议你将世界书全局设置和预设设置改为下图那样, 这应能带来最好的游戏体验: \
 (尤其是现在大家开始用[酒馆助手插件](https://n0vi028.github.io/JS-Slash-Runner-Doc)、[提示词模板插件](https://github.com/zonde306/ST-Prompt-Template)和 [mvu 变量框架](https://github.com/MagicalAstrogy/MagVarUpdate))
