@@ -4,7 +4,7 @@
 
 如果你的电脑没有部署过酒馆, 请下载 {doc}`NodeJS 22+ </青空莉/工具经验/实时编写前端界面或脚本/环境准备/index>`.
 
-除此之外本地再无任何依赖, 你只需要{download}`下载脚本 <https://raw.githubusercontent.com/StageDog/tavern_sync/refs/heads/main/dist/tavern_sync.js>`.
+除此之外本地再无任何依赖, 你只需要{download}`下载脚本 <https://gitgud.io/StageDog/tavern_sync/-/raw/main/dist/tavern_sync.js?ref_type=heads&inline=false>`.
 
 ## 在酒馆中安装客户端脚本
 
@@ -18,6 +18,6 @@ import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_sync/dist/script.js'
 
 ## 安装编辑器
 
-虽然这个脚本并不限制怎么编辑这些本地文件, 但建议你{doc}`按教程配置 Cursor </青空莉/工具经验/实时编写前端界面或脚本/安装cursor/index>` (一定要一步步按教程走) 来编辑这些本地文件, 因为它们有语法高亮、自动保存、文件历史记录等功能, **还能让 AI 直接帮你编辑**.
+虽然这个脚本并不限制怎么编辑这些本地文件, 但建议你{doc}`按教程配置 Cursor </青空莉/工具经验/实时编写前端界面或脚本/环境准备/index>` (一定要一步步按教程走) 来编辑这些本地文件, 因为它们有语法高亮、自动保存、文件历史记录等功能, **还能让 AI 直接帮你编辑**.
 
 如果你需要编写提示词模板, 也可以再安装一个 WebStorm (但更难上手). 它针对以 `.ejs` 结尾的文件, 会检查[提示词模板](https://github.com/zonde306/ST-Prompt-Template)为我们提供的 `<%_ 代码 _%>` 语法是否正确.
