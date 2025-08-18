@@ -2,7 +2,7 @@
 
 ## 让 AI 帮你修改
 
-既然世界书/预设条目已经被脚本映射为本地文件, 你显然可以让 AI 直接帮你修改世界书/预设, 你可以使用{doc}`Cursor、Augment、RooCode、Cline、Claude Code、Gemini CLi 等各种 AI 编程助手 </青空莉/实时编写前端界面或脚本/index>`.
+既然世界书/预设条目已经被脚本映射为本地文件, 你显然可以让 AI 直接帮你修改世界书/预设, 你可以使用{doc}`Cursor、Augment、RooCode、Cline、Claude Code、Gemini CLi 等各种 AI 编程助手 </青空莉/工具经验/实时编写前端界面或脚本/安装cursor/index>`.
 
 为了让 AI 更理解配置文件的结构, 你可以前往 <https://github.com/StageDog/tavern_sync/tree/main/dist> 的 schema 和 type 文件夹下载对应的类型定义.
 
