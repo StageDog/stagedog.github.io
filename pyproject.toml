@@ -15,4 +15,5 @@ dependencies = [
     "sphinx-last-updated-by-git==0.3.8",
     "sphinx-tabs==3.4.7",
     "sphinx-togglebutton==0.3.2",
+    "sphinxcontrib-video>=0.4.1",
 ]

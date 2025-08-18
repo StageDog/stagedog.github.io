@@ -6,7 +6,6 @@ video {
   max-height: 350px;
   margin: 15px 10px;
   transition: all 0.3s ease;
-  display: block;
   object-fit: contain;
 }
 img {

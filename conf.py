@@ -5,6 +5,7 @@ html_title = f'{project}'
 
 extensions = [
     'myst_parser',
+    'sphinxcontrib.video',
     'sphinx.ext.extlinks',
     'sphinx_copybutton',
     'sphinx_design',
