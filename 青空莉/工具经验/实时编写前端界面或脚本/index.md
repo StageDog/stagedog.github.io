@@ -22,7 +22,6 @@
 :maxdepth: 1
 环境准备/index
 安装cursor/index
-其他ai编程助手/index
 
 阅读示例/index
 实际编写/index
