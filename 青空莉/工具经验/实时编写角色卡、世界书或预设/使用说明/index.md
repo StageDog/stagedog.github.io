@@ -90,3 +90,7 @@ node tavern_sync.js watch 猴子打字机
 ## 获取命令帮助
 
 以上就是本同步脚本的基本用法. 你可以用 `node tavern_sync.js -h` 来获取更多帮助, 用 `node tavern_sync.js 具体命令 -h` 来获取具体命令的帮助.
+
+## 更新脚本
+
+本脚本的酒馆助手脚本部分会自动更新, 本地脚本部分你可以用 `node tavern_sync.js update` 来更新.
