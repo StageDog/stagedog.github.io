@@ -19,14 +19,12 @@
 **跳过步骤后果自负, 提问只会被放置 play.**
 
 ```{toctree}
-:maxdepth: 1
+:maxdepth: 2
 环境准备/index
-安装cursor/index
-
 阅读示例/index
 实际编写/index
 进阶技巧/index
-
 常用命令和提示词/index
 常见问题/index
+cursor实用功能/index
 ```
