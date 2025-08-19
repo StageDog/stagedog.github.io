@@ -1,1 +1,1 @@
-# Cursor 使用技巧
+# 附.Cursor 实用功能

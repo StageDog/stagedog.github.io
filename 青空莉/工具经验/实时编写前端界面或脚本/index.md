@@ -24,7 +24,6 @@
 阅读示例/index
 实际编写/index
 进阶技巧/index
-常用命令和提示词/index
-常见问题/index
+最新提示词和常用资源/index
 cursor实用功能/index
 ```
