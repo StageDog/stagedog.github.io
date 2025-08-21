@@ -45,7 +45,7 @@ eventOn('mag_variable_update_ended', (variables) => {
 ```js
 eventOn('mag_variable_updated', (stat_data, path, old_value, new_value) => {
   // ---如果被更新的变量不是 'stat_data.角色.络络.好感度', 则什么都不做直接返回 (return)---
-  if (path === '角色.络络.好感度') {
+  if (path !== '角色.络络.好感度') {
     return;
   }
 
@@ -63,7 +63,7 @@ eventOn('mag_variable_updated', (stat_data, path, old_value, new_value) => {
 ```js
 eventOn('mag_variable_updated', (stat_data, path, old_value, new_value) => {
   // ---如果被更新的变量不是 '角色.络络.好感度', 则什么都不做直接返回 (return)---
-  if (path === '角色.络络.好感度') {
+  if (path !== '角色.络络.好感度') {
     return;
   }
 
@@ -83,7 +83,7 @@ eventOn('mag_variable_updated', (stat_data, path, old_value, new_value) => {
 ```js
 eventOn('mag_variable_updated', (stat_data, path, old_value, new_value) => {
   // ---如果被更新的变量不是 'stat_data.角色.青空莉.死亡', 则什么都不做直接返回 (return)---
-  if (path === '角色.青空莉.死亡') {
+  if (path !== '角色.青空莉.死亡') {
     return;
   }
 
