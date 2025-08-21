@@ -44,12 +44,12 @@ eventOn('mag_variable_update_ended', (variables) => {
 
 ```js
 eventOn('mag_variable_updated', (stat_data, path, old_value, new_value) => {
-  // 如果被更新的变量不是 'stat_data.角色.络络.好感度', 则什么都不做直接返回 (return)
+  // ---如果被更新的变量不是 'stat_data.角色.络络.好感度', 则什么都不做直接返回 (return)---
   if (path === '角色.络络.好感度') {
     return;
   }
 
-  // --被更新的变量是 'stat_data.角色.络络.好感度'---
+  // ---被更新的变量是 'stat_data.角色.络络.好感度'---
   if (old_value < 30 && new_value >= 30) {
     toaster.success('络络好感度突破 30 了!');
   }
@@ -62,12 +62,12 @@ eventOn('mag_variable_updated', (stat_data, path, old_value, new_value) => {
 
 ```js
 eventOn('mag_variable_updated', (stat_data, path, old_value, new_value) => {
-  // 如果被更新的变量不是 '角色.络络.好感度', 则什么都不做直接返回 (return)
+  // ---如果被更新的变量不是 '角色.络络.好感度', 则什么都不做直接返回 (return)---
   if (path === '角色.络络.好感度') {
     return;
   }
 
-  // --被更新的变量是 '角色.络络.好感度'---
+  // ---被更新的变量是 '角色.络络.好感度'---
   // 如果新的值大于 30, 则记录 'flag.络络好感度突破30' 为 `true`
   //   这可以通过 {{get_message_variable::stat_data.flag.络络好感度突破30}} 来获取
   if (new_value > 30) {
@@ -82,12 +82,12 @@ eventOn('mag_variable_updated', (stat_data, path, old_value, new_value) => {
 
 ```js
 eventOn('mag_variable_updated', (stat_data, path, old_value, new_value) => {
-  // 如果被更新的变量不是 'stat_data.角色.青空莉.死亡', 则什么都不做直接返回 (return)
+  // ---如果被更新的变量不是 'stat_data.角色.青空莉.死亡', 则什么都不做直接返回 (return)---
   if (path === '角色.青空莉.死亡') {
     return;
   }
 
-  // --被更新的变量是 'stat_data.角色.青空莉.死亡'---
+  // ---被更新的变量是 'stat_data.角色.青空莉.死亡'---
   // 如果新的值为 `true`, 则删除所有与青空莉相关的变量
   if (new_value === true) {
     _.unset(stat_data, '角色.青空莉');
