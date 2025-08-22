@@ -19,7 +19,7 @@ AI 很不会数值计算, 相比起将商店购物等功能交给 AI 来处理, 
 针对变量开始更新、某个变量发生更新、变量更新结束, MVU 都会发送 "事件". 我们只要监听这些事件, 就能进行相应的功能:
 
 :::{hint}
-看不懂下面写的是啥? 没关系, 请阅读[我在类脑的直播教程](https://discord.com/channels/1134557553011998840/1372487825471176805)或[青空莉的文档](https://sillytavern-stage-girls-dog.readthedocs.io/工具经验/酒馆助手编写环境配置/), 然后把下面的代码发给 ai 让它学着帮你写.
+看不懂下面写的是啥? 没关系, 请阅读[我在类脑的直播教程](https://discord.com/channels/1134557553011998840/1372487825471176805)或[青空莉的文档](https://sillytavern-stage-girls-dog.readthedocs.io/工具经验/酒馆助手编写环境配置/), 然后把模板中的 `@types/iframe_client/exported.mvu.d.ts` 发给 ai 让它学着帮你写.
 
 不过就我看来, 目前让 ai 写这些还不怎么友好, 等 mag 改. 另外有个在自己的界面/脚本中调用 MVU 来解析文本中的 `_.set(...)` 从而更新变量, 但我根本不好解释.
 :::
@@ -28,7 +28,7 @@ AI 很不会数值计算, 相比起将商店购物等功能交给 AI 来处理, 
 :::{tab} 保持好感度不低于 0
 
 ```js
-eventOn('mag_variable_update_ended', (variables) => {
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (variables) => {
   if (_.get(variables, 'stat_data.角色.络络.好感度') < 0) {
     _.set(variables, 'stat_data.角色.络络.好感度', 0);
   }
@@ -43,7 +43,7 @@ eventOn('mag_variable_update_ended', (variables) => {
 :::{tab} 好感度突破 30
 
 ```js
-eventOn('mag_variable_updated', (stat_data, path, old_value, new_value) => {
+eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_value) => {
   // ---如果被更新的变量不是 'stat_data.角色.络络.好感度', 则什么都不做直接返回 (return)---
   if (path !== '角色.络络.好感度') {
     return;
@@ -61,7 +61,7 @@ eventOn('mag_variable_updated', (stat_data, path, old_value, new_value) => {
 :::{tab} 记录好感度第一次超过 30
 
 ```js
-eventOn('mag_variable_updated', (stat_data, path, old_value, new_value) => {
+eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_value) => {
   // ---如果被更新的变量不是 '角色.络络.好感度', 则什么都不做直接返回 (return)---
   if (path !== '角色.络络.好感度') {
     return;
@@ -81,7 +81,7 @@ eventOn('mag_variable_updated', (stat_data, path, old_value, new_value) => {
 :::{tab} 青空莉死了!
 
 ```js
-eventOn('mag_variable_updated', (stat_data, path, old_value, new_value) => {
+eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_value) => {
   // ---如果被更新的变量不是 'stat_data.角色.青空莉.死亡', 则什么都不做直接返回 (return)---
   if (path !== '角色.青空莉.死亡') {
     return;
