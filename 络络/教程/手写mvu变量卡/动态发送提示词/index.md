@@ -309,7 +309,7 @@ _%>
 :::{tab} 世界书更新规则
 
 ```{code-block} yaml
-:emphasize-lines: 13
+:emphasize-lines: 14
 ---
 <status_description>
 # 以下内容是当前的状态数值，你可以通过命令进行操作修改，但绝对不要将以下内容直接输出在你的回复中
