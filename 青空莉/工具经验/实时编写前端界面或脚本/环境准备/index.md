@@ -152,35 +152,19 @@ pnpm config set registry https://registry.npmmirror.com/
 
 ### 介绍 Cursor 界面
 
-Cursor 界面的总体情况如下所示. 如果哪一部分没有显示, 你可以点击右上角的三个按钮来展开显示它.
+Cursor 界面的总体情况如下所示. 如果哪一部分没有显示, 你可以点击右上角的三个按钮来展开显示它. (新版这三个按钮的图标改了, 但功能一样.)
 
 :::{figure} cursor界面介绍.png
 :::
 
 ### 禁用 Cursor 的数据共享
 
-根据上图的简单介绍, 我们应该从 {menuselection}`右上角齿轮` 来调整 Cursor 的特殊设置.
+根据上图的简单介绍, 我们应该从 {menuselection}`右上角齿轮` (新版不再是齿轮图标, 但功能一样) 来调整 Cursor 的特殊设置.
 
 在此我们先关闭 Cursor 强制我们开启的数据共享:
 
 :::{figure} 关闭数据共享.png
 :::
-
-## 其他 AI 编程助手
-
-除了 Cursor, 你也可以尝试其他 AI 编程助手. 它们有的以 Cursor/VSCode 插件的形式发布, 你可以在 Cursor 侧边栏的{menuselection}`扩展`中搜索安装, 有的是单独的命令行软件.
-
-Augment
-: 据说很强, 但越来越难白嫖了
-
-Cline
-: 支持自定义 API
-
-RooCode
-: 支持自定义 API, 比 Cline 省 token
-
-Claude Code
-: 据说很好用, 你可以用 Claude Code Router 接入自定义 API, 然而它是全英文且是终端用户图形界面, 门槛较高.
 
 ## 安装字体
 
