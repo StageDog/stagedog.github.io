@@ -173,3 +173,40 @@ Cursor 界面的总体情况如下所示. 如果哪一部分没有显示, 你可
 - JetBrains Mono
 - MesloLGS NF
 - 等距更纱黑体 SC
+
+## 其他 AI 编程助手
+
+除了 Cursor, 你也可以尝试其他 AI 编程助手. 它们有的以 Cursor/VSCode 插件的形式发布, 你可以在 Cursor 侧边栏的{menuselection}`扩展`中搜索安装, 有的是单独的命令行软件.
+
+本教程所提供的模板除了项目本身的配置外, 也为 Cursor 和一些编程助手设置了:
+
+- **规则**: 相当于添加了一个全局世界书, 里面我为项目结构、酒馆助手、前端界面、脚本、MVU 等进行了说明
+- **MCP**: 为编程助手添加额外工具, 例如允许编程助手直接查看酒馆网页
+
+因此, 如果你需要使用其他编程助手, 除了编程助手本身的配置外还需要按照以下说明对它们也配置规则和 MCP.
+
+<!-- markdownlint-disable MD032 MD007 -->
+Augment
+: 很强, 但越来越难白嫖了 \
+  规则: 已经配置在了 .augment/rules 中, 可以直接使用 \
+  MCP: 按照 .cursor/mcp.json 自行配置
+
+Cline
+: 支持自定义 API \
+  规则: 已经配置在了 .clinerules 中, 可以直接使用 \
+  MCP: 按照 .cursor/mcp.json 自行配置
+
+RooCode
+: 支持自定义 API, 比 Cline 省 token \
+  规则: 已经配置在了 .roo/rules 中, 可以直接使用 \
+  MCP: 已经配置在了 .roo/mcp.json 中, 可以直接使用
+
+Claude Code
+: 目前最好用, 你可以用 Claude Code Router 接入自定义 API, 然而它是全英文且是终端用户图形界面, 门槛较高. \
+  规则: 已经配置在了 .claude/CLAUDE.md 中, 可以直接使用 \
+  MCP: 已经配置在了 .mcp.json 中, 可以直接使用
+
+其他编程助手
+: 规则: 按照 .cursor/rules 自行配置 \
+  MCP: 按照 .cursor/mcp.json 自行配置
+<!-- markdownlint-enable MD032 MD007 -->
