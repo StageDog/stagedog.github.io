@@ -103,7 +103,7 @@ pnpm config set registry https://registry.npmmirror.com/
 
 ### 导入配置文件
 
-接下来, 请下载 {stagedog}`Cursor 配置文件 <src/工具经验/sillytavern.code-profile>`. 其中有我由网上已有配置文件改动来的, 酒馆助手编写教程所需的所有 Cursor 配置, 我们将会导入它来配置 Cursor 自动保存文件、保存时格式化文件、安装扩展等许多功能.
+接下来, 请下载 {download}`Cursor 配置文件 <../sillytavern.code-profile>`. 其中有我由网上已有配置文件改动来的, 酒馆助手编写教程所需的所有 Cursor 配置, 我们将会导入它来配置 Cursor 自动保存文件、保存时格式化文件、安装扩展等许多功能.
 
 要导入配置文件, 我们首先从{menuselection}`左下角齿轮 --> Profiles` 打开配置文件页面:
 
@@ -165,6 +165,19 @@ Cursor 界面的总体情况如下所示. 如果哪一部分没有显示, 你可
 
 :::{figure} 关闭数据共享.png
 :::
+
+### 安装代码依赖
+
+根据 Cursor 界面, 我们展开{menuselection}`终端`, 然后输入以下命令来安装代码依赖:
+
+```bash
+pnpm install
+```
+
+:::{figure} 安装依赖完成.png
+:::
+
+在安装完成后, 我们将会在项目根目录看到名为 `node_modules` 的文件夹, 这个文件夹中就是我们刚刚通过 `pnpm install` 安装的第三方库.
 
 ## 安装字体
 
