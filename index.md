@@ -24,5 +24,6 @@
 :caption: 青空莉
 
 青空莉/作品集/index
+青空莉/写卡建议/index
 青空莉/工具经验/index
 :::
