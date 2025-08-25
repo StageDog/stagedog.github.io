@@ -16,7 +16,7 @@ AI 很不会数值计算, 相比起将商店购物等功能交给 AI 来处理, 
 删除变量
 : 角色死亡了! 我们得删除所有与该角色相关的变量.
 
-针对变量开始更新、某个变量发生更新、变量更新结束, MVU 都会发送 "事件". 我们只要监听这些事件, 就能进行相应的功能:
+针对变量开始更新、某个变量发生更新、变量更新结束, MVU 都会发送 "事件". 我们只要新建一个酒馆助手脚本, 监听这些事件, 就能进行相应的功能:
 
 ::::{tabs}
 :::{tab} 保持好感度不低于 0
@@ -98,7 +98,17 @@ eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_val
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
   // 将整个 stat_data 转换为绿灯的预扫描文本
   const data = _.get(variables, 'stat_data');
-  await SillyTavern.setExtensionPrompt('mvu_variables', YAML.stringify(data), -1, 0, true, 0);
+  await SillyTavern.setExtensionPrompt('mvu_variables', JSON.stringify(data), -1, 0, true, 0);
+});
+```
+
+我们只需要新建一个酒馆助手脚本, 将这段代码粘贴进去, 就能实现用变量值激活绿灯条目. 如果你需要更精确的控制, 则可以不是转换整个 `stat_data` 而是转换某个变量, 或者自己填写如何注入这个仅用于绿灯激活的提示词:
+
+```typescript
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
+  // 在预扫描文本中注入一句 `络络好感度: 好感度具体数值`
+  const data = _.get(variables, 'stat_data.角色.络络.好感度');
+  await SillyTavern.setExtensionPrompt('mvu_variables', `络络好感度: ${data}`, -1, 0, true, 0);
 });
 ```
 
