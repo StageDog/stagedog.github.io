@@ -102,7 +102,9 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
 });
 ```
 
-我们只需要新建一个酒馆助手脚本, 将这段代码粘贴进去, 就能实现用变量值激活绿灯条目. 如果你需要更精确的控制, 则可以不是转换整个 `stat_data` 而是转换某个变量, 或者自己填写如何注入这个仅用于绿灯激活的提示词:
+我们只需要新建一个酒馆助手脚本, 将这段代码粘贴进去, 就能实现用变量值激活绿灯条目.
+
+如果你需要更精确的控制, 则可以不是转换整个 `stat_data` 而是转换某个变量, 或者自己填写如何注入这个仅用于绿灯激活的提示词:
 
 ```typescript
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
