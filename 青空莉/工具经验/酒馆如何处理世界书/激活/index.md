@@ -427,7 +427,7 @@ mvu 变量框架
 你可以使用以下方式, 自行编写代码来激活条目:
 
 <!-- markdownlint-disable MD032 MD007 -->
-[提示词模板](https://github.com/zonde306/ST-Prompt-Template)
+[提示词模板](https://github.com/zonde306/ST-Prompt-Template) 让我们能用 Embedded JavaScript 来编写提示词
 : - 可以编写 `<%_ if (条件) { _%>` 来控制一部分提示词是否发送. 例如:
     - `<%_ if (matchChatMessages(['络络', '笨蛋'])) _%>` 来只在正文文本包含`络络`或`笨蛋`时发送
     - `<%_ if (getvar('stat_data.角色.络络.好感度') > 30) { _%>` 来只在络络的好感度大于 30 时才发送一段提示词, 当然你需要{doc}`学会写变量卡 </络络/教程/手写mvu变量卡/index>`
