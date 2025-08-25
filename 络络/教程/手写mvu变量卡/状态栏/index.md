@@ -81,7 +81,7 @@ MVU有一个巧妙的设计: 它会在 AI 回复结束后, 自动在回复末尾
 ### 前端状态栏
 
 至于包含复杂脚本的 HTML 状态栏, 这已超出本教程范围. \
-你可以尝试请 AI 辅助编写 ([我在类脑的直播教程](https://discord.com/channels/1134557553011998840/1372487825471176805)/[青空莉的文档](https://sillytavern-stage-girls-dog.readthedocs.io/工具经验/酒馆助手编写环境配置/)), 或直接使用 Nova Creator 等成熟预设.
+你可以尝试请 AI 辅助编写 ({doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`), 或直接使用 Nova Creator 等成熟预设.
 
 :::{admonition} 推荐的 HTML 状态栏获取变量和控制显示方法
 :class: hint, dropdown

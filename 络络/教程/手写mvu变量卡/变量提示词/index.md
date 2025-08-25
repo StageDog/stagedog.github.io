@@ -79,7 +79,7 @@ format: |-
   <update_analysis>/*使用不超过120个英语单词*/
   - ${计算经过的时间: ...}
   - ${根据当前情节是否足够特殊、时间跨度是否远超正常情况，判断是否允许变量值发生戏剧性变化: 是/否}
-  - ${根据`check list`中列出的对应规则，分析每个变量是否需要更新: ...}
+  - ${基于变量对应的`check list`，仅根据当前回复而不是之前的剧情来分析每个变量是否需要更新}
   </update_analysis>
   _.set('${变量, 例如'角色.络络.好感度'}', ${旧值}, ${新值}); // ${简述更新原因}
   _.set('${变量}, ${新值}); // ${简述更新原因}
@@ -116,7 +116,7 @@ format: |-
   <update_analysis>/*IN ENGLISH, no more than 120 words*/
   - ${calculate time passed: ...}
   - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes/no}
-  - ${analyze every variable based on its corresponding item in `check list`: ...}
+  - ${analyze every variable based on its corresponding item in `check list`, according only to current reply instead of previous plots: ...}
   </update_analysis>
   _.set(${variable, such as '角色.络络.好感度'}, ${old_value}, ${new_value}); // ${brief reason for change}
   _.set(${variable}, ${new_value}); // ${brief reason for change}

@@ -1,13 +1,13 @@
-# 用酒馆助手脚本增、删、改、查变量
+# 酒馆助手: 监听变量更新或自行修改变量
 
-AI 很不会数值计算, 相比起将商店购物等功能交给 AI 来处理, 不如由我们的酒馆助手前端界面或脚本的代码来计算, 而将计算过程日志和结果发送给 AI. 酒馆助手前端界面或脚本的编写方法请参考[我在类脑的直播教程](https://discord.com/channels/1134557553011998840/1372487825471176805)或[青空莉的文档](https://sillytavern-stage-girls-dog.readthedocs.io/工具经验/酒馆助手编写环境配置/).
+AI 很不会数值计算, 相比起将商店购物等功能交给 AI 来处理, 不如由我们的酒馆助手前端界面或脚本的代码来计算, 而将计算过程日志和结果发送给 AI. 酒馆助手前端界面或脚本的编写方法请参考{doc}`青空莉/工具经验/酒馆助手编写环境配置/index`.
 
 但也许你并不是想做商店购物之类复杂的事, 你只是想简单地:
 
 修改变量值
 : AI 笨到把好感度更新成了负数或者超过了上限 100. 我们得检测到这个错误, 修改回变量值.
 
-查询变量更新情况
+监听变量更新情况
 : 我们希望知道角色好感度在这次剧情中突破了 30, 并基于此用酒馆提示框弹出一条消息.
 
 新增变量
@@ -17,12 +17,6 @@ AI 很不会数值计算, 相比起将商店购物等功能交给 AI 来处理, 
 : 角色死亡了! 我们得删除所有与该角色相关的变量.
 
 针对变量开始更新、某个变量发生更新、变量更新结束, MVU 都会发送 "事件". 我们只要监听这些事件, 就能进行相应的功能:
-
-:::{hint}
-看不懂下面写的是啥? 没关系, 请阅读[我在类脑的直播教程](https://discord.com/channels/1134557553011998840/1372487825471176805)或[青空莉的文档](https://sillytavern-stage-girls-dog.readthedocs.io/工具经验/酒馆助手编写环境配置/), 然后把模板中的 `@types/iframe_client/exported.mvu.d.ts` 发给 ai 让它学着帮你写.
-
-不过就我看来, 目前让 ai 写这些还不怎么友好, 等 mag 改. 另外有个在自己的界面/脚本中调用 MVU 来解析文本中的 `_.set(...)` 从而更新变量, 但我根本不好解释.
-:::
 
 ::::{tabs}
 :::{tab} 保持好感度不低于 0
@@ -97,3 +91,18 @@ eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_val
 
 :::
 ::::
+
+我们甚至可以利用{doc}`/青空莉/工具经验/酒馆如何处理世界书/激活/index`中提到的 "自行编写代码控制条目的激活" 方法之一——`setExtensionPrompt` 来将变量值转换为预扫描文本, 从而能够用来激活绿灯条目:
+
+```typescript
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
+  // 将整个 stat_data 转换为绿灯的预扫描文本
+  const data = _.get(variables, 'stat_data');
+  await SillyTavern.setExtensionPrompt('mvu_variables', YAML.stringify(data), -1, 0, true, 0);
+});
+```
+
+:::{hint}
+看不懂上面写的是啥? 没关系, 请阅读{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 然后把模板文件夹中的 `@types/iframe_client/exported.mvu.d.ts` 文件发给 ai 让它学着帮你写. \
+这个文件还支持你自己在前端界面/脚本中调用 MVU 来解析文本中的 `_.set(...)` 从而更新变量.
+:::

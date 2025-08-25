@@ -36,6 +36,7 @@ MVU 变量框架的结构更为特殊, 更是这种情况的重灾区.
 状态栏/index
 动态发送提示词/index
 脚本控制变量/index
+变量激活绿灯/index
 mvu_beta/index
 附录/index
 :::

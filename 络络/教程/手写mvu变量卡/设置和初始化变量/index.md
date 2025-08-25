@@ -24,7 +24,7 @@
 如果实在不想手动写 YAML
 
 - 你可以用 <https://guifier.com/yaml> 网站图形化地编写 YAML (就像你在电脑新建文件夹那样!)
-- 也可以用[我在类脑的直播教程](https://discord.com/channels/1134557553011998840/1372487825471176805)或[青空莉的文档](https://sillytavern-stage-girls-dog.readthedocs.io/工具经验/酒馆助手编写环境配置/)配置好 Cursor, 创建一个 `initvar.yaml` 文件, 让 ai 帮你写和改正 (青空莉说你甚至可以这样让 ai 直接帮你写世界书qwq)
+- 也可以用{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`配置好 Cursor, 创建一个 `initvar.yaml` 文件, 让 ai 帮你写和改正 (青空莉说你甚至可以这样让 ai 直接帮你写世界书qwq)
 :::
 ::::
 
