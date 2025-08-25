@@ -107,8 +107,8 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
 ```typescript
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
   // 在预扫描文本中注入一句 `络络好感度: 好感度具体数值`
-  const data = _.get(variables, 'stat_data.角色.络络.好感度');
-  await SillyTavern.setExtensionPrompt('mvu_variables', `络络好感度: ${data}`, -1, 0, true, 0);
+  const content = `络络好感度: ${_.get(variables, 'stat_data.角色.络络.好感度')}`;
+  await SillyTavern.setExtensionPrompt('mvu_variables', content, -1, 0, true, 0);
 });
 ```
 
