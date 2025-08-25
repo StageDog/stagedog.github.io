@@ -420,7 +420,7 @@ solo,(upper body),cowboy shot,standing,((green background)),((green screen)),sim
 :::{figure} 抠图后愤怒.png
 :::
 
-差不多只需要 30s 左右就能扣完呢, 真的很简单——
+差不多只需要 30s 左右就能抠完呢, 真的很简单——
 
 可能时看到头发啊边缘之类的效果不太好, 嗯……实际上如果你追求比较高, 可以用**反向橡皮擦来勾线将其擦回来**. \
 <small>反向橡皮擦就是点击橡皮擦后, 上方勾选{menuselection}`抹到历史记录`</small> \
