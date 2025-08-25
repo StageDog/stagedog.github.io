@@ -1,5 +1,7 @@
 # 进阶技巧
 
+请选择你感兴趣的部分进行阅读.
+
 ## 前端界面正则的推荐写法
 
 ### 提高正则容错率
@@ -119,6 +121,90 @@ const $galgame = extract_galgame_element();
 const $mes_text = retrieveDisplayedMessage(0);
 $mes_text.find('pre:contains("<galgame>")').replaceWith($galgame);
 ```
+
+## 在脚本中对发送出的提示词进行修改
+
+除了通过 jquery 修改页面元素, 脚本也可以监听酒馆的提示词发送事件, 进而自行修改提示词.
+
+要做到这一点, 我们可以监听的事件有很多, 如 `tavern_events.GENERATE_AFTER_DATA`、`tavern_events.CHAT_COMPLETION_PROMPT_READY` 和 `tavern_events.CHAT_COMPLETION_SETTINGS_READY`.
+
+此处以 `tavern_events.CHAT_COMPLETION_PROMPT_READY` 为例:
+
+```typescript
+eventOn(
+  tavern_events.CHAT_COMPLETION_PROMPT_READY,
+  async (event_data: Parameters<ListenerType['chat_completion_prompt_ready']>[0]) => {
+    // 移除非 user 提示词
+    assignInplace(
+      event_data.messages,
+      event_data.messages.filter(message => message.role === 'user'),
+    );
+  },
+);
+
+function assignInplace<T>(destination: T[], new_array: T[]): T[] {
+  destination.length = 0;
+  destination.push(...new_array);
+  return destination;
+}
+```
+
+:::{admonition} 注意修改方式
+:class: warning
+
+不要用 `event_data.chat = event_data.chat.map(message => ...)` 之类的方法, 这是让 `event_data.messages` 指向一个新数组, 而不是修改 `event_data.messages` 原本指向的数组.
+
+你应该使用：
+
+- lodash 中的某些原地修改函数
+- 数组的 `splice`、`push` 等函数
+- 上面代码中给出的 `assignInplace` 函数
+:::
+
+## 与外部应用程序通信
+
+酒馆助手脚本可以安装和使用 `socket.io-client`, 从而和外部应用程序进行通信. {doc}`/青空莉/工具经验/实时编写角色卡、世界书或预设` (<http://github.com/StageDog/tavern_sync>) 就是如此实现的.
+
+## 流式传输同层前端卡
+
+### 简单方案
+
+要简单做流式传输, 我们使用酒馆助手的前端界面, 在其中设计{menuselection}`发送`按钮来触发酒馆助手的`generate`函数.
+
+也就是说:
+
+- 玩家只在一个前端界面内进行游玩
+- 对于玩家的输入, 我们通过前端助手的 `generate`、`generateRaw` 命令自行要求 ai 回复, 并监听 `iframe_events.STREAM_TOKEN_RECEIVED_FULLY` 和 `iframe_events.STREAM_TOKEN_RECEIVED_INCREMENTALLY` 事件来获取流式传输文本
+- 为了记录剧情, 我们使用酒馆助手的世界书、消息楼层接口, 直接将剧情写入世界书条目或新建消息楼层.
+
+### 更自由的办法
+
+前面提到我们可以在酒馆助手脚本中用 jquery 修改页面元素, 那么我们完全可以把酒馆的楼层显示隐藏起来, 自己在它原本的位置制作一个楼层显示:
+
+- 监听 `tavern_events.MESSAGE_SEND -> message_id`, 我们可以知道玩家要求酒馆调用 ai 生成;
+- 监听 `tavern_events.STREAM_TOKEN_RECEIVED -> text`, 我们可以获取流式传输文本;
+- 监听 `tavern_events.MESSAGE_RECEIVED -> message_id`, 我们可以知道酒馆结束了回复.
+
+这样一来, 我们是自己获取流式传输文本, 自己控制该怎么显示界面.
+
+例如, 假设我们让 AI 以 YAML 的形式发送对话, 流式过程中可能得到:
+
+```{code-block} yaml
+:emphasize-lines: 6
+- 角色: 络络
+  对话: 杂鱼喵
+- 角色: 青空莉
+  对话: 杂鱼哦
+- 角色: 络络 
+  对
+```
+
+我们可以在还没收到消息时就显示 Galgame 对话界面, 而只将已经完全发送的消息添加到界面中, 允许玩家翻页阅读.
+
+:::{video} 流式界面.mp4
+:align: center
+:caption: <code>@hakoyukaya</code> 的流式 Galgame 界面
+:::
 
 ## 自定义项目配置
 
