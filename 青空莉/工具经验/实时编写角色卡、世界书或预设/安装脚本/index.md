@@ -4,7 +4,7 @@
 
 如果你的电脑没有部署过酒馆, 请下载 {doc}`NodeJS 22+ </青空莉/工具经验/实时编写前端界面或脚本/环境准备/index>`.
 
-除此之外本地再无任何依赖, 你只需要{download}`下载脚本 <https://gitgud.io/StageDog/tavern_sync/-/raw/main/dist/tavern_sync.js?ref_type=heads&inline=false>`.
+除此之外本地再无任何依赖, 你只需要{download}`下载脚本 <https://gitgud.io/StageDog/tavern_sync/-/raw/main/dist/tavern_sync.js?inline=false>`.
 
 ## 在酒馆中安装客户端脚本
 
