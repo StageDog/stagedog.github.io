@@ -163,7 +163,7 @@ function assignInplace<T>(destination: T[], new_array: T[]): T[] {
 
 ## 与外部应用程序通信
 
-酒馆助手脚本可以安装和使用 `socket.io-client`, 从而和外部应用程序进行通信. {doc}`/青空莉/工具经验/实时编写角色卡、世界书或预设` (<http://github.com/StageDog/tavern_sync>) 就是如此实现的.
+酒馆助手脚本可以安装和使用 `socket.io-client`, 从而和外部应用程序进行通信. {doc}`/青空莉/工具经验/实时编写角色卡、世界书或预设/index` (<http://github.com/StageDog/tavern_sync>) 就是如此实现的.
 
 ## 流式传输前端界面
 
