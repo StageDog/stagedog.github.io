@@ -165,6 +165,8 @@ function assignInplace<T>(destination: T[], new_array: T[]): T[] {
 
 酒馆助手脚本可以安装和使用 `socket.io-client`, 从而和外部应用程序进行通信. {doc}`/青空莉/工具经验/实时编写角色卡、世界书或预设/index` (<http://github.com/StageDog/tavern_sync>) 就是如此实现的.
 
+如果你要传输数据, 请注意调整服务器端的 [`maxHttpBufferSize`](https://socket.io/docs/v4/server-options/#maxhttpbuffersize) 参数, 它默认仅为 1mb.
+
 ## 流式传输前端界面
 
 ### 简单方案
