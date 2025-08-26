@@ -1,5 +1,7 @@
 # 工具经验
 
+{{ prolog }}
+
 :::{toctree}
 :maxdepth: 1
 

@@ -1,5 +1,7 @@
 # 附.如何更新模板
 
+{{ prolog }}
+
 :::{hint}
 如果你有代码和 Git 版本管理经验, 你可以从模板文件夹 <https://github.com/StageDog/tavern_helper_template> 右上角的 {menuselection}`Use this template` 按钮来根据模板创建一个新仓库. 这样创建的仓库会自动检测模板更新并创建 pull request, 你无须手动检查更新.
 :::

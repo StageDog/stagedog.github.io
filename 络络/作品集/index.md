@@ -1,6 +1,8 @@
 <!-- markdownlint-disable MD032 MD007 -->
 # 作品集
 
+{{ prolog }}
+
 欢迎来到络络的文件集散中心!
 
 ## 🎭 角色卡

@@ -1,5 +1,7 @@
 # 附.Cursor 实用功能
 
+{{ prolog }}
+
 ## 时间线: 回退删改操作
 
 在{menuselection}`大纲`旁边, 有 Cursor 为我们提供的{menuselection}`时间线` 功能, 它会记录我们对文件的更改历史, 允许我们回退不想要的更改:

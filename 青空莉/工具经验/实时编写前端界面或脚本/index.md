@@ -1,5 +1,7 @@
 # 实时编写前端界面或脚本
 
+{{ prolog }}
+
 > 帖子: [类脑](https://discord.com/channels/1134557553011998840/1372487825471176805/1372487825471176805)/[旅程](https://discord.com/channels/1291925535324110879/1409144028355756032/1409144028355756032) \
 > 编写模板仓库: <https://github.com/StageDog/tavern_helper_template>
 

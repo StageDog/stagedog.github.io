@@ -1,6 +1,8 @@
 <!-- markdownlint-disable MD032 MD007 -->
 # 作品集
 
+{{ prolog }}
+
 ## 角色卡
 
 恩赐之主

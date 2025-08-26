@@ -59,6 +59,16 @@ myst_enable_extensions = [
     "substitution",
     "tasklist",
 ]
+myst_substitutions = {
+    "prolog": """
+```{eval-rst}
+.. meta::
+  :robots: noindex
+```
+"""
+}
+md_prolog = """
+"""
 templates_path = ['_templates']
 togglebutton_hint = "点击展开"
 togglebutton_hint_hide = "点击隐藏"

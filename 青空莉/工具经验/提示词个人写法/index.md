@@ -1,5 +1,7 @@
 # 提示词个人写法
 
+{{ prolog }}
+
 :::{toctree}
 :maxdepth: 1
 

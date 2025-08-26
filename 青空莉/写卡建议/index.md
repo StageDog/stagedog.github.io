@@ -1,6 +1,8 @@
 <!-- markdownlint-disable MD032 MD007 -->
 # 写卡建议
 
+{{ prolog }}
+
 ## 资源
 
 必会

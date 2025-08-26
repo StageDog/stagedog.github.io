@@ -1,5 +1,7 @@
 # 安装插件和导入脚本
 
+{{ prolog }}
+
 我们需要安装以下插件:
 
 - [酒馆助手安装教程](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/关于酒馆助手/安装与更新.html)

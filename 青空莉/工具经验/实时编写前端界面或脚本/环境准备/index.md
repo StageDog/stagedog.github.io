@@ -1,5 +1,7 @@
 # 环境准备
 
+{{ prolog }}
+
 ## 安装 Git
 
 请通过 [Git 官网](https://git-scm.com/downloads/win) 下载 Git 安装包

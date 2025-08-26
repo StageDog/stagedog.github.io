@@ -1,5 +1,7 @@
 # MVU beta: 允许 AI 在游玩中途增加、删除变量
 
+{{ prolog }}
+
 目前仅提供试运行视频:
 
 :::{raw} html
