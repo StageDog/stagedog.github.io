@@ -214,9 +214,14 @@ RooCode
   规则: 已经配置在了 .roo/rules 中, 可以直接使用 \
   MCP: 已经配置在了 .roo/mcp.json 中, 可以直接使用
 
+Gemini CLI
+: emmm你真的要拿 gemini 做前端界面吗? \
+  规则: 已经配置在了 GEMINI.md 中, 可以直接使用 \
+  MCP: 按照 .cursor/mcp.json 自行配置到 .gemini/settings.json 里
+
 Claude Code
-: 目前最好用, 你可以用 Claude Code Router 接入自定义 API, 然而它是全英文且是终端用户图形界面, 门槛较高. \
-  规则: 已经配置在了 .claude/CLAUDE.md 中, 可以直接使用 \
+: 据说目前最好用, 你可以用 Claude Code Router 接入自定义 API, 然而它是全英文且是终端用户图形界面, 门槛较高. \
+  规则: 已经配置在了 CLAUDE.md 中, 可以直接使用 \
   MCP: 已经配置在了 .mcp.json 中, 可以直接使用
 
 其他编程助手
