@@ -94,7 +94,7 @@ eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_val
 
 我们甚至可以利用{doc}`/青空莉/工具经验/酒馆如何处理世界书/激活/index`中提到的 "自行编写代码控制条目的激活" 方法之一——`setExtensionPrompt` 来将变量值转换为预扫描文本, 从而能够用来激活绿灯条目:
 
-```typescript
+```ts
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
   // 将整个 stat_data 转换为绿灯的预扫描文本
   const data = _.get(variables, 'stat_data');
@@ -106,7 +106,7 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
 
 如果你需要更精确的控制, 则可以不是转换整个 `stat_data` 而是转换某个变量, 或者自己填写如何注入这个仅用于绿灯激活的提示词:
 
-```typescript
+```ts
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
   // 在预扫描文本中注入一句 `络络好感度: 好感度具体数值`
   const content = `络络好感度: ${_.get(variables, 'stat_data.角色.络络.好感度')}`;
