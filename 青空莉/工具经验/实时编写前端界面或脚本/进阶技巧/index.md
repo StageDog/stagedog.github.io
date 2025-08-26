@@ -206,6 +206,17 @@ function assignInplace<T>(destination: T[], new_array: T[]): T[] {
 :caption: <code class="docutils literal notranslate">@hakoyukaya</code> 的流式 Galgame 界面
 :::
 
+## 仅当代码不报错时才能成功打包
+
+无论是前端界面还是脚本都需要我们编写 typescript 代码. 当代码有语法错误时, 我们会在 Cursor 中看到报错:
+
+:::{figure} 代码出错.png
+:::
+
+显然, 我们应该先解决代码的语法错误, 再进行打包. 但当 AI 用 `pnpm build` 或 `pnpm watch` 验证打包是否成功时, 你会惊讶地发现即便代码里有报错依然能成功打包. 这是因为在打包时检查语法错误消耗的内存和时间都太多了 (我的仓库 <http://github.com/StageDog/tavern_resource> 需要耗费不开启时 10 倍的时间). 出于性能考虑, 模板文件夹默认关闭了这一功能.
+
+要开启这个功能, 你需要打开 `webpack.config.ts` 文件, 将其中的两处 `transpileOnly: true` 改为 `transpileOnly: false`.
+
 ## 自定义项目配置
 
 - 在 `.cursor/rules` 中, 我预先为项目配置了一些编程助手编写规则 (相当于给编程助手添加了一个全局世界书). 你完全可以自行编写更多规则
