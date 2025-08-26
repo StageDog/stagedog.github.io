@@ -75,7 +75,7 @@ Chat History - 聊天记录
 - 一些预设会在底部设置了 "输出格式强调" 条目, 让你如果掉格式了去把掉的格式填写进去.
 - Nova Lite 预设会用正则去除用户输入, 而新建一个底部条目{menuselection}`Nova⭐重申输入📌`, 其中填写酒馆宏 `{{lastUserMessage}}`. 这个酒馆宏在发送时即被替换成最后一条用户输入, 从而将用户输入置于底部.
 - 戏剧之王预设在卡掉思维链的条目{menuselection}`🔒卡原生思维链part3`中会重申要求 AI 输出 `<thinking>`.
-- [可点击的选择框](https://sillytavern-stage-girls-dog.readthedocs.io/工具经验/杂项/)在 D4 时编写了 400~700 token 左右的选择框格式和要求提示词, 但在 D0 时用 60 token 强调输出.
+- {doc}`可点击的选择框 </青空莉/作品集/index>`在 D4 时编写了 400~700 token 左右的选择框格式和要求提示词, 但在 D0 时用 60 token 强调输出.
 :::
 
 ## 条目插入到同一预设位置的顺序

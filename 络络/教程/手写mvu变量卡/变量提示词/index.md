@@ -258,11 +258,11 @@ format: |-
 
 你还能在以下地方看到完全不同的提示词写法:
 
+- {doc}`/青空莉/工具经验/提示词个人写法/变量提示词/index`
 - {lolodesu_path}`日记络络 <src/日记络络>`
 - {stagedog_path}`萝莉元首自改版 <src/角色卡/萝莉元首>` (应该是提示词模板第一次被除作者外的人使用)
 - {stagedog_path}`晚安络络 <src/角色卡/晚安络络>`
 - {stagedog_path}`妹妹请求你保护她露出 <src/角色卡/妹妹请求你保护她露出>`
-- [角色阶段 - 附录: 变量更新规则的其他写法](https://sillytavern-stage-girls-dog.readthedocs.io/工具经验/角色阶段/复杂版/#id19)
 
 :::::{tabs}
 ::::{tab} 日记络络

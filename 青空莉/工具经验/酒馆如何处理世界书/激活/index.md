@@ -418,7 +418,7 @@ mvu 变量框架
   - {doc}`文档 </络络/教程/手写mvu变量卡/index>`
   <!-- markdownlint-enable MD032 MD007 -->
 
-此外, 我的角色世界书条目写法见于: [这个链接开头部分](https://sillytavern-stage-girls-dog.readthedocs.io/工具经验/角色阶段/复杂版/).
+此外, 我的角色世界书条目写法见于: {doc}`/青空莉/工具经验/提示词个人写法/多角色/index`.
 
 (世界书条目的激活_自行编写代码控制条目的激活)=
 
