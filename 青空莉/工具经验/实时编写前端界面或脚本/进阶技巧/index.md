@@ -4,6 +4,37 @@
 
 请选择你感兴趣的部分进行阅读.
 
+## 自定义项目配置
+
+- 在 `.cursor/rules` 中, 我预先为项目配置了一些编程助手编写规则 (相当于给编程助手添加了一个全局世界书). 你完全可以自行编写更多规则
+- 在 `.cursor/mcp.json` 中, 我预先设置了 BrowserTools MCP 来让 AI 能够查看酒馆网页. 你完全可以为 AI 找更多好用的 MCP, 如效用 figma 设计好界面再用 figma MCP 让 AI 按设计结果编写
+- 在 `package.json` 中, 我预先为项目代码添加了 jquery、zod 等方便的第三方库. 你可以让 AI 或自己用 `pnpm add 第三方库` 添加更多需要的第三方库, 它们一般添加上就能直接使用
+
+## 常用资源网站
+
+### 免费字体
+
+你可以从 [ZeoSeven Fonts](https://fonts.zeoseven.com/) 中找到很多免费字体.
+
+以 `Sarasa Gothic 更纱黑体 Mono` 为例, 我们搜索到它, 进入它的页面, 点击右上角的{menuselection}`嵌入到 Web 项目`即会跳转到对应内容, 选择{menuselection}`常规 CSS` 然后点击复制即可.
+
+:::{figure} 免费字体.png
+:::
+
+### 免费图标
+
+你可以从 [FontAwesome](https://fontawesome.com/) 中找到很多免费图标. 它们在前端界面中直接可用.
+
+### 免费 CDN
+
+[jsDelivr](https://www.jsdelivr.com/) 中有很多库或文件的 CDN. 你可以直接在脚本或界面中引用它们.
+
+需要注意的是, 你应该用 `https://testingcf.jsdelivr.net` 这个国内也能访问的镜像, 而不是直接用 `https://cdn.jsdelivr.net`.
+
+:::{hint}
+如果是需要第三方库, 推荐直接通过 `pnpm add 第三方库` 来添加它们, 模板文件夹已经配置好会在打包时将第三方库转换为 jsDelivr 链接, 从而避免在多个脚本或界面中重复打包它们.
+:::
+
 ## 前端界面正则的推荐写法
 
 ### 提高正则容错率
@@ -55,39 +86,15 @@
 ```
 ````
 
-## 发布会自动更新的前端界面或脚本
+## 使用 vue 编写前端界面
 
-还记得我们是如何实现实时修改前端界面或脚本的吗? 我们利用 {menuselection}`Go Live` 将本地文件夹转换为了网络链接, 而正则或脚本通过网络链接来加载最新打包内容.
+酒馆助手前端界面和脚本可以安装和使用 `vue` 乃至所有浏览器环境支持的第三方库, 它会让数据显示变得更为简单.
 
-既然这样, 我们完全可以发布一个网络链接给玩家, 从而让玩家永远加载到最新的前端界面或脚本!
+## 与外部应用程序通信
 
-最简单的方式是利用 [jsDelivr](https://www.jsdelivr.com/) 为 github 文件提供的 CDN 功能. 对于上传在 `github.com/组织名/仓库名` 中 `路径` 下的文件, 你可以直接用 `https://testingcf.jsdelivr.net/gh/组织名/仓库名/路径` 来访问它们.
+酒馆助手脚本可以安装和使用 `socket.io-client` 乃至所有浏览器环境支持的第三方库, 从而和外部应用程序进行通信. {doc}`/青空莉/工具经验/实时编写角色卡、世界书或预设/index` (<http://github.com/StageDog/tavern_sync>) 就是如此实现的.
 
-酒馆助手内置库即采用了这种方法. 例如, 如果你从{menuselection}`酒馆助手 --> 脚本库 --> 内置库`中导入[`标签化`](https://github.com/StageDog/tavern_resource/blob/main/src/酒馆助手/标签化/index.ts), 编辑它就会发现它的代码里仅有一行:
-
-```js
-import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/标签化/index.js'
-```
-
-然而, jsDelivr 的服务器和玩家的浏览器都会缓存文件, 因此并不是 github 上文件更新后, 这个链接就会立即得到最新的打包结果.
-
-你可以通过以下方式来刷新缓存:
-
-- 从 <https://github.com/StageDog/tavern_helper_template> {menuselection}`Use this template` 来创建新仓库而不是仅在本地使用模板文件夹, 这个仓库配置了自动工作流, 会自动打包结果并在每次更新时都修改版本号，可以做到 12h 刷新服务器缓存
-- 更新版本号后，在 <https://www.testingcf.com/tools/purge> 中输入链接, 将 `testingcf.jsdelivr` 改成 `cdn.jsdelivr`, 然后点击确认, 能立即刷新服务器缓存
-- 玩家主动清除浏览器缓存
-
-或者, 你可以在使用网络链接时尾附 `?time=时间戳`, 不同的时间戳将被视为访问不同的链接, 因此会独立缓存:
-
-```{code-block} js
-:caption: 永远最新 (但永远缓存不上需要从网上获取)
-import `https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/标签化/index.js?time=${Date.now()}`
-```
-
-```{code-block} js
-:caption: 每日刷新
-import `https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/标签化/index.js?time=${new Date().setHours(0, 0, 0, 0)}`
-```
+如果你要传输数据, 请注意调整服务器端的 [`maxHttpBufferSize`](https://socket.io/docs/v4/server-options/#maxhttpbuffersize) 参数, 它默认仅为 1mb.
 
 ## 在脚本中用 jquery 修改页面元素
 
@@ -163,12 +170,6 @@ function assignInplace<T>(destination: T[], new_array: T[]): T[] {
 - 上面代码中给出的 `assignInplace` 函数
 :::
 
-## 与外部应用程序通信
-
-酒馆助手脚本可以安装和使用 `socket.io-client`, 从而和外部应用程序进行通信. {doc}`/青空莉/工具经验/实时编写角色卡、世界书或预设/index` (<http://github.com/StageDog/tavern_sync>) 就是如此实现的.
-
-如果你要传输数据, 请注意调整服务器端的 [`maxHttpBufferSize`](https://socket.io/docs/v4/server-options/#maxhttpbuffersize) 参数, 它默认仅为 1mb.
-
 ## 流式传输前端界面
 
 ### 简单方案
@@ -210,6 +211,40 @@ function assignInplace<T>(destination: T[], new_array: T[]): T[] {
 :caption: <code class="docutils literal notranslate">@hakoyukaya</code> 的流式 Galgame 界面
 :::
 
+## 发布会自动更新的前端界面或脚本
+
+还记得我们是如何实现实时修改前端界面或脚本的吗? 我们利用 {menuselection}`Go Live` 将本地文件夹转换为了网络链接, 而正则或脚本通过网络链接来加载最新打包内容.
+
+既然这样, 我们完全可以发布一个网络链接给玩家, 从而让玩家永远加载到最新的前端界面或脚本!
+
+最简单的方式是利用 [jsDelivr](https://www.jsdelivr.com/) 为 github 文件提供的 CDN 功能. 对于上传在 `github.com/组织名/仓库名` 中 `路径` 下的文件, 你可以直接用 `https://testingcf.jsdelivr.net/gh/组织名/仓库名/路径` 来访问它们.
+
+酒馆助手内置库即采用了这种方法. 例如, 如果你从{menuselection}`酒馆助手 --> 脚本库 --> 内置库`中导入[`标签化`](https://github.com/StageDog/tavern_resource/blob/main/src/酒馆助手/标签化/index.ts), 编辑它就会发现它的代码里仅有一行:
+
+```js
+import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/标签化/index.js'
+```
+
+然而, jsDelivr 的服务器和玩家的浏览器都会缓存文件, 因此并不是 github 上文件更新后, 这个链接就会立即得到最新的打包结果.
+
+你可以通过以下方式来刷新缓存:
+
+- 从 <https://github.com/StageDog/tavern_helper_template> {menuselection}`Use this template` 来创建新仓库而不是仅在本地使用模板文件夹, 这个仓库配置了自动工作流, 会自动打包结果并在每次更新时都修改版本号，可以做到 12h 刷新服务器缓存
+- 更新版本号后，在 <https://www.testingcf.com/tools/purge> 中输入链接, 将 `testingcf.jsdelivr` 改成 `cdn.jsdelivr`, 然后点击确认, 能立即刷新服务器缓存
+- 玩家主动清除浏览器缓存
+
+或者, 你可以在使用网络链接时尾附 `?time=时间戳`, 不同的时间戳将被视为访问不同的链接, 因此会独立缓存:
+
+```{code-block} js
+:caption: 永远最新 (但永远缓存不上需要从网上获取)
+import `https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/标签化/index.js?time=${Date.now()}`
+```
+
+```{code-block} js
+:caption: 每日刷新
+import `https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/标签化/index.js?time=${new Date().setHours(0, 0, 0, 0)}`
+```
+
 ## 仅当代码不报错时才能成功打包
 
 无论是前端界面还是脚本都需要我们编写 typescript 代码. 当代码有语法错误时, 我们会在 Cursor 中看到报错:
@@ -220,34 +255,3 @@ function assignInplace<T>(destination: T[], new_array: T[]): T[] {
 显然, 我们应该先解决代码的语法错误, 再进行打包. 但当 AI 用 `pnpm build` 或 `pnpm watch` 验证打包是否成功时, 你会惊讶地发现即便代码里有报错依然能成功打包. 这是因为在打包时检查语法错误消耗的内存和时间都太多了 (我的仓库 <http://github.com/StageDog/tavern_resource> 需要耗费不开启时 10 倍的时间). 出于性能考虑, 模板文件夹默认关闭了这一功能.
 
 要开启这个功能, 你需要打开 `webpack.config.ts` 文件, 将其中的两处 `transpileOnly: true` 改为 `transpileOnly: false`.
-
-## 自定义项目配置
-
-- 在 `.cursor/rules` 中, 我预先为项目配置了一些编程助手编写规则 (相当于给编程助手添加了一个全局世界书). 你完全可以自行编写更多规则
-- 在 `.cursor/mcp.json` 中, 我预先设置了 BrowserTools MCP 来让 AI 能够查看酒馆网页. 你完全可以为 AI 找更多好用的 MCP
-- 在 `package.json` 中, 我预先为项目代码添加了 jquery、zod 等方便的第三方库. 你可以让 AI 或自己用 `pnpm add 第三方库` 添加更多需要的第三方库, 它们一般添加上就能直接使用
-
-## 常用资源网站
-
-### 免费字体
-
-你可以从 [ZeoSeven Fonts](https://fonts.zeoseven.com/) 中找到很多免费字体.
-
-以 `Sarasa Gothic 更纱黑体 Mono` 为例, 我们搜索到它, 进入它的页面, 点击右上角的{menuselection}`嵌入到 Web 项目`即会跳转到对应内容, 选择{menuselection}`常规 CSS` 然后点击复制即可.
-
-:::{figure} 免费字体.png
-:::
-
-### 免费图标
-
-你可以从 [FontAwesome](https://fontawesome.com/) 中找到很多免费图标. 它们在前端界面中直接可用.
-
-### 免费 CDN
-
-[jsDelivr](https://www.jsdelivr.com/) 中有很多库或文件的 CDN. 你可以直接在脚本或界面中引用它们.
-
-需要注意的是, 你应该用 `https://testingcf.jsdelivr.net` 这个国内也能访问的镜像, 而不是直接用 `https://cdn.jsdelivr.net`.
-
-:::{hint}
-如果是需要第三方库, 推荐直接通过 `pnpm add 第三方库` 来添加它们, 模板文件夹已经配置好会在打包时将第三方库转换为 jsDelivr 链接, 从而避免在多个脚本或界面中重复打包它们.
-:::
