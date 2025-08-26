@@ -203,7 +203,7 @@ function assignInplace<T>(destination: T[], new_array: T[]): T[] {
 
 :::{video} 流式界面.mp4
 :align: center
-:caption: <code>@hakoyukaya</code> 的流式 Galgame 界面
+:caption: <code class="docutils literal notranslate">@hakoyukaya</code> 的流式 Galgame 界面
 :::
 
 ## 自定义项目配置
