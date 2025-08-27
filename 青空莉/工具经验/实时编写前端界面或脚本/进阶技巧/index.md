@@ -137,7 +137,7 @@ $mes_text.find('pre:contains("<galgame>")').replaceWith($galgame);
 
 除了通过 jquery 修改页面元素, 脚本也可以监听酒馆的提示词发送事件, 进而自行修改提示词.
 
-要做到这一点, 我们可以监听的事件有很多, 如 `tavern_events.GENERATE_AFTER_DATA`、`tavern_events.CHAT_COMPLETION_PROMPT_READY` 和 `tavern_events.CHAT_COMPLETION_SETTINGS_READY`.
+要做到这一点, 我们可以监听的事件有很多, 如 (按请求生成时事件发生先后顺序) `tavern_events.GENERATE_AFTER_COMBINE_PROMPTS`、`tavern_events.GENERATE_AFTER_DATA`、`tavern_events.CHAT_COMPLETION_PROMPT_READY` 和 `tavern_events.CHAT_COMPLETION_SETTINGS_READY`.
 
 此处以 `tavern_events.CHAT_COMPLETION_PROMPT_READY` 为例:
 
