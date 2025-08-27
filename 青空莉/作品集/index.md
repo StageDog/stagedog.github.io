@@ -67,6 +67,10 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/显示区间消息/index.js'` 即可. \
   [旅程](https://discord.com/channels/1291925535324110879/1371060550469029939) / {stagedog_path}`源文件和说明 <src/酒馆助手/显示区间消息>`
 
+压缩相邻消息: 合并同身份消息提高连贯性、整合聊天记录避免 AI 语料影响
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/压缩相邻消息/index.js'` 即可. \
+  [类脑](https://discord.com/channels/1134557553011998840/1410317452029595658) / [旅程](https://discord.com/channels/1291925535324110879/1410316490690793644) / {stagedog_path}`源文件和说明 <src/酒馆助手/压缩相邻消息>`
+
 样式加载: 像酒馆主题自定义 css 一样编写角色卡 css
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/样式加载/index.js'` 即可. \
   [旅程](https://discord.com/channels/1291925535324110879/1354783717910122496) / {stagedog_path}`源文件和说明 <src/酒馆助手/样式加载>`
