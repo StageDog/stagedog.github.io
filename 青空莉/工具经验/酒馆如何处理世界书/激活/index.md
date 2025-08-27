@@ -438,12 +438,14 @@ mvu 变量框架
   <!-- markdownlint-enable MD032 MD007 -->
 
 <!-- markdownlint-disable MD032 MD007 -->
-[酒馆助手](https://n0vi028.github.io/JS-Slash-Runner-Doc/)所提供的……怎么没有直接的方式! 没事,
+[酒馆助手](https://n0vi028.github.io/JS-Slash-Runner-Doc/)
 : - 它可以调用这里列出的所有方法😋
-  - 它可以调用 [`SillyTavern.setExtensionPrompt`](https://github.com/N0VI028/JS-Slash-Runner/blob/main/%40types/iframe_client/exported.sillytavern.d.ts) 来设置额外提示词
+  - 它可以调用 [`injectPrompts`](https://github.com/N0VI028/JS-Slash-Runner/blob/main/%40types/function/inject.d.ts)来设置额外提示词，或设置只用于绿灯激活的提示词
+  - 它可以{doc}`修改发送出去的提示词 <青空莉/工具经验/实时编写前端界面或脚本/进阶技巧/index>`
   - 它可以[监听事件](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/功能详情/监听和发送事件.html)直接[修改世界书](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/功能详情/世界书/修改世界书.html)
   <!-- markdownlint-enable MD032 MD007 -->
 
 [官方 STScript](https://rentry.org/sillytavern-script-book)
 : 它所提供的 `/inject position=none scan=true id=填写一个唯一名称 "关键字"` 相当于在正文中加入一串欲扫描文本, 可用于激活绿灯条目; 但这个与扫描文本除非主动用命令移除, 否则将会永久存在 \
-  如果你只是需要仅在下一次扫描中激活条目, 可以加上 `ephemeral=true`.
+  如果你只是需要仅在下一次扫描中激活条目, 可以加上 `ephemeral=true`. \
+  **但更建议使用酒馆助手的函数.**

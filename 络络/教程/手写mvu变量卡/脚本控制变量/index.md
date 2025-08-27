@@ -100,7 +100,16 @@ eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_val
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
   // 将整个 stat_data 转换为绿灯的预扫描文本
   const data = _.get(variables, 'stat_data');
-  await SillyTavern.setExtensionPrompt('mvu_variables', JSON.stringify(data), -1, 0, true, 0);
+  injectPrompts([
+    {
+      id: 'mvu_variables',
+      content: JSON.stringify(data),
+      position: 'none',
+      depth: 0,
+      role: 'user',
+      should_scan: true,
+    },
+  ]);
 });
 ```
 
@@ -112,11 +121,20 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
   // 在预扫描文本中注入一句 `络络好感度: 好感度具体数值`
   const content = `络络好感度: ${_.get(variables, 'stat_data.角色.络络.好感度')}`;
-  await SillyTavern.setExtensionPrompt('mvu_variables', content, -1, 0, true, 0);
+  injectPrompts([
+    {
+      id: 'mvu_variables',
+      content,
+      position: 'none',
+      depth: 0,
+      role: 'user',
+      should_scan: true,
+    },
+  ]);
 });
 ```
 
 :::{hint}
-看不懂上面写的是啥? 没关系, 请阅读{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 然后把模板文件夹中的 `@types/iframe_client/exported.mvu.d.ts` 文件发给 ai 让它学着帮你写. \
+看不懂上面写的是啥? 没关系, 请阅读{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 然后把模板文件夹中的 `@types/iframe/exported.mvu.d.ts` 文件发给 ai 让它学着帮你写. \
 这个文件还支持你自己在前端界面/脚本中调用 MVU 来解析文本中的 `_.set(...)` 从而更新变量.
 :::
