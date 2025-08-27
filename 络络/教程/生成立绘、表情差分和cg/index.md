@@ -165,6 +165,13 @@ solo,(upper body),cowboy shot,standing,((green background)),((green screen)),sim
 有了完美的立绘已经是最好的开始了, 但是一个游戏肯定要有不同的表情动作, 甚至这个角色还需要穿其他衣服. \
 现在, 让我们来开始图生图重绘!
 
+:::{hint}
+2025/08/26, 你也许可以试试让 [gemini-2.5-flash-image-preview](https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-image-preview) 帮你生成差分:
+
+:::{figure} gemini生成差分.png
+:::
+:::
+
 ## 表情差分
 
 在你刚刚的带着绿幕立绘下方, 有一个画板按钮: 发送到局部重绘, 请点击!
