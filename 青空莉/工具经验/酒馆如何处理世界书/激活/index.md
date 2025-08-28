@@ -441,7 +441,7 @@ mvu 变量框架
 [酒馆助手](https://n0vi028.github.io/JS-Slash-Runner-Doc/)
 : - 它可以调用这里列出的所有方法😋
   - 它可以调用 [`injectPrompts`](https://github.com/N0VI028/JS-Slash-Runner/blob/main/%40types/function/inject.d.ts)来设置额外提示词，或设置只用于绿灯激活的提示词
-  - 它可以{doc}`修改发送出去的提示词 <青空莉/工具经验/实时编写前端界面或脚本/进阶技巧/index>`
+  - 它可以{doc}`修改发送出去的提示词 </青空莉/工具经验/实时编写前端界面或脚本/进阶技巧/index>`
   - 它可以[监听事件](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/功能详情/监听和发送事件.html)直接[修改世界书](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/功能详情/世界书/修改世界书.html)
   <!-- markdownlint-enable MD032 MD007 -->
 
