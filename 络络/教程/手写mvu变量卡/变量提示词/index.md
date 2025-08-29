@@ -253,51 +253,23 @@ format: |-
   </update>
 ```
 
+其中 `<update_analysis>` 是变量更新的思维链, 而下方的 `_.set(...)` 是在思维链进行分析后实际输出变量更新命令.
+
+需要注意的是 ``${根据`check list`中列出的对应规则，分析每个变量是否需要更新: ...}`` 一句, 这是青空莉的 recall 变量更新规则方式, 它要求 AI 在此时重新回想 `check list` 中的内容:
+
+```yaml
+check list:
+  - update '好感度' by ±(1~4) according to characters' attitudes towards <user>'s behavior respectively only if they're currently aware of it
+  - update '心情' according to current plot and the character setting
+  - update '日期' and '时间' to the current date and day of the week respectively
+```
+
 ## 这只是提示词
 
 当前的变量情况、更新规则和输出格式等**只是提示词, 写法只取决于你的想象**; 这里只是列了一种方便讲解的变量更新提示词. \
 如果你熟悉 MVU 原帖下的提示词或 Nova Creator 写卡预设, 你可以发现这里提示词与它们有很大区别: 这里的提示词引入了 checklist、recall 和更多的思维链 (Chain of Thought, CoT) 要求, 并且没在 `format` 之后还补充一个变量更新输出示例 `example`.
 
-你还能在以下地方看到完全不同的提示词写法:
-
-- {doc}`/青空莉/工具经验/提示词个人写法/变量提示词/index`
-- {lolodesu_path}`日记络络 <src/日记络络>`
-- {stagedog_path}`萝莉元首自改版 <src/角色卡/萝莉元首>` (应该是提示词模板第一次被除作者外的人使用)
-- {stagedog_path}`晚安络络 <src/角色卡/晚安络络>`
-- {stagedog_path}`妹妹请求你保护她露出 <src/角色卡/妹妹请求你保护她露出>`
-
-:::::{tabs}
-::::{tab} 日记络络
-
-- 所有变量提示词都在 D1
-- 补充一个 D0 recall 来稳定格式
-
-:::{figure} 变量提示词_日记络络.png
-:::
-::::
-
-::::{tab} 萝莉元首自改版
-
-- 变量更新规则和输出格式在 D4
-- 当前变量情况在 D1
-- 补充一个 D0 recall 来稳定格式
-
-:::{figure} 变量提示词_萝莉元首自改版.png
-:::
-::::
-
-::::{tab} 妹妹请求你保护她露出
-
-- 当前变量情况在 D4, 角色变量常驻而露出系统变量仅在心爱、一果在场时发送
-- 变量更新规则也在 D4, 和当前变量情况放在一起
-  - 常驻变量的更新规则由 check list 给出
-  - 露出系统变量的更新规则仅在 check list 中要求 `参考露出系统输出的<ExposurePrompt>来更新`; 而露出系统会根据剧情在正文中插入`<ExposurePrompt>`来提示任务完成、获得积分等
-- 输出格式在 D0 中给出
-
-:::{figure} 变量提示词_妹妹请求你保护她露出.png
-:::
-::::
-:::::
+你还能在{doc}`青空莉的个人变量提示词写法 </青空莉/工具经验/提示词个人写法/变量提示词/index>`中看到几种完全不同的提示词写法, 以及这里示例写法的非简化版.
 
 ## 酒馆正则: 不发送变量更新文本
 
