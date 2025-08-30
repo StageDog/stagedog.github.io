@@ -50,15 +50,27 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/场景感/index.js'` 即可. \
   [类脑](https://discord.com/channels/1134557553011998840/1308428327731855472) / {stagedog_path}`源文件和说明 <src/酒馆助手/场景感>`
 
+实时修改css: 允许你在 VSCode 中实时修改酒馆主题, 无须复制粘贴
+: [类脑](https://discord.com/channels/1134557553011998840/1333758463582404670) / {stagedog}`说明和内容在角色卡中 <src/酒馆助手/实时修改css/实时修改css.png>` / {stagedog_path}`源文件和说明 <src/酒馆助手/实时修改css>`
+
 快速回复随角色卡导入导出 (酒馆助手脚本已经自带了按钮, 不建议你使用快速回复)
 : [类脑](https://discord.com/channels/1134557553011998840/1322585732962975915) / {stagedog}`说明和内容在角色卡中 <src/酒馆助手/快速回复随角色卡导入导出/快速回复随角色卡导入导出.png>` / {stagedog_path}`源文件和说明 <src/酒馆助手/快速回复随角色卡导入导出>`
 
 流式传输前端框架 (建议自己阅读{doc}`流式传输前端界面 </青空莉/工具经验/实时编写前端界面或脚本/进阶技巧/index>`来制作)
 : [类脑](https://discord.com/channels/1134557553011998840/1330206359362211960) / {stagedog}`说明和内容在角色卡中 <src/酒馆助手/流式传输/流式传输.png>` / {stagedog_path}`源文件和说明 <src/酒馆助手/流式传输>`
 
-实时修改css: 允许你在 VSCode 中实时修改酒馆主题, 无须复制粘贴
-: [类脑](https://discord.com/channels/1134557553011998840/1333758463582404670) / {stagedog}`说明和内容在角色卡中 <src/酒馆助手/实时修改css/实时修改css.png>` / {stagedog_path}`源文件和说明 <src/酒馆助手/实时修改css>`
-  
+样式加载: 像酒馆主题自定义 css 一样编写角色卡 css
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/样式加载/index.js'` 即可. \
+  [旅程](https://discord.com/channels/1291925535324110879/1354783717910122496) / {stagedog_path}`源文件和说明 <src/酒馆助手/样式加载>`
+
+资源预载: 提前缓存角色卡的插图
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/资源预载/index.js'` 即可. \
+  [旅程](https://discord.com/channels/1291925535324110879/1354791063935520898) / {stagedog_path}`源文件和说明 <src/酒馆助手/资源预载>`
+
+自动安装插件: 让酒馆助手自动安装你角色卡需要的其他插件
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/自动安装插件/index.js'` 即可. \
+  [旅程](https://discord.com/channels/1291925535324110879/1346952067234660352) / {stagedog_path}`源文件和说明 <src/酒馆助手/自动安装插件>`
+
 文生图
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/文生图/index.js'` 即可. \
   [旅程](https://discord.com/channels/1291925535324110879/1368559983704146041) / {stagedog_path}`源文件和说明 <src/酒馆助手/文生图>`
@@ -71,14 +83,10 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/压缩相邻消息/index.js'` 即可. \
   [类脑](https://discord.com/channels/1134557553011998840/1410317452029595658) / [旅程](https://discord.com/channels/1291925535324110879/1410316490690793644) / {stagedog_path}`源文件和说明 <src/酒馆助手/压缩相邻消息>`
 
-样式加载: 像酒馆主题自定义 css 一样编写角色卡 css
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/样式加载/index.js'` 即可. \
-  [旅程](https://discord.com/channels/1291925535324110879/1354783717910122496) / {stagedog_path}`源文件和说明 <src/酒馆助手/样式加载>`
+输入助手 (改自[司马咩咩的插件](https://github.com/Mooooooon/st-input-helper)): 方便在输入框指定位置输入引号、括号或自定义内容，并指定输入后光标位置
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/输入助手/index.js'` 即可. \
+  [旅程](https://discord.com/channels/1291925535324110879/1353370392705896468) / {stagedog_path}`源文件和说明 <src/酒馆助手/输入助手>`
 
-自动安装插件: 让酒馆助手自动安装你角色卡需要的其他插件
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/自动安装插件/index.js'` 即可. \
-  [旅程](https://discord.com/channels/1291925535324110879/1346952067234660352) / {stagedog_path}`源文件和说明 <src/酒馆助手/自动安装插件>`
-
-资源预载: 提前缓存角色卡的插图
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/资源预载/index.js'` 即可. \
-  [旅程](https://discord.com/channels/1291925535324110879/1354791063935520898) / {stagedog_path}`源文件和说明 <src/酒馆助手/资源预载>`
+粘贴文本转为附加文件: 当对文本框粘贴过长文本时转为附加文件, 避免文本框字数太多而卡顿
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/粘贴文本转为附加文件/index.js'` 即可. \
+  [类脑](https://discord.com/channels/1134557553011998840/1411315671794585660) / [旅程](https://discord.com/channels/1291925535324110879/1411315491225731122) / {stagedog_path}`源文件和说明 <src/酒馆助手/粘贴文本转为附加文件>`
