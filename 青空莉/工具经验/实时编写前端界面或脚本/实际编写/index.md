@@ -71,7 +71,7 @@
 
 要做到项目被修改后自动打包, 我们不再运行 `pnpm build`, 而是运行 `pnpm watch`. watch 意为监听, 也就是说, `pnpm watch` 会监听项目中的文件变化, 并在变化时自动重新打包代码.
 
-当然你可能不想记那么多命令, 尤其是之后我们还要让 AI 能看到酒馆页面, 又会多出一个需要在终端运行的命令. 为此, 我们修改 `.vscode/launch.json` 中的 `url` 为自己的酒馆地址, 例如 `http://localhost:6622`, 然后通过 {kbd}`F5` 运行调试任务. 这会为我们运行所有需要的命令, 并打开酒馆网页.
+当然你可能不想记那么多命令, 也可以修改 `.vscode/launch.json` 中的 `url` 为自己的酒馆地址 (例如 `http://localhost:6622`), 然后通过 {kbd}`F5` 运行调试任务. 这会为我们运行 `pnpm build` 并打开酒馆网页.
 
 :::{figure} 更改launch.png
 :::
@@ -123,20 +123,16 @@
 
 ## 让 AI 能看到酒馆页面
 
-要让 AI 能看到酒馆页面, 我们使用 BrowserTools MCP.
+要让 AI 能看到酒馆页面, 我们使用 Browser MCP.
 
-模板文件夹已经为很多编程助手配置了 BrowserTools MCP (见于{doc}`/青空莉/工具经验/实时编写前端界面或脚本/环境准备/index`), 我们唯一要做的是安装它所需要的浏览器扩展.
+模板文件夹已经为很多编程助手配置了 Browser MCP (见于{doc}`/青空莉/工具经验/实时编写前端界面或脚本/环境准备/index`), 我们唯一要做的是安装它所需要的浏览器扩展.
 
-我们从 <https://github.com/AgentDeskAI/browser-tools-mcp/releases> 下载最新的浏览器扩展 (browser extension) 并解压它.
+我们按 `F5` 打开调试用浏览器后 (或自行 `pnpm watch` 然后使用你自己的浏览器), 从 [chrome 应用商店](https://chromewebstore.google.com/detail/browser-mcp-automate-your/bjfgambnhccakkhmkepdoekmckoijdlc)安装最新的浏览器扩展.
 
-然后我们 {kbd}`F5` 打开调试用的浏览器, 在新的标签页上方输入 `chrome://extensions/` 并回车从而打开扩展页面.
+如此, 我们回到酒馆网页, 点击扩展图标然后点击 {menuselection}`连接` 即可.
 
-在这个页面, 我们启用右上角的{menuselection}`开发者模式`后, 点击{menuselection}`加载已解压的扩展程序`按钮, 然后选择刚刚解压的文件夹:
-
-:::{figure} 安装谷歌浏览器扩展.png
+:::{figure} 连接browser_mcp.png
 :::
-
-如此, 我们回到酒馆网页, 按下 {kbd}`F12` 打开开发者工具, 如果上方显示 `"BrowserTools MCP" 已开始调试此浏览器` 则说明已经启用该 MCP.
 
 你的 AI 编程助手现在可以:
 
