@@ -240,7 +240,7 @@
 
 ```text
 <update>
-<update_analysis>/*IN ENGLISH, no more than 80 words*/
+<update_analysis>$(IN ENGLISH, no more than 80 words)
 - ${calculate time passed: ...}
 - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes or no}
 - ${what variables should be updated, accoring only to current reply instead of previous plots: ...}
@@ -259,7 +259,7 @@ _.set('${path}', ${old}, ${new}); // ${reason}
 
 ```text
 <update>
-<update_analysis>/*IN ENGLISH, no more than 80 words*/
+<update_analysis>$(IN ENGLISH, no more than 80 words)
 - ${calculate time passed: ...}
 - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes or no}
 - ${update variables suffixed with '次数' when a corresponding event occurs but don't update them any more during that event: ...}
@@ -280,7 +280,7 @@ _.set('${path}', ${old}, ${new}); // ${reason}
 
 ```text
 <update>
-<update_analysis>/*IN ENGLISH, no more than 80 words*/
+<update_analysis>$(IN ENGLISH, no more than 80 words)
 - ${calculate time passed: ...}
 - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes or no}
 - ${analyze every variable based on its corresponding `check`, according only to current reply instead of previous plots: ...}
@@ -299,7 +299,7 @@ _.set('${path}', ${old}, ${new}); // ${reason}
 
 ```text
 <update>
-<update_analysis>/*IN ENGLISH, no more than 80 words*/
+<update_analysis>$(IN ENGLISH, no more than 80 words)
 - ${calculate time passed: ...}
 - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes or no}
 - ${list every item in every `check` of `变量更新规则` document before actual variable analysis: ...}
@@ -320,7 +320,7 @@ _.set('${path}', ${old}, ${new}); // ${reason}
 ```text
 <update>
 ${display every `check` in `变量更新规则` document before actual variable analysis}
-<update_analysis>/*IN ENGLISH, no more than 80 words*/
+<update_analysis>$(IN ENGLISH, no more than 80 words)
 - ${calculate time passed: ...}
 - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes or no}
 - ${analyze variables based on `check`, according only to current reply instead of previous plots: ...}

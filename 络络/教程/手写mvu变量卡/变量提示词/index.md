@@ -78,7 +78,7 @@ check list:
   - 根据当前日期时间更新'日期'和'时间'
 format: |-
   <update>
-  <update_analysis>/*使用不超过120个英语单词*/
+  <update_analysis>$(使用不超过120个英语单词)
   - ${计算经过的时间: ...}
   - ${根据当前情节是否足够特殊、时间跨度是否远超正常情况，判断是否允许变量值发生戏剧性变化: 是/否}
   - ${基于变量对应的`check list`，仅根据当前回复而不是之前的剧情来分析每个变量是否需要更新: ...}
@@ -115,7 +115,7 @@ check list:
   - update '日期' and '时间' to the current date and day of the week respectively
 format: |-
   <update>
-  <update_analysis>/*IN ENGLISH, no more than 120 words*/
+  <update_analysis>$(IN ENGLISH, no more than 120 words)
   - ${calculate time passed: ...}
   - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes/no}
   - ${analyze every variable based on its corresponding item in `check list`, according only to current reply instead of previous plots: ...}
@@ -235,14 +235,14 @@ format: |-
 在书写输出格式提示词 (`format` 部分) 时, 我采用了我们惯用而 AI 能听懂的几种特殊格式:
 
 - `${描述}`: AI 需要根据 "描述" 将它替换为对应的内容. 例如 `衣着: ${具体描述角色当前衣着}` 可能输出 `衣着: 粉金色宽松T恤睡裙`;
-- `/*要求*/`: AI 仅会听从 "要求" 而不对它进行输出. 例如 `/*以下内容应该按英文输出*/` 会让 AI 更倾向于用英文输出下面的内容;
+- `$(要求)`: AI 仅会听从 "要求" 而不对它进行输出. 例如 `$(以下内容应该按英文输出)` 会让 AI 更倾向于用英文输出下面的内容;
 - `...`: AI 需要仿照之前给定的规则和内容补充输出. 例如 `其他角色: ...` 会让 AI 根据前面给定的 `络络` 输出格式, 补充其他角色的输出;
 - 其他内容原封不动地进行输出.
 
 ```yaml
 format: |-
   <update>
-  <update_analysis>/*使用不超过120个英语单词*/
+  <update_analysis>$(使用不超过120个英语单词)
   - ${计算经过的时间: ...}
   - ${根据当前情节是否足够特殊、时间跨度是否远超正常情况，判断是否允许变量值发生戏剧性变化: 是/否}
   - ${根据`check list`中列出的对应规则，分析每个变量是否需要更新: ...}
