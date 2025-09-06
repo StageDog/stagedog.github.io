@@ -1,4 +1,4 @@
-# 酒馆助手: 监听变量更新或自行修改变量
+# 酒馆助手: 监听变量更新、修改变量、用变量激活绿灯
 
 {{ prolog }}
 
@@ -94,7 +94,12 @@ eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_val
 :::
 ::::
 
-我们甚至可以利用{doc}`/青空莉/工具经验/酒馆如何处理世界书/激活/index`中提到的 "自行编写代码控制条目的激活" 方法之一——`setExtensionPrompt` 来将变量值转换为预扫描文本, 从而能够用来激活绿灯条目:
+:::{hint}
+看不懂上面写的是啥? 没关系, 请阅读{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 然后把模板文件夹中的 `@types/iframe/exported.mvu.d.ts` 文件发给 ai 让它学着帮你写. \
+这个文件还支持你让 AI 在前端界面/脚本中调用 MVU 来解析文本中的 `_.set(...)` 从而更新变量.
+:::
+
+我们甚至可以利用{doc}`/青空莉/工具经验/酒馆如何处理世界书/激活/index`中提到的 "自行编写代码控制条目的激活" 方法之一——`injectPrompts` 来将变量值转换为预扫描文本, 从而能够用来激活绿灯条目:
 
 ```ts
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
@@ -113,7 +118,7 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
 });
 ```
 
-我们只需要新建一个酒馆助手脚本, 将这段代码粘贴进去, 就能实现用变量值激活绿灯条目.
+我们只需要新建一个酒馆助手脚本, 将上面一段代码粘贴进去, 就能实现用变量值激活绿灯条目.
 
 如果你需要更精确的控制, 则可以不是转换整个 `stat_data` 而是转换某个变量, 或者自己填写如何注入这个仅用于绿灯激活的提示词:
 
@@ -123,7 +128,7 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
   const content = `络络好感度: ${_.get(variables, 'stat_data.角色.络络.好感度')}`;
   injectPrompts([
     {
-      id: 'mvu_variables',
+      id: 'mvu_lolo_affection',
       content,
       position: 'none',
       depth: 0,
@@ -133,8 +138,3 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
   ]);
 });
 ```
-
-:::{hint}
-看不懂上面写的是啥? 没关系, 请阅读{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 然后把模板文件夹中的 `@types/iframe/exported.mvu.d.ts` 文件发给 ai 让它学着帮你写. \
-这个文件还支持你自己在前端界面/脚本中调用 MVU 来解析文本中的 `_.set(...)` 从而更新变量.
-:::
