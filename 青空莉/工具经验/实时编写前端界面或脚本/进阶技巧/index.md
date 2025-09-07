@@ -7,7 +7,7 @@
 ## 自定义项目配置
 
 - 在 `.cursor/rules` 中, 我预先为项目配置了一些编程助手编写规则 (相当于给编程助手添加了一个全局世界书). 你完全可以自行编写更多规则
-- 在 `.cursor/mcp.json` 中, 我预先设置了 BrowserTools MCP 来让 AI 能够查看酒馆网页. 你完全可以为 AI 找更多好用的 MCP, 如效用 figma 设计好界面再用 figma MCP 让 AI 按设计结果编写
+- 在 `.cursor/mcp.json` 中, 我预先设置了 Browser MCP 来让 AI 能够查看酒馆网页. 你完全可以为 AI 找更多好用的 MCP, 如效用 figma 设计好界面再用 figma MCP 让 AI 按设计结果编写
 - 在 `package.json` 中, 我预先为项目代码添加了 jquery、zod 等方便的第三方库. 你可以让 AI 或自己用 `pnpm add 第三方库` 添加更多需要的第三方库, 它们一般添加上就能直接使用
 
 ## 常用资源网站

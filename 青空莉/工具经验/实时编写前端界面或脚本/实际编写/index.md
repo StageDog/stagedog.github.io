@@ -156,7 +156,7 @@
 ### 进行编写
 
 1. 点击 Cursor 右下角的 {menuselection}`Go Live` 将文件夹映射为网络链接
-2. 按 {kbd}`F5` 运行调试任务, 并在酒馆页面按下 {kbd}`F12` 打开开发者工具从而启用 BrowserTools MCP (可能需要重新安装 BrowserTools MCP 浏览器插件)
+2. 按 {kbd}`F5` 运行调试任务, 并在酒馆页面按下 {kbd}`F12` 打开开发者工具从而启用 Browser MCP (可能需要重新安装 Browser MCP 浏览器插件)
 3. 让 AI 在这个项目中编写代码、修改错误
 
 ### 发布打包结果
