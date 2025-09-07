@@ -68,8 +68,8 @@
       第四行
 ```
 
-`node tavern_sync.js pull` 即默认将新条目的提示词拆分为外链提示词文件, 而 `node tavern_sync.js pull --inline` 则将新条目的提示词内嵌在配置文件中. \
-你可以通过 `node tavern_sync.js pull -h` 来了解更多.
+`node tavern_sync pull` 即默认将新条目的提示词拆分为外链提示词文件, 而 `node tavern_sync pull --inline` 则将新条目的提示词内嵌在配置文件中. \
+你可以通过 `node tavern_sync pull -h` 来了解更多.
 
 ## 外链提示词的文件位置是任意的
 

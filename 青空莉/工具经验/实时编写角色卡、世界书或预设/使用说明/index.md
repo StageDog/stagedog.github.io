@@ -16,7 +16,7 @@
 我们在终端尝试运行一下这个脚本. 具体地, 我们输入以下命令然后{kbd}`回车`:
 
 ```bash
-node tavern_sync.js
+node tavern_sync
 ```
 
 如果一切顺利, 你应该会看到这样的输出:
@@ -45,7 +45,7 @@ node tavern_sync.js
 然后我们就能提取它:
 
 ```bash
-node tavern_sync.js pull 猴子打字机
+node tavern_sync pull 猴子打字机
 ```
 
 执行命令后, 侧边栏将会多出一个配置文件和文件夹:
@@ -77,7 +77,7 @@ node tavern_sync.js pull 猴子打字机
 在完成修改后, 我们将修改结果同步到酒馆:
 
 ```bash
-node tavern_sync.js push 猴子打字机
+node tavern_sync push 猴子打字机
 ```
 
 ## 实时修改
@@ -86,13 +86,13 @@ node tavern_sync.js push 猴子打字机
 在监听过程中, **你只需要修改本地文件, 酒馆就会自动同步你的修改**:
 
 ```bash
-node tavern_sync.js watch 猴子打字机
+node tavern_sync watch 猴子打字机
 ```
 
 ## 获取命令帮助
 
-以上就是本同步脚本的基本用法. 你可以用 `node tavern_sync.js -h` 来获取更多帮助, 用 `node tavern_sync.js 具体命令 -h` 来获取具体命令的帮助.
+以上就是本同步脚本的基本用法. 你可以用 `node tavern_sync -h` 来获取更多帮助, 用 `node tavern_sync 具体命令 -h` 来获取具体命令的帮助.
 
 ## 更新脚本
 
-本脚本的酒馆助手脚本部分会自动更新, 本地脚本部分你可以用 `node tavern_sync.js update` 来更新.
+本脚本的酒馆助手脚本部分会自动更新, 本地脚本部分你可以用 `node tavern_sync update` 来更新.
