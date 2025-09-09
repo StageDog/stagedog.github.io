@@ -73,6 +73,10 @@ pnpm config set registry https://registry.npmmirror.com/
 
 ## 安装和配置 Cursor
 
+:::{hint}
+如果已经安装了 VSCode, 你可以直接跳到[导入配置文件](#导入配置文件), 区别只在于你将不能使用 Cursor 的 AI 编程助手.
+:::
+
 ### 安装
 
 请通过 [Cursor 官网](https://cursor.com/cn/downloads) 下载 Cursor 安装包:
@@ -102,6 +106,8 @@ pnpm config set registry https://registry.npmmirror.com/
 :::
 
 在设置后, 将会弹窗提示我们重启 Cursor, 点击 {menuselection}`Restart` 即可.
+
+(导入配置文件)=
 
 ### 导入配置文件
 
