@@ -337,7 +337,7 @@ rule:
 
 :::{tab} 使用文件夹功能
 
-```yaml
+```{code-block} yaml
 :emphasize-lines: 6
 提示词:
   - 名称: 任务启动
