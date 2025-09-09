@@ -4,7 +4,7 @@
 
 ## 让 AI 帮你修改整个世界书/预设
 
-既然世界书/预设条目已经被脚本映射为本地文件, 你显然可以让 AI 直接帮你修改世界书/预设, 你可以使用{doc}`Cursor、Augment、RooCode、Cline、Claude Code、Gemini CLi 等各种 AI 编程助手 </青空莉/工具经验/实时编写前端界面或脚本/环境准备/index>`.
+既然世界书/预设条目已经被脚本映射为本地文件, 你显然可以让 AI 直接帮你修改世界书/预设, 你可以使用{doc}`Cursor、Augment、RooCode、Cline、Claude Code、Gemini CLI 等各种 AI 编程助手 </青空莉/工具经验/实时编写前端界面或脚本/环境准备/index>`.
 
 为了让 AI 更理解配置文件的结构, 你可以前往 <https://github.com/StageDog/tavern_sync/tree/main/dist> 的 schema 和 type 文件夹下载对应的类型定义.
 
@@ -14,7 +14,7 @@
 - 不要将破限发给会收集聊天信息的 AI 渠道, 避免破限被标记 (例如 claude 曾搞过破限挑战赛这样的 "钓鱼活动", 而有人真的将预设发过去了😨)
 - 检查预设有无授权问题!
 
-建议下载{doc}`实时编写前端界面或脚本模板 </青空莉/工具经验/实时编写前端界面或脚本/环境准备/index>`, 将 `.cursor/rules` 文件夹中的内容替换成预设内容, 并相应调整 `CLAUDE.md` 和 `GEMINI.md` 即可直接完成 Cursor、Augment、RooCode、Cline、Claude Code、Gemini CLi 的配置. \
+建议下载{doc}`实时编写前端界面或脚本模板 </青空莉/工具经验/实时编写前端界面或脚本/环境准备/index>`, 将 `.cursor/rules` 文件夹中的内容替换成预设内容, 并相应调整 `CLAUDE.md` 和 `GEMINI.md` 即可直接完成 Cursor、Augment、RooCode、Cline、Claude Code、Gemini CLI 的配置. \
 如果嫌文件夹内容太多, 你可以仅保留 `.augment`、`.claude`、`.clinerules`、`.cursor`、`.roo` 文件夹和 `.editorconfig`、`.prettierrc`、`CLAUDE.md`、`GEMINI.md` 文件.
 :::
 
