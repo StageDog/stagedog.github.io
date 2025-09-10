@@ -112,7 +112,7 @@
 
 ````{code-block} html
 :emphasize-lines: 4
-```text
+```
 <body>
   <script>
     $('body').load('http://localhost:5500/dist/界面示例/index.html')

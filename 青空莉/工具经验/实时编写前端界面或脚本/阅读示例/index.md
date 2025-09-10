@@ -73,7 +73,7 @@
 - 结尾单独一行 <code class="docutils literal notranslate">\`\`\`</code>
 
 ````html
-```text
+```
 <body>
   <span class="text-9xl text-red-600">你好</span>
 </body>
