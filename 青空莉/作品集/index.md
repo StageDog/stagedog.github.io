@@ -3,6 +3,11 @@
 
 {{ prolog }}
 
+## 仓库模板
+
+- 酒馆助手前端界面或脚本编写模板: <https://github.com/StageDog/tavern_helper_template>
+- 酒馆插件模板: <https://github.com/StageDog/tavern_extension_template>
+
 ## 角色卡
 
 恩赐之主
