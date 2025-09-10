@@ -210,6 +210,10 @@ function assignInplace<T>(destination: T[], new_array: T[]): T[] {
 
 既然这样, 我们完全可以发布一个网络链接给玩家, 从而让玩家永远加载到最新的前端界面或脚本!
 
+:::{hint}
+如果使用自己的服务器部署链接, 请注意设置 https, 否则使用 https 的云酒馆玩家将不可访问.
+:::
+
 最简单的方式是利用 [jsDelivr](https://www.jsdelivr.com/) 为 github 文件提供的 CDN 功能. 对于上传在 `github.com/组织名/仓库名` 中 `路径` 下的文件, 你可以直接用 `https://testingcf.jsdelivr.net/gh/组织名/仓库名/路径` 来访问它们.
 
 酒馆助手内置库即采用了这种方法. 例如, 如果你从{menuselection}`酒馆助手 --> 脚本库 --> 内置库`中导入[`标签化`](https://github.com/StageDog/tavern_resource/blob/main/src/酒馆助手/标签化/index.ts), 编辑它就会发现它的代码里仅有一行:
@@ -218,24 +222,20 @@ function assignInplace<T>(destination: T[], new_array: T[]): T[] {
 import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/标签化/index.js'
 ```
 
-然而, jsDelivr 的服务器和玩家的浏览器都会缓存文件, 因此并不是 github 上文件更新后, 这个链接就会立即得到最新的打包结果.
+然而, jsDelivr 服务器、jsDelivr 镜像服务器 (为了国内直连) 和玩家的浏览器都会缓存文件, 因此并不是 github 上文件更新后, 这个链接就会立即得到最新的打包结果.
 
 你可以通过以下方式来刷新缓存:
 
 - 从 <https://github.com/StageDog/tavern_helper_template> {menuselection}`Use this template` 来创建新仓库而不是仅在本地使用模板文件夹, 这个仓库配置了自动工作流, 会自动打包结果并在每次更新时都修改版本号，可以做到 12h 刷新服务器缓存
-- 更新版本号后，在 <https://www.testingcf.com/tools/purge> 中输入链接, 将 `testingcf.jsdelivr` 改成 `cdn.jsdelivr`, 然后点击确认, 能立即刷新服务器缓存
+- 更新版本号后，在 <https://www.testingcf.com/tools/purge> 中输入链接, 将 `testingcf.jsdelivr` 改成 `cdn.jsdelivr`, 然后点击确认, 能立即刷新 jsDelivr 服务器缓存, 但镜像服务器缓存不会刷新
 - 玩家主动清除浏览器缓存
 
-或者, 你可以在使用网络链接时尾附 `?time=时间戳`, 不同的时间戳将被视为访问不同的链接, 因此会独立缓存:
+或者, 你可以暂时换个镜像来访问, 如果这个镜像没有缓存:
 
-```{code-block} js
-:caption: 永远最新 (但永远缓存不上需要从网上获取)
-import `https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/标签化/index.js?time=${Date.now()}`
-```
-
-```{code-block} js
-:caption: 每日刷新
-import `https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/标签化/index.js?time=${new Date().setHours(0, 0, 0, 0)}`
+```text
+testingcf.jsdelivr.net
+fastly.jsdelivr.net
+gcore.jsdelivr.net
 ```
 
 ## 导入文件文本内容
