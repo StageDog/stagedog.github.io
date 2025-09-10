@@ -74,7 +74,7 @@
 ## 实操篇
 
 :::{hint}
-建议使用成熟的代码软件并用 AI 辅助编写 ({doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`), 你也可以下载 webstorm, 它对 `.ejs` 结尾的提示词模板语法文件有直接的报错检查.
+建议使用成熟的代码软件并用 AI 辅助编写, 具体见于下面的[让 AI 为你编写 EJS 代码](#让AI为你编写EJS代码)
 :::
 
 接下来, 让我们进入实操环节. 我们将继续以 "好感度动态人设" 为例, 亲手实现根据好感度的不同, 发送不同提示词的功能.
@@ -257,11 +257,17 @@ if (设定的条件1) {
 
 你可以通过酒馆助手提供的{menuselection}`输入框左下角的魔棒 --> 提示词查看器`来查看结果是否被正确发送.
 
+(让AI为你编写EJS代码)=
+
 ## 让 AI 为你编写 EJS 代码
 
 AI 会 Embedded JavaScript 语法, 你可以让它替你编写. 在其中, 你可以用 `TavernHelper` 来访问[酒馆助手的功能如 `TavernHelper.getWorldbook`](https://n0vi028.github.io/JS-Slash-Runner-Doc/), 或者直接访问[提示词模板的功能如 `getvar`](https://github.com/zonde306/ST-Prompt-Template/blob/main/docs/reference_cn.md).
 
-为了方便 AI 编写, 你可以按照{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`配置 Cursor, 将酒馆助手的 `@types` 文件夹 (配置后你会直接得到) 和提示词模板的 [reference_cn.md](https://github.com/zonde306/ST-Prompt-Template/blob/main/docs/reference_cn.md) 发给它.
+为了方便 AI 编写, 建议你按照{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`配置 Cursor, 将酒馆助手的 `@types` 文件夹 (配置后你会直接得到) 和提示词模板的 [reference_cn.md](https://github.com/zonde306/ST-Prompt-Template/blob/main/docs/reference_cn.md) 发给它.
+
+如果需要检查 EJS 语法是否正确, 你可以下载 webstorm, 它对 `.ejs` 结尾的提示词模板语法文件有直接的报错检查.
+
+或者, 青空莉在{doc}`门之主写卡助手 </青空莉/作品集/index>`中提供了 `✅生成或转换成动态化提示词` 用于让 AI 编写 EJS 代码. 你可以直接使用这个写卡助手, 或者复制它的提示词.
 
 ## 用 `<%= _%>` 填写提示词
 
