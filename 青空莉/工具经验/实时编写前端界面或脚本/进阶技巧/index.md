@@ -178,7 +178,7 @@ function assignInplace<T>(destination: T[], new_array: T[]): T[] {
 
 - 玩家只在一个前端界面内进行游玩
 - 对于玩家的输入, 我们通过前端助手的 `generate`、`generateRaw` 命令自行要求 ai 回复, 并监听 `iframe_events.STREAM_TOKEN_RECEIVED_FULLY` 和 `iframe_events.STREAM_TOKEN_RECEIVED_INCREMENTALLY` 事件来获取流式传输文本
-- 为了记录剧情, 我个人建议将前端界面正则调成最大深度 `0`, 然后用 `setChatMessages`、`createChatMessages`、`deleteChatMessages` 等函数的 `{ render: 'none' }` 参数来修改消息楼层但不刷新显示. 由于不会刷新显示, 玩家可以继续游玩你的界面, 但剧情记录等又能直接利用酒馆的消息楼层功能, **你不需要写一堆额外的代码来制作记录剧情功能**.
+- 为了记录剧情, 我个人建议将前端界面正则调成最大深度 `0`, 然后用 `setChatMessages`、`createChatMessages`、`deleteChatMessages` 等函数的 `{ refresh: 'none' }` 参数来修改消息楼层但不刷新显示. 由于不会刷新显示, 玩家可以继续游玩你的界面, 但剧情记录等又能直接利用酒馆的消息楼层功能, **你不需要写一堆额外的代码来制作记录剧情功能**.
 
 ### 更自由的办法
 
