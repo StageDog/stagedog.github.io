@@ -11,11 +11,17 @@
 :::{warning}
 为了破除 AI 对 NSFW 内容的道歉, 你可能需要在 AI 编程助手对应的规则提示词中添加破限. 但请注意:
 
-- 不要将破限发给会收集聊天信息的 AI 渠道, 避免破限被标记 (例如 claude 曾搞过破限挑战赛这样的 "钓鱼活动", 而有人真的将预设发过去了😨)
+- 不要将破限发给会收集聊天信息的 AI 渠道, 避免破限被标记 (例如 Claude 曾搞过破限挑战赛这样的 "钓鱼活动", 而有人真的将预设发过去了😨)
 - 检查预设有无授权问题!
 
-建议下载{doc}`实时编写前端界面或脚本模板 </青空莉/工具经验/实时编写前端界面或脚本/环境准备/index>`, 将 `.cursor/rules` 文件夹中的内容替换成预设内容, 并相应调整 `CLAUDE.md` 和 `GEMINI.md` 即可直接完成 Cursor、Augment、RooCode、Cline、Claude Code、Gemini CLI 的配置. \
-如果嫌文件夹内容太多, 你可以仅保留 `.augment`、`.claude`、`.clinerules`、`.cursor`、`.roo` 文件夹和 `.editorconfig`、`.prettierrc`、`CLAUDE.md`、`GEMINI.md` 文件.
+建议配置方法: (直接完成 Cursor、Augment、RooCode、Cline、Claude Code、Gemini CLI 的配置)
+
+- 下载{doc}`实时编写前端界面或脚本模板 </青空莉/工具经验/实时编写前端界面或脚本/环境准备/index>`
+- 仿照 `.cursor/rules` 文件夹中的文件新建一个文件, 填写 `pull 预设 --inline` 所得到的预设内容
+- 删除 `.cursor/rules` 中的其他文件
+- 相应调整 `CLAUDE.md` 和 `GEMINI.md`, 引用你创建的文件
+
+如果嫌文件夹内容太多, 你可以仅保留 `.augment`、`.claude`、`.clinerules`、`.cursor`、`.roo` 文件夹和 `.editorconfig`、`.prettierrc`、`mcp.json`、`CLAUDE.md`、`GEMINI.md` 文件.
 :::
 
 ## 内嵌提示词或外链提示词
