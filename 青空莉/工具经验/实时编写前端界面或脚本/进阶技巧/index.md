@@ -88,9 +88,44 @@
 
 为此像下文 "发布会自动更新的前端界面或脚本" 那样, 将 html 转换为链接而正则代码块里只加载链接. 这样酒馆需要渲染的代码块内容没多少, 自然不会卡顿.
 
-## 使用 vue 编写前端界面
+## 使用 Vue 编写前端界面
 
-酒馆助手前端界面和脚本可以直接使用 `vue`, 它会让数据显示变得更为简单. `src/界面示例` 就是这么做的.
+酒馆助手前端界面和脚本可以直接使用 Vue, 它会让数据显示变得更为简单. `src/界面示例` 就是这么做的.
+
+除了 `vue` 之外, 我还配置了 `pinia`、`vue-router`、`@vueuse/core` 等库, 让你无论是做可拖动列表并及时保存列表结果、给设置做浏览器缓存等等都异常简单. **AI 很会, 拷打 AI.**
+
+例如, 这是我们如何给界面设置浏览器缓存: (看不懂没关系, 你只需要知道 Vue 对你对 AI 都更方便)
+
+::::{tabs}
+:::{tab} 不使用 Vue
+
+```ts
+// 我们需要从 localStorage 中获取 count 的值
+let count = localStorage.getItem('count');
+
+// 我们得转换值为字符串再赋值给 count
+count = String(5);
+
+// 我们得记住保存变量结果回 localStorage
+localStorage.setItem('count', count);
+```
+
+:::
+
+:::{tab} 使用 Vue
+
+```ts
+import { useLocalStorage } from '@vueuse/core';
+
+// 对 `count` 的改变都会被直接保存到浏览器缓存中, 我们可以随便用 `count` 变量!
+const count = useLocalStorage<number>('count', 0);
+
+// 而且变量类型就是我们需要的类型!
+count.value = 5;
+```
+
+:::
+::::
 
 你可以安装 [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd), 从而在 {kbd}`F12` 所打开的开发者工具中新增 vue 选项卡, 得到 vue 更多调试功能.
 
