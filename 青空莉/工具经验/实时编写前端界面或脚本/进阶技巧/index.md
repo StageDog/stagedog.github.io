@@ -92,6 +92,8 @@
 
 酒馆助手前端界面和脚本可以直接使用 `vue`, 它会让数据显示变得更为简单. `src/界面示例` 就是这么做的.
 
+你可以安装 [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd), 从而在 {kbd}`F12` 所打开的开发者工具中新增 vue 选项卡, 得到 vue 更多调试功能.
+
 ## 与外部应用程序通信
 
 酒馆助手脚本可以安装和使用 `socket.io-client` 乃至所有浏览器环境支持的第三方库, 从而和外部应用程序进行通信. {doc}`/青空莉/工具经验/实时编写角色卡、世界书或预设/index` (<http://github.com/StageDog/tavern_sync>) 就是如此实现的.
