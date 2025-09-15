@@ -253,17 +253,6 @@ gcore.jsdelivr.net
 
 你可能需要在代码里获取本地 json 等文件内容, 那么可以直接用 `import string from './文件?raw'` 来将文件内容作为字符串导入.
 
-## 仅当代码不报错时才能成功打包
-
-无论是前端界面还是脚本都需要我们编写 typescript 代码. 当代码有语法错误时, 我们会在 Cursor 中看到报错:
-
-:::{figure} 代码出错.png
-:::
-
-显然, 我们应该先解决代码的语法错误, 再进行打包. 但当 AI 用 `pnpm build` 或 `pnpm watch` 验证打包是否成功时, 你会惊讶地发现即便代码里有报错依然能成功打包. 这是因为在打包时检查语法错误消耗的内存和时间都太多了 (我的仓库 <http://github.com/StageDog/tavern_resource> 需要耗费不开启时 10 倍的时间). 出于性能考虑, 模板文件夹默认关闭了这一功能.
-
-要开启这个功能, 你需要打开 `webpack.config.ts` 文件, 将其中的两处 `transpileOnly: true` 改为 `transpileOnly: false`.
-
 ## 混淆代码
 
 无论前端界面还是脚本, 你都可以在 `index.ts` 中添加一行 `// @obfuscate` 来指示打包时应该混淆代码.
@@ -277,3 +266,72 @@ gcore.jsdelivr.net
 ## 不自动打包代码
 
 如果你是从模板新建仓库的形式使用编写模板, 那么可以在 `index.ts` 中添加一行 `// @no-ci` 来指示 CI 工作流不自动打包某个前端界面或脚本.
+
+## 自定义 tailwindcss 配置
+
+tailwindcss 提供了许多组件类, 允许你不总是自定义类然后设置样式:
+
+::::{tabs}
+:::{tab} 不使用 tailwindcss
+
+```html
+<p class="content-text">Hello, world!</p>
+```
+
+```css
+.content-text {
+  font-size: 30px;
+  line-height: 36px;
+  --tw-font-weight: 500;
+  font-weight: 500;
+  color: #030712;
+}
+```
+
+:::
+
+:::{tab} 使用 tailwindcss
+
+```html
+<p class="text-3xl font-medium text-gray-950">Hello, world!</p>
+```
+
+:::
+::::
+
+模板并不强制你用 tailwindcss, 因此没有开启 tailwindcss 很多检查. 如果需要, 你可以自行去 eslint.config.mjs 调整它.
+
+```{code-block} ts
+:emphasize-lines: 2,10-15,17-22,31
+{
+  files: ['src/**/*.{html,vue,ts}'],  // 调整检查范围
+  plugins: {
+    'better-tailwindcss': eslintPluginBetterTailwindcss,
+  },
+  rules: {
+    ...eslintPluginBetterTailwindcss.configs['recommended-warn'].rules,
+    ...eslintPluginBetterTailwindcss.configs['recommended-error'].rules,
+
+    // class 过长时自动换行
+    //   这和 Ctrl + S 所触发的自动格式化软件 Prettier 相冲突, 需要时必须在 html 标签上一行加一句 <!-- prettier-ignore-attribute -->
+    'better-tailwindcss/enforce-consistent-line-wrapping': [
+      'off',  // 改为 `warn` 或 `error` 则开启
+      { printWidth: 120 }
+    ],
+
+    // 禁止在 html 中使用未经 tailwindcss 注册的类
+    //   由此, 如果写了 tailwindcss 不支持的类, 将会报错
+    'better-tailwindcss/no-unregistered-classes': [
+      'off',
+      { ignore: ['fa-*'] }  // FontAwesome 图标类没有被 tailwindcss 注册, 我们应该让检查忽略它避免报错
+    ],
+  },
+  settings: {
+    'better-tailwindcss': {
+      entryPoint: 'src/global.css',
+      tailwindConfig: 'tailwind.config.js',
+    },
+  },
+},
+// 你可以复制上面的 {} 块, 通过改变 `files` 为不同范围设置不同检查
+```
