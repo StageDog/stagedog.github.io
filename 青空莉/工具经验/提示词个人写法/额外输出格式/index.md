@@ -4,7 +4,24 @@
 
 我们会经常遇到不仅需要 AI 理解提示词, 还需要 AI 按要求输出内容的情况, 例如思维链、时间框、摘要总结、文字状态栏、变量更新格式等. 但输出内容中, 有的部分是应该原封不动输出出来的, 有的部分则是需要 AI 根据要求填充的.
 
-为了让 AI 更好区分这些, 我研究了一套针对额外输出格式的提示词写法.
+为了让 AI 更好区分这些, 我研究了一套针对额外输出格式的提示词写法. 这种写法下:
+
+- 要输出的内容与其他只是发给 AI 看的提示词有明显区分, **AI 能更好理解怎样输出格式**
+- 可以**引用其他提示词**, 简单表达原本不好描述的输出格式
+- 允许**将输出格式模块化**. AI 只该在特定情况下输出某一部分内容? 没问题!
+
+假设我们要为玩家输出行动选项, 为了让选项更多样, 我们可能制作很多选项类型, 但我们显然不想让 AI 固定地输出:
+
+```text
+1. 普通选项: 给出一种普通发展
+2. 普通选项: 给出一种普通发展
+3. 邪恶选项: 给出一种邪恶发展
+```
+
+我们希望的是, 动态发送十多种选项类型中的几种给 AI, 让 AI 根据类型要求制作 5~6 个选项——{doc}`可点击的选择框 </青空莉/作品集/index>`就凭本文的方法实现了这样的选择框:
+
+:::{figure} 选择框选项.png
+:::
 
 ## 特殊语法
 
@@ -120,3 +137,105 @@
 上面的提示词中, 我们在 `basic` 部分定义所有角色共同的状态栏内容, 而在 `special status` 部分定义每个角色独有的状态栏内容. `basic` 内我们用 `${special status}` 来引用 `special status` 部分内容, 从而指示 AI 输出.
 
 我在[妹妹请求你保护她露出](https://github.com/StageDog/tavern_resource/blob/main/src/角色卡/妹妹请求你保护她露出/世界书/状态栏!.yaml)中就是这么做的.
+
+## 示例
+
+### 任务系统提示框
+
+> 实例: {doc}`妹妹请求你保护她露出 </青空莉/作品集/index>`
+
+```{code-block} yaml
+略:
+  condition: 略
+  format:
+    basic: |-
+      <ExposurePrompt>
+      [系统提示|${title}|${content}$(禁止在content后输出 |)]
+      </ExposurePrompt>
+    specific prompt:
+      - title: ${难度}任务进度
+        content: ${任务内容}(${进度})$(任务奖励不应在任务完全完成前减少)
+      - title: 已完成${难度}任务-${任务内容}
+        content: 获得${奖励}点数
+        special: 此外，输出一个`更换${难度}任务`提示
+      - title: 更换${难度}任务
+        content: ${特定内容，必须包含明确目标、目的地、交通方式、到达动作等}(${进度}) - ${奖励}点数
+      - title: 已兑换商品-${商品名称}
+        content: 扣除${价格}点数
+        special: 此外，输出一个`更换商品${编号}-${物品名称}`提示
+      - title: 更换商品${编号}-${物品名称}
+        content: ${商品效果, 必须包含使用次数/持续时间/使用条件或其他限制}(${一果对商品的评论，比如'哥哥看不见这个商品哦~'，不超过10个字}) - ${价格}点数
+      - title: 遭遇特殊${事件/任务/商品}
+        content: ...
+      - ...
+```
+
+### 允许自定义选项类型的选择框
+
+> 实例: {doc}`可点击的选择框 </青空莉/作品集/index>`
+
+```{code-block} yaml
+:caption: 选择框开始
+
+```yaml
+略:
+  rule: 略
+  format:
+    basic: |-
+      <roleplay_options>
+      ```
+      ${按照content而非type拟定标题标题}:${content，必须以第三人称输出行为的主语}
+      ...$(generate {{random::4::5::6}} options based on `option type` below)
+      ```
+      </roleplay_options>
+    option type: [
+```
+
+```{code-block} yaml
+:caption: 某个选项条目
+{
+  type: '普通发展',
+  content: '${根据当前的情况，合理构思当前可能出现的不同发展}',
+},
+```
+
+```{code-block} yaml
+:caption: 另一个选项条目
+{
+  type: '跳过场景',
+  content: '${当前场景描写十分足够时，用概括性的语言来跳过当前动作的描写并展开下一场景进行新描写，剧情上保持连贯}',
+  rule: '必须给出一个跳过场景选项'
+},
+```
+
+```{code-block} yaml
+:caption: 选择框结束
+
+```yaml
+]
+...
+```
+
+### 用 Typescript 语法定义 JSON 格式输出
+
+> 实例: {doc}`日记络络 </络络/作品集/index>`
+
+```yaml
+略:
+  rule: 略
+  type: |-
+    interface Chat {
+      speaker: string; // 当前发言者的名字或`旁白`二字，禁止使用protagonist和narrator
+      message: string; // 当前发言者的台词
+      background: string; // `背景列表`中支持的当前所处地点位置、时间等的背景文件名
+      characters: {
+        name: string; // 角色名称
+        expression: string; // 表情，从`立绘列表`中选择存在的立绘文件名
+        costume: string; // 服装，仅有格纹衫、开衫、水手服、睡衣和全裸五个选项
+      }[];
+    }
+  format: |-
+    ${以JSON格式输出Chat[]，包含不少于10个Chat，不多于15个Chat}
+```
+
+由于这往往涉及{doc}`前端界面代码 </青空莉/工具经验/实时编写前端界面或脚本/index>`, 你可能会用 [zod](https://zod.dev/) 检验数据, 则也可以尝试直接用 zod 定义数据结构然后在 `format` 内引用.
