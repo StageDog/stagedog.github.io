@@ -304,7 +304,7 @@ tailwindcss 提供了许多组件类, 允许你不总是自定义类然后设置
 ```{code-block} ts
 :emphasize-lines: 2,10-15,17-22,31
 {
-  files: ['src/**/*.{html,vue,ts}'],  // 调整检查范围
+  files: ['src/**/*.{html,vue,js,ts}'],  // 调整检查范围
   plugins: {
     'better-tailwindcss': eslintPluginBetterTailwindcss,
   },
