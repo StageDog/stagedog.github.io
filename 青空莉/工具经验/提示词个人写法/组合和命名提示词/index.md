@@ -51,7 +51,7 @@
 
 ### XML 标签
 
-我们可以用 `<名称>` 和 `</名称>` 包裹提示词从而区分提示词的作用, 而提示词本身的写法不受限制. ([Claude 官方介绍](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags))
+我们可以用 `<你自己定一个名字>` 和 `</你自己定一个名字>` 包裹提示词从而区分提示词的作用, 而提示词本身的写法不受限制. ([Claude 官方介绍](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags))
 
 比较经典的是一些预设的思维链写法, 注意它是如何用 `<thinking_format>` 包裹思维链输出要求, 又用 `<thinking>` 包括思维链具体内容的.
 
