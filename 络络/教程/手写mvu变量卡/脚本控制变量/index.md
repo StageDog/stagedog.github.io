@@ -122,14 +122,14 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
 });
 ```
 
-我们只需要新建一个酒馆助手脚本, 将上面一段代码粘贴进去, 就能实现用变量值激活绿灯条目.
+我们只需要新建一个酒馆助手脚本, 将上面一段代码粘贴进去, 则会添加一段和 `{{get_message_variable::stat_data}}` 替换结果相同的文本, 仅用于绿灯激活.
 
 如果你需要更精确的控制, 则可以不是转换整个 `stat_data` 而是转换某个变量, 或者自己填写如何注入这个仅用于绿灯激活的提示词:
 
 ```ts
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
   // 在预扫描文本中注入一句 `络络好感度: 好感度具体数值`
-  const content = `络络好感度: ${_.get(variables, 'stat_data.角色.络络.好感度')}`;
+  const content = `络络好感度: ${_.get(variables, 'stat_data.角色.络络.好感度', 0)}`;
   injectPrompts([
     {
       id: 'mvu_lolo_affection',
@@ -140,5 +140,19 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
       should_scan: true,
     },
   ]);
+
+  // 如果好感度大于 30, 设置 `激活这个条目` 仅用于激活绿灯
+  if (_.get(variables, 'stat_data.角色.络络.好感度', 0) > 30) {
+    injectPrompts([
+      {
+        id: 'mvu_lolo_trigger',
+        content: '激活这个条目',
+        position: 'none',
+        depth: 0,
+        role: 'user',
+        should_scan: true,
+      },
+    ]);
+  }
 });
 ```
