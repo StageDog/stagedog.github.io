@@ -147,6 +147,7 @@
 > 实例: {doc}`妹妹请求你保护她露出 </青空莉/作品集/index>`
 
 ```{code-block} yaml
+---
 略:
   condition: 略
   format:
@@ -178,8 +179,7 @@
 
 ```{code-block} yaml
 :caption: 选择框开始
-
-```yaml
+---
 略:
   rule: 略
   format:
@@ -212,8 +212,6 @@
 
 ```{code-block} yaml
 :caption: 选择框结束
-
-```yaml
 ]
 ...
 ```
@@ -223,6 +221,7 @@
 > 实例: {doc}`日记络络 </络络/作品集/index>`
 
 ```yaml
+---
 略:
   rule: 略
   type: |-
