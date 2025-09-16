@@ -252,7 +252,7 @@ function assignInplace<T>(destination: T[], new_array: T[]): T[] {
 :caption: <code class="docutils literal notranslate">@hakoyukaya</code> 的流式 Galgame 界面
 :::
 
-## 发布会自动更新的前端界面或脚本
+## 发布会自动更新的前端界面、脚本或美化样式
 
 还记得我们是如何实现实时修改前端界面或脚本的吗? 我们利用 {menuselection}`Go Live` 将本地文件夹转换为了网络链接, 而正则或脚本通过网络链接来加载最新打包内容.
 
@@ -268,6 +268,12 @@ function assignInplace<T>(destination: T[], new_array: T[]): T[] {
 
 ```js
 import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/标签化/index.js'
+```
+
+同理, 你也可以用 jsDelivr 发布会自动更新的酒馆美化:
+
+```css
+@import url("https://testingcf.jsdelivr.net/gh/lolo-desu/lolocard/src/思维链美化/酒馆自带推理块版/暗色.css");
 ```
 
 然而, jsDelivr 服务器、jsDelivr 镜像服务器 (为了国内直连) 和玩家的浏览器都会缓存文件, 因此并不是 github 上文件更新后, 这个链接就会立即得到最新的打包结果.
