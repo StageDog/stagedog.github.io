@@ -267,7 +267,7 @@
   rule: 略
   type: |-
     interface Chat {
-      speaker: string; // 当前发言者的名字或`旁白`二字，禁止使用protagonist和narrator
+      speaker: string; // 当前发言者的名字或`旁白`二字
       message: string; // 当前发言者的台词
       background: string; // `背景列表`中支持的当前所处地点位置、时间等的背景文件名
       characters: {
@@ -281,3 +281,25 @@
 ```
 
 由于这往往涉及{doc}`前端界面代码 </青空莉/工具经验/实时编写前端界面或脚本/index>`, 你可能会用 [zod](https://zod.dev/) 检验数据, 则也可以尝试直接用 zod 定义数据结构然后在 `format` 内引用.
+
+```yaml
+---
+略:
+  rule: 略
+  type: |-
+    const Chat = z.object({
+      speaker: z.union([z.literal('旁白'), z.string()]),
+      message: z.string().describe('当前发言者的台词'),
+      background: z.enum(['白天', '黄昏']),
+      characters: z.array(
+        z.object({
+          name: z.literal('络络'), // 目前只有络络这一个角色
+          expression: z.enum(['微笑', '浅笑', '生气', '惊讶', '害羞']).catch('微笑'),
+          costume: z.enum(['水手服', '格纹衫', '开衫', '睡衣', '全裸']).catch('水手服'),
+        }),
+      ),
+    });
+    type Chat = z.infer<typeof Chat>;
+  format: |-
+    ${以JSON格式输出Chat[]，包含不少于10个Chat，不多于15个Chat}
+```
