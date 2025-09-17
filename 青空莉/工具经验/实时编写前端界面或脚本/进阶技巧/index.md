@@ -200,8 +200,8 @@ count.value = 5;
   - 鼠标位置: [useMouse](https://vueuse.org/core/useMouse/)
   - 鼠标点击: [useMousePressed](https://vueuse.org/core/useMousePressed/)
   - 鼠标不在网页内: [usePageLeave](https://vueuse.org/core/usePageLeave/)
-  - 监听鼠标滑动: [usePointerSwipe](https://vueuse.org/core/usePointerSwipe/)
-  - 监听触控滑动: [useSwipe](https://vueuse.org/core/useSwipe/)
+  - 鼠标长按滑动: [usePointerSwipe](https://vueuse.org/core/usePointerSwipe/)
+  - 触控滑动: [useSwipe](https://vueuse.org/core/useSwipe/)
   - 元素内的滚动: [useScroll](https://vueuse.org/core/useScroll/)
   - 锁定元素内的滚动: [useScrollLock](https://vueuse.org/core/useScrollLock/)
 
