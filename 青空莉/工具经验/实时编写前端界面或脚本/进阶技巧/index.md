@@ -94,9 +94,32 @@
 
 酒馆助手前端界面和脚本可以直接使用 Vue, 它会让数据显示变得更为简单. `src/界面示例` 就是这么做的.
 
-除了 `vue` 之外, 我还配置了 `gsap`、`pinia`、`vue-router`、`@vueuse/core` 等库, 让你无论是实现打字机效果、做可拖动列表并及时保存列表结果、给设置做浏览器缓存等等都异常简单. **AI 很会, 拷打 AI.**
+除了 [`vue`](https://cn.vuejs.org/) 之外, 我还配置了 [`gsap`](https://gsap.com/)、[`pinia`](https://pinia.vuejs.org/)、[`vue-router`](https://router.vuejs.org/)、[vueuse](https://vueuse.org/) 等库, 让你无论是实现打字机效果、做可拖动列表并及时保存列表结果、给设置做浏览器缓存、让界面全屏、发送系统通知等等都异常简单. **AI 很会, 拷打 AI.**
 
-例如, 这是我们如何给界面设置浏览器缓存: (看不懂没关系, 你只需要知道 Vue 对你对 AI 都更方便)
+你可以安装 [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd), 从而在 {kbd}`F12` 所打开的开发者工具中新增 vue 选项卡, 得到 vue 更多调试功能.
+
+::::{admonition} 几行代码实现打字机效果
+:class: hint, dropdown
+
+:::{video} 打字机.mp4
+:align: center
+:::
+
+```ts
+gsap.registerPlugin(SplitText);
+split = SplitText.create('.text', { type: 'chars' });
+gsap.set(split.chars, {
+  opacity: 1,
+  duration: 0.7,
+  ease: 'power4',
+  stagger: 0.04,
+});
+```
+
+::::
+
+:::::{admonition} 给界面设置浏览器缓存
+:class: hint, dropdown
 
 ::::{tabs}
 :::{tab} 不使用 Vue
@@ -105,10 +128,10 @@
 // 我们需要从 localStorage 中获取 count 的值
 let count = localStorage.getItem('count');
 
-// 我们得转换值为字符串再赋值给 count
+// 我们得转换值为字符串再赋值给 count🤢
 count = String(5);
 
-// 我们得记住保存变量结果回 localStorage
+// 我们得记住保存变量结果回 localStorage🤢
 localStorage.setItem('count', count);
 ```
 
@@ -129,7 +152,138 @@ count.value = 5;
 :::
 ::::
 
-你可以安装 [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd), 从而在 {kbd}`F12` 所打开的开发者工具中新增 vue 选项卡, 得到 vue 更多调试功能.
+:::::
+
+:::{admonition} 我觉得很有用的 vueuse 功能
+:class: hint, dropdown
+
+更多请自行查阅文档([英文](https://vueuse.org/guide/)/[中文](https://vueuse.nodejs.cn/guide/)); 当然你可以直接问 ai, 它也许知道.
+
+<!-- markdownlint-disable MD032 MD007 -->
+@vueuse/core - 状态 (State)
+: - 共享 composable 状态: [useSharedComposable](https://vueuse.org/shared/createSharedComposable/)
+  - 自动缓存数据到浏览器: [useLocalStorage](https://vueuse.org/core/useLocalStorage/)
+
+@vueuse/core - 元素 (Elements)
+: - 可拖动元素: [useDraggable](https://vueuse.org/core/useDraggable/)
+  - 元素大小: [useElementSize](https://vueuse.org/core/useElementSize/)
+  - 检测元素大小发生改变: [useResizeObserver](https://vueuse.org/core/useResizeObserver/)
+  - 检测 DOM 发生改变: [useMutationObserver](https://vueuse.org/core/useMutationObserver/)
+  - 检测页面滚动: [useWindowScroll](https://vueuse.org/core/useWindowScroll/)
+  - 标签页间、iframe 间通信: [useBroadcastChannel](https://vueuse.org/core/useBroadcastChannel/)
+
+@vueuse/core - 浏览器 (Browser)
+: - 剪贴板: [useClipboard](https://vueuse.org/core/useClipboard/) 和 [useClipboardItems](https://vueuse.org/core/useClipboardItems/)
+  - 监听事件, 支持组件卸载时自动释放: [useEventListener](https://vueuse.org/core/useEventListener/)
+  - 点击导入文件时打开的文件选择框: [useFileDialog](https://vueuse.org/core/useFileDialog/)
+  - 全屏化: [useFullscreen](https://vueuse.org/core/useFullscreen/)
+  - 从 Blob 创建 URL, 支持组件卸载时自动释放: [useObjectUrl](https://vueuse.org/core/useObjectUrl/)
+  - 向页面加载 `<script>`, 支持 `type: 'module'`, 支持组件卸载时自动释放: [useScriptTag](https://vueuse.org/core/useScriptTag/)
+  - 向页面加载 `<style>`, 支持组件卸载时自动释放: [useStyleTag](https://vueuse.org/core/useStyleTag/)
+  - 自动适配输入框大小: [useTextareaAutosize](https://vueuse.org/core/useTextareaAutosize/)
+  - 使用网页通知功能 (我嘞个 AI 回复结束后通知): [useWebNotification](https://vueuse.org/core/useWebNotification/)
+
+@vueuse/core - 传感器 (Sensors)
+: - 点击了选定元素之外的地方: [useClickOutside](https://vueuse.org/core/useClickOutside/)
+  - 某个元素被移除: [useElementRemoval](https://vueuse.org/core/useElementRemoval/)
+  - 某个键盘按键: [onKeyStroke](https://vueuse.org/core/onKeyStroke/)
+  - 键盘修饰符: [useKeyModifier](https://vueuse.org/core/useKeyModifier/)
+  - 按键组合: [useMagicKeys](https://vueuse.org/core/useMagicKeys/)
+  - 长按按钮: [onLongPress](https://vueuse.org/core/onLongPress/)
+  - 按键时自动聚焦到输入框: [onStartTyping](https://vueuse.org/core/onStartTyping/)
+  - 当前鼠标所在的元素: [useElementByPoint](https://vueuse.org/core/useElementByPoint/)
+  - 元素是否被鼠标悬停: [useElementHover](https://vueuse.org/core/useElementHover/)
+  - 元素是否被聚焦: [useElementFocus](https://vueuse.org/core/useElementFocus/) 和 [useFocusWithin](https://vueuse.org/core/useFocusWithin/)
+  - 显示帧数: [useFps](https://vueuse.org/core/useFps/)
+  - 用户处于空闲状态, 多少秒没和界面交互过: [useIdle](https://vueuse.org/core/useIdle/)
+  - 让元素可以无限滑动: [useInfiniteScroll](https://vueuse.org/core/useInfiniteScroll/)
+  - 鼠标位置: [useMouse](https://vueuse.org/core/useMouse/)
+  - 鼠标点击: [useMousePressed](https://vueuse.org/core/useMousePressed/)
+  - 鼠标不在网页内: [usePageLeave](https://vueuse.org/core/usePageLeave/)
+  - 监听鼠标滑动: [usePointerSwipe](https://vueuse.org/core/usePointerSwipe/)
+  - 监听触控滑动: [useSwipe](https://vueuse.org/core/useSwipe/)
+  - 元素内的滚动: [useScroll](https://vueuse.org/core/useScroll/)
+  - 锁定元素内的滚动: [useScrollLock](https://vueuse.org/core/useScrollLock/)
+
+@vueuse/core - 网络 (Network)
+: - 响应式请求 url 内容, 可简单取消请求, 会在 url 变更时重新请求: [useFetch](https://vueuse.org/core/useFetch/)
+
+@vueuse/core - 动画 (Animation)
+: - 你可以使用 gsap
+  - 过一段时间后触发: [useTimeout](https://vueuse.org/shared/useTimeout/) 和 [useTimeoutFn](https://vueuse.org/shared/useTimeoutFn/)
+  - 每过一段时间触发: [useInterval](https://vueuse.org/shared/useInterval/) 和 [useIntervalFn](https://vueuse.org/shared/useIntervalFn/)
+  - 当前时间: [useNow](https://vueuse.org/core/useNow/)
+
+@vueuse/core - 组件 (Component)
+: - 自己写代码才需要, 可能全都能用上, 因此自行查阅
+  - 同时进行 `computed` 和 `inject`: [computedInject](https://vueuse.org/core/computedInject/)
+  - 在组件中创建可复用的 template: [createReusableTemplate](https://vueuse.org/core/createReusableTemplate/)
+  - 在组件中将 template 设置为异步渲染: [createAsyncComponent](https://vueuse.org/core/createAsyncComponent/)
+  - 对 `v-for` 绑定 ref: [useTemplateRefsList](https://vueuse.org/core/useTemplateRefsList/)
+  - 虚拟列表, 仅渲染实际可见的部分: [VueVirtualScroller](https://github.com/Akryum/vue-virtual-scroller)
+
+@vueuse/core - 监听 (Watch)
+: - 自己写代码才需要, 可能全都能用上, 因此自行查阅
+  - 等待条件满足: [util](https://vueuse.org/shared/until/)
+  - 监听数组, 相比于 `watch` 还能得到数组新增元素和移除元素情况: [watchArray](https://vueuse.org/shared/watchArray/)
+  - 监听最多 n 次: [watchAtMost](https://vueuse.org/shared/watchAtMost/) 和 [watchOnce](https://vueuse.org/shared/watchOnce/)
+  - 防抖监听 (仅当一定时间内监听没触发后, 监听所回调的函数才会执行): [watchDebounced](https://vueuse.org/shared/watchDebounced/)
+  - 节流监听 (一定时间内仅能执行一次函数): [watchThrottled](https://vueuse.org/shared/watchThrottled/)
+  - 可在一定情况下忽略的监听: [watchIgnorable](https://vueuse.org/shared/watchIgnorable/)
+  - 可暂停的监听: [watchPausable](https://vueuse.org/shared/watchPausable/)
+  - 可主动触发的监听: [watchTriggerable](https://vueuse.org/shared/watchTriggerable/)
+  - 仅在条件满足时才触发的监听: [watchWithFilter](https://vueuse.org/shared/watchWithFilter/)
+
+@vueuse/core - 响应性 (Reactivity)
+: - 自己写代码才需要, 可能全都能用上, 因此自行查阅
+  - 异步的计算属性: [computedAsync](https://vueuse.org/core/computedAsync/)
+  - 自行定义依赖项的计算属性: [computedWithControl](https://vueuse.org/shared/computedWithControl/)
+  - 将非响应式函数转换为响应式函数: [reactify](https://vueuse.org/shared/reactify/)
+  - 将对象内的非响应式函数转换为响应式函数: [reactifyObject](https://vueuse.org/shared/reactifyObject/)
+  - 响应性地忽略响应式对象中的某些字段: [reactiveOmit](https://vueuse.org/shared/reactiveOmit/)
+  - 响应性地提取响应式对象中的某些字段: [reactivePick](https://vueuse.org/shared/reactivePick/)
+  - 过段时间后将会重置成默认值的 ref: [refAutoReset](https://vueuse.org/shared/refAutoReset/)
+  - 可以自行重置成默认值的 ref: [refManualReset](https://vueuse.org/shared/refManualReset/)
+  - 如果值为 undefined 则采用默认值的 ref: [refDefault](https://vueuse.org/shared/refDefault/)
+  - 允许自行控制是否触发响应的 ref: [refWithControl](https://vueuse.org/shared/refWithControl/)
+  - 防抖响应 (仅当一定时间内 ref 没被改变后, ref 才会被修改): [refDebounced](https://vueuse.org/shared/refDebounced/)
+  - 节流响应 (一定时间内 ref 仅能被修改一次): [refThrottled](https://vueuse.org/shared/refThrottled/)
+  - 将两个 ref 的响应性同步, 指向同一个响应性对象: [syncRef](https://vueuse.org/shared/syncRef/) 和 [syncRefs](https://vueuse.org/shared/syncRefs/)
+
+@vueuse/core - 数组 (Array)
+: - 自己写代码才需要, 可能全都能用上, 因此自行查阅
+  - 简单地说就是数组各个函数的响应性版本
+
+@vueuse/core - Time (时间)
+: - 倒计时: [useCountdown](https://vueuse.org/core/useCountdown/)
+  - 格式化日期时间: [useDateFormat](https://vueuse.org/shared/useDateFormat/)
+  - 计算时间差: [useTimeAgo](https://vueuse.org/core/useTimeAgo/) 和 [useTimeAgoIntl](https://vueuse.org/core/useTimeDiff/)
+
+@vueuse/core - 工具 (Utilities)
+: - 自己写代码才需要, 可能全都能用上, 因此自行查阅
+  - 让不接受 ref 的函数能接受 ref (但依旧不是响应式执行): [createUnrefFn](https://vueuse.org/core/createUnrefFn/)
+  - 获取变量的 base64 字符串: [useBase64](https://vueuse.org/core/useBase64/)
+  - 计数器: [useCounter](https://vueuse.org/shared/useCounter/)
+  - 确认框: [useConfirmDialog](https://vueuse.org/core/useConfirmDialog/)
+  - 防抖执行 (仅当一定时间内不调用某个函数后, 函数才会执行): [useDebounceFn](https://vueuse.org/shared/useDebounceFn/)
+  - 节流执行 (一定时间内仅能执行一次函数): [useThrottleFn](https://vueuse.org/shared/useThrottleFn/)
+  - 记忆执行 (执行后, 以后对函数的调用直接返回结果): [useMemoize](https://vueuse.org/core/useMemoize/)
+  - 记录 ref 的上一个值 (需要提前创建 ref): [usePrevious](https://vueuse.org/core/usePrevious/)
+  - 多步骤向导界面: [useStepper](https://vueuse.org/core/useStepper/)
+  - 开关 boolean 值: [useToggle](https://vueuse.org/shared/useToggle/)
+  - 响应式转换字符串为数字: [useToNumber](https://vueuse.org/shared/useToNumber/)
+  - 响应式转换数字为字符串: [useToString](https://vueuse.org/shared/useToString/)
+
+@vueuse/integrations
+: - 表单检验: [useAsyncValidator](https://vueuse.org/integrations/useAsyncValidator/)
+  - 模糊搜索: [useFuse](https://vueuse.org/integrations/useFuse/)
+  - 可调整元素顺序的列表: [useSortable](https://vueuse.org/integrations/useSortable/)
+
+@vueuse/sound
+: - 播放声音: [useSound](https://github.com/vueuse/sound#examples)
+
+<!-- markdownlint-enable MD032 MD007 -->
+:::
 
 ## 与外部应用程序通信
 
