@@ -145,6 +145,15 @@ if (设定的条件) {
 <%_ } _%>
 ```
 
+当然你也许想扫描更多楼层或者仅扫描用户输入, 则你可以按 [matchChatMessages 接口](https://github.com/zonde306/ST-Prompt-Template/blob/main/docs/reference_cn.md?plain=1#L450-L469)来调整扫描方式. 例如:
+
+```{code-block} js
+:force:
+<%_ if (matchChatMessages(['络络', '笨蛋'], { start: -4 }) { _%>
+这里是当正文最后 4 楼中提到了 "络络" 或 "笨蛋" 时，我们希望AI看到的专属描述
+<%_ } _%>
+```
+
 ### 用 `else` 表示条件不成立时发送提示词
 
 你已经学会了 `if`, 它可以处理 "条件成立时发送提示词". 但如果我们的逻辑不止 "条件成立时发送提示词", 还有 "条件不成立时发送提示词" 的情况呢? 让我们用 `else` (否则) 来处理:
