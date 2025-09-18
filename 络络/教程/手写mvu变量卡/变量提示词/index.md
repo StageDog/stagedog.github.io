@@ -72,7 +72,7 @@
   时间: {{get_message_variable::stat_data.世界.时间}}
 </status_description>
 rule: 你必须在下次回复的末尾输出变量更新分析
-check list:
+check:
   - 如果角色注意到了<user>的行为，根据他们的态度将'好感度'更新±(1~4)
   - 根据剧情和人设适当地调整'心情'
   - 根据当前日期时间更新'日期'和'时间'
@@ -81,7 +81,7 @@ format: |-
   <update_analysis>$(使用不超过120个英语单词)
   - ${计算经过的时间: ...}
   - ${根据当前情节是否足够特殊、时间跨度是否远超正常情况，判断是否允许变量值发生戏剧性变化: 是/否}
-  - ${基于变量对应的`check list`，仅根据当前回复而不是之前的剧情来分析每个变量是否需要更新: ...}
+  - ${基于变量对应的`check`，仅根据当前回复而不是之前的剧情来分析每个变量是否需要更新: ...}
   </update_analysis>
   _.set('${变量, 例如'角色.络络.好感度'}', ${旧值}, ${新值}); // ${简述更新原因}
   _.set('${变量}, ${新值}); // ${简述更新原因}
@@ -109,7 +109,7 @@ format: |-
   时间: {{get_message_variable::stat_data.世界.时间}}
 </status_description>
 rule: you must output variable update analysis in the end of the next reply
-check list:
+check:
   - update '好感度' by ±(1~4) according to characters' attitudes towards <user>'s behavior respectively only if they're currently aware of it
   - update '心情' according to current plot and the character setting
   - update '日期' and '时间' to the current date and day of the week respectively
@@ -118,7 +118,7 @@ format: |-
   <update_analysis>$(IN ENGLISH, no more than 120 words)
   - ${calculate time passed: ...}
   - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes/no}
-  - ${analyze every variable based on its corresponding item in `check list`, according only to current reply instead of previous plots: ...}
+  - ${analyze every variable based on its corresponding item in `check`, according only to current reply instead of previous plots: ...}
   </update_analysis>
   _.set(${variable, such as '角色.络络.好感度'}, ${old_value}, ${new_value}); // ${brief reason for change}
   _.set(${variable}, ${new_value}); // ${brief reason for change}
@@ -140,13 +140,11 @@ format: |-
 
 ### 酒馆助手宏 `{{get_message_variable::变量}}`
 
-> 这一部分在视频中讲解的可能更清晰
-
 要在酒馆中插入动态变化的内容, 我们通常会使用"宏". \
-一个每个人都用过的宏是 `{{user}}` (我更建议你用等效的 `<user>`): 当发送给 ai 时, 它会被替换为我们的玩家角色名. 同理, `{{char}}` 会被替换为角色卡名. \
+一个每个人都用过的宏是 `{{user}}`: 当发送给 ai 时, 它会被替换为我们的玩家角色名. (我更建议你用等效的 `<user>`, 它支持嵌套到其他宏里面.) 同理, `{{char}}` 会被替换为角色卡名. \
 你可以通过在酒馆输入框输入 `/help macros` 并 {kbd}`回车` 来了解酒馆提供了哪些宏.
 
-为了扩展酒馆的功能、更好地支持变量, 酒馆助手允许你自己注册酒馆助手宏, 并提供了 `{{get_message_variable::变量}}` 宏.
+为了扩展酒馆的功能、更好地支持变量, 酒馆助手允许你自己注册酒馆助手宏, 并预先提供了 `{{get_message_variable::变量}}` 宏.
 
 我们前面提到过 `{{get_message_variable::stat_data}}` 可以将整个 `stat_data` "文件夹" 以 JSON 格式插入到世界书中:
 
@@ -230,6 +228,41 @@ format: |-
 </status_description>
 ```
 
+当然, 你可能没有要依次列变量然后单独用 `#` 对值进行说明的需求, 那么我更建议你用下面的代码而不是 `{{get_message_variable::stat_data}}`:
+
+::::{tabs}
+:::{tab} 填写的提示词
+
+```{code-block} yaml
+:force:
+---
+<status_description>
+<%= YAML.stringify(getvar(stat_data), { blockQuote: 'literal' }) _%>
+</status_description>
+```
+
+:::
+:::{tab} 发送给 AI 的结果
+
+```yaml
+---
+<status_description>
+角色:
+  络络:
+    好感度: 30
+    心情: 开心
+  青空莉:
+    好感度: 60
+    心情: 郁闷
+世界:
+  日期: 2025-07-26
+  时间: 21:00
+</status_description>
+```
+
+:::
+::::
+
 ### 输出格式提示词写法
 
 在书写输出格式提示词 (`format` 部分) 时, 我采用了我们惯用而 AI 能听懂的几种特殊格式:
@@ -245,7 +278,7 @@ format: |-
   <update_analysis>$(使用不超过120个英语单词)
   - ${计算经过的时间: ...}
   - ${根据当前情节是否足够特殊、时间跨度是否远超正常情况，判断是否允许变量值发生戏剧性变化: 是/否}
-  - ${根据`check list`中列出的对应规则，分析每个变量是否需要更新: ...}
+  - ${根据`check`中列出的对应规则，分析每个变量是否需要更新: ...}
   </update_analysis>
   _.set('${变量, 例如'角色.络络.好感度'}', ${旧值}, ${新值}); // ${简述更新原因}
   _.set('${变量}, ${新值}); // ${简述更新原因}
@@ -255,19 +288,59 @@ format: |-
 
 其中 `<update_analysis>` 是变量更新的思维链, 而下方的 `_.set(...)` 是在思维链进行分析后实际输出变量更新命令.
 
-需要注意的是 ``${根据`check list`中列出的对应规则，分析每个变量是否需要更新: ...}`` 一句, 这是青空莉的 recall 变量更新规则方式, 它要求 AI 在此时重新回想 `check list` 中的内容:
+需要注意的是 ``${根据`check`中列出的对应规则，分析每个变量是否需要更新: ...}`` 一句, 这是青空莉的 recall 变量更新规则方式, 它要求 AI 在此时重新回想 `check` 中的内容并列举出来, 也就相当于将 `check` 中的内容加入到思维链里:
+
+```{code-block} yaml
+:force:
+:emphasize-lines: 6-9
+---
+<status_description>
+略
+</status_description>
+rule: 你必须在下次回复的末尾输出变量更新分析
+check:
+  - 如果角色注意到了<user>的行为，根据他们的态度将'好感度'更新±(1~4)
+  - 根据剧情和人设适当地调整'心情'
+  - 根据当前日期时间更新'日期'和'时间'
+format: |-
+  <update>
+  <update_analysis>$(使用不超过120个英语单词)
+  - ${计算经过的时间: ...}
+  - ${根据当前情节是否足够特殊、时间跨度是否远超正常情况，判断是否允许变量值发生戏剧性变化: 是/否}
+  - ${基于变量对应的`check`，仅根据当前回复而不是之前的剧情来分析每个变量是否需要更新: ...}
+  </update_analysis>
+  _.set('${变量, 例如'角色.络络.好感度'}', ${旧值}, ${新值}); // ${简述更新原因}
+  _.set('${变量}, ${新值}); // ${简述更新原因}
+  ...
+  </update>
+```
+
+你可能会想: 可明明 `check` 就在 `<update_analysis>` 不远处啊, 那为什么要单独拆出来, 而不是直接列在 `<update_analysis>` 中呢?
+
+首先要知道的是, {doc}`在 D1/D0 等地方填入大量 token 是不好的 </青空莉/工具经验/酒馆如何处理世界书/插入/index>`. \
+如果你的变量很多很复杂, 你可能会用更结构化的方式描述变量更新规则, 比如:
 
 ```yaml
-check list:
-  - update '好感度' by ±(1~4) according to characters' attitudes towards <user>'s behavior respectively only if they're currently aware of it
-  - update '心情' according to current plot and the character setting
-  - update '日期' and '时间' to the current date and day of the week respectively
+---
+变量更新规则:
+  药物依赖度:
+    type: number
+    range: 0~100
+    check:
+      - 每8分钟提升1点艾莉卡的药物依赖度
+      - 每15分钟提升1点伊薇特和伊丽莎白的药物依赖度
+      - 如果她们被注射苍白之夜，将她们的药物依赖度清零
 ```
+
+而这时, 占用 token 较多的变量更新规则应该放置在 D4 等不影响最近剧情连贯性的地方, 而不是放在*用于列出变量的变量列表*和*用于指示用什么格式更新变量的输出规则*旁边. \
+在这种情况下, `<update_analysis>` 内的`` 基于变量对应的`check` `` 将会发挥它应有的作用——让 AI 重新回想 `check` 中的内容用于更新变量.
+
+这就引入了变量提示词编写最重要的一个理解: **变量提示词只是提示词**.
 
 ## 这只是提示词
 
 当前的变量情况、更新规则和输出格式等**只是提示词, 写法只取决于你的想象**; 这里只是列了一种方便讲解的变量更新提示词. \
-如果你熟悉 MVU 原帖下的提示词, 你可以发现这里提示词与它们有很大区别: 这里的提示词引入了 checklist、recall 和更多的思维链 (Chain of Thought, CoT) 要求, 并且没在 `format` 之后还补充一个变量更新输出示例 `example`.
+如果你熟悉 MVU 原帖下的提示词, 你可以发现这里提示词与它们有很大区别: 这里的提示词引入了 check、recall 和更多的思维链 (Chain of Thought, CoT) 要求, 并且没在 `format` 之后还补充一个变量更新输出示例 `example`.
 
 你还能在{doc}`青空莉的个人变量提示词写法 </青空莉/工具经验/提示词个人写法/变量提示词/index>`中看到几种完全不同的提示词写法, **他推荐的写法思路**, 以及这里示例写法的非简化版.
 
@@ -320,7 +393,7 @@ AI 输出的 `<update>` 没必要再发给 AI
 
 - 我们在 `[initvar]` 条目中正确设置了变量和它们的初始值
 - AI 通过 `<status_description>` 了解了当前的变量状态
-- AI 通过 `check list` 了解了变量更新规则
+- AI 通过 `check` 了解了变量更新规则
 - AI 通过 `format` 知晓了更新变量所需的输出格式
 - 我们用酒馆正则让 AI 之前输出的变量更新文本不会再发送给 AI, 防止 AI 过拟合
 
