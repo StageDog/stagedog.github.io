@@ -464,6 +464,12 @@ gcore.jsdelivr.net
 
 如果你是从模板新建仓库的形式使用编写模板, 那么可以在 `index.ts` 中添加一行 `// @no-ci` 来指示 CI 工作流不自动打包某个前端界面或脚本.
 
+## 允许代码分块
+
+默认情况下, 前端界面或脚本会打包成单个文件, 但如果你以网络链接的形式发布前端界面或脚本, 则可以打包成多个文件块让玩家在游玩中按需加载.
+
+为了允许代码分块, 你需要删去 `webpack.config.ts` 中的 `new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 })` 这一句.
+
 ## 自定义 tailwindcss 配置
 
 tailwindcss 提供了许多组件类, 允许你不总是自定义类然后设置样式:
