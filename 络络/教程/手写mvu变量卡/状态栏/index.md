@@ -85,75 +85,87 @@ MVU有一个巧妙的设计: 它会在 AI 回复结束后, 自动在回复末尾
 至于包含复杂脚本的 HTML 状态栏, 这已超出本教程范围. \
 你可以尝试请 AI 辅助编写 ({doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`), 或直接使用{doc}`门之主写卡助手 </青空莉/作品集/index>`等成熟写卡助手.
 
-:::{admonition} 推荐的 HTML 状态栏获取变量和控制显示方法
+:::{admonition} 推荐的 HTML 状态栏模板
 :class: hint, dropdown
 
-```{code-block} html
-<html>
-  <head></head>
-  <body>
-    <div class="card-body">
-      <div class="section">
-        <div class="section-header">
-          <span>[角色名] 核心状态</span>
-          <span>▼</span>
-        </div>
-        <div class="section-content expanded">
-          <div class="property">
-            <div class="property-name">好感度</div>
-            <div class="property-value-container">
-              <span class="value-main" id="[charname-lowercase]-affection">--</span>
-            </div>
-          </div>
-          <div class="property">
-            <div class="property-name">[某属性名称]</div>
-            <div class="property-value-container">
-              <span class="value-main" id="[charname-lowercase]-[variable-name]">--</span>
-            </div>
-          </div>
-        </div>
+- 使用 `const all_variables = getAllVariables()` 获取整个变量, 然后用 `_.get(all_variables, 'stat_data.角色.络络.好感度')` 获取具体某个变量.
+- 使用 jquery 处理显示逻辑
+
+**当然我更建议你用{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`来让 AI 边自己看酒馆网边编写状态栏.**
+
+````{code-block} html
+```html
+<head>
+  <style>
+  ${设计样式}
+  </style>
+  <script type="module">
+    ${
+      逻辑代码
+      example: |-
+        function populateCharacterData() {
+          const all_variables = getAllVariables();
+
+          const property_value = _.get(all_variables, 'stat_data.${variable path}', 'N/A');
+          $('#${character}-${variable path}').text(property_value);
+          ...
+        }
+
+        function toggleSection($header) {
+          const $content = $header.next('.section-content');
+          $content.toggleClass('expanded');
+
+          const $arrow = $header.find('span:last-child');
+          $arrow.text($content.hasClass('expanded') ? '▼' : '►');
+        }
+
+        function init() {
+          populateCharacterData();
+
+          $('.section-header').on('click', function () {
+            toggleSection($(this));
+          });
+        }
+
+        $(() => errorCatched(init)());
+    }
+  </script>
+</head>
+<body>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-header">
+        <span>${角色名} 核心状态</span>
+        <span>▼</span>
       </div>
-      <div class="section">
-        <div class="section-header">
-          <span>世界状态</span>
-          <span>►</span>
+      <div class="section-content expanded">
+        <div class="property">
+          <div class="property-name">${variable name in Chinese}</div>
+          <div class="property-value-container">
+            <span class="property-value" id="${character}-${variable path}">--</span>
+          </div>
         </div>
-        <div class="section-content"></div>
+        <div class="property">
+          <div class="property-name">${...}</div>
+          <div class="property-value-container">
+            <span class="property-value" id="${...}">--</span>
+          </div>
+        </div>
+        ...
       </div>
     </div>
-    <script>
-      function toggleSection($header) {
-        const $content = $header.next('.section-content');
-        $content.toggleClass('expanded');
-        const $arrow = $header.find('span:last-child');
-        $arrow.text($content.hasClass('expanded') ? '▼' : '►');
-      }
-
-      function populateCharacterData() {
-        // 用 `getAllVariables()` 获取变量
-        const all_variables = getAllVariables();
-
-        // 用 `_.get` 提取具体某个变量
-        const affection_value = _.get(all_variables, 'stat_data.[角色名].好感度', 'N/A');
-        // 用 jquery 设置文本
-        $('#[charname-lowercase]-affection').text(affection_value);
-
-        const another_value = _.get(all_variables, 'stat_data.[角色名].[变量名]', 'N/A');
-        $('#[charname-lowercase]-[variable-name]').text(another_value);
-      }
-
-      $(() => {
-        populateCharacterData();
-
-        // 用 jquery 处理点击事件
-        $('.section-header').on('click', function () {
-          toggleSection($(this));
-        });
-      });
-    </script>
-  </body>
-</html>
+    <div class="section">
+      <div class="section-header">
+        <span>世界状态</span>
+        <span>►</span>
+      </div>
+      <div class="section-content">${...}</div>
+    </div>
+    ...
+  </div>
+</body>
 ```
+````
 
 :::
 
