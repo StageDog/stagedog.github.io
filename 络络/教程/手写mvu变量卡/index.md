@@ -44,5 +44,6 @@ MVU 变量框架的结构更为特殊, 更是这种情况的重灾区.
 动态发送提示词/index
 脚本控制变量/index
 mvu_beta/index
+mvu会让ai变蠢吗/index
 附录/index
 :::
