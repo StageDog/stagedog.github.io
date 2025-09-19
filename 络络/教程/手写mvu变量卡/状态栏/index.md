@@ -91,7 +91,7 @@ MVU有一个巧妙的设计: 它会在 AI 回复结束后, 自动在回复末尾
 - 使用 `const all_variables = getAllVariables()` 获取整个变量, 然后用 `_.get(all_variables, 'stat_data.角色.络络.好感度')` 获取具体某个变量.
 - 使用 jquery 处理显示逻辑
 
-**当然我更建议你用{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`来让 AI 边自己看酒馆网边编写状态栏.**
+**当然我更建议你用{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`来让 AI 边自己看酒馆网页边编写状态栏.**
 
 ````{code-block} html
 ```html
