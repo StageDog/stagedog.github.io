@@ -153,7 +153,7 @@ pnpm config set registry https://registry.npmmirror.com/
 如果你有代码和 Git 版本管理经验, 也可以从网页右上角的 {menuselection}`Use this template` 按钮来创建一个新仓库. 这将为你带来仓库说明中所说的方便功能.
 :::
 
-下载完成后, 我们以管理员身份运行 bandizip 来解压它 ((别的解压软件我没试过, 可能会有问题), 按自己的意愿重命名文件夹, 然后通过 Cursor 左上角的{menuselection}`文件 --> 打开文件夹...`来打开它:
+下载完成后, 我们以管理员身份运行 bandizip 来解压它 (别的解压软件我没试过, 可能会有问题), 按自己的意愿重命名文件夹, 然后通过 Cursor 左上角的{menuselection}`文件 --> 打开文件夹...`来打开它:
 
 :::{figure} 打开文件夹.png
 :::
@@ -231,6 +231,11 @@ Claude Code
 : 据说目前最好用, 你可以用 Claude Code Router 接入自定义 API, 然而它是全英文且是终端用户图形界面, 门槛较高. \
   规则: 已经配置在了 CLAUDE.md 中, 可以直接使用 \
   MCP: 已经配置在了 .mcp.json 中, 可以直接使用
+
+Codex
+: OpenAI 的编程助手
+  规则: 已经配置在了 .codex/AGENTS.md 中, 可以直接使用
+  MCP: 已经配置在了 .codex/config.toml 中, 可以直接使用
 
 其他编程助手
 : 规则: 按照 .cursor/rules 自行配置 \
