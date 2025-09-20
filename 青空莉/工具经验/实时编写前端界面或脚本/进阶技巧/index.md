@@ -353,6 +353,8 @@ function assignInplace<T>(destination: T[], new_array: T[]): T[] {
 }
 ```
 
+noass 等压缩相邻消息、合并消息的功能就是这么做的, 例如{doc}`压缩相邻消息 </青空莉/作品集/index>`.
+
 :::{admonition} 注意修改方式
 :class: warning
 
