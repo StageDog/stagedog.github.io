@@ -228,13 +228,13 @@ Gemini CLI
   MCP: 按照 .cursor/mcp.json 自行配置到 .gemini/settings.json 里
 
 Claude Code
-: 据说目前最好用, 你可以用 Claude Code Router 接入自定义 API, 然而它是全英文且是终端用户图形界面, 门槛较高. \
+: 你可以用 Claude Code Router 接入自定义 API, 然而它是全英文且是终端用户图形界面, 门槛较高. \
   规则: 已经配置在了 CLAUDE.md 中, 可以直接使用 \
   MCP: 已经配置在了 .mcp.json 中, 可以直接使用
 
 Codex
-: OpenAI 的编程助手
-  规则: 已经配置在了 .codex/AGENTS.md 中, 可以直接使用
+: OpenAI 的编程助手, **据说目前最好用**. \
+  规则: 已经配置在了 .codex/AGENTS.md 中, 可以直接使用 \
   MCP: 已经配置在了 .codex/config.toml 中, 可以直接使用
 
 其他编程助手
