@@ -173,3 +173,5 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
   }
 });
 ```
+
+另外{doc}`/青空莉/工具经验/酒馆如何处理世界书/index`中还给了别的方式.

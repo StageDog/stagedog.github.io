@@ -441,7 +441,8 @@ mvu 变量框架
   - 它可以调用 [`injectPrompts`](https://github.com/N0VI028/JS-Slash-Runner/blob/main/%40types/function/inject.d.ts)来设置额外提示词，或设置只用于绿灯激活的提示词
   - 它可以[监听事件](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/功能详情/监听和发送事件.html)
     - 监听 [`GENERATION_STARTED`](https://github.com/N0VI028/JS-Slash-Runner/blob/24c02e007be542c981bf61a7eb853ea7220bdc78/%40types/iframe/event.d.ts#L238), 在提示词发送前直接[修改世界书](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/功能详情/世界书/修改世界书.html)
-    - (酒馆版本 >= 1.13.4) 监听 [`WORLDINFO_ENTRIES_LOADED`](https://github.com/N0VI028/JS-Slash-Runner/blob/24c02e007be542c981bf61a7eb853ea7220bdc78/%40types/iframe/event.d.ts#L379-L384), 直接调整世界书激活情况.
+    - (酒馆版本 >= 1.13.4) 监听 [`WORLDINFO_ENTRIES_LOADED`](https://github.com/N0VI028/JS-Slash-Runner/blob/24c02e007be542c981bf61a7eb853ea7220bdc78/%40types/iframe/event.d.ts#L379-L384), 在世界书条目分析是否激活前调整预激活的世界书条目.
+    - 监听 [`WORLD_INFO_ACTIVATED`](https://github.com/N0VI028/JS-Slash-Runner/blob/main/%40types/iframe/event.d.ts#L327-L329), 在世界书条目分析是否激活后调整世界书条目的激活情况.
     - 监听 [`CHAT_COMPLETION_PROMPT_READY`](https://github.com/N0VI028/JS-Slash-Runner/blob/24c02e007be542c981bf61a7eb853ea7220bdc78/%40types/iframe/event.d.ts#L355-L358) 等, 直接{doc}`修改发送出去的提示词 </青空莉/工具经验/实时编写前端界面或脚本/进阶技巧/index>`
   <!-- markdownlint-enable MD032 MD007 -->
 
