@@ -316,7 +316,7 @@ $(window).on('pagehide', () => {
 });
 ```
 
-甚至, 你可以不使用酒馆助手的前端界面渲染方式, 而是自己用 jquery 将代码块替换为要渲染的界面. [文生图](https://github.com/StageDog/tavern_resource/tree/main/src/酒馆助手/文生图)和[行动选择框](https://github.com/StageDog/tavern_resource/tree/main/src/世界书/可点击的选择框)等脚本就是如此:
+甚至, 你可以不使用酒馆助手的前端界面渲染方式, 而是自己用 jquery 将代码块替换为要渲染的 jquery/vue 界面. {doc}`输入助手、文生图、行动选择框、压缩相邻消息 </青空莉/作品集/index>`等脚本就是如此:
 
 ```{code-block} ts
 :caption: 替换第 0 楼中含 `<galgame>` 的代码块为 galgame 界面
