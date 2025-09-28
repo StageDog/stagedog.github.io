@@ -433,10 +433,12 @@ mvu 变量框架
 : - 可以编写 `<%_ if (条件) { _%>` 来控制一部分提示词是否发送. 例如:
     - `<%_ if (matchChatMessages(['络络', '笨蛋'])) _%>` 来只在正文文本包含`络络`或`笨蛋`时发送
     - `<%_ if (getvar('stat_data.角色.络络.好感度') > 30) { _%>` 来只在络络的好感度大于 30 时才发送一段提示词, 当然你需要{doc}`学会写变量卡 </络络/教程/手写mvu变量卡/index>`
+  - 提供的 `<%= await getWorldInfo("世界书名称", "条目名称") _>` 将会被替换为对应的条目文本. 这实际不涉及条目本身的激活, 因此无所谓条目是否被启用
+  - 提供的 `<%_ await activateWorldInfo("世界书名称", "条目名称") _%>` 将会激活对应的条目. 用它激活的条目仍会受除激活条目以外条件影响, 也会递归其他条目
   <!-- markdownlint-enable MD032 MD007 -->
 
 <!-- markdownlint-disable MD032 MD007 -->
-[酒馆助手](https://n0vi028.github.io/JS-Slash-Runner-Doc/)
+[酒馆助手](https://n0vi028.github.io/JS-Slash-Runner-Doc/) 让我们{doc}`能编写前端界面或后台脚本 </青空莉/工具经验/实时编写前端界面或脚本/index>`
 : - 它可以调用这里列出的所有方法😋
   - 它可以调用 [`injectPrompts`](https://github.com/N0VI028/JS-Slash-Runner/blob/main/%40types/function/inject.d.ts)来设置额外提示词，或设置只用于绿灯激活的提示词
   - 它可以[监听事件](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/功能详情/监听和发送事件.html)
