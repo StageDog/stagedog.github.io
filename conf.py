@@ -36,7 +36,6 @@ html_static_path = ['_theme']
 html_theme = 'sphinx_book_theme'
 html_theme_options = {
     'repository_url': 'https://github.com/StageDog/stagedog.github.io',
-    'search_as_you_type': True,
     'show_navbar_depth': 2,
     'show_prev_next': True,
     'show_toc_level': 2,
