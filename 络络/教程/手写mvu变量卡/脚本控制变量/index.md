@@ -105,22 +105,68 @@ eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_val
 这个文件还支持你让 AI 在前端界面/脚本中调用 MVU 来解析文本中的 `_.set(...)` 从而更新变量.
 :::
 
-## 仅用于脚本的 MVU 变量
+## 在代码中自行获取、更新 MVU 变量
 
-有的时候, 我们并不希望 AI 能更新某个变量, 而只希望脚本能更新它. \
-例如, 角色卡在开局设定了角色性别, 而你不希望在游玩过程中 AI 发蠢把它改变了.
+除了监听用户输入或 AI 输出时的 MVU 事件, 我们还可以自行获取、更新 MVU 变量, 或主动解析文本中的 `_.set(...)` 等更新命令.
 
-这需要我们回顾 MVU 变量框架是如何起作用的:
+:::{hint}
+在使用下面的功能之前, 你需要先在代码中通过 `await waitGlobalInitialized('Mvu')` 等待 MVU 变量框架初始化完成.
+:::
 
-- 我们通过 initvar 设置了有哪些 MVU 变量
-- 我们通过编写变量提示词让 AI 知道了有哪些变量 (变量列表)、该如何更新它们 (变量更新规则) 以及输出什么来更新它们 (输出规则).
-- 我们使用提示词模板编写 `<%_ _%>` 和 `<%= _%>` 来用变量编写动态提示词
+::::{tabs}
+:::{tab} 获取 MVU 变量
 
-那么, 我们只要不在编写变量提示词时书写某个变量, AI 就没办法知道有它, 也就没办法更新它.
+```js
+// 获取第 5 楼的 MVU 变量
+const variables = Mvu.getMvuData({ type: 'message', message_id: 5 });
+
+// 获取最后一楼的 MVU 变量
+const variables = Mvu.getMvuData({ type: 'message', message_id: -1 });  // 或 `message_id: 'latest'`
+
+// 获取倒数第二楼的 MVU 变量
+const variables = Mvu.getMvuData({ type: 'script', message_id: -2 });
+
+// 在前端界面中, 获取前端界面所在楼层的 MVU 变量
+const variables = Mvu.getMvuData({ type: 'script', message_id: getCurrentMessageId() });
+```
+
+:::
+
+:::{tab} 更新 MVU 变量
+
+```js
+// 获取最新楼层的 MVU 变量
+const mvu_data = Mvu.getMvuData({ type: 'message', message_id: getCurrentMessageId() });
+
+// 将络络好感度增加 5
+_.update(mvu_data, 'stat_data.角色.络络.好感度', value => value + 5);
+
+// 将更新后的结果写回楼层
+await Mvu.replaceMvuData(mvu_data, { type: 'message', message_id: getCurrentMessageId() });
+```
+
+:::
+
+:::{tab} 解析文本中的更新命令
+
+```js
+const mvu_data = Mvu.getMvuData({ type: 'message', message_id: -1 });
+
+// 解析从某处得到的文本中的更新命令, 此处假设文本是 `'_.set('角色.络络.好感度', 30);'`, 但你也可以从 `generate` 等地方获取
+const content = '_.set('角色.络络.好感度', 30);';
+const new_data = await Mvu.parseMessage(content, mvu_data);
+
+await Mvu.replaceMvuData(new_data, { type: 'message', message_id: getCurrentMessageId() });
+```
+
+:::
+::::
+
+需要注意的是, 虽然你在聊天变量中也能看到 MVU 变量, 但那只是 MVU 变量框架的遗留问题; 你应该总是对某个消息楼层即 `{ type: 'message', message_id: 楼层号 }` 更新 MVU 变量.
 
 ## 用变量激活绿灯
 
-此外, 我们甚至可以利用{doc}`/青空莉/工具经验/酒馆如何处理世界书/激活/index`中提到的 "自行编写代码控制条目的激活" 方法之一——`injectPrompts` 来将变量值转换为预扫描文本, 从而能够用来激活绿灯条目:
+我们甚至可以利用{doc}`/青空莉/工具经验/酒馆如何处理世界书/激活/index`中提到的 "自行编写代码控制条目的激活" 方法之一——`injectPrompts` 来将变量值转换为预扫描文本, 从而能够用来激活绿灯条目:
 
 ```ts
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
@@ -128,7 +174,8 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
   const data = _.get(variables, 'stat_data');
   injectPrompts([
     {
-      id: 'mvu_variables',
+      id: 'mvu_variables',  // 这里的 id 是提示词的唯一标识符
+                            // 如果我们之后再对同样的 id 进行 injectPrompts, 则会替换掉之前的提示词
       content: JSON.stringify(data),
       position: 'none',
       depth: 0,
@@ -175,3 +222,16 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
 ```
 
 另外{doc}`/青空莉/工具经验/酒馆如何处理世界书/index`中还给了别的方式.
+
+## 仅用于脚本的 MVU 变量
+
+有的时候, 我们并不希望 AI 能更新某个变量, 而只希望脚本能更新它. \
+例如, 角色卡在开局设定了角色性别, 而你不希望在游玩过程中 AI 发蠢把它改变了.
+
+这需要我们回顾 MVU 变量框架是如何起作用的:
+
+- 我们通过 initvar 设置了有哪些 MVU 变量
+- 我们通过编写变量提示词让 AI 知道了有哪些变量 (变量列表)、该如何更新它们 (变量更新规则) 以及输出什么来更新它们 (输出规则).
+- 我们使用提示词模板编写 `<%_ _%>` 和 `<%= _%>` 来用变量编写动态提示词
+
+那么, 我们只要不在编写变量提示词时书写某个变量, AI 就没办法知道有它, 也就没办法更新它.
