@@ -209,27 +209,27 @@ Augment
   MCP: 按照 .cursor/mcp.json 自行配置
 
 Cline
-: 支持自定义 API \
+: 无中文, 支持自定义 API \
   规则: 已经配置在了 .clinerules 中, 可以直接使用 \
   MCP: 按照 .cursor/mcp.json 自行配置
 
 RooCode
-: 改自 Cline, 支持自定义 API, 比 Cline 省 token \
+: 有中文, 改自 Cline, 支持自定义 API, 比 Cline 省 token \
   规则: 已经配置在了 .roo/rules 中, 可以直接使用 \
   MCP: 已经配置在了 .roo/mcp.json 中, 可以直接使用
 
 Kilo Code
-: 改自 RooCode, 支持自定义 API, 据说更好 \
+: 有中文, 改自 RooCode, 支持自定义 API, 据说更好 \
   规则: 已经配置在了 .kilocode/rules 中, 可以直接使用 \
   MCP: 已经配置在了 .kilo/mcp.json 中, 可以直接使用
 
 Gemini CLI
-: emmm你真的要拿 gemini 做前端界面吗? \
+: 谷歌的编程助手, emmm你真的要拿 gemini 做前端界面吗? 配置可以参考[司马咩咩的用 GEMINI CLI 写卡教程](https://discord.com/channels/1291925535324110879/1418158780927049779) \
   规则: 已经配置在了 GEMINI.md 中, 可以直接使用 \
   MCP: 按照 .cursor/mcp.json 自行配置到 .gemini/settings.json 里
 
 Claude Code
-: 你可以用 Claude Code Router 接入自定义 API, 然而它是全英文且是终端用户图形界面, 门槛较高. \
+: Anthropic 的编程助手, 和 Gemini CLI 类似 (或者反过来?), 有 claude pro 账号即可使用; 你也可以用 Claude Code Router 接入自定义 API.\
   规则: 已经配置在了 CLAUDE.md 中, 可以直接使用 \
   MCP: 已经配置在了 .mcp.json 中, 可以直接使用
 
