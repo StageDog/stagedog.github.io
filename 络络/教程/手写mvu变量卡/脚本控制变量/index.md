@@ -124,10 +124,10 @@ const variables = Mvu.getMvuData({ type: 'message', message_id: 5 });
 const variables = Mvu.getMvuData({ type: 'message', message_id: -1 });  // 或 `message_id: 'latest'`
 
 // 获取倒数第二楼的 MVU 变量
-const variables = Mvu.getMvuData({ type: 'script', message_id: -2 });
+const variables = Mvu.getMvuData({ type: 'message', message_id: -2 });
 
 // 在前端界面中, 获取前端界面所在楼层的 MVU 变量
-const variables = Mvu.getMvuData({ type: 'script', message_id: getCurrentMessageId() });
+const variables = Mvu.getMvuData({ type: 'message', message_id: getCurrentMessageId() });
 ```
 
 :::
