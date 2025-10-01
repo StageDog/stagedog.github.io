@@ -189,11 +189,7 @@ pnpm install
 
 ## 安装字体
 
-为了让代码更易阅读, 建议你安装以下代码字体:
-
-- JetBrains Mono
-- MesloLGS NF
-- 等距更纱黑体 SC
+为了让代码更易阅读, 建议你寻找中英文的等宽字体安装并自行配置给 Cursor.
 
 ## 其他 AI 编程助手
 
