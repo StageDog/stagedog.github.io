@@ -135,7 +135,7 @@ const variables = Mvu.getMvuData({ type: 'message', message_id: getCurrentMessag
 :::{tab} 更新 MVU 变量
 
 ```js
-// 获取最新楼层的 MVU 变量
+// 获取本前端界面所在楼层的 MVU 变量
 const mvu_data = Mvu.getMvuData({ type: 'message', message_id: getCurrentMessageId() });
 
 // 将络络好感度增加 5
