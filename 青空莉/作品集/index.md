@@ -85,7 +85,8 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
   [旅程](https://discord.com/channels/1291925535324110879/1371060550469029939) / {stagedog_path}`源文件和说明 <src/酒馆助手/显示区间消息>`
 
 压缩相邻消息: 合并同身份消息提高连贯性、整合聊天记录避免 AI 语料影响
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/压缩相邻消息/index.js'` 即可. \
+: 功能来自 [noass](https://gitgud.io/Monblant/noass) 但更改了实现方式, 性能应更好, 且与其他对提示词进行了调整的插件、脚本更兼容. \
+  新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/压缩相邻消息/index.js'` 即可. \
   [类脑](https://discord.com/channels/1134557553011998840/1410317452029595658) / [旅程](https://discord.com/channels/1291925535324110879/1410316490690793644) / {stagedog_path}`源文件 <src/酒馆助手/压缩相邻消息>` / {doc}`说明 </青空莉/工具经验/提示词个人写法/组合和命名提示词/index>`
 
 输入助手 (改自[司马咩咩的插件](https://github.com/Mooooooon/st-input-helper)): 方便在输入框指定位置输入引号、括号或自定义内容，并指定输入后光标位置
