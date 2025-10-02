@@ -162,7 +162,7 @@ count.value = 5;
 <!-- markdownlint-disable MD032 MD007 -->
 @vueuse/core - 状态 (State)
 : - 共享 composable 状态: [useSharedComposable](https://vueuse.org/shared/createSharedComposable/)
-  - 自动缓存数据到浏览器: [useLocalStorage](https://vueuse.org/core/useLocalStorage/)
+  - 自动缓存数据到浏览器, 当然你可能更想用下面会提到的 useIDBKeyval: [useLocalStorage](https://vueuse.org/core/useLocalStorage/)
 
 @vueuse/core - 元素 (Elements)
 : - 可拖动元素: [useDraggable](https://vueuse.org/core/useDraggable/)
@@ -276,6 +276,7 @@ count.value = 5;
 
 @vueuse/integrations
 : - 表单检验: [useAsyncValidator](https://vueuse.org/integrations/useAsyncValidator/)
+  - 自动缓存数据到 indexedDB, 它相比于 useLocalStorage 能存储更多数据: [useIDBKeyval](https://vueuse.org/integrations/useIDBKeyval/)
   - 模糊搜索: [useFuse](https://vueuse.org/integrations/useFuse/)
   - 可调整元素顺序的列表: [useSortable](https://vueuse.org/integrations/useSortable/)
 
