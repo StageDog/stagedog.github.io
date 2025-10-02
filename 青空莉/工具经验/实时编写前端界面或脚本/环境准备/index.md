@@ -195,7 +195,7 @@ pnpm install
 
 ## 其他 AI 编程助手
 
-除了 Cursor, 你也可以尝试其他 AI 编程助手. 它们有的以 Cursor/VSCode 插件的形式发布, 你可以在 Cursor 侧边栏的{menuselection}`扩展`中搜索安装, 有的是单独的命令行软件.
+**Cursor 变得越来越蠢了**, 建议你尝试其他 AI 编程助手. 它们有的以 Cursor/VSCode 插件的形式发布, 你可以在 Cursor 侧边栏的{menuselection}`扩展`中搜索安装, 有的是单独的命令行软件.
 
 本教程所提供的模板除了项目本身的配置外, 也为 Cursor 和一些编程助手设置了:
 
@@ -220,7 +220,7 @@ RooCode
   规则: 已经配置在了 .roo/rules 中, 可以直接使用 \
   MCP: 已经配置在了 .roo/mcp.json 中, 可以直接使用
 
-Kilo Code
+Kilo Code (推荐)
 : 有中文, 改自 RooCode, 支持自定义 API, 据说更好 \
   规则: 已经配置在了 .kilocode/rules 中, 可以直接使用 \
   MCP: 已经配置在了 .kilo/mcp.json 中, 可以直接使用
@@ -230,12 +230,12 @@ Gemini CLI
   规则: 已经配置在了 GEMINI.md 中, 可以直接使用 \
   MCP: 按照 .cursor/mcp.json 自行配置到 .gemini/settings.json 里
 
-Claude Code
+Claude Code (推荐)
 : Anthropic 的编程助手, 和 Gemini CLI 类似 (或者反过来?), 有 claude pro 账号即可使用; 你也可以用 Claude Code Router 接入自定义 API.\
   规则: 已经配置在了 CLAUDE.md 中, 可以直接使用 \
   MCP: 已经配置在了 .mcp.json 中, 可以直接使用
 
-Codex
+Codex (推荐)
 : OpenAI 的编程助手, **据说目前最好用**. \
   规则: 已经配置在了 .codex/AGENTS.md 中, 可以直接使用 \
   MCP: 已经配置在了 .codex/config.toml 中, 可以直接使用
