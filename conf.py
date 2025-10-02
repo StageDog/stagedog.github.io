@@ -68,7 +68,6 @@ myst_substitutions = {
 }
 md_prolog = """
 """
-templates_path = ['_templates']
 togglebutton_hint = "点击展开"
 togglebutton_hint_hide = "点击隐藏"
 
