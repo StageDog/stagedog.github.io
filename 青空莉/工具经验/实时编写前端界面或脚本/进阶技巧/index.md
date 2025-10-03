@@ -292,6 +292,10 @@ count.value = 5;
 
 如果你要传输数据, 请注意调整服务器端的 [`maxHttpBufferSize`](https://socket.io/docs/v4/server-options/#maxhttpbuffersize) 参数, 它默认仅为 1mb.
 
+## 执行酒馆的 /STScript 命令
+
+你可以通过 `triggerSlash` 或 `SillyTavern.executeSlashCommandsWithOptions` 来执行酒馆的 STScript 命令, 如触发 AI 回复 (`/trigger`)、刷新网页 (`/reload-page`) 等. 编写模板已经在 slash_command.txt 中提供了命令列表给 AI; 如果需要人工查询, 请使用[命令手册](https://rentry.org/sillytavern-script-book)
+
 ## 在脚本中用 jquery 修改页面元素
 
 在脚本中, 你可以用 jquery 来修改页面元素. 酒馆助手内置库中的[`预设条目更多按钮`](https://github.com/StageDog/tavern_resource/tree/main/src/酒馆助手/预设条目更多按钮)、[`预设防误触`](https://github.com/StageDog/tavern_resource/tree/main/src/酒馆助手/预设防误触)等脚本都是通过这种方式来实现的:
