@@ -47,9 +47,7 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
 
 ## 酒馆助手脚本
 
-源代码用法见于{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`.
-
-一些脚本已经加入到了酒馆助手内置库中
+源代码用法见于{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 一些脚本已经加入到了酒馆助手内置库中.
 
 场景感
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/场景感/index.js'` 即可. \
