@@ -28,7 +28,6 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-      - uses: actions/configure-pages@v4
       - run: pnpm install
       - run: pnpm build
       - uses: actions/configure-pages@v5
