@@ -49,7 +49,7 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
 
 源代码用法见于{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`.
 
-仅列出没加入到酒馆助手内置库中的脚本:
+一些脚本已经加入到了酒馆助手内置库中
 
 场景感
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/场景感/index.js'` 即可. \
@@ -64,6 +64,10 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
 流式传输前端框架 (建议自己阅读{doc}`流式传输前端界面 </青空莉/工具经验/实时编写前端界面或脚本/进阶技巧/index>`来制作)
 : [类脑](https://discord.com/channels/1134557553011998840/1330206359362211960) / {stagedog}`说明和内容在角色卡中 <src/酒馆助手/流式传输/流式传输.png>` / {stagedog_path}`源文件和说明 <src/酒馆助手/流式传输>`
 
+标签化: 随世界书、预设或链接配置自动开关正则、提示词条目
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/标签化/index.js'` 即可. \
+  [旅程](https://discord.com/channels/1291925535324110879/1344362686900605043) / {stagedog_path}`源文件和说明 <src/酒馆助手/标签化>`
+
 样式加载: 像酒馆主题自定义 css 一样编写角色卡 css
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/样式加载/index.js'` 即可. \
   [旅程](https://discord.com/channels/1291925535324110879/1354783717910122496) / {stagedog_path}`源文件和说明 <src/酒馆助手/样式加载>`
@@ -76,6 +80,10 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/自动安装插件/index.js'` 即可. \
   [旅程](https://discord.com/channels/1291925535324110879/1346952067234660352) / {stagedog_path}`源文件和说明 <src/酒馆助手/自动安装插件>`
 
+预设防误触
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/预设防误触/index.js'` 即可. \
+  {stagedog_path}`源文件和说明 <src/酒馆助手/预设防误触>`
+
 文生图
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/文生图/index.js'` 即可. \
   [旅程](https://discord.com/channels/1291925535324110879/1368559983704146041) / {stagedog_path}`源文件和说明 <src/酒馆助手/文生图>`
@@ -84,10 +92,22 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/显示区间消息/index.js'` 即可. \
   [旅程](https://discord.com/channels/1291925535324110879/1371060550469029939) / {stagedog_path}`源文件和说明 <src/酒馆助手/显示区间消息>`
 
+世界书强制用推荐的全局设置
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/世界书强制用推荐的全局设置/index.js'` 即可. \
+  {stagedog_path}`源文件和说明 <src/酒馆助手/世界书强制用推荐的全局设置>`
+
+保存预设条目时直接保存预设
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/保存提示词时保存预设/index.js'` 即可. \
+  [旅程](https://discord.com/channels/1291925535324110879/1371874887156891689) / {stagedog_path}`源文件和说明 <src/酒馆助手/保存提示词时保存预设>`
+
 压缩相邻消息: 合并同身份消息提高连贯性、整合聊天记录避免 AI 语料影响
 : 功能来自 [noass](https://gitgud.io/Monblant/noass) 但更改了实现方式, 性能应更好, 且与其他对提示词进行了调整的插件、脚本更兼容. \
   新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/压缩相邻消息/index.js'` 即可. \
   [类脑](https://discord.com/channels/1134557553011998840/1410317452029595658) / [旅程](https://discord.com/channels/1291925535324110879/1410316490690793644) / {stagedog_path}`源文件 <src/酒馆助手/压缩相邻消息>` / {doc}`说明 </青空莉/工具经验/提示词个人写法/组合和命名提示词/index>`
+
+预设条目更多按钮: 一键新增预设条目
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/预设条目更多按钮/index.js'` 即可. \
+  [类脑](https://discord.com/channels/1134557553011998840/1405486208796069898) / [旅程](https://discord.com/channels/1291925535324110879/1405485289677525002) / {stagedog_path}`源文件和说明 <src/酒馆助手/预设条目更多按钮>`
 
 输入助手 (改自[司马咩咩的插件](https://github.com/Mooooooon/st-input-helper)): 方便在输入框指定位置输入引号、括号或自定义内容，并指定输入后光标位置
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/输入助手/index.js'` 即可. \
