@@ -118,3 +118,7 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
 取消代码块高亮
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/取消代码块高亮/index.js'` 即可. \
   [类脑](https://discord.com/channels/1134557553011998840/1415651993833439302) / [旅程](https://discord.com/channels/1291925535324110879/1415652313837735947) / {stagedog_path}`源文件和说明 <src/酒馆助手/取消代码块高亮>`
+
+禁用酒馆助手宏和提示词模板
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/禁用酒馆助手宏和提示词模板/index.js'` 即可. \
+  [类脑](https://discord.com/channels/1134557553011998840/1423948144072327229) / [旅程]() / {stagedog_path}`源文件和说明 <src/酒馆助手/禁用酒馆助手宏和提示词模板>`
