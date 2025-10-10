@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build": "pnpx rimraf build && pnpx @manzt/uv run sphinx-build -b dirhtml . build",
+    "watch": "pnpx rimraf build && pnpx @manzt/uv run sphinx-autobuild -b dirhtml . build"
+  },
+  "devDependencies": {
+    "@manzt/uv": "^0.6.14",
+    "rimraf": "^6.0.1"
+  }
+}
