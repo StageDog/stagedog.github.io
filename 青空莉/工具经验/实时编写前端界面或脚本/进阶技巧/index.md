@@ -13,7 +13,15 @@
 
 - 在 `.cursor/rules` 中, 我预先为项目配置了一些编程助手编写规则 (相当于给编程助手添加了一个全局世界书). 你完全可以自行编写更多规则
 - 在 `.cursor/mcp.json` 中, 我预先设置了 Browser MCP 来让 AI 能够查看酒馆网页. 你完全可以为 AI 找更多好用的 MCP, 如通过 figma MCP, 你可以**用大量预制好的组件像做 PPT 一样设计好界面**, 然后让 AI 生成代码结果.
-- 在 `package.json` 中, 我预先为项目代码添加了 jquery、zod 等方便的第三方库 (具体请查看 `dependencies` 部分). 你可以让 AI 或自己用 `pnpm add 第三方库` 添加更多需要的第三方库, 它们一般添加上就能直接使用
+- 在 `package.json` 中, 我预先为项目代码添加了 jquery、zod 等方便的第三方库 (具体请查看 `dependencies` 部分). 你可以让 AI 或自己用 `pnpm add 第三方库` 添加更多需要的第三方库, 它们一般添加上就能直接使用.
+
+  :::{warning)
+  一些添加上了不能正常使用, 可能是因为为了减小打包结果的大小, 模板将第三方库以 jsdelivr 链接引入.
+
+  请尝试在 webpack.config.ts 最后调整 `externals` 函数, 你可以选择以下两种方案中的一种:
+  - 在 `builtin` 数组中添加你要直接导入而不是从 jsdelivr 链接引入的库名.
+  - 在 index.html 中直接以 `<script src="库的jsdelivr链接"></script>` 引入库, 然后在 `externals` 函数的 `global` 对象中根据 jsdelivr 的内容添加对应映射.
+  :::
 
 ## 用 figma 设计界面
 
