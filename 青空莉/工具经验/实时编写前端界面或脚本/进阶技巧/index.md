@@ -103,6 +103,10 @@
 
 酒馆助手前端界面和脚本可以直接使用 Vue, 它会让数据显示变得更为简单. `src/界面示例` 就是这么做的.
 
+:::{hint}
+如果你想制作不依赖于酒馆的单独页面, 则也可以使用 <https://github.com/StageDog/vue_template>.
+:::
+
 除了 [`vue`](https://cn.vuejs.org/) 之外, 我还配置了 [`gsap`](https://gsap.com/)、[`pinia`](https://pinia.vuejs.org/)、[`vue-router`](https://router.vuejs.org/)、[vueuse](https://vueuse.org/) 等库, 让你无论是实现打字机效果、做可调整元素顺序并及时保存结果的列表、给设置做浏览器缓存、让界面全屏、发送系统通知等等都异常简单. **AI 很会, 拷打 AI.**
 
 你可以安装 [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd), 从而在 {kbd}`F12` 所打开的开发者工具中新增 vue 选项卡, 得到 vue 更多调试功能.
