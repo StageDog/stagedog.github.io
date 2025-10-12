@@ -10,5 +10,5 @@
 然后我们新建一个角色卡, 在{menuselection}`酒馆右上角积木按钮 --> 酒馆助手 --> 脚本库`中{menuselection}`+ 脚本`来新建一个新的局部脚本, 命名随意, 内容填写为:
 
 ```ts
-import 'https://testingcf.jsdelivr.net/gh/MagicalAstrogy/MagVarUpdate@master/artifact/bundle.js';
+import 'https://testingcf.jsdelivr.net/gh/MagicalAstrogy/MagVarUpdate/artifact/bundle.js';
 ```
