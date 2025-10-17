@@ -90,7 +90,15 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/显示区间消息/index.js'` 即可. \
   [旅程](https://discord.com/channels/1291925535324110879/1371060550469029939) / {stagedog_path}`源文件和说明 <src/酒馆助手/显示区间消息>`
 
+世界书强制自定义排序
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/世界书强制自定义排序/index.js'` 即可. \
+  {stagedog_path}`源文件和说明 <src/酒馆助手/世界书强制自定义排序>`
+
 世界书强制用推荐的全局设置
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/世界书强制用推荐的全局设置/index.js'` 即可. \
+  {stagedog_path}`源文件和说明 <src/酒馆助手/世界书强制用推荐的全局设置>`
+
+一键禁用条目递归 (和 "世界书强制用推荐的全局设置" 是同一个脚本)
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/世界书强制用推荐的全局设置/index.js'` 即可. \
   {stagedog_path}`源文件和说明 <src/酒馆助手/世界书强制用推荐的全局设置>`
 
