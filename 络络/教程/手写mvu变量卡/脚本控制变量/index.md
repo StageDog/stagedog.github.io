@@ -225,12 +225,12 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
     },
   ]);
 
-  // 如果好感度大于 30, 设置 `激活这个条目` 仅用于激活绿灯
+  // 如果好感度大于 30, 设置 `条目关键字` 仅用于激活绿灯
   if (_.get(variables, 'stat_data.角色.络络.好感度', 0) > 30) {
     injectPrompts([
       {
         id: 'mvu_lolo_trigger',
-        content: '激活这个条目',
+        content: '条目关键字',
         position: 'none',
         depth: 0,
         role: 'user',
