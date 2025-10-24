@@ -44,7 +44,7 @@
 
 #### 提高正则容错率
 
-你的前端界面可能对应于 AI 很复杂的输出格式, 但这些格式应该由前端界面的代码通过 `getChatMessages` 获取楼层消息内容后处理, 而不应该由酒馆正则处理.
+你的前端界面可能对应于 AI 很复杂的输出格式, 但这些格式应该由前端界面的代码通过 `getChatMessages` 获取楼层消息内容后处理, 而不应该在酒馆正则里拿 `$1` 等处理.
 
 **前端界面正则唯一要做的是定位前端界面应该在的位置, 而不是处理输出数据**.
 
@@ -76,6 +76,16 @@
 短暂:
   - [x] 仅格式显示
   - [ ] 仅格式提示词
+```
+
+而在代码中, 要求 AI 使用 `getChatMessages` 获取整条消息, 然后告诉 AI 对应的数据是什么格式:
+
+```ts
+// 获取整条消息
+const chat_message = getChatMessages(getCurrentMessageId())[0];
+
+/* AI 按照你给定的格式自行捕获数据... 例如这里是 `<status>(.*)</status>` */
+const match = chat_message.message.match(/<status>(.*)</status>/);
 ```
 
 #### 避免渲染卡顿
