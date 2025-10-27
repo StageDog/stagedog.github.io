@@ -172,15 +172,6 @@
 
 ### 角色阶段
 
-:::{admonition} 为什么会有 `stage name`
-:class: tip, dropdown
-之所以会有 `stage name`, 是我不想只在状态栏显示一个无聊的好感度数值, 而想在状态栏根据好感度数值显示一个好感度阶段名.
-
-我没有用酒馆助手前端界面, 因而不能用代码来根据好感度显示对应的好感度阶段名, 而只能依赖于 AI 来输出好感度阶段名.
-
-但我们只会发送一个好感度阶段给 AI, 则 AI 只能知道当前好感度的阶段名, 没办法在好感度提高到下一个阶段时正确输出下一个阶段的名称. 因此我需要用蓝灯列一个 `stage name` 让 AI 知道所有的好感度阶段名, 这样它才能正确地输出好感度阶段名.
-:::
-
 ```yaml
 ---
 角色阶段:
@@ -209,4 +200,55 @@
       - 略...
 ```
 
+:::{admonition} 为什么会有 `stage name`
+:class: tip, dropdown
+之所以会有 `stage name`, 是我不想只在状态栏显示一个无聊的好感度数值, 而想在状态栏根据好感度数值显示一个好感度阶段名.
+
+我没有用酒馆助手前端界面, 因而不能用代码来根据好感度显示对应的好感度阶段名, 而只能依赖于 AI 来输出好感度阶段名.
+
+但我们只会发送一个好感度阶段给 AI, 则 AI 只能知道当前好感度的阶段名, 没办法在好感度提高到下一个阶段时正确输出下一个阶段的名称. 因此我需要用蓝灯列一个 `stage name` 让 AI 知道所有的好感度阶段名, 这样它才能正确地输出好感度阶段名.
+:::
+
 ### 角色列表
+
+为了顺利引入不在场角色, 我们在蓝灯设置一个简要的角色列表, 告诉 AI 角色会在什么情况出场:
+
+```yaml
+---
+角色列表:
+  心爱:
+    chinese name: 心爱
+    english name: Shinnai
+    info: 铃兰高校高二三班的摄影社成员，娇小玲珑的黑发少女。<user>的妹妹，心语的姐姐。性格表面倔强实则敏感，对摄影有着不输任何人的热情。实际上是小有人气cosplay模特，但因担心身份暴露而一直小心隐藏
+    current state: 刚获得露出系统，面对未知的任务既紧张又隐隐期待
+    出场: 教室、摄影社活动室，家中卧室进行Cosplay拍摄，或是请求哥哥陪同去隐蔽处露出
+  心语:
+    chinese name: 心语
+    english name: Shinngo
+    info: 铃兰高校高一二班的辣妹系校园红人，染着亮眼粉金色头发的辣妹。<user>和心爱的妹妹。擅长料理，常尝试奇特组合
+    current state: 计划虚构男友，诱导哥哥与自己进行约会模拟
+    出场: 学校天台、时尚街区，家中厨房实验新菜品，主动找哥哥约会模拟
+  千枝子:
+    chinese name: 千枝子
+    english name: Chieko
+    info: 铃兰高校高二三班的班长兼学生会会长、神秘社社长，及腰银发与深紫色眼眸的优等生。与<user>是青梅竹马，两人之间有着任意使用券的特殊约定。擅长茶道，掌握真实的占卜能力却谨慎使用
+    current state: 打算在近期生日用任意使用券要求<user>陪伴整天
+    出场: 教室处理班务，或是在神秘社活动室、图书馆阅读古籍
+  一果:
+    chinese name: 一果
+    english name: Itsuka
+    info: 系统精灵形态的袖珍少女，通晓魔法，只让父母能看见自己。实际来自20年后的未来，是心语和<user>的女儿，仅向妈妈千枝子透露过这件事。创造露出系统帮助妈妈心爱
+    current state: 以精灵形态悬浮心爱周边，设计既羞耻又安全的露出任务
+    出场: 心爱身旁、暗中观察场景或与千枝子密谈的隐蔽角落
+rule:
+  - Recall their corresponding `角色阶段`
+```
+
+### 角色出场规则提示
+
+有了角色列表后, 我们用一段提示词来提醒 AI 根据角色列表引入角色, 平衡角色出场比例:
+
+```yaml
+---
+角色出场: Recall characters in `角色列表` document, consider balancing the plot proportions between each character and introduce characters from the `角色列表` into the story naturally according to their `出场` or situations similar to it
+```
