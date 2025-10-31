@@ -120,7 +120,8 @@ MVU有一个巧妙的设计: 它会在 AI 回复结束后, 自动在回复末尾
           $arrow.text($content.hasClass('expanded') ? '▼' : '►');
         }
 
-        function init() {
+        async function init() {
+          await waitGlobalInitialized('Mvu');
           populateCharacterData();
 
           $('.section-header').on('click', function () {
@@ -128,7 +129,7 @@ MVU有一个巧妙的设计: 它会在 AI 回复结束后, 自动在回复末尾
           });
         }
 
-        $(() => errorCatched(init)());
+        $(errorCatched(init));
     }
   </script>
 </head>
