@@ -110,7 +110,10 @@
 :::{figure} 访问文件.png
 :::
 
-而打包结果 `dist/界面示例/index.html` 将能以 `http://localhost:5500/dist/界面示例/index.html` 访问.
+而打包结果 `dist/界面示例/index.html` 将能以 `http://localhost:5500/dist/界面示例/index.html` 访问:
+
+:::{figure} 打包结果路径.png
+:::
 
 有了这个链接, 我们接下来更换酒馆正则{menuselection}`替换为`部分的 html 代码块, 让它从 `http://localhost:5500/dist/界面示例/index.html` 加载 html:
 
