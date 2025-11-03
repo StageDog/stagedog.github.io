@@ -18,13 +18,13 @@ AI 很不会数值计算, 相比起将商店购物等功能交给 AI 来处理, 
 删除变量
 : 角色死亡了! 我们得删除所有与该角色相关的变量.
 
-## 监听 MVU 事件
-
-针对变量开始更新、某个变量发生更新、变量更新结束, MVU 都会发送 "事件". 我们只要新建一个酒馆助手脚本, 监听这些事件, 就能进行相应的功能:
-
 :::{hint}
 在使用下面的功能之前, 你需要先在代码中通过 `await waitGlobalInitialized('Mvu')` 等待 MVU 变量框架初始化完成.
 :::
+
+## 监听 MVU 事件
+
+针对变量开始更新、某个变量发生更新、变量更新结束, MVU 都会发送 "事件". 我们只要新建一个酒馆助手脚本, 监听这些事件, 就能进行相应的功能:
 
 ::::{tabs}
 :::{tab} 保持好感度不低于 0
@@ -117,17 +117,12 @@ eventOn(Mvu.events.COMMAND_PARSED, commands => {
 ```
 
 :::{hint}
-看不懂上面写的是啥? 没关系, 请阅读{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 然后把模板文件夹中的 `@types/iframe/exported.mvu.d.ts` 文件发给 ai 让它学着帮你写. \
-这个文件还支持你让 AI 在前端界面/脚本中调用 MVU 来解析文本中的 `_.set(...)` 从而更新变量.
+看不懂上面写的是啥? 没关系, 请阅读{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 然后把模板文件夹中的 `@types/iframe/exported.mvu.d.ts` 文件发给 ai 让它学着帮你写.
 :::
 
 ## 在代码中自行获取、更新 MVU 变量
 
 除了监听用户输入或 AI 输出时的 MVU 事件, 我们还可以自行获取、更新 MVU 变量, 或主动解析文本中的 `_.set(...)` 等更新命令.
-
-:::{hint}
-在使用下面的功能之前, 你需要先在代码中通过 `await waitGlobalInitialized('Mvu')` 等待 MVU 变量框架初始化完成.
-:::
 
 ::::{tabs}
 :::{tab} 获取 MVU 变量
@@ -183,10 +178,6 @@ await Mvu.replaceMvuData(new_data, { type: 'message', message_id: getCurrentMess
 ## 用变量激活绿灯
 
 我们甚至可以利用{doc}`/青空莉/工具经验/酒馆如何处理世界书/激活/index`中提到的 "自行编写代码控制条目的激活" 方法之一——`injectPrompts` 来将变量值转换为预扫描文本, 从而能够用来激活绿灯条目:
-
-:::{hint}
-在使用下面的功能之前, 你需要先在代码中通过 `await waitGlobalInitialized('Mvu')` 等待 MVU 变量框架初始化完成.
-:::
 
 ```ts
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
@@ -247,10 +238,6 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
 
 你当然可以在前端界面或脚本中直接请求 AI 生成, 而生成结果中如果有 `_.set` 等文本, 你也可以解析它并更新变量.
 
-:::{hint}
-在使用下面的功能之前, 你需要先在代码中通过 `await waitGlobalInitialized('Mvu')` 等待 MVU 变量框架初始化完成.
-:::
-
 ```ts
 // 获取旧变量
 const old_data = Mvu.getMvuData({ type: 'message', message_id: getCurrentMessageId() });
@@ -266,6 +253,10 @@ await Mvu.replaceMvuData(new_data, { type: 'message', message_id: getCurrentMess
 ```
 
 自然地, 你也可以用这种方式直接让玩家在界面里玩 AI, 具体请参考{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`.
+
+## 用脚本实现更多变量控制
+
+请阅读{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 然后把模板文件夹中的 `@types/iframe/exported.mvu.d.ts` 文件发给 ai 让它学着帮你写.
 
 ## 仅用于脚本的 MVU 变量
 
