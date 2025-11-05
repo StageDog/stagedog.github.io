@@ -252,7 +252,7 @@ noass 等压缩相邻消息、合并消息的功能就是这么做的, 例如{do
   - 在 `builtin` 数组中添加你要直接导入而不是从 jsdelivr 链接引入的库名.
   - 在 index.html 中直接以 `<script src="库的jsdelivr链接"></script>` 引入库, 然后在 `externals` 函数的 `global` 对象中根据 jsdelivr 的内容添加对应映射.
 
-  vue 第三方库似乎是这种问题的重灾区. 如果你 `pnpm watch` 产生的 vue 代码可用, 但 `pnpm build` 后不可用, 则可以考虑将 `externals` 中的 `argv.mode !== 'production' &&` 去掉.
+  需要注意的是, vue 第三方库可能在 `pnpm watch` 时表现正常, 而在 `pnpm build` 也就是打包发布版本代码时出现问题. 如果你遇到了这种情况, 则你也需要按照上面的方案之一来调整它.
   :::
 
 ### 用 figma 设计界面
