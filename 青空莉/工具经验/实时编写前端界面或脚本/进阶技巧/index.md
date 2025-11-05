@@ -251,6 +251,8 @@ noass 等压缩相邻消息、合并消息的功能就是这么做的, 例如{do
   请尝试在 webpack.config.ts 最后调整 `externals` 函数, 你可以选择以下两种方案中的一种:
   - 在 `builtin` 数组中添加你要直接导入而不是从 jsdelivr 链接引入的库名.
   - 在 index.html 中直接以 `<script src="库的jsdelivr链接"></script>` 引入库, 然后在 `externals` 函数的 `global` 对象中根据 jsdelivr 的内容添加对应映射.
+
+  vue 第三方库似乎是这种问题的重灾区. 如果你 `pnpm watch` 产生的 vue 代码可用, 但 `pnpm build` 后不可用, 则可以考虑将 `externals` 中的 `argv.mode !== 'production' &&` 去掉.
   :::
 
 ### 用 figma 设计界面
