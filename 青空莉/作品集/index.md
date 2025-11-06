@@ -54,7 +54,8 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
   [类脑](https://discord.com/channels/1134557553011998840/1308428327731855472) / {stagedog_path}`源文件和说明 <src/酒馆助手/场景感>`
 
 实时修改css: 允许你在 VSCode 中实时修改酒馆主题, 无须复制粘贴
-: [类脑](https://discord.com/channels/1134557553011998840/1333758463582404670) / {stagedog}`说明和内容在角色卡中 <src/酒馆助手/实时修改css/实时修改css.png>` / {stagedog_path}`源文件和说明 <src/酒馆助手/实时修改css>`
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/实时修改css/index.js'` 即可. \
+  [类脑](https://discord.com/channels/1134557553011998840/1333758463582404670) / {stagedog}`说明和内容在角色卡中 <src/酒馆助手/实时修改css/实时修改css.png>` / {stagedog_path}`源文件和说明 <src/酒馆助手/实时修改css>`
 
 快速回复随角色卡导入导出 (酒馆助手脚本已经自带了按钮, 不建议你使用快速回复)
 : [类脑](https://discord.com/channels/1134557553011998840/1322585732962975915) / {stagedog}`说明和内容在角色卡中 <src/酒馆助手/快速回复随角色卡导入导出/快速回复随角色卡导入导出.png>` / {stagedog_path}`源文件和说明 <src/酒馆助手/快速回复随角色卡导入导出>`
