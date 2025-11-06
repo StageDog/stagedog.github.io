@@ -364,7 +364,7 @@ count.value = 5;
   - 使用网页通知功能 (我嘞个 AI 回复结束后通知): [useWebNotification](https://vueuse.org/core/useWebNotification/)
 
 @vueuse/core - 传感器 (Sensors)
-: - 点击了选定元素之外的地方: [useClickOutside](https://vueuse.org/core/useClickOutside/)
+: - 点击了选定元素之外的地方: [onClickOutside](https://vueuse.org/core/onClickOutside/)
   - 某个元素被移除: [useElementRemoval](https://vueuse.org/core/useElementRemoval/)
   - 某个键盘按键: [onKeyStroke](https://vueuse.org/core/onKeyStroke/)
   - 键盘修饰符: [useKeyModifier](https://vueuse.org/core/useKeyModifier/)
