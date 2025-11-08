@@ -29,6 +29,8 @@ MVU 变量框架的结构更为特殊, 更是这种情况的重灾区.
 
 **文章理解起来并不困难, 请不要看到不认识的名词或字母就放弃, 遇到不懂的可以复制下来发送给 AI 并进行询问.**
 
+荒行 (`@naniitteno`) 做了 MVU 图解 ([谷歌文档](https://docs.google.com/document/d/1N2be_3H2E9MqehcU-cDkzW3lTgSZo3RclXHa3lXwuEU/edit?pli=1&tab=t.0#heading=h.g5702bugc1wv)/[旅程原帖](https://discord.com/channels/1291925535324110879/1436345117739843694/1436345117739843694)), 可以配合着看!
+
 :::{hint}
 
 - 教程所使用的提示词结构可以用{doc}`门之主写卡助手 </青空莉/作品集/index>`直接生成
