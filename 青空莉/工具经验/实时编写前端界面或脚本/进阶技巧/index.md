@@ -85,7 +85,7 @@
 const chat_message = getChatMessages(getCurrentMessageId())[0];
 
 /* AI 按照你给定的格式自行捕获数据... 例如这里是 `<status>(.*)</status>` */
-const match = chat_message.message.match(/<status>(.*)</status>/);
+const match = chat_message.message.match(/<status>(.*)<\/status>/);
 ```
 
 #### 避免渲染卡顿
