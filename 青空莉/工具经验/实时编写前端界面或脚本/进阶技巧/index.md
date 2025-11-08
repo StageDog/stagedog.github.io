@@ -176,7 +176,7 @@ $mes_text.find('pre:contains("<galgame>")').replaceWith($galgame);
 此处以 `tavern_events.CHAT_COMPLETION_PROMPT_READY` 为例:
 
 ```{code-block} ts
-:caption: 移除所有非 user 提示词
+:caption: 移除所有 user 提示词
 eventOn(
   tavern_events.CHAT_COMPLETION_PROMPT_READY,
   (event_data: Parameters<ListenerType['chat_completion_prompt_ready']>[0]) => {
