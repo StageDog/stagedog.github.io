@@ -103,6 +103,8 @@ eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_val
 此外, MVU 还提供了更新命令解析完成事件, 你可以监听它, 对变量路径进行修复等:
 
 ```js
+import { toSimplified } from 'chinese-simple2traditional';
+
 eventOn(Mvu.events.COMMAND_PARSED, commands => {
   // 修复 gemini 在中文间加入的 '-'', 如将 '角色.络-络' 修复为 '角色.络络'
   commands.forEach(command => {
@@ -111,7 +113,7 @@ eventOn(Mvu.events.COMMAND_PARSED, commands => {
 
   // 修复繁体字, 如将 '絡絡' 修复为 '络络'
   commands.forEach(command => {
-    command.args[0] = command.args[0].replaceAll('絡絡', '络络');
+    command.args[0] = toSimplified(command.args[0]);
   });
 });
 ```
