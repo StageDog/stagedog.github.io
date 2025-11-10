@@ -237,8 +237,8 @@ Claude Code (推荐)
 
 Codex (推荐)
 : OpenAI 的编程助手, **据说目前最好用**. \
-  规则: 已经配置在了 .codex/AGENTS.md 中, 可以直接使用 \
-  MCP: 已经配置在了 .codex/config.toml 中, 可以直接使用
+  规则: 已经配置在了 AGENTS.md 中, 可以直接使用 \
+  MCP: 按照 .cursor/mcp.json 转换为 toml 格式, 然后从 codex 界面打开 mcp 配置文件并填入
 
 其他编程助手
 : 规则: 按照 .cursor/rules 自行配置 \
