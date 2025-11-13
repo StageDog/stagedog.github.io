@@ -1,6 +1,8 @@
-# MVU beta: 允许 AI 在游玩中途增加、删除变量
+# (弃用) MVU beta
 
 {{ prolog }}
+
+已弃用, 建议阅读 {doc}`/络络/教程/手写mvu变量卡/mvu_zod/index`.
 
 目前仅提供试运行视频:
 
