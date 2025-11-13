@@ -143,3 +143,7 @@ token 数过多提醒
 世界书繁简互换: 一键将繁体/简体世界书翻译成简体/繁体
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/世界书繁简互换/index.js'` 即可. \
   [类脑](https://discord.com/channels/1134557553011998840/1437376920500043836/1437376920500043836) / [旅程](https://discord.com/channels/1291925535324110879/1437377220170485881/1437377220170485881) / {stagedog_path}`源文件和说明 <src/酒馆助手/世界书繁简互换>`
+
+深度条目排斥器：让深度条目只能在 D0 或 D999
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/深度条目排斥器/index.js'` 即可. \
+  [类脑](https://discord.com/channels/1134557553011998840/1438435347238359141) / [旅程](https://discord.com/channels/1291925535324110879/1438435527110950932) / {stagedog_path}`源文件和说明 <src/酒馆助手/深度条目排斥器>`
