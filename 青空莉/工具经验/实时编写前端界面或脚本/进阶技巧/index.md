@@ -267,13 +267,15 @@ noass 等压缩相邻消息、合并消息的功能就是这么做的, 例如{do
 
   :::{admonition} xxx库添加上了但使用失败
   :class: warning, dropdown
-  一些第三方库添加上了不能正常使用, 可能是因为为了减小打包结果的大小, 模板将第三方库以 jsdelivr 链接引入.
+  (看不懂没事, 发给 AI)
 
-  请尝试在 webpack.config.ts 最后调整 `externals` 函数, 你可以选择以下两种方案中的一种:
-  - 在 `builtin` 数组中添加你要直接导入而不是从 jsdelivr 链接引入的库名.
-  - 在 index.html 中直接以 `<script src="库的jsdelivr链接"></script>` 引入库, 然后在 `externals` 函数的 `global` 对象中根据 jsdelivr 的内容添加对应映射.
+  一些第三方库添加上了不能正常使用, 可能是因为为了减小打包结果的大小, 模板将它以 jsdelivr 链接引入.
 
-  需要注意的是, vue 第三方库可能在 `pnpm watch` 时表现正常, 而在 `pnpm build` 也就是打包发布版本代码时出现问题. 如果你遇到了这种情况, 则你也需要按照上面的方案之一来调整它.
+  假如你使用库 `xxx` 时出现这个问题, 请尝试在 webpack.config.ts 最后调整 `externals` 函数: 在 `builtin` 数组中添加你要直接导入而不是从 jsdelivr 链接引入的库名 `xxx`.
+
+  需要注意的是, vue 第三方库可能在 `pnpm watch` 时表现正常, 而在 `pnpm build` 也就是打包发布版本代码时出现问题. \
+  如果你遇到了这种情况, 你也需要按上面那样将对应的第三方库添加到 `builtin` 中; \
+  或者, 你可以去掉 `externals` 函数中的一处 `argv.mode !== 'production' && `, 让所有 vue 库均直接导入而不是从 jsdelivr 链接引入.
   :::
 
 ### 使用 vue 编写前端界面
