@@ -146,4 +146,5 @@ token 数过多提醒
 
 深度条目排斥器：让深度条目只能在 D0 或 D999
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/深度条目排斥器/index.js'` 即可. \
+  这是为了方便世界书条目的深度设置同时适配 claude 和 gemini, 具体原因请点击说明链接查看.
   [类脑](https://discord.com/channels/1134557553011998840/1438435347238359141) / [旅程](https://discord.com/channels/1291925535324110879/1438435527110950932) / {stagedog_path}`源文件和说明 <src/酒馆助手/深度条目排斥器>`
