@@ -18,8 +18,9 @@ AI 很不会数值计算, 相比起将商店购物等功能交给 AI 来处理, 
 删除变量
 : 角色死亡了! 我们得删除所有与该角色相关的变量.
 
-:::{hint}
-在使用下面的功能之前, 你需要先在代码中通过 `await waitGlobalInitialized('Mvu')` 等待 MVU 变量框架初始化完成.
+:::{warning}
+在使用下面的功能之前, 你需要先在代码中通过一行 `await waitGlobalInitialized('Mvu');` 等待 MVU 变量框架初始化完成. \
+为了强调这一点, 以下所有例子开头都添加了 `await waitGlobalInitialized('Mvu');`; 如果你有更复杂的代码, 只需要在代码最开头添加一处 `waitGlobalInitialized('Mvu');` 即可, 不必多次添加.
 :::
 
 ## 监听 MVU 事件
@@ -30,6 +31,7 @@ AI 很不会数值计算, 相比起将商店购物等功能交给 AI 来处理, 
 :::{tab} 保持好感度不低于 0
 
 ```js
+await waitGlobalInitialized('Mvu');
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (variables) => {
   if (_.get(variables, 'stat_data.角色.络络.好感度') < 0) {
     _.set(variables, 'stat_data.角色.络络.好感度', 0);
@@ -45,6 +47,7 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (variables) => {
 :::{tab} 好感度突破 30
 
 ```js
+await waitGlobalInitialized('Mvu');
 eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_value) => {
   // ---如果被更新的变量不是 'stat_data.角色.络络.好感度', 则什么都不做直接返回 (return)---
   if (path !== '角色.络络.好感度') {
@@ -63,6 +66,7 @@ eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_val
 :::{tab} 记录好感度第一次超过 30
 
 ```js
+await waitGlobalInitialized('Mvu');
 eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_value) => {
   // ---如果被更新的变量不是 '角色.络络.好感度', 则什么都不做直接返回 (return)---
   if (path !== '角色.络络.好感度') {
@@ -83,6 +87,7 @@ eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_val
 :::{tab} 青空莉死了!
 
 ```js
+await waitGlobalInitialized('Mvu');
 eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_value) => {
   // ---如果被更新的变量不是 'stat_data.角色.青空莉.死亡', 则什么都不做直接返回 (return)---
   if (path !== '角色.青空莉.死亡') {
@@ -105,6 +110,7 @@ eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_val
 ```js
 import { toSimplified } from 'chinese-simple2traditional';
 
+await waitGlobalInitialized('Mvu');
 eventOn(Mvu.events.COMMAND_PARSED, commands => {
   // 修复 gemini 在中文间加入的 '-'', 如将 '角色.络-络' 修复为 '角色.络络'
   commands.forEach(command => {
@@ -130,6 +136,8 @@ eventOn(Mvu.events.COMMAND_PARSED, commands => {
 :::{tab} 获取 MVU 变量
 
 ```js
+await waitGlobalInitialized('Mvu');
+
 // 获取第 5 楼的 MVU 变量
 const variables = Mvu.getMvuData({ type: 'message', message_id: 5 });
 
@@ -148,6 +156,8 @@ const variables = Mvu.getMvuData({ type: 'message', message_id: getCurrentMessag
 :::{tab} 更新 MVU 变量
 
 ```js
+await waitGlobalInitialized('Mvu');
+
 // 获取本前端界面所在楼层的 MVU 变量
 const mvu_data = Mvu.getMvuData({ type: 'message', message_id: getCurrentMessageId() });
 
@@ -163,6 +173,8 @@ await Mvu.replaceMvuData(mvu_data, { type: 'message', message_id: getCurrentMess
 :::{tab} 解析文本中的更新命令
 
 ```js
+await waitGlobalInitialized('Mvu');
+
 const mvu_data = Mvu.getMvuData({ type: 'message', message_id: -1 });
 
 // 解析从某处得到的文本中的更新命令, 此处假设文本是 `'_.set('角色.络络.好感度', 30);'`, 但你也可以从 `generate` 等地方获取
@@ -182,6 +194,7 @@ await Mvu.replaceMvuData(new_data, { type: 'message', message_id: getCurrentMess
 我们甚至可以利用{doc}`/青空莉/工具经验/酒馆如何处理世界书/激活/index`中提到的 "自行编写代码控制条目的激活" 方法之一——`injectPrompts` 来将变量值转换为预扫描文本, 从而能够用来激活绿灯条目:
 
 ```ts
+await waitGlobalInitialized('Mvu');
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
   // 将整个 stat_data 转换为绿灯的预扫描文本
   const data = _.get(variables, 'stat_data');
@@ -204,6 +217,7 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
 如果你需要更精确的控制, 则可以不是转换整个 `stat_data` 而是转换某个变量, 或者自己填写如何注入这个仅用于绿灯激活的提示词:
 
 ```ts
+await waitGlobalInitialized('Mvu');
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
   // 在预扫描文本中注入一句 `络络好感度: 好感度具体数值`
   const content = `络络好感度: ${_.get(variables, 'stat_data.角色.络络.好感度', 0)}`;
@@ -241,6 +255,8 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
 你当然可以在前端界面或脚本中直接请求 AI 生成, 而生成结果中如果有 `_.set` 等文本, 你也可以解析它并更新变量.
 
 ```ts
+await waitGlobalInitialized('Mvu');
+
 // 获取旧变量
 const old_data = Mvu.getMvuData({ type: 'message', message_id: getCurrentMessageId() });
 
