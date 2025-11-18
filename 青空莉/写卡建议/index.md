@@ -21,6 +21,7 @@
 
   - {doc}`MVU 变量更新美化版、折叠版、仅提示版正则 </青空莉/作品集/index>`
   - 如何让你的AI学会怎么写MVUbeta、使用EJS功能并学会进阶功能：调用禁用世界书条目 by sanmingyue ([类脑](https://discord.com/channels/1134557553011998840/1434692061054894110))
+  - 0基础一站式MVUBETA写卡预设/支持MVUbeta/EJS/美化状态栏/前端美化页面/一路写一路自查/明月秋青写卡预设 by sanmingyue ([类脑](https://discord.com/channels/1134557553011998840/1436581369558994974))
 
 画图
 : - {doc}`/络络/教程/生成立绘、表情差分和cg/index`
