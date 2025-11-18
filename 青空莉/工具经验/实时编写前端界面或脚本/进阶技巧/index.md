@@ -49,7 +49,7 @@
 - AI 的注意力是有限的, 它也许没注意到酒馆助手直接支持某个功能, 而把代码复杂化;
 - 由于你不知道酒馆助手支持某个功能, 你可能完全没想到能实现某件事情. (例如, 你可以在脚本里用一行代码实现角色卡绑定预设!)
 
-因此, 我建议你也通过[酒馆助手文档](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/%E5%85%B3%E4%BA%8E%E9%85%92%E9%A6%86%E5%8A%A9%E6%89%8B/%E4%BB%8B%E7%BB%8D.html)或直接阅读 `@types` 文件来了解一下酒馆助手的功能.
+因此, 我建议你也通过[酒馆助手文档](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/关于酒馆助手/介绍.html)或直接阅读 `@types` 文件来了解一下酒馆助手的功能.
 
 ### 前端界面正则的推荐写法
 
@@ -101,9 +101,12 @@ const match = chat_message.message.match(/<status>(.*)<\/status>/);
 
 #### 避免渲染卡顿
 
-酒馆助手需要酒馆正则先将内容替换成代码块再进行渲染. 当代码内容过多时, 代码块本身的显示就会很卡.
+前端界面的渲染过程为: 酒馆正则将内容替换成代码块并渲染出来 -> 酒馆助手将代码块替换为前端界面 (仅需几毫秒) -> 前端界面按代码加载 (取决于网络和设备性能).
 
-为此, 你可以像下文 "发布会自动更新的前端界面或脚本" 那样, 将 html 转换为链接, 而正则代码块里只加载链接. 这样酒馆需要渲染的代码块内容没多少, 自然不会卡顿.
+也就是说, 其实酒馆助手负责的部分仅需几毫秒, 前端界面的加载速度完全取决于玩家的网络、设备性能和……"酒馆正则将内容替换成代码块并渲染出来". \
+酒馆渲染代码块这一过程是不可避免的! 而且, 哪怕酒馆助手已经优化了其中一个环节, 它还是非常卡——前端界面代码越多越卡!
+
+为此, 你可以像下文{ref}`发布会自动更新的前端界面、脚本或美化样式`那样, 将 html 转换为链接, 而正则代码块里只加载链接. 这样酒馆需要渲染的代码块内容没多少, 自然不会卡顿.
 
 ### 用 figma 像做 PPT 一样设计界面
 
@@ -286,7 +289,7 @@ noass 等压缩相邻消息、合并消息的功能就是这么做的, 例如{do
 
   需要注意的是, vue 第三方库可能在 `pnpm watch` 时表现正常, 而在 `pnpm build` 也就是打包发布版本代码时出现问题. \
   如果你遇到了这种情况, 你也需要按上面那样将对应的第三方库添加到 `builtin` 中; \
-  或者, 你可以去掉 `externals` 函数中的一处 `argv.mode !== 'production' && `, 让所有 vue 库均直接导入而不是从 jsdelivr 链接引入.
+  或者, 你可以去掉 `externals` 函数中的一处 `argv.mode !== 'production' &&`, 让所有 vue 库均直接导入而不是从 jsdelivr 链接引入.
   :::
 
 ### 使用 vue 编写前端界面
@@ -489,6 +492,8 @@ count.value = 5;
 <!-- markdownlint-enable MD032 MD007 -->
 :::
 
+(发布会自动更新的前端界面、脚本或美化样式)=
+
 ### 发布会自动更新的前端界面、脚本或美化样式
 
 还记得我们是如何实现实时修改前端界面或脚本的吗? 我们利用 {menuselection}`Go Live` 将本地文件夹转换为了网络链接, 而正则或脚本通过网络链接来加载最新打包内容.
@@ -525,12 +530,15 @@ import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆�
 @import url("https://testingcf.jsdelivr.net/gh/lolo-desu/lolocard/src/思维链美化/酒馆自带推理块版/暗色.css");
 ```
 
-然而, jsdelivr 服务器、jsdelivr 镜像服务器 (为了国内直连) 和玩家的浏览器都会缓存文件, 因此并不是 github 上文件更新后, 这个链接就会立即得到最新的打包结果.
+为了方便你得到这样的 jsdelivr 链接, 编写模板已经配置了 github 自动工作流. 你可以在 <https://github.com/StageDog/tavern_helper_template> 用 {menuselection}`Use this template` 来创建一个新仓库, 将它克隆到本地使用. \
+这样一来, 你只需要负责在 `src` 文件夹下修改代码, 完成后上传到 github 仓库; 上传后, 自动工作流将会为你自动打包最新结果到 `dist` 文件夹.
+
+然而, jsdelivr 主服务器、jsdelivr 镜像服务器 (为了国内直连) 和玩家的浏览器都会缓存文件, 因此并不是 github 上文件更新后, 这个链接就会立即得到最新的打包结果.
 
 除了等待服务器自行刷新缓存, 你可以通过以下方式来加快缓存刷新:
 
-- 从 <https://github.com/StageDog/tavern_helper_template> {menuselection}`Use this template` 来创建新仓库而不是仅在本地使用模板文件夹, 这个仓库配置了自动工作流, 会自动打包结果并在每次更新时都修改版本号，可以做到 12h 刷新服务器缓存
-- 更新版本号后，在 <https://www.testingcf.com/tools/purge> 中输入链接, 将 `testingcf.jsdelivr` 改成 `cdn.jsdelivr`, 然后点击确认, 能立即刷新 jsdelivr 服务器缓存, 但镜像服务器缓存不会刷新
+- 如果你是从 <https://github.com/StageDog/tavern_helper_template> {menuselection}`Use this template` 来创建的新仓库, 它的自动工作流会自动打包结果并更新版本号, 从而做到 12h 刷新 jsdelivr 主服务器缓存
+- 等仓库更新版本号后，在 <https://www.testingcf.com/tools/purge> 中输入要使用的链接, 将 `testingcf.jsdelivr` 改成 `cdn.jsdelivr`, 然后点击确认, 能立即刷新 jsdelivr 主服务器缓存, 但镜像服务器缓存不会刷新
 - 玩家主动清除浏览器缓存
 
 或者, 你可以暂时换个还没缓存你文件的镜像网站来访问:
