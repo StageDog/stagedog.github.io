@@ -242,7 +242,7 @@ format: |-
 :force:
 ---
 <status_description>
-<%= YAML.stringify(getvar(stat_data), { blockQuote: 'literal' }) _%>
+<%= YAML.stringify(getvar('stat_data'), { blockQuote: 'literal' }) _%>
 </status_description>
 ```
 
