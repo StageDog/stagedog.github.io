@@ -336,7 +336,7 @@ AI 会 Embedded JavaScript 语法, 你可以让它替你编写. 在其中, 你�
 :force:
 ---
 <status_description>
-<%= YAML.stringify(getvar(stat_data), { blockQuote: 'literal' }) _%>
+<%= YAML.stringify(getvar('stat_data'), { blockQuote: 'literal' }) _%>
 </status_description>
 ```
 
