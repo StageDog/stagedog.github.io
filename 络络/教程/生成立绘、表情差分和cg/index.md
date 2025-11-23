@@ -166,7 +166,7 @@ solo,(upper body),cowboy shot,standing,((green background)),((green screen)),sim
 现在, 让我们来开始图生图重绘!
 
 :::{hint}
-2025/08/26, 你也许可以试试让 [gemini-2.5-flash-image-preview](https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-image-preview) 帮你生成差分:
+你也可以试试让 gemini-3-pro-image-preview 帮你生成差分, 很容易做, 而且分辨率可以高达 4K!
 
 :::{figure} gemini生成差分.png
 :::
