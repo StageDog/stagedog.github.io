@@ -136,6 +136,10 @@ token 数过多提醒
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/token数过多提醒/index.js'` 即可. \
   {stagedog_path}`源文件和说明 <src/酒馆助手/token数过多提醒>`
 
+删除角色卡时删除绑定的主要世界书
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/删除角色卡时删除绑定的主要世界书/index.js'` 即可. \
+  [类脑](https://discord.com/channels/1134557553011998840/1404680275262308485) / [旅程](https://discord.com/channels/1291925535324110879/1404677401212092537/1404677401212092537) / {stagedog_path}`源文件和说明 <src/酒馆助手/删除角色卡时删除绑定的主要世界书>`
+
 角色卡绑定预设: 切换角色卡时自动切换预设
 : 新建脚本填入 `$(() => loadPreset('要绑定的预设名称'))` 即可. \
   [预设函数文档](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/功能详情/预设/修改预设.html)
