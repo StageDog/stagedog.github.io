@@ -51,11 +51,7 @@ await waitGlobalInitialized('Mvu');
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (variables, variables_before_update) => {
   const old_value = _.get(variables_before_update, 'stat_data.角色.络络.好感度');
   const new_value = _.get(variables, 'stat_data.角色.络络.好感度');
-
-  const delta = new_value - old_value;
-  if (Math.abs(delta) > 3) {
-    _.set(variables, 'stat_data.角色.络络.好感度', old_value + Math.sign(delta) * 3);
-  }
+  _.set(variables, 'stat_data.角色.络络.好感度', _.clamp(new_value, old_value - 3, old_value + 3));
 });
 ```
 
