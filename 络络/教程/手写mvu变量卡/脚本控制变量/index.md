@@ -51,6 +51,8 @@ await waitGlobalInitialized('Mvu');
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (variables, variables_before_update) => {
   const old_value = _.get(variables_before_update, 'stat_data.角色.络络.好感度');
   const new_value = _.get(variables, 'stat_data.角色.络络.好感度');
+
+  // 新的好感度必须在 旧好感度-3 和 旧好感度+3 之间
   _.set(variables, 'stat_data.角色.络络.好感度', _.clamp(new_value, old_value - 3, old_value + 3));
 });
 ```
