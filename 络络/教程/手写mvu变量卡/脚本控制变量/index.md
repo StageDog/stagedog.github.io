@@ -32,7 +32,7 @@ AI 很不会数值计算, 相比起将商店购物等功能交给 AI 来处理, 
 
 ```js
 await waitGlobalInitialized('Mvu');
-eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (variables) => {
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, variables => {
   if (_.get(variables, 'stat_data.角色.络络.好感度') < 0) {
     _.set(variables, 'stat_data.角色.络络.好感度', 0);
   }
@@ -44,17 +44,30 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (variables) => {
 
 :::
 
+:::{tab} 限制好感度变动幅度不超过 3
+
+```js
+await waitGlobalInitialized('Mvu');
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (variables, variables_before_update) => {
+  const old_value = _.get(variables_before_update, 'stat_data.角色.络络.好感度');
+  const new_value = _.get(variables, 'stat_data.角色.络络.好感度');
+
+  const delta = new_value - old_value;
+  if (Math.abs(delta) > 3) {
+    _.set(variables, 'stat_data.角色.络络.好感度', old_value + Math.sign(delta) * 3);
+  }
+});
+```
+
+:::
+
 :::{tab} 好感度突破 30
 
 ```js
 await waitGlobalInitialized('Mvu');
-eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_value) => {
-  // ---如果被更新的变量不是 'stat_data.角色.络络.好感度', 则什么都不做直接返回 (return)---
-  if (path !== '角色.络络.好感度') {
-    return;
-  }
-
-  // ---被更新的变量是 'stat_data.角色.络络.好感度'---
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (variables, variables_before_update) => {
+  const old_value = _.get(variables_before_update, 'stat_data.角色.络络.好感度');
+  const new_value = _.get(variables, 'stat_data.角色.络络.好感度');
   if (old_value < 30 && new_value >= 30) {
     toaster.success('络络好感度突破 30 了!');
   }
@@ -67,17 +80,11 @@ eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_val
 
 ```js
 await waitGlobalInitialized('Mvu');
-eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_value) => {
-  // ---如果被更新的变量不是 '角色.络络.好感度', 则什么都不做直接返回 (return)---
-  if (path !== '角色.络络.好感度') {
-    return;
-  }
-
-  // ---被更新的变量是 '角色.络络.好感度'---
-  // 如果新的值大于 30, 则记录 'flag.络络好感度突破30' 为 `true`
-  //   这可以通过 {{get_message_variable::stat_data.flag.络络好感度突破30}} 来获取
-  if (new_value > 30) {
-    _.set(stat_data, 'flag.络络好感度突破30', true);
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, variables => {
+  if (_.get(variables, 'stat_data.角色.络络.好感度') > 30) {
+    // 记录 'flag.络络好感度突破30' 为 `true`
+    //   这么设置的 'flag.络络好感度突破30' 可以通过 {{get_message_variable::stat_data.flag.络络好感度突破30}} 来获取
+    _.set(variables, 'stat_data.flag.络络好感度突破30', true);
   }
 });
 ```
@@ -88,16 +95,10 @@ eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_val
 
 ```js
 await waitGlobalInitialized('Mvu');
-eventOn(Mvu.events.SINGLE_VARIABLE_UPDATED, (stat_data, path, old_value, new_value) => {
-  // ---如果被更新的变量不是 'stat_data.角色.青空莉.死亡', 则什么都不做直接返回 (return)---
-  if (path !== '角色.青空莉.死亡') {
-    return;
-  }
-
-  // ---被更新的变量是 'stat_data.角色.青空莉.死亡'---
-  // 如果新的值为 `true`, 则删除所有与青空莉相关的变量
-  if (new_value === true) {
-    _.unset(stat_data, '角色.青空莉');
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, variables => {
+  if (_.get(variables, 'stat_data.角色.青空莉.死亡') === true) {
+    // 删除所有与青空莉相关的变量
+    _.unset(variables, 'stat_data.角色.青空莉');
   }
 });
 ```
