@@ -231,7 +231,8 @@ Gemini CLI
   MCP: 按照 .cursor/mcp.json 自行配置到 .gemini/settings.json 里
 
 Claude Code (推荐)
-: Anthropic 的编程助手, 和 Gemini CLI 类似 (或者反过来?), 有 claude pro 账号即可使用; 你也可以用 Claude Code Router 接入自定义 API.\
+: Anthropic 的编程助手, 和 Gemini CLI 类似 (或者反过来?), 有 claude pro 账号即可使用; 你也可以用 Claude Code Router 接入自定义 API. \
+  你还可以执行一句 `npx claude-plugins skills install @anthropics/claude-code/frontend-design` 为 Claude Code 全局添加官方提供的[前端设计提示词](https://claude-plugins.dev/skills/@anthropics/claude-code/frontend-design). \
   规则: 已经配置在了 CLAUDE.md 中, 可以直接使用 \
   MCP: 已经配置在了 .mcp.json 中, 可以直接使用
 
