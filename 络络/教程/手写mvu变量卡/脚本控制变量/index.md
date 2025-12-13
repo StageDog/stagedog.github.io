@@ -1,74 +1,158 @@
-# 酒馆助手: 监听变量更新、修改变量、用变量激活绿灯
+# 酒馆助手脚本: 后台控制和利用变量
 
 {{ prolog }}
 
-AI 很不会数值计算, 相比起将商店购物等功能交给 AI 来处理, 不如由我们的酒馆助手前端界面或脚本的代码来计算, 而将计算过程日志和结果发送给 AI. 酒馆助手前端界面或脚本的编写方法请参考{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`.
+我们通过变量结构已经能对变量更新进行很多限制, 例如, 这是我们之前要求门之主写卡助手制作的变量结果:
 
-但也许你并不是想做商店购物之类复杂的事, 你只是想简单地:
+```text
+请制作变量！
+- 在世界路径下记录当前时间、当前日期和近期事务
+- 记录主角妹妹白娅当前对主角的依存度、着装和称号
+  - 依存度必须在0~100之间
+  - 着装包括上装、下装、内衣、袜子、鞋子和饰品
+  - 称号应该记录称号的效果和白娅对称号的自我评价，如果没填写自我评价则默认设置为"待评价"
+  - 称号有数量上限，依存度越高可以拥有的称号越多（依存度为0时不能拥有称号，1~10时只能拥有1个称号，依次类推），如果称号超过可以拥有的数量，应该移除最旧的称号
+- 记录主角物品栏当前有的物品：它的描述、数量，如果没有填写数量则默认数量为1，如果数量不为正数应该直接删除物品
+```
 
-修改变量值
-: AI 笨到把好感度更新成了负数或者超过了上限 100. 我们得检测到这个错误, 修改回变量值.
+可以发现, 我们在变量结构中已经做到了很多:
 
-监听变量更新情况
-: 我们希望知道角色好感度在这次剧情中突破了 30, 并基于此用酒馆提示框弹出一条消息.
+- 限定变量只能是某些值: "依存度必须在0~100之间"
+- 变量值出现某些错误时自动修正: "如果数量不为正数应该直接删除物品"
+- 当 AI 插入变量省略了某个字段时, 为字段设置默认值: "如果没有填写数量则默认数量为1"
+- 变量数量上限: "称号有数量上限……"
+- ……
 
-新增变量
-: 我们想在好感度**第一次**超过 30 后发送某段提示词, 而即便之后好感度又下降到了 30 以下, 这段提示词也依旧发送. 这需要我们能在好感度第一次超过 30 时, 新增一个变量来记录这件事.
+但变量结构只能用于检验和修复更新后的变量值, 不能获取酒馆其他信息, 不能获取更新前的变量值进行对比, 不能跟酒馆进行其他交互或修改酒馆内容……因此有很多功能是不能做到的, 这时就需要我们用到酒馆助手脚本或酒馆助手界面了.
 
-删除变量
-: 角色死亡了! 我们得删除所有与该角色相关的变量.
+例如, 我们希望利用变量制作商品购物等功能, 那么与其让玩家打字输入要买什么商品, 然后由 AI 计算能否购买、扣除金额, 我们完全可以用酒馆助手制作一个前端界面或脚本, 在界面中显示出商品名称、图片、价格, 让玩家可以点击按钮购买, 在所有购买完成后, 才把购买过程日志和结果发送给 AI.
 
-:::{warning}
-在使用下面的功能之前, 你需要先在代码中通过一行 `await waitGlobalInitialized('Mvu');` 等待 MVU 变量框架初始化完成. \
-为了强调这一点, 以下所有例子开头都添加了 `await waitGlobalInitialized('Mvu');`; 如果你有更复杂的代码, 只需要在代码最开头添加一处 `waitGlobalInitialized('Mvu');` 即可, 不必多次添加.
+:::{figure} 界面示例.png
 :::
+
+酒馆助手前端界面或脚本的具体编写方法请参考青空莉的{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`; 在这里, 我会为你介绍一些 MVU 额外提供的代码功能以及对应的例子, 帮助你了解前端界面或脚本可以怎样控制和利用变量. \
+(但这并不意味着前端界面或脚本只能做到这些功能, 例如, MVU 本身也是一个酒馆助手脚本!)
 
 ## 监听 MVU 事件
 
-针对变量开始更新、某个变量发生更新、变量更新结束, MVU 都会发送 "事件". 我们只要新建一个酒馆助手脚本, 监听这些事件, 就能进行相应的功能:
+让我们再简单回忆一下 MVU 变量框架是怎么工作的:
 
-::::{tabs}
-:::{tab} 保持好感度不低于 0
+- MVU 读取 `[initvar]` 和 `<initvar>` 块, 初始化变量
+- AI 根据变量输出格式输出变量更新命令, MVU 解析这些命令从而更新变量
+
+你可以从这个过程中看到很多个阶段:
+
+1. (仅新开聊天时) 变量初始化完成 (`VARIABLE_INITIALIZED`)
+2. 变量更新开始 (`VARIABLE_UPDATE_STARTED`)
+3. 变量更新命令解析完成 (`COMMAND_PARSED`)
+4. 脚本使用解析出的更新命令依次更新变量, 每次更新后都使用变量结构检验结果
+5. 变量更新结束 (`VARIABLE_UPDATE_ENDED`)
+6. 脚本将变量结果存储到对应楼层中之前 (`BEFORE_MESSAGE_UPDATE`)
+
+针对这些阶段, MVU 都会发送 "事件和相应的信息". 我们只要新建一个酒馆助手脚本, 监听这些事件, 就能在对应阶段执行额外功能或调整 MVU 的更新过程:
+
+:::{hint}
+看不懂下面写的是啥? 没关系, 你现在重要的是知道能做到什么! 然后你就能阅读{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 把编写模板中的 `@types/iframe/exported.mvu.d.ts` 文件和这里的示例发给 AI 让它学着帮你写.
+:::
+
+:::{warning}
+在使用下面的功能之前, 你需要在代码开头添加一行 `await waitGlobalInitialized('Mvu');` 等待 MVU 变量框架初始化完成. \
+为了强调这一点, 以下所有例子开头都添加了 `await waitGlobalInitialized('Mvu');`; 如果你有更复杂的代码, 只需要在代码最开头添加一处 `waitGlobalInitialized('Mvu');` 即可, 不必多次添加.
+:::
+
+### COMMAND_PARSED: 变量更新命令解析完成
+
+通过监听 "变量更新命令解析完成" 事件 (`Mvu.events.COMMAND_PARSED`), 你可以获取到对应的变量更新命令, 并对其进行修复.
+
+例如, 修复 gemini 在中文间加入的 `-`, 如将`角色.络-络`修复为`角色.络络`:
+
+```js
+await waitGlobalInitialized('Mvu');
+eventOn(Mvu.events.COMMAND_PARSED, commands => {
+  commands.forEach(command => {
+    command.args[0] = command.args[0].replaceAll('-', '');
+  });
+});
+```
+
+又比如, 将繁体字修复为简体字, 如将`絡絡`修复为`络络`:
+
+```js
+import { toSimplified } from 'chinese-simple2traditional';
+
+await waitGlobalInitialized('Mvu');
+eventOn(Mvu.events.COMMAND_PARSED, commands => {
+  commands.forEach(command => {
+    command.args[0] = toSimplified(command.args[0]);
+  });
+});
+```
+
+再比如, 你可以像`变量结构`脚本那样
+
+### VARIABLE_UPDATE_ENDED: 变量更新结束
+
+通过监听 "变量更新结束" 事件 (`Mvu.events.VARIABLE_UPDATE_ENDED`), 你可以获取到更新前后的变量, 可以对更新结果进行额外处理.
+
+比如, 我们可以这样弹窗显示更新前后的变量值:
+
+```js
+await waitGlobalInitialized('Mvu');
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (new_variables, old_variables) => {
+  toastr.info(`更新前的白娅依存度是: ${_.get(old_variables, 'stat_data.白娅.依存度')}`);
+  toastr.info(`更新后的白娅依存度是: ${_.get(new_variables, 'stat_data.白娅.依存度')}`);
+});
+```
+
+或者, 我们可以这样修改更新后的变量值:
 
 ```js
 await waitGlobalInitialized('Mvu');
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, variables => {
-  if (_.get(variables, 'stat_data.角色.络络.好感度') < 0) {
-    _.set(variables, 'stat_data.角色.络络.好感度', 0);
-  }
-  if (_.get(variables, 'stat_data.角色.青空莉.好感度') < 0) {
-    _.set(variables, 'stat_data.角色.青空莉.好感度', 0);
-  }
+  // 不管更新成了多少, 强行把白娅依存度改成 0
+  _.set(variables, 'stat_data.白娅.依存度', 0);
+});
+```
+
+由此我们可以做非常多功能.
+
+其中一些是在变量结构也能做到的:
+
+::::{tabs}
+
+:::{tab} 限制依存度在 0 和 100 之间
+
+```js
+await waitGlobalInitialized('Mvu');
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, variables => {
+  _.update(variables, 'stat_data.白娅.依存度', value => _.clamp(value, 0, 100));
 });
 ```
 
 :::
 
-:::{tab} 限制好感度变动幅度不超过 3
+:::{tab} 如果数量不为正数应该直接删除物品
 
 ```js
 await waitGlobalInitialized('Mvu');
-eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (variables, variables_before_update) => {
-  const old_value = _.get(variables_before_update, 'stat_data.角色.络络.好感度');
-  const new_value = _.get(variables, 'stat_data.角色.络络.好感度');
-
-  // 新的好感度必须在 旧好感度-3 和 旧好感度+3 之间
-  _.set(variables, 'stat_data.角色.络络.好感度', _.clamp(new_value, old_value - 3, old_value + 3));
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, variables => {
+  _.update(variables, 'stat_data.主角.物品栏', data => _.pickBy(data, ({数量}) => 数量 > 0));
 });
 ```
 
 :::
 
-:::{tab} 好感度突破 30
+:::{tab} 称号有数量上限，依存度越高越多
 
 ```js
 await waitGlobalInitialized('Mvu');
-eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (variables, variables_before_update) => {
-  const old_value = _.get(variables_before_update, 'stat_data.角色.络络.好感度');
-  const new_value = _.get(variables, 'stat_data.角色.络络.好感度');
-  if (old_value < 30 && new_value >= 30) {
-    toaster.success('络络好感度突破 30 了!');
-  }
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, variables => {
+  _.update(variables, 'stat_data.白娅.称号', data =>
+    _(data)
+      .entries()
+      .takeRight(Math.ceil(_.get(variables, 'stat_data.白娅.依存度') / 10))
+      .value(),
+  );
 });
 ```
 
@@ -79,10 +163,8 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (variables, variables_before_update) =
 ```js
 await waitGlobalInitialized('Mvu');
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, variables => {
-  if (_.get(variables, 'stat_data.角色.络络.好感度') > 30) {
-    // 记录 'flag.络络好感度突破30' 为 `true`
-    //   这么设置的 'flag.络络好感度突破30' 可以通过 {{get_message_variable::stat_data.flag.络络好感度突破30}} 来获取
-    _.set(variables, 'stat_data.flag.络络好感度突破30', true);
+  if (_.get(variables, 'stat_data.白娅.依存度') > 30) {
+    _.set(variables, 'stat_data.$flag.白娅依存度突破30', true);
   }
 });
 ```
@@ -94,42 +176,83 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, variables => {
 ```js
 await waitGlobalInitialized('Mvu');
 eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, variables => {
-  if (_.get(variables, 'stat_data.角色.青空莉.死亡') === true) {
+  if (_.get(variables, 'stat_data.青空莉.死亡') === true) {
     // 删除所有与青空莉相关的变量
-    _.unset(variables, 'stat_data.角色.青空莉');
+    _.unset(variables, 'stat_data.青空莉');
   }
 });
 ```
 
 :::
+
 ::::
 
-此外, MVU 还提供了更新命令解析完成事件, 你可以监听它, 对变量路径进行修复等:
+但变量结构脚本无法获取以前的变量情况, 因此无法利用 `old_variables` 做到下面这些:
+
+::::{tabs}
+
+:::{tab} 限制依存度变动幅度不超过 3
 
 ```js
-import { toSimplified } from 'chinese-simple2traditional';
-
 await waitGlobalInitialized('Mvu');
-eventOn(Mvu.events.COMMAND_PARSED, commands => {
-  // 修复 gemini 在中文间加入的 '-'', 如将 '角色.络-络' 修复为 '角色.络络'
-  commands.forEach(command => {
-    command.args[0] = command.args[0].replace(/-/g, '');
-  });
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (new_variables, old_variables) => {
+  const old_value = _.get(old_variables, 'stat_data.白娅.依存度');
 
-  // 修复繁体字, 如将 '絡絡' 修复为 '络络'
-  commands.forEach(command => {
-    command.args[0] = toSimplified(command.args[0]);
-  });
+  // 新的好感度必须在 旧好感度-3 和 旧好感度+3 之间
+  _.update(new_variables, 'stat_data.白娅.依存度', value => _.clamp(value, old_value - 3, old_value + 3));
 });
 ```
 
-:::{hint}
-看不懂上面写的是啥? 没关系, 请阅读{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 然后把模板文件夹中的 `@types/iframe/exported.mvu.d.ts` 文件发给 ai 让它学着帮你写.
 :::
+
+:::{tab} 检测依存度突破 30
+
+```js
+await waitGlobalInitialized('Mvu');
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (new_variables, old_variables) => {
+  const old_value = _.get(old_variables, 'stat_data.白娅.依存度');
+  const new_value = _.get(new_variables, 'stat_data.白娅.依存度');
+  if (old_value < 30 && new_value >= 30) {
+    toastr.success('白娅依存度突破 30 了!');
+  }
+});
+```
+
+:::
+
+:::{tab} 让 AI 不能更新变量
+
+```js
+await waitGlobalInitialized('Mvu');
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (new_variables, old_variables) => {
+  // 强行将新的白娅依存度设置为旧的, 从而取消 AI 对它的更新
+  _.set(new_variables, 'stat_data.白娅.依存度', _.get(old_variables, 'stat_data.白娅.依存度'));
+});
+```
+
+:::
+
+::::
+
+## 仅用于脚本的 MVU 变量
+
+既然脚本能做到这么多功能, 那么我们很可能会想设置一些变量只给脚本用……
+
+还记得在{ref}`让变量不能被AI更新或对AI不可见`吗? 我们可以在变量名字前面添加 `_` 来让它不能被 AI 更新, 添加 `$` 来让它对 AI 不可见!
+
+当然, 刚刚其实我们也演示了, 怎么用 `VARIABLE_UPDATE_ENDED` 来让一个变量不能被 AI 更新:
+
+```js
+await waitGlobalInitialized('Mvu');
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (new_variables, old_variables) => {
+  // 强行将新的白娅依存度设置为旧的, 从而取消 AI 对它的更新
+  _.set(new_variables, 'stat_data.白娅.依存度', _.get(old_variables, 'stat_data.白娅.依存度'));
+});
+```
 
 ## 在代码中自行获取、更新 MVU 变量
 
-除了监听用户输入或 AI 输出时的 MVU 事件, 我们还可以自行获取、更新 MVU 变量, 或主动解析文本中的 `_.set(...)` 等更新命令.
+除了监听 MVU 事件, 我们还可以自行获取、更新 MVU 变量, 或主动解析文本中的 `<json_patch>` 等更新命令.
 
 ::::{tabs}
 :::{tab} 获取 MVU 变量
@@ -160,8 +283,8 @@ await waitGlobalInitialized('Mvu');
 // 获取本前端界面所在楼层的 MVU 变量
 const mvu_data = Mvu.getMvuData({ type: 'message', message_id: getCurrentMessageId() });
 
-// 将络络好感度增加 5
-_.update(mvu_data, 'stat_data.角色.络络.好感度', value => value + 5);
+// 将白娅依存度增加 5
+_.update(mvu_data, 'stat_data.白娅.依存度', value => value + 5);
 
 // 将更新后的结果写回楼层
 await Mvu.replaceMvuData(mvu_data, { type: 'message', message_id: getCurrentMessageId() });
@@ -176,8 +299,8 @@ await waitGlobalInitialized('Mvu');
 
 const mvu_data = Mvu.getMvuData({ type: 'message', message_id: -1 });
 
-// 解析从某处得到的文本中的更新命令, 此处假设文本是 `'_.set('角色.络络.好感度', 30);'`, 但你也可以从 `generate` 等地方获取
-const content = '_.set('角色.络络.好感度', 30);';
+// 解析从某处得到的文本中的更新命令, 此处假设了一段文本, 但你也可以从 `generate` 等地方获取
+const content = "<json_patch>略</json_patch>";
 const new_data = await Mvu.parseMessage(content, mvu_data);
 
 await Mvu.replaceMvuData(new_data, { type: 'message', message_id: getCurrentMessageId() });
@@ -186,22 +309,24 @@ await Mvu.replaceMvuData(new_data, { type: 'message', message_id: getCurrentMess
 :::
 ::::
 
-需要注意的是, 虽然你在聊天变量中也能看到 MVU 变量, 但那只是 MVU 变量框架的遗留问题; 你应该总是对某个消息楼层即 `{ type: 'message', message_id: 楼层号 }` 更新 MVU 变量.
-
 ## 用变量激活绿灯
 
-我们甚至可以利用{doc}`/青空莉/工具经验/酒馆如何处理世界书/激活/index`中提到的 "自行编写代码控制条目的激活" 方法之一——`injectPrompts` 来将变量值转换为预扫描文本, 从而能够用来激活绿灯条目:
+我们可以用青空莉在{doc}`/青空莉/工具经验/酒馆如何处理世界书/激活/index`中提到的 "自行编写代码控制条目的激活" 方法之一——`injectPrompts` 来将变量值转换为可以激活绿灯的预扫描文本:
 
 ```ts
 await waitGlobalInitialized('Mvu');
-eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
-  // 将整个 stat_data 转换为绿灯的预扫描文本
-  const data = _.get(variables, 'stat_data');
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, variables => {
+  // 获取当前白娅依存度数值
+  const value = _.get(variables, 'stat_data.白娅.依存度');
+
   injectPrompts([
     {
-      id: 'mvu_variables',  // 这里的 id 是提示词的唯一标识符
-                            // 如果我们之后再对同样的 id 进行 injectPrompts, 则会替换掉之前的提示词
-      content: JSON.stringify(data),
+      id: '激活-白娅依存度',  // 这里的 id 是提示词的唯一标识符
+                           // 如果我们之后再对同样的 id 进行 injectPrompts, 则会替换掉之前的提示词
+
+      content: `白娅依存度=${value}`,  // 注入一段 `白娅依存度=xxx`, 只用于激活绿灯;
+                                     // 这样一来, 绿灯关键字可以填写 `白娅依存度=xxx` 来被激活
+
       position: 'none',
       depth: 0,
       role: 'user',
@@ -211,47 +336,66 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
 });
 ```
 
-我们只需要新建一个酒馆助手脚本, 将上面一段代码粘贴进去, 则会添加一段和 `{{get_message_variable::stat_data}}` 替换结果相同的文本, 仅用于绿灯激活.
+这样一来, 当前聊天里就会始终有 `白娅依存度=xxx` 这样的提示词仅用于绿灯激活, 而每次变量更新时, 脚本都会用 `injectPrompts` 更新它, 保证它始终是最新数值.
 
-如果你需要更精确的控制, 则可以不是转换整个 `stat_data` 而是转换某个变量, 或者自己填写如何注入这个仅用于绿灯激活的提示词:
+当然, 为了让绿灯关键字写起来更简单, 你可以直接注入 `白娅阶段一` 而不是 `白娅依存度`:
 
 ```ts
 await waitGlobalInitialized('Mvu');
-eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, async variables => {
-  // 在预扫描文本中注入一句 `络络好感度: 好感度具体数值`
-  const content = `络络好感度: ${_.get(variables, 'stat_data.角色.络络.好感度', 0)}`;
-  injectPrompts([
-    {
-      id: 'mvu_lolo_affection',
-      content,
-      position: 'none',
-      depth: 0,
-      role: 'user',
-      should_scan: true,
-    },
-  ]);
+eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, variables => {
+  // 获取当前白娅依存度数值
+  const value = _.get(variables, 'stat_data.白娅.依存度');
 
-  // 如果好感度大于 30, 设置 `条目关键字` 仅用于激活绿灯
-  if (_.get(variables, 'stat_data.角色.络络.好感度', 0) > 30) {
-    injectPrompts([
-      {
-        id: 'mvu_lolo_trigger',
-        content: '条目关键字',
-        position: 'none',
-        depth: 0,
-        role: 'user',
-        should_scan: true,
-      },
-    ]);
+  let content = '白娅阶段';
+  if (value < 20) {
+    content += '一';
+  } else if (value < 40) {
+    content += '二';
+  } else if (value < 60) {
+    content += '三';
+  } else if (value < 80) {
+    content += '四';
+  } else {
+    content += '五';
   }
+
+  injectPrompts([
+    {
+      id: '激活-白娅依存度',
+      content,  // `白娅阶段一`、`白娅阶段二`、...
+      position: 'none',
+      depth: 0,
+      role: 'user',
+      should_scan: true,
+    },
+  ]);
 });
 ```
 
-另外{doc}`/青空莉/工具经验/酒馆如何处理世界书/index`中还给了别的方式.
+另一种方式是利用 `injectPrompts` 的 `filter` 字段, 直接注入一段只有给定条件满足时才使用的提示词. 示例卡中的立即事件脚本就是这么做的:
 
-## 在脚本中请求 AI 生成并用结果更新变量
+```ts
+injectPrompts([
+ {
+   id: '激活-依存度最低时立即事件',
+   position: 'none',
+   depth: 0,
+   role: 'system',
+   content: '【【依存度最低时立即事件】】',
 
-你当然可以在前端界面或脚本中直接请求 AI 生成, 而生成结果中如果有 `_.set` 等文本, 你也可以解析它并更新变量.
+   // `getAllVariables()` 获取最新变量, 从中得到白娅依存度, 仅当依存度为 0 时才激活这段提示词
+   filter: () => _.get(getAllVariables(), 'stat_data.白娅.依存度') === 0,
+
+   should_scan: true,
+ },
+])
+```
+
+当然, `injectPrompts` 除了注入仅用于激活绿灯的提示词外, 还能直接注入 Dn 提示词, 具体请阅读{doc}`/青空莉/工具经验/酒馆如何处理世界书/index`和{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`.
+
+## 在代码中请求 AI 生成并用结果更新变量
+
+你当然可以在前端界面或脚本中直接请求 AI 生成, 而生成结果中如果有 `<json_patch>` 等变量更新命令, 你也可以解析它并更新变量.
 
 ```ts
 await waitGlobalInitialized('Mvu');
@@ -271,19 +415,6 @@ await Mvu.replaceMvuData(new_data, { type: 'message', message_id: getCurrentMess
 
 自然地, 你也可以用这种方式直接让玩家在界面里玩 AI, 具体请参考{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`.
 
-## 用脚本实现更多变量控制
+## 用脚本实现更多功能
 
-请阅读{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 然后把模板文件夹中的 `@types/iframe/exported.mvu.d.ts` 文件发给 ai 让它学着帮你写.
-
-## 仅用于脚本的 MVU 变量
-
-有的时候, 我们并不希望 AI 能更新某个变量, 而只希望脚本能更新它. \
-例如, 角色卡在开局设定了角色性别, 而你不希望在游玩过程中 AI 发蠢把它改变了.
-
-这需要我们回顾 MVU 变量框架是如何起作用的:
-
-- 我们通过 initvar 设置了有哪些 MVU 变量
-- 我们通过编写变量提示词让 AI 知道了有哪些变量 (变量列表)、该如何更新它们 (变量更新规则) 以及输出什么来更新它们 (输出规则).
-- 我们使用提示词模板编写 `<%_ _%>` 和 `<%= _%>` 来用变量编写动态提示词
-
-那么, 我们只要不在编写变量提示词时书写某个变量, AI 就没办法知道有它, 也就没办法更新它.
+请阅读{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 然后把模板文件夹中的 `@types/iframe/exported.mvu.d.ts` 文件发给 AI 让它学着帮你写.
