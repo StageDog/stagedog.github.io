@@ -307,8 +307,6 @@ _%>
 
 如果你有代码经验, 也可以按 {kbd}`f12` 打开浏览器开发者工具, 然后在条目内容里用 `<%_ debugger; _%>` 触发浏览器的断点调试.
 
-(让AI为你编写EJS代码)=
-
 ## 让 AI 为你编写 EJS 代码
 
 AI 会 Embedded JavaScript 语法, 你可以让它替你编写. 在其中, 你可以用 `TavernHelper` 来访问[酒馆助手的功能如 `TavernHelper.getWorldbook`](https://n0vi028.github.io/JS-Slash-Runner-Doc/), 或者直接访问[提示词模板的功能如 `getvar`](https://github.com/zonde306/ST-Prompt-Template/blob/main/docs/reference_cn.md).

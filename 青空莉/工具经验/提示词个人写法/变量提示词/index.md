@@ -2,24 +2,19 @@
 
 {{ prolog }}
 
-变量提示词由三个部分组成:
-
-变量列表
-: 变量的当前值是多少、意义是什么?
-
-变量更新规则
-: 变量在什么情况下应该被更新、更新成什么值?
-
-变量更新格式
-: AI 应该输出什么来更新变量?
+我的变量提示词方案已经在{doc}`/络络/教程/手写mvu变量卡/变量提示词/index`中详细介绍了, 此处只列举一些杂七杂八**甚至可能过时了的**内容.
 
 **这些都只是提示词, 写法只取决于你的想象. 以下只是给你一个概念, 请不要照抄.** \
 **这些都只是提示词, 写法只取决于你的想象. 以下只是给你一个概念, 请不要照抄.** \
-**这些都只是提示词, 写法只取决于你的想象. 以下只是给你一个概念, 请不要照抄.** \
-你可以在{doc}`门之主写卡助手 </青空莉/作品集/index>`中使用我的变量提示词模板, 另外有络络的{doc}`/络络/教程/手写mvu变量卡/index`教你怎么写, 但我每张卡其实都使用了不同的变量提示词写法:
+**这些都只是提示词, 写法只取决于你的想象. 以下只是给你一个概念, 请不要照抄.**
+
+## 我的过时变量角色卡
+
+我每张卡其实都使用了不同的变量提示词写法:
 
 - {lolodesu_path}`络络做的、我调整后的日记络络 <src/日记络络>`
 - {stagedog_path}`萝莉元首自改版 <src/角色卡/萝莉元首>` (应该是提示词模板第一次被除作者外的人使用)
+- {stagedog_path}`呕吐内心的少女 <src/角色卡/呕吐内心的少女>`
 - {stagedog_path}`晚安络络 <src/角色卡/晚安络络>`
 - {stagedog_path}`妹妹请求你保护她露出 <src/角色卡/妹妹请求你保护她露出>`
 
@@ -56,231 +51,7 @@
 ::::
 :::::
 
-## 变量列表
-
-如果需要 AI 更新变量, 则我们需要按照正确的变量结构在提示词里列出变量.
-
-我的推荐做法是, 将需要 AI 更新的变量按结构一一列举出来, 利用变量的名称和 `# 注释` 来解释变量的意义:
-
-```yaml
----
-角色:
-  络络:
-    好感度: {{get_message_variable::stat_data.角色.络络.好感度}} # 0-100
-    心情: {{get_message_variable::stat_data.角色.络络.心情}} # 仅有开心、难过、哭泣、生气四种心情
-  青空莉:
-    好感度: {{get_message_variable::stat_data.角色.青空莉.好感度}}
-    心情: {{get_message_variable::stat_data.角色.青空莉.心情}}
-世界:
-  日期: {{get_message_variable::stat_data.世界.日期}}
-  时间: {{get_message_variable::stat_data.世界.时间}}
-```
-
-但是像好感度一类变量, 我们可能需要在另一个条目中更详细地解释其意义; 想必你见过我的角色阶段写法:
-
-```{code-block} yaml
-:emphasize-lines: 8
----
-角色阶段:
-  descritpion: 角色阶段基于各角色的`角色关键信息`和`角色详情`词条，描述了经过剧情发展后角色成长得到的新人设
-  associated variable: 各角色的阶段关联有不同的变量，仅用于判断其角色阶段是否应该发生变化，不影响阶段的具体人设
-  行为指导: 角色在这个阶段会采取的行为
-  变化倾向: 随着associated variable接近下一阶段，角色逐渐发生的变化
-心爱:
-  associated variable: 心爱.好感度(<%= getvar('stat_data.心爱.好感度') _%>)
-  stage name:
-    阶段1: 羞涩抗拒(24以下)
-    阶段2: 欲拒还迎(25~49)
-    阶段3: 共犯默契(50~74)
-    阶段4: 沉沦释放(75~99)
-    阶段5: 灵肉相许(100以上)
-  羞涩抗拒:
-    行为指导:
-      - 露出时总是躲在哥哥身后，却又嘴硬说不需要保护
-      - ...
-    变化倾向:
-      - 在拍摄时尝试更富表现力的构图，但仍避免自己入镜
-      - ...
-  ...
-  灵肉相许:
-    行为指导:
-      - ...
-```
-
-提示词中 `associated variable` (关联变量) 一般是好感度. 这段角色阶段即是列出了变量的当前值, 并用一大段提示词来解释变量在不同区间下的意义.
-
-:::{admonition} 为什么角色阶段会有 `stage name`
-:class: tip, dropdown
-之所以会有 `stage name`, 是我不想只在状态栏显示一个无聊的好感度数值, 而想在状态栏根据好感度数值显示一个好感度阶段名.
-
-我没有用酒馆助手前端界面, 因而不能用代码来根据好感度显示对应的好感度阶段名, 而只能依赖于 AI 自己根据好感度数值输出正确的好感度阶段名.
-
-但我们只会发送一个好感度阶段给 AI, 则 AI 只能知道当前好感度的阶段名, 没办法在好感度提高到下一个阶段时正确输出下一个阶段的名称. 因此我需要用蓝灯列一个 `stage name` 让 AI 知道所有的好感度阶段名, 这样它才能正确地输出好感度阶段名.
-:::
-
-变量列表不能随意列举, 否则可能出现 AI 上一楼才更新了变量, 下一楼又更新变量的情况.
-
-:::{admonition} 如何让 AI 知道变量列表里是最新值
-:class: tip, dropdown
-
-为了让 AI 知道变量列表中的值是最新的, 你有几种选择:
-
-- 将变量列表放在 D1, 这样的变量列表会置于之前所有 AI 输出之后 (也就是最新剧情之后), 因此 AI 能直接理解它是最新的
-- 将变量列表放在 D4 等位置, 然后精心设计变量更新格式及分析思维链提示词:
-  - 告诉 AI 发送给它的变量是最新的: 一般变量列表会用 xml 标签包裹, 因此可以告诉 AI `<标签>` 里的变量是最新的, 甚至让 AI 在变量更新思维链里列一遍 ``我已经知道 `<标签>` 中的变量是最新的``
-  - 让 AI 仅基于当前回复更新变量: 玄学点可以在变量更新思维链里加一个 `仅根据当前回复而不是之前的剧情来分析每个变量是否需要更新`
-- 在 D1 位置放一个分隔符提示词, 如 `vvv以下为最新剧情vvv`
-- 让 AI 用类似 `<正文>` 的标签包裹正文
-  - 对更早回复用一个最小深度 `3` 正则, 将 `<正文>` 改写为 `<过去正文>`
-  - 对最新一次回复用一个最大深度 `2` 正则, 将 `<正文>` 改写为 `<最新过去正文>` 从而与之前的剧情相区别
-- 调整不发送变量更新正则, 把变量更新情况发给 AI, 让 AI 能知道变量更新过了
-  - 设置最大深度, 例如设置为 `2` 来保留上一次回复中的变量更新命令发送给 AI
-  - 或直接取消 "仅格式提示词", 发送以前所有变量更新情况; 为了减少 token, 你可以单独为变量更新中的思维链做一个 "仅格式提示词" 正则, 仅保留变量更新命令 (`_.set(...)` 等) 发给 AI
-
-:::
-
-## 变量更新规则
-
-一些简单的变量可以直接由 AI 根据名称来理解如何更新, 无须专门编写变量更新规则提示词.
-
-但你可能想对好感度一类变量自己限定一些更新规则:
-
-```{code-block} yaml
-:emphasize-lines: 9-10
----
-角色:
-  络络:
-    好感度: {{get_message_variable::stat_data.角色.络络.好感度}} # 0-100
-    心情: {{get_message_variable::stat_data.角色.络络.心情}} # 仅有开心、难过、哭泣、生气四种心情
-  青空莉:
-    好感度: {{get_message_variable::stat_data.角色.青空莉.好感度}}
-    心情: {{get_message_variable::stat_data.角色.青空莉.心情}}
-check:
-  - 如果角色注意到了<user>的行为，根据他们的态度将'好感度'更新±(1~4)
-```
-
-或者更复杂地, 专门解释各种变量的类型、范围和更新要求:
-
-```yaml
----
-变量更新规则:
-  好感度:
-    type: number
-    range: 限定于0~100之间，如果达到了100则不再变化
-    check: 如果角色注意到了<user>的行为，根据他们的态度将'好感度'更新±(1~4)
-  药物依赖度:
-    type: number
-    range: 0~100
-    check:
-      - 每8分钟提升1点艾莉卡的药物依赖度
-      - 每15分钟提升1点伊薇特和伊丽莎白的药物依赖度
-      - 如果她们被注射苍白之夜，将她们的药物依赖度清零
-  背包:
-    type: |-
-      z.array(z.object({
-        物品: z.string(),
-        数量: z.number().min(1).describe('物品数量少于1时应该移除物品'),
-      }));
-    略
-```
-
-我的变量更新规则有一个核心字段——`check`. 通过它, 我们可以在其他提示词中引用变量更新规则, 例如 `` 为我原封不动地输出好感度对应的`check` ``. (你可以在 {doc}`/青空莉/工具经验/提示词个人写法/组合和命名提示词/index`中看到对这种写法更详细的解释.)
-
-这样能够引用变量更新规则有什么用呢? 再回忆一下变量提示词:
-
-变量列表
-: 变量的当前值是多少、意义是什么?
-
-变量更新规则
-: 变量在什么情况下应该被更新、更新成什么值?
-
-变量更新格式
-: AI 应该输出什么来更新变量?
-
-变量之所以得到更新, 是因为 AI 根据变量更新格式输出了 MVU 所规定的 `_.set(...)` 等更新命令; 但就像 AI 可能在正文中出现常识、逻辑等错误, 它当然可能在更新变量时出现错误: 忘记更新某个变量、没按照要求正确更新某个变量……
-
-我们是如何尽量避免 AI 在正文中出错的呢? 一些预设会提供思维链, 要求 AI 先在思维链里 "打草稿" 再输出正文, 从而提升正文的质量. \
-类似地, 我们也可以在 AI 输出实际的 `_.set(...)` 等更新命令之前, 要求 AI 先 "打草稿". 而这时, 我们就可以引用变量更新规则, 要求 AI `` 基于变量对应的`check`分析应该如何更新变量 ``.
-
-反过来说, 既然我们会在变量输出格式中引用变量更新规则, 那它就没必要放在 D1 这样占据注意力的位置, 而完全可以将它置于更次要的位置——反正 AI 在输出变量更新前会在变量更新思维链里先回想它.
-
-## 变量更新格式
-
-就像{doc}`络络手写 MVU 变量卡教程 </络络/教程/手写mvu变量卡/变量提示词/index>`中所说, AI 输出和用户输入中任意位置的 `_.set(...)` 都会被 MVU 脚本读取, 因此变量更新其实并没有固定的格式, 没必要必须放在 `<UpdateVariable>` 之类的块中统一更新.
-
-但一般而言, 你会用上我在 [2024/11/21](https://discord.com/channels/1134557553011998840/1308984948794982421) 设计的一类变量更新格式提示词. 它最初的版本其实没有复杂思维链, 只在尾部有一个 `reason` 要求 AI 分析变量为什么该更新:
-
-```yaml
----
-变量更新格式:
-  rule: 你必须在每次回复的最底部，输出<UpdateVariable>包裹的变量更新命令
-  format: |-
-    <UpdateVariable>
-    _.set('${path}', ${old value}, ${new value}); // ${reason}
-    ...
-    </UpdateVariable>
-```
-
-后来为了让 AI 更愿意更新变量, 我加入了思维链, 即 `<Analysis>` 块. **思维链不一定要在 AI 输出的开头, 这里的 `<Analysis>` 也是思维链, 即在实际输出前让 AI 先打草稿.**
-
-```{code-block} yaml
-:emphasize-lines: 6-8
----
-变量更新格式:
-  rule: 你必须在每次回复的最底部，输出<UpdateVariable>包裹的变量更新命令
-  format: |-
-    <UpdateVariable>
-    <Analysis>
-    某些思维链...
-    </Analysis>
-    _.set('${path}', ${old value}, ${new value}); // ${reason}
-    ...
-    </UpdateVariable>
-```
-
-我喜欢加上的思维链项目有:
-
-::::{tabs}
-
-:::{tab} 中文
-
-```{code-block} yaml
-:caption: 计算剧情时间变化
-- ${计算经过的时间: ...}
-```
-
-```{code-block} yaml
-:caption: 允许变量因剧情而发生剧烈变动 (好感度从 100 直接掉到 0)
-- ${根据当前情节是否足够特殊、时间跨度是否远超正常情况，判断是否允许变量值发生戏剧性变化: yes/no}
-```
-
-```{code-block} yaml
-:caption: 回忆变量更新所需的 `check`, 据此分析该如何更新
-- ${基于变量对应的`check`，仅根据当前回复而不是之前的剧情来分析每个变量是否需要更新: ...}
-```
-
-:::
-
-:::{tab} 英文
-
-```{code-block} yaml
-:caption: 计算剧情时间变化
-- ${calculate time passed: ...}
-```
-
-```{code-block} yaml
-:caption: 允许变量因剧情而发生剧烈变动
-- ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes/no}
-```
-
-```{code-block} yaml
-:caption: 回忆变量更新所需的`check`, 据此分析该如何更新
-- ${analyze every variable based on its corresponding `check`, according only to current reply instead of previous plots: ...}
-```
-
-:::
-
-::::
+## 变量分析思维链
 
 思维链或者所有提示词怎么写完全由你自己说了算, 你也许会得到:
 
@@ -296,9 +67,15 @@ check:
 - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes or no}
 - ${what variables should be updated, accoring only to current reply instead of previous plots: ...}
 </update_analysis>
-
-_.set('${path}', ${old}, ${new}); // ${reason}
-...
+<json_patch>
+[
+  { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
+  { "op": "add", "path": "${/path/to/array/-}", "value": "${item_to_append}" },
+  { "op": "add", "path": "${/path/to/object/newKey}", "value": "${content}" }
+  { "op": "remove", "path": "${/path/to/array/0}" },
+  ...
+]
+</json_patch>
 </update>
 ```
 
@@ -317,9 +94,15 @@ _.set('${path}', ${old}, ${new}); // ${reason}
 - ${update variables suffixed with '好感度' according to characters' attitudes towards <user>'s behavior respectively only if they're currently aware of it (±(3~6); but '好感度' must be capped in 0~100 and remains unchange when it's 100): ...}
 - ${switch variables suffixed with '处女', '受孕' or '被<user>接受感情' between '是' and '否': ...}
 </update_analysis>
-
-_.set('${path}', ${old}, ${new}); // ${reason}
-...
+<json_patch>
+[
+  { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
+  { "op": "add", "path": "${/path/to/array/-}", "value": "${item_to_append}" },
+  { "op": "add", "path": "${/path/to/object/newKey}", "value": "${content}" }
+  { "op": "remove", "path": "${/path/to/array/0}" },
+  ...
+]
+</json_patch>
 </update>
 ```
 
@@ -336,9 +119,15 @@ _.set('${path}', ${old}, ${new}); // ${reason}
 - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes or no}
 - ${analyze every variable based on its corresponding `check`, according only to current reply instead of previous plots: ...}
 </update_analysis>
-
-_.set('${path}', ${old}, ${new}); // ${reason}
-...
+<json_patch>
+[
+  { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
+  { "op": "add", "path": "${/path/to/array/-}", "value": "${item_to_append}" },
+  { "op": "add", "path": "${/path/to/object/newKey}", "value": "${content}" }
+  { "op": "remove", "path": "${/path/to/array/0}" },
+  ...
+]
+</json_patch>
 </update>
 ```
 
@@ -356,9 +145,15 @@ _.set('${path}', ${old}, ${new}); // ${reason}
 - ${list every item in every `check` of `变量更新规则` document before actual variable analysis: ...}
   - ${analyze corresponding variables that are based on this item, according only to current reply instead of previous plots: ...}
 </update_analysis>
-
-_.set('${path}', ${old}, ${new}); // ${reason}
-...
+<json_patch>
+[
+  { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
+  { "op": "add", "path": "${/path/to/array/-}", "value": "${item_to_append}" },
+  { "op": "add", "path": "${/path/to/object/newKey}", "value": "${content}" }
+  { "op": "remove", "path": "${/path/to/array/0}" },
+  ...
+]
+</json_patch>
 </update>
 ```
 
@@ -376,9 +171,15 @@ ${display every `check` in `变量更新规则` document before actual variable 
 - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes or no}
 - ${analyze variables based on `check`, according only to current reply instead of previous plots: ...}
 </update_analysis>
-
-_.set('${path}', ${old}, ${new}); // ${reason}
-...
+<json_patch>
+[
+  { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
+  { "op": "add", "path": "${/path/to/array/-}", "value": "${item_to_append}" },
+  { "op": "add", "path": "${/path/to/object/newKey}", "value": "${content}" }
+  { "op": "remove", "path": "${/path/to/array/0}" },
+  ...
+]
+</json_patch>
 </update>
 ```
 
