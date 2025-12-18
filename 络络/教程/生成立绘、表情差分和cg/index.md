@@ -435,7 +435,7 @@ solo,(upper body),cowboy shot,standing,((green background)),((green screen)),sim
 <small>反向橡皮擦就是点击橡皮擦后, 上方勾选{menuselection}`抹到历史记录`</small> \
 工作量也不算大, 大概两分钟就能做完? 鼠标画也可以呢, 毕竟 PS 现在的平滑绘画还挺强大的!
 
-但是我认为只是用爱发电而已（）没必要做这么完美吧ww这个效果已经足够啦!
+但是我认为只是用爱发电而已（）没必要做这么完美吧ww这个效果已经足够啦! 你也可以试试这个[抠图网站](https://www.koukoutu.com/removebgtool/all)!
 
 请看, 带有背景的效果:
 

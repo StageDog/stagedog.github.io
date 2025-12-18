@@ -43,7 +43,7 @@
 MVU 变量更新正则 ([类脑](https://discord.com/channels/1134557553011998840/1396436859613089893/1396436859613089893)/[旅程](https://discord.com/channels/1291925535324110879/1396436234729029703/1396436234729029703))
 : - 美化版 ([点此查看演示](https://gitgud.io/StageDog/tavern_resource/-/raw/main/src/正则/变量更新/美化版.mp4)): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[美化]变量更新中 <src/正则/变量更新/regex-[美化]变量更新中.json>`、{stagedog}`[美化]完整变量更新 <src/正则/变量更新/regex-[美化]完整变量更新.json>`
   - 折叠版 ([点此查看演示](https://gitgud.io/StageDog/tavern_resource/-/raw/main/src/正则/变量更新/折叠版.mp4)): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[折叠]变量更新中 <src/正则/变量更新/regex-[折叠]变量更新中.json>`、{stagedog}`[折叠]完整变量更新 <src/正则/变量更新/regex-[折叠]完整变量更新.json>`
-  - 仅提示版 (不能展开查看更新内容): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[提示]变量更新中 <src/正则/变量更新/regex-[提示]变量更新中.json>`、{stagedog}`[提示]完整变量更新 <src/正则/变量更新/regex-[提示]完整变量更新.json>`
+  - 仅提示版 (不能展开查看更新内容): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[仅提示]变量更新中 <src/正则/变量更新/regex-[仅提示]变量更新中.json>`、{stagedog}`[仅提示]完整变量更新 <src/正则/变量更新/regex-[仅提示]完整变量更新.json>`
 
 ## 酒馆助手脚本
 
