@@ -478,8 +478,8 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 ---
 变量输出格式:
   rule:
-    - you should output the update analysis and the actual update commands in the end of the next reply
-    - 'the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, but can only use the following operations: `replace`, `add` (only used to insert new items into an object or array), `remove`; that is, the output must be a valid JSON array containing operation objects'
+    - you must output the update analysis and the actual update commands in the end of the next reply
+    - 'the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, but can only use the following operations: `replace` (replace the value of existing paths), `add` (only used to insert new items into an object or array), `remove`; that is, the output must be a valid JSON array containing operation objects'
   format: |-
     <update>
     <update_analysis>$(IN ENGLISH, no more than 80 words)
@@ -583,8 +583,8 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 ---
 变量输出格式:
   rule:
-    - you should output the update analysis and the actual update commands in the end of the next reply
-    - 'the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, but can only use the following operations: `replace`, `add` (only used to insert new items into an object or array), `remove`; that is, the output must be a valid JSON array containing operation objects'
+    - you must output the update analysis and the actual update commands in the end of the next reply
+    - 'the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, but can only use the following operations: `replace` (replace the value of existing paths), `add` (only used to insert new items into an object or array), `remove`; that is, the output must be a valid JSON array containing operation objects'
   format: |-
     <update>
     <update_analysis>$(IN ENGLISH, no more than 80 words)
