@@ -481,21 +481,21 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     - you must output the update analysis and the actual update commands in the end of the next reply
     - 'the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, but can only use the following operations: `replace` (replace the value of existing paths), `add` (only used to insert new items into an object or array), `remove`; that is, the output must be a valid JSON array containing operation objects'
   format: |-
-    <update>
-    <update_analysis>$(IN ENGLISH, no more than 80 words)
+    <UpdateVariable>
+    <Analysis>$(IN ENGLISH, no more than 80 words)
     - ${calculate time passed: ...}
     - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes/no}
     - ${analyze every variable based on its corresponding `check`, according only to current reply instead of previous plots: ...}
-    </update_analysis>
-    <json_patch>
+    </Analysis>
+    <JSONPatch>
     [
       { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
       { "op": "add", "path": "${/path/to/object/newKey}", "value": "${content}" }
       { "op": "remove", "path": "${/path/to/array/0}" },
       ...
     ]
-    </json_patch>
-    </update>
+    </JSONPatch>
+    </UpdateVariable>
 ```
 
 :::
@@ -509,21 +509,21 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     - 你必须在回复末尾输出更新分析和实际的更新命令
     - 更新命令必须严格遵循**JSON Patch (RFC 6902)**标准，但只能使用以下操作：`replace`、`add` (只用于为对象或数组插入新元素)、`remove`；也就是说，输出的更新命令必须是一个有效的 JSON 数组，其中每个元素都是表示单个操作的对象
   format: |-
-    <update>
-    <update_analysis>$(按英文输出，不超过80词)
+    <UpdateVariable>
+    <Analysis>$(按英文输出，不超过80词)
     - ${计算经过的时间: ...}
     - ${根据当前情节是否足够特殊、时间跨度是否远超正常情况，判断是否允许变量值发生戏剧性变化: 是/否}
     - ${基于变量对应的`check`，仅根据当前回复而不是之前的剧情来分析每个变量是否需要更新: ...}
-    </update_analysis>
-    <json_patch>
+    </Analysis>
+    <JSONPatch>
     [
       { "op": "replace", "path": "${/到/变量/的路径}", "value": "${新值}" },
       { "op": "add", "path": "${/到/对象/的路径/-}", "value": "${内容}" }
       { "op": "remove", "path": "${/到/数组/的路径/0}" },
       ...
     ]
-    </json_patch>
-    </update>
+    </JSONPatch>
+    </UpdateVariable>
 ```
 
 :::
@@ -533,23 +533,23 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 ```text
 剧情部分...
 
-<update>
-<update_analysis>
+<UpdateVariable>
+<Analysis>
 - Time advanced by 10 minutes (from 10:47 to 10:57) for the class break and the subsequent interaction.
 - Special Case? No, routine plot progression, no dramatic time skips.
 - 白娅.依存度: Baiya showed a strong reaction to Qingkong Li (trembling, calling him "brother", self-denial but accepting the candy secretly). She definitely noticed his attention and action. This indicates a significant emotional impact, warranting an increase.
 - 白娅.称号: The "哥哥" slip-up and the immediate self-punishment reinforce her internal conflict, but doesn't necessarily grant a new title yet. Her current titles are still very relevant.
 - 主角.物品栏: The mints were placed on Baiya's desk. The item should be removed from inventory.
 - 世界.近期事务: "转学生安置" is ongoing but the specific interaction happened. "午休临近" is becoming more relevant as break continues.
-</update_analysis>
-<json_patch>
+</Analysis>
+<JSONPatch>
 [
   { "op": "replace", "path": "/世界/当前时间", "value": "2024-04-08 10:57" },
   { "op": "replace", "path": "/白娅/依存度", "value": 40 },
   { "op": "remove", "path": "/主角/物品栏/薄荷糖" }
 ]
-</json_patch>
-</update>
+</JSONPatch>
+</UpdateVariable>
 ```
 
 :::
@@ -571,7 +571,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
   - `${描述}`: AI 需要根据 "描述" 将它替换为对应的内容. 例如 `衣着: ${具体描述角色当前衣着}` 可能输出 `衣着: 粉金色宽松T恤睡裙`;
   - `$(要求)`: AI 只会听从 "要求" 而不对它进行输出. 例如 `$(以下内容应该按英文输出)` 会让 AI 更倾向于用英文输出之后的内容;
   - `...`: AI 需要仿照之前给定的规则和内容补充输出. 例如 `其他角色: ...` 会让 AI 根据前面给定的 `白娅` 的输出格式, 补充其他角色的输出;
-  - 其他内容原封不动地进行输出, 所以 AI 原封不动地输出了 `<update>`、`<update_analysis>`、`<json_patch>` 等标签.
+  - 其他内容原封不动地进行输出, 所以 AI 原封不动地输出了 `<UpdateVariable>`、`<Analysis>`、`<JSONPatch>` 等标签.
 
 现在再回过头来看刚刚的提示词和 AI 输出结果, 是不是能够理解它们之间的关系了呢?
 
@@ -586,21 +586,21 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     - you must output the update analysis and the actual update commands in the end of the next reply
     - 'the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, but can only use the following operations: `replace` (replace the value of existing paths), `add` (only used to insert new items into an object or array), `remove`; that is, the output must be a valid JSON array containing operation objects'
   format: |-
-    <update>
-    <update_analysis>$(IN ENGLISH, no more than 80 words)
+    <UpdateVariable>
+    <Analysis>$(IN ENGLISH, no more than 80 words)
     - ${calculate time passed: ...}
     - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes/no}
     - ${analyze every variable based on its corresponding `check`, according only to current reply instead of previous plots: ...}
-    </update_analysis>
-    <json_patch>
+    </Analysis>
+    <JSONPatch>
     [
       { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
       { "op": "add", "path": "${/path/to/object/newKey}", "value": "${content}" }
       { "op": "remove", "path": "${/path/to/array/0}" },
       ...
     ]
-    </json_patch>
-    </update>
+    </JSONPatch>
+    </UpdateVariable>
 ```
 
 :::
@@ -614,21 +614,21 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     - 你必须在回复末尾输出更新分析和实际的更新命令
     - 更新命令必须严格遵循**JSON Patch (RFC 6902)**标准，但只能使用以下操作：`replace`、`add` (只用于为对象或数组插入新元素)、`remove`；也就是说，输出的更新命令必须是一个有效的 JSON 数组，其中每个元素都是表示单个操作的对象
   format: |-
-    <update>
-    <update_analysis>$(按英文输出，不超过80词)
+    <UpdateVariable>
+    <Analysis>$(按英文输出，不超过80词)
     - ${计算经过的时间: ...}
     - ${根据当前情节是否足够特殊、时间跨度是否远超正常情况，判断是否允许变量值发生戏剧性变化: 是/否}
     - ${基于变量对应的`check`，仅根据当前回复而不是之前的剧情来分析每个变量是否需要更新: ...}
-    </update_analysis>
-    <json_patch>
+    </Analysis>
+    <JSONPatch>
     [
       { "op": "replace", "path": "${/到/变量/的路径}", "value": "${新值}" },
       { "op": "add", "path": "${/到/对象/的路径/-}", "value": "${内容}" }
       { "op": "remove", "path": "${/到/数组/的路径/0}" },
       ...
     ]
-    </json_patch>
-    </update>
+    </JSONPatch>
+    </UpdateVariable>
 ```
 
 :::
@@ -638,23 +638,23 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 ```text
 剧情部分...
 
-<update>
-<update_analysis>
+<UpdateVariable>
+<Analysis>
 - Time advanced by 10 minutes (from 10:47 to 10:57) for the class break and the subsequent interaction.
 - Special Case? No, routine plot progression, no dramatic time skips.
 - 白娅.依存度: Baiya showed a strong reaction to Qingkong Li (trembling, calling him "brother", self-denial but accepting the candy secretly). She definitely noticed his attention and action. This indicates a significant emotional impact, warranting an increase.
 - 白娅.称号: The "哥哥" slip-up and the immediate self-punishment reinforce her internal conflict, but doesn't necessarily grant a new title yet. Her current titles are still very relevant.
 - 主角.物品栏: The mints were placed on Baiya's desk. The item should be removed from inventory.
 - 世界.近期事务: "转学生安置" is ongoing but the specific interaction happened. "午休临近" is becoming more relevant as break continues.
-</update_analysis>
-<json_patch>
+</Analysis>
+<JSONPatch>
 [
   { "op": "replace", "path": "/世界/当前时间", "value": "2024-04-08 10:57" },
   { "op": "replace", "path": "/白娅/依存度", "value": 40 },
   { "op": "remove", "path": "/主角/物品栏/薄荷糖" }
 ]
-</json_patch>
-</update>
+</JSONPatch>
+</UpdateVariable>
 ```
 
 :::
@@ -663,13 +663,13 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 
 接下来我们再来看看 `format` 部分是怎么设计的吧!
 
-`format` 的所有输出内容被包裹在了 `<update>` 标签中, 这会方便我们马上要提及的 "酒馆正则" 处理. \
-而在它里面有 `<update_analysis>` 和 `<json_patch>` 两个部分, 分别对应了对变量更新进行分析和实际输出变量命令.
+`format` 的所有输出内容被包裹在了 `<UpdateVariable>` 标签中, 这会方便我们马上要提及的 "酒馆正则" 处理. \
+而在它里面有 `<Analysis>` 和 `<JSONPatch>` 两个部分, 分别对应了对变量更新进行分析和实际输出变量命令.
 
 我们让 AI 先输出对变量更新的分析, 再实际输出变量更新命令. 这种先让 AI "打草稿" 再输出正式内容的方式, 就是思维链 (Chain of Thought, CoT) 的典型应用. \
-注意哦, `<update_analysis>` 就是思维链了, 而且是专门用于变量更新的思维链! 不要被人误导, 以为变量更新还需要额外加思维链啦.
+注意哦, `<Analysis>` 就是思维链了, 而且是专门用于变量更新的思维链! 不要被人误导, 以为变量更新还需要额外加思维链啦.
 
-在 `<update_analysis>` 部分有三个思考内容, 是青空莉常用的三个, 我也觉得挺好用x:
+在 `<Analysis>` 部分有三个思考内容, 是青空莉常用的三个, 我也觉得挺好用x:
 
 ::::{tabs}
 
@@ -717,21 +717,21 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 
 还记得我们在 "变量更新规则" 部分遗留的问题吗? 变量更新规则可以放在角色定义之前、D4 之类更不占用注意力的位置, 从而让 AI 更注意其他提示词和剧情. 但是由于 AI 更少去注意变量更新规则, 它在更新变量时更容易出错了.
 
-变量更新规则的核心是 `check`, 它告诉 AI 应该根据什么来更新变量、更新成什么值. 而我们在变量输出格式的 `<update_analysis>` 部分要求 AI 输出思维链来回忆 `check`, 也就是在 "召回" 变量更新规则, 从而稳定变量更新.
+变量更新规则的核心是 `check`, 它告诉 AI 应该根据什么来更新变量、更新成什么值. 而我们在变量输出格式的 `<Analysis>` 部分要求 AI 输出思维链来回忆 `check`, 也就是在 "召回" 变量更新规则, 从而稳定变量更新.
 
 ### 酒馆正则
 
-有了变量输出格式, AI 将会在回复时输出 `<update>` 来更新变量. 但这个输出会放在楼层里, 如果我们不加以处理, 玩家后续游玩时, 酒馆会将每楼的 `<update>` 也发给 AI.
+有了变量输出格式, AI 将会在回复时输出 `<UpdateVariable>` 来更新变量. 但这个输出会放在楼层里, 如果我们不加以处理, 玩家后续游玩时, 酒馆会将每楼的 `<UpdateVariable>` 也发给 AI.
 
-但显然, AI 输出的 `<update>` 没必要再发给 AI: `<update>` 中的更新命令已经被 MVU 脚本解析使用了, 而 AI 在后续回复中很少需要参考它来稳定变量更新格式——我们已经在世界书里给了变量输出格式了.
+但显然, AI 输出的 `<UpdateVariable>` 没必要再发给 AI: `<UpdateVariable>` 中的更新命令已经被 MVU 脚本解析使用了, 而 AI 在后续回复中很少需要参考它来稳定变量更新格式——我们已经在世界书里给了变量输出格式了.
 
-如果我们保留所有楼层的 `<update>` 发给 AI:
+如果我们保留所有楼层的 `<UpdateVariable>` 发给 AI:
 
 - 首先, 这浪费了 token;
-- 其次, AI 可能不必要地花费注意力去学习之前的 `<update>` 而更少地将注意力放在剧情上;
-- 最后, AI 可能偷懒直接照抄之前的 `<update>` 而不真的分析思考该如何更新变量!
+- 其次, AI 可能不必要地花费注意力去学习之前的 `<UpdateVariable>` 而更少地将注意力放在剧情上;
+- 最后, AI 可能偷懒直接照抄之前的 `<UpdateVariable>` 而不真的分析思考该如何更新变量!
 
-因此, 我们需要在后续生成时不发送 `<update>` 部分给 AI——这就用到了酒馆正则.
+因此, 我们需要在后续生成时不发送 `<UpdateVariable>` 部分给 AI——这就用到了酒馆正则.
 
 酒馆正则能够捕获 AI 回复和用户输入中的特定文本, 让它在某些用途下被替换为指定内容:
 
@@ -746,7 +746,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 如果你还不够理解以上说明, 也许可以看看自己酒馆中的预设配套正则或者角色卡里的美化正则.
 :::
 
-为了便于大家操作, 青空莉已经提前制作了处理 `<update>` 变量更新的酒馆正则, 你只需下载导入其中一个版本的三个正则即可:
+为了便于大家操作, 青空莉已经提前制作了处理 `<UpdateVariable>` 变量更新的酒馆正则, 你只需下载导入其中一个版本的三个正则即可:
 
 - 美化版 ([点此查看演示](https://gitgud.io/StageDog/tavern_resource/-/raw/main/src/正则/变量更新/美化版.mp4)): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[美化]变量更新中 <src/正则/变量更新/regex-[美化]变量更新中.json>`、{stagedog}`[美化]完整变量更新 <src/正则/变量更新/regex-[美化]完整变量更新.json>`
 - 折叠版 ([点此查看演示](https://gitgud.io/StageDog/tavern_resource/-/raw/main/src/正则/变量更新/折叠版.mp4)): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[折叠]变量更新中 <src/正则/变量更新/regex-[折叠]变量更新中.json>`、{stagedog}`[折叠]完整变量更新 <src/正则/变量更新/regex-[折叠]完整变量更新.json>`
@@ -754,11 +754,11 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 
 其中,
 
-- `去除变量更新`是利用了正则的{menuselection}`仅格式提示词`功能, 在发送给 AI 时将整个 `<update>` 部分替换成空.
-- `变量更新中`和`完整变量更新`是利用了正则的{menuselection}`仅格式显示`功能, 美化 `<update>` 的显示, 方便玩家查看是否发生了更新但隐藏更新了什么.
+- `去除变量更新`是利用了正则的{menuselection}`仅格式提示词`功能, 在发送给 AI 时将整个 `<UpdateVariable>` 部分替换成空.
+- `变量更新中`和`完整变量更新`是利用了正则的{menuselection}`仅格式显示`功能, 美化 `<UpdateVariable>` 的显示, 方便玩家查看是否发生了更新但隐藏更新了什么.
 
-不过, `去除变量更新`默认是使得所有楼层的 `<update>` 都不发送给 AI, 但有时候保留最后一两层发给 AI 也是一种选择: 如果所有楼层的 `<update>` 都不发送给 AI, AI 可能误以为是要根据所有剧情来更新变量, 从而重复之前本应做过的更新. \
-例如, 在上一次回复中, AI 已经根据 "白娅和主角去约会" 这一剧情更新过了白娅的依存度, 但它在这次回复时看不到以前的 `<update>`, 于是它可能会再次根据 "白娅和主角去约会" 这一剧情更新白娅的依存度.
+不过, `去除变量更新`默认是使得所有楼层的 `<UpdateVariable>` 都不发送给 AI, 但有时候保留最后一两层发给 AI 也是一种选择: 如果所有楼层的 `<UpdateVariable>` 都不发送给 AI, AI 可能误以为是要根据所有剧情来更新变量, 从而重复之前本应做过的更新. \
+例如, 在上一次回复中, AI 已经根据 "白娅和主角去约会" 这一剧情更新过了白娅的依存度, 但它在这次回复时看不到以前的 `<UpdateVariable>`, 于是它可能会再次根据 "白娅和主角去约会" 这一剧情更新白娅的依存度.
 
 如果你遇到这种重复依据剧情更新变量的情况, 那么你可以选择保留最后一两层变量发给 AI.
 
@@ -772,11 +772,11 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 深度 0: 倒数第 1 楼, 一般是最后一条用户输入
 ```
 
-也就是说, 如果我们将`去除变量更新`的最小深度设置成`4`, 那么它只对倒数第 5 楼及以上的楼层有效……这样一来, 我们就保留了最后一两层的变量更新情况发给 AI 了呢! (当然代价是前面所说的浪费 token、浪费注意力以及 AI 可能偷懒学习以前的 `<update>` 而不真的分析思考该如何更新变量😭)
+也就是说, 如果我们将`去除变量更新`的最小深度设置成`4`, 那么它只对倒数第 5 楼及以上的楼层有效……这样一来, 我们就保留了最后一两层的变量更新情况发给 AI 了呢! (当然代价是前面所说的浪费 token、浪费注意力以及 AI 可能偷懒学习以前的 `<UpdateVariable>` 而不真的分析思考该如何更新变量😭)
 
 ### 变量更新强调
 
-即便我们在 D0 设置了变量输出格式, 一些模型、预设可能依旧不会按要求输出 `<update>...</update>` 来更新变量.
+即便我们在 D0 设置了变量输出格式, 一些模型、预设可能依旧不会按要求输出 `<UpdateVariable>...</UpdateVariable>` 来更新变量.
 
 如果你遇到了这种情况, 可以像青空莉在{doc}`/青空莉/工具经验/提示词个人写法/额外输出格式/index`中提的那样, 在 D0 给变量输出格式添加一个输出格式强调:
 
@@ -785,9 +785,9 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 变量输出格式强调:
   rule: The following must be inserted to the end of reply, and cannot be omitted
   format: |-
-    <update>
+    <UpdateVariable>
     ...
-    </update>
+    </UpdateVariable>
 ```
 
 (为不同开局设置不同变量初始值_增量方案)=
@@ -820,7 +820,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 :emphasize-lines: 11
 开局 2 剧情...
 
-<update>
+<UpdateVariable>
 <initvar>
 ```yaml
 白川璃:
@@ -831,7 +831,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
   挫折剧情开关: true
 ```
 </initvar>
-</update>
+</UpdateVariable>
 ````
 
 :::
@@ -855,16 +855,16 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 :emphasize-lines: 6
 开局 2 剧情...
 
-<update>
-<json_patch>
+<UpdateVariable>
+<JSONPatch>
 [
   { "op": "replace", "path": "/白川璃/挫折剧情开关", "value": true }
 ]
-</json_patch>
-</update>
+</JSONPatch>
+</UpdateVariable>
 ```
 
-可是 `<json_patch>` 部分看起来好复杂啊——没关系! 我们已经有了变量输出格式. 你可以把开局剧情发给 AI, 让 AI 给你生成对应的变量更新命令.
+可是 `<JSONPatch>` 部分看起来好复杂啊——没关系! 我们已经有了变量输出格式. 你可以把开局剧情发给 AI, 让 AI 给你生成对应的变量更新命令.
 
 ## 适配两种变量更新方式
 
@@ -908,12 +908,12 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 
 ## 测试变量提示词
 
-现在有了变量提示词, 你可以在 MVU 变量框架中勾选{menuselection}`变量更新出错时通知`, 然后打开变量管理器放在一旁, 随便要求 AI 推进剧情 (如, 发送一句`推进剧情`) 来查看楼层是否能正确输出 `<update>` 块.
+现在有了变量提示词, 你可以在 MVU 变量框架中勾选{menuselection}`变量更新出错时通知`, 然后打开变量管理器放在一旁, 随便要求 AI 推进剧情 (如, 发送一句`推进剧情`) 来查看楼层是否能正确输出 `<UpdateVariable>` 块.
 
 :::{figure} 变量更新出错时通知.png
 :::
 
-如果没能输出 `<update>` 块
+如果没能输出 `<UpdateVariable>` 块
 : 可能是你其他提示词占用了过多注意力, 或者你的变量提示词没有正确生效. \
   请关闭全局世界书, 调整其他提示词的注意力, 并验证变量提示词有没有按本章正确设置好.
 
@@ -934,7 +934,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
   - 通过变量列表, 了解了当前的变量情况;
   - 通过变量更新规则, 了解了变量在什么情况下应该被更新, 以及该被更新成什么值;
   - 通过变量输出格式, 了解了应该输出什么来更新变量.
-- 我们导入了一套酒馆正则, 使得之前的 `<update>` 块不会再发送给 AI, 防止 AI 过拟合.
+- 我们导入了一套酒馆正则, 使得之前的 `<UpdateVariable>` 块不会再发送给 AI, 防止 AI 过拟合.
 
 这套环境已经能有效替代传统的、需要每层都完整输出所有文本的状态栏, 能够精准地提醒 AI 当前的剧情状态啦!
 

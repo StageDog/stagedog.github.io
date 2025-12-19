@@ -252,7 +252,7 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (new_variables, old_variables) => {
 
 ## 在代码中自行获取、更新 MVU 变量
 
-除了监听 MVU 事件, 我们还可以自行获取、更新 MVU 变量, 或主动解析文本中的 `<json_patch>` 等更新命令.
+除了监听 MVU 事件, 我们还可以自行获取、更新 MVU 变量, 或主动解析文本中的 `<JSONPatch>` 等更新命令.
 
 ::::{tabs}
 :::{tab} 获取 MVU 变量
@@ -300,7 +300,7 @@ await waitGlobalInitialized('Mvu');
 const mvu_data = Mvu.getMvuData({ type: 'message', message_id: -1 });
 
 // 解析从某处得到的文本中的更新命令, 此处假设了一段文本, 但你也可以从 `generate` 等地方获取
-const content = "<json_patch>略</json_patch>";
+const content = "<JSONPatch>略</JSONPatch>";
 const new_data = await Mvu.parseMessage(content, mvu_data);
 
 await Mvu.replaceMvuData(new_data, { type: 'message', message_id: getCurrentMessageId() });
@@ -395,7 +395,7 @@ injectPrompts([
 
 ## 在代码中请求 AI 生成并用结果更新变量
 
-你当然可以在前端界面或脚本中直接请求 AI 生成, 而生成结果中如果有 `<json_patch>` 等变量更新命令, 你也可以解析它并更新变量.
+你当然可以在前端界面或脚本中直接请求 AI 生成, 而生成结果中如果有 `<JSONPatch>` 等变量更新命令, 你也可以解析它并更新变量.
 
 ```ts
 await waitGlobalInitialized('Mvu');

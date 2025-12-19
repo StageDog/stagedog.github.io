@@ -184,11 +184,11 @@ MVU 现在要设置不同的变量初始值很简单, 我们在开局消息中�
 :emphasize-lines: 3,7
 开局 2 的故事...
 
-<update>  <-- 为了方便之后设定变量提示词, 我们在外面再包裹一层 <update>
+<UpdateVariable>  <-- 为了方便之后设定变量提示词, 我们在外面再包裹一层 <UpdateVariable>
 <initvar>
 开局 2 的变量初始值...
 </initvar>
-</update>
+</UpdateVariable>
 ````
 
 :::
@@ -198,7 +198,7 @@ MVU 现在要设置不同的变量初始值很简单, 我们在开局消息中�
 ````text
 开局 2 的故事...
 
-<update>
+<UpdateVariable>
 <initvar>
 世界:
   当前时间: 2025年4月7日 星期一 08:42
@@ -235,7 +235,7 @@ MVU 现在要设置不同的变量初始值很简单, 我们在开局消息中�
       描述: 田径部用的计时器，挂在脖子上
       数量: 1
 </initvar>
-</update>
+</UpdateVariable>
 ````
 
 :::
@@ -246,7 +246,7 @@ MVU 现在要设置不同的变量初始值很简单, 我们在开局消息中�
 :emphasize-lines: 5,40
 开局 2 的故事...
 
-<update>
+<UpdateVariable>
 <initvar>
 ```yaml
 世界:
@@ -285,7 +285,7 @@ MVU 现在要设置不同的变量初始值很简单, 我们在开局消息中�
       数量: 1
 ```
 </initvar>
-</update>
+</UpdateVariable>
 ````
 
 :::

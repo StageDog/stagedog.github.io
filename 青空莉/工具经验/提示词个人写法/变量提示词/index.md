@@ -61,13 +61,13 @@
 不为变量编写任何 `check` 规则, 而是直接让 AI 自己搞定:
 
 ```text
-<update>
-<update_analysis>$(IN ENGLISH, no more than 80 words)
+<UpdateVariable>
+<Analysis>$(IN ENGLISH, no more than 80 words)
 - ${calculate time passed: ...}
 - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes or no}
 - ${what variables should be updated, accoring only to current reply instead of previous plots: ...}
-</update_analysis>
-<json_patch>
+</Analysis>
+<JSONPatch>
 [
   { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
   { "op": "add", "path": "${/path/to/array/-}", "value": "${item_to_append}" },
@@ -75,8 +75,8 @@
   { "op": "remove", "path": "${/path/to/array/0}" },
   ...
 ]
-</json_patch>
-</update>
+</JSONPatch>
+</UpdateVariable>
 ```
 
 :::
@@ -86,15 +86,15 @@
 变量很少, 没必要单独写变量更新规则, 直接在思维链里列举它们该如何更新:
 
 ```text
-<update>
-<update_analysis>$(IN ENGLISH, no more than 80 words)
+<UpdateVariable>
+<Analysis>$(IN ENGLISH, no more than 80 words)
 - ${calculate time passed: ...}
 - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes or no}
 - ${update variables suffixed with '次数' when a corresponding event occurs but don't update them any more during that event: ...}
 - ${update variables suffixed with '好感度' according to characters' attitudes towards <user>'s behavior respectively only if they're currently aware of it (±(3~6); but '好感度' must be capped in 0~100 and remains unchange when it's 100): ...}
 - ${switch variables suffixed with '处女', '受孕' or '被<user>接受感情' between '是' and '否': ...}
-</update_analysis>
-<json_patch>
+</Analysis>
+<JSONPatch>
 [
   { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
   { "op": "add", "path": "${/path/to/array/-}", "value": "${item_to_append}" },
@@ -102,8 +102,8 @@
   { "op": "remove", "path": "${/path/to/array/0}" },
   ...
 ]
-</json_patch>
-</update>
+</JSONPatch>
+</UpdateVariable>
 ```
 
 :::
@@ -113,13 +113,13 @@
 在思维链中让 AI 回忆 `check` 规则, 据此分析该如何更新变量:
 
 ```text
-<update>
-<update_analysis>$(IN ENGLISH, no more than 80 words)
+<UpdateVariable>
+<Analysis>$(IN ENGLISH, no more than 80 words)
 - ${calculate time passed: ...}
 - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes or no}
 - ${analyze every variable based on its corresponding `check`, according only to current reply instead of previous plots: ...}
-</update_analysis>
-<json_patch>
+</Analysis>
+<JSONPatch>
 [
   { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
   { "op": "add", "path": "${/path/to/array/-}", "value": "${item_to_append}" },
@@ -127,8 +127,8 @@
   { "op": "remove", "path": "${/path/to/array/0}" },
   ...
 ]
-</json_patch>
-</update>
+</JSONPatch>
+</UpdateVariable>
 ```
 
 :::
@@ -138,14 +138,14 @@
 在思维链中不是让 AI 回忆 `check`, 而是让它原封不动地列举所有 `check` 内容, 再进行分析:
 
 ```text
-<update>
-<update_analysis>$(IN ENGLISH, no more than 80 words)
+<UpdateVariable>
+<Analysis>$(IN ENGLISH, no more than 80 words)
 - ${calculate time passed: ...}
 - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes or no}
 - ${list every item in every `check` of `变量更新规则` document before actual variable analysis: ...}
   - ${analyze corresponding variables that are based on this item, according only to current reply instead of previous plots: ...}
-</update_analysis>
-<json_patch>
+</Analysis>
+<JSONPatch>
 [
   { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
   { "op": "add", "path": "${/path/to/array/-}", "value": "${item_to_append}" },
@@ -153,8 +153,8 @@
   { "op": "remove", "path": "${/path/to/array/0}" },
   ...
 ]
-</json_patch>
-</update>
+</JSONPatch>
+</UpdateVariable>
 ```
 
 :::
@@ -164,14 +164,14 @@
 依次检查型中 "列举 `check`" 和 "基于 `check` 进行分析" 两个要求放置地过于紧密, AI 可能偷懒. 你可以将这两句话隔离一下:
 
 ```text
-<update>
+<UpdateVariable>
 ${display every `check` in `变量更新规则` document before actual variable analysis}
-<update_analysis>$(IN ENGLISH, no more than 80 words)
+<Analysis>$(IN ENGLISH, no more than 80 words)
 - ${calculate time passed: ...}
 - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes or no}
 - ${analyze variables based on `check`, according only to current reply instead of previous plots: ...}
-</update_analysis>
-<json_patch>
+</Analysis>
+<JSONPatch>
 [
   { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
   { "op": "add", "path": "${/path/to/array/-}", "value": "${item_to_append}" },
@@ -179,8 +179,8 @@ ${display every `check` in `变量更新规则` document before actual variable 
   { "op": "remove", "path": "${/path/to/array/0}" },
   ...
 ]
-</json_patch>
-</update>
+</JSONPatch>
+</UpdateVariable>
 ```
 
 :::
