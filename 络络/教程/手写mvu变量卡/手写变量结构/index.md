@@ -334,9 +334,21 @@ export const Schema = z.object({
 
 ```js
 export const Schema = z.object({
-  物品栏: z.record(
+  能力面板: z.record(
     z.enum(['力量', '敏捷', '体质', '智力', '感知', '魅力']),
     z.coerce.number().describe('能力数值'),
+  ),
+});
+```
+
+不过, `z.record(z.enum([...]), ...)` 要求 `enum` 列出的字段必须存在, 比如上面的例子中, 能力面板里只能**且必须有**力量、敏捷、体质、智力、感知、魅力这几个字段. \
+如果我们只是想限制只能有, 但希望字段是可有可无的, 则应该使用 `z.partialRecord(z.enum([...]), ...)`:
+
+```js
+export const Schema = z.object({
+  羁绊: z.partialRecord(
+    z.enum(['青空莉', '络络', '白娅']),
+    z.coerce.number().describe('羁绊值'),
   ),
 });
 ```
