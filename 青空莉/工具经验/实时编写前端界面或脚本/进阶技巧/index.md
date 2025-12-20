@@ -538,7 +538,7 @@ import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆�
 除了等待服务器自行刷新缓存, 你可以通过以下方式来加快缓存刷新:
 
 - 如果你是从 <https://github.com/StageDog/tavern_helper_template> {menuselection}`Use this template` 来创建的新仓库, 它的自动工作流会自动打包结果并更新版本号, 从而做到 12h 刷新 jsdelivr 主服务器缓存
-- 等仓库更新版本号后，在 <https://www.testingcf.com/tools/purge> 中输入要使用的链接, 将 `testingcf.jsdelivr` 改成 `cdn.jsdelivr`, 然后点击确认, 能立即刷新 jsdelivr 主服务器缓存, 但镜像服务器缓存不会刷新
+- 等仓库更新版本号后，在 <https://www.jsdelivr.com/tools/purge> 中输入要使用的链接, 将 `testingcf.jsdelivr` 改成 `cdn.jsdelivr`, 然后点击确认, 能立即刷新 jsdelivr 主服务器缓存, 但镜像服务器缓存不会刷新
 - 玩家主动清除浏览器缓存
 
 或者, 你可以暂时换个还没缓存你文件的镜像网站来访问:
