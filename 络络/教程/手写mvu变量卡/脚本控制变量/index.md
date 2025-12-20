@@ -88,8 +88,6 @@ eventOn(Mvu.events.COMMAND_PARSED, commands => {
 });
 ```
 
-再比如, 你可以像`变量结构`脚本那样
-
 ### VARIABLE_UPDATE_ENDED: 变量更新结束
 
 通过监听 "变量更新结束" 事件 (`Mvu.events.VARIABLE_UPDATE_ENDED`), 你可以获取到更新前后的变量, 可以对更新结果进行额外处理.
