@@ -410,4 +410,19 @@ export const Schema = z.object({
 
 如此, 你已经了解了如何简单地用 zod 编写变量结构.
 
+在写好 `export const Schema` 后, 我们还需要把它注册到 MVU 中. 在脚本开头结尾添加上固定代码即可:
+
+```{code-block} js
+:emphasize-lines: 1,7-9
+import { registerMvuSchema } from 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/util/mvu_zod.js';
+
+export const Schema = z.object({
+  ...
+});
+
+$(() => {
+  registerMvuSchema(Schema);
+})
+```
+
 如果你有一些更复杂的需求, 比如移除数量为 0 的物品、删除已经死亡的 npc、从好感度数值计算好感度阶段字段等, 可以阅读 [zod 文档](https://zod.dev/)、使用{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`或让 AI 帮你写.
