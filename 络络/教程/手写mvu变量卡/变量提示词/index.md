@@ -479,7 +479,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 变量输出格式:
   rule:
     - you must output the update analysis and the actual update commands in the end of the next reply
-    - 'the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, but can only use the following operations: `replace` (replace the value of existing paths), `add` (only used to insert new items into an object or array), `remove`; that is, the output must be a valid JSON array containing operation objects'
+    - 'the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, but can only use the following operations: `replace` (replace the value of existing paths), `add` (insert new items into an object or array), `remove`; that is, the output must be a valid JSON array containing operation objects'
   format: |-
     <UpdateVariable>
     <Analysis>$(IN ENGLISH, no more than 80 words)
@@ -490,7 +490,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     <JSONPatch>
     [
       { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
-      { "op": "add", "path": "${/path/to/object/newKey}", "value": "${content}" }
+      { "op": "add", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
       { "op": "remove", "path": "${/path/to/array/0}" },
       ...
     ]
@@ -584,7 +584,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 变量输出格式:
   rule:
     - you must output the update analysis and the actual update commands in the end of the next reply
-    - 'the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, but can only use the following operations: `replace` (replace the value of existing paths), `add` (only used to insert new items into an object or array), `remove`; that is, the output must be a valid JSON array containing operation objects'
+    - 'the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, but can only use the following operations: `replace` (replace the value of existing paths), `add` (insert new items into an object or array), `remove`; that is, the output must be a valid JSON array containing operation objects'
   format: |-
     <UpdateVariable>
     <Analysis>$(IN ENGLISH, no more than 80 words)
@@ -595,7 +595,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     <JSONPatch>
     [
       { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
-      { "op": "add", "path": "${/path/to/object/newKey}", "value": "${content}" }
+      { "op": "add", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
       { "op": "remove", "path": "${/path/to/array/0}" },
       ...
     ]

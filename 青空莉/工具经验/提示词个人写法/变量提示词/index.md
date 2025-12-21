@@ -71,7 +71,7 @@
 [
   { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
   { "op": "add", "path": "${/path/to/array/-}", "value": "${item_to_append}" },
-  { "op": "add", "path": "${/path/to/object/newKey}", "value": "${content}" }
+  { "op": "add", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
   { "op": "remove", "path": "${/path/to/array/0}" },
   ...
 ]
@@ -98,7 +98,7 @@
 [
   { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
   { "op": "add", "path": "${/path/to/array/-}", "value": "${item_to_append}" },
-  { "op": "add", "path": "${/path/to/object/newKey}", "value": "${content}" }
+  { "op": "add", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
   { "op": "remove", "path": "${/path/to/array/0}" },
   ...
 ]
@@ -123,7 +123,7 @@
 [
   { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
   { "op": "add", "path": "${/path/to/array/-}", "value": "${item_to_append}" },
-  { "op": "add", "path": "${/path/to/object/newKey}", "value": "${content}" }
+  { "op": "add", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
   { "op": "remove", "path": "${/path/to/array/0}" },
   ...
 ]
@@ -149,7 +149,7 @@
 [
   { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
   { "op": "add", "path": "${/path/to/array/-}", "value": "${item_to_append}" },
-  { "op": "add", "path": "${/path/to/object/newKey}", "value": "${content}" }
+  { "op": "add", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
   { "op": "remove", "path": "${/path/to/array/0}" },
   ...
 ]
@@ -175,7 +175,7 @@ ${display every `check` in `变量更新规则` document before actual variable 
 [
   { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
   { "op": "add", "path": "${/path/to/array/-}", "value": "${item_to_append}" },
-  { "op": "add", "path": "${/path/to/object/newKey}", "value": "${content}" }
+  { "op": "add", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
   { "op": "remove", "path": "${/path/to/array/0}" },
   ...
 ]
