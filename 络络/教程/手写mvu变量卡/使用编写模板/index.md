@@ -84,7 +84,7 @@ export const Schema = z.object({
 export type Schema = z.output<typeof Schema>;
 ```
 
-而没有变量结构脚本开头的 `import` 和结尾的 `$(...)`——它们被放在了 `脚本/变量结构/index.ts` 中:
+而没有变量结构脚本开头的 `import` 和结尾的 `$(() => ...)`——它们被放在了 `脚本/变量结构/index.ts` 中:
 
 ```ts
 import { registerMvuSchema } from 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/util/mvu_zod.js';
@@ -98,7 +98,7 @@ $(() => {
 原本门之主写卡助手所写的变量结构脚本有两个功能:
 
 - `export const Schema` 规定了我们角色卡的 MVU 变量结构是什么;
-- 而开头的 `import` 和结尾的 `$(...)` 把这个变量结构实际注册给 MVU.
+- 而开头的 `import` 和结尾的 `$(() => ...)` 把这个变量结构实际注册给 MVU.
 
 而编写模板将这两个功能拆分:
 
