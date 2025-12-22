@@ -28,6 +28,8 @@
 
 ## 文档目录
 
+**如果在尝试编写 MVU zod 卡过程中遇到任何问题, 请阅读{doc}`/络络/教程/手写mvu变量卡/如何提问/index`来解决.**
+
 :::{toctree}
 :maxdepth: 1
 安装插件和导入脚本/index
@@ -40,4 +42,5 @@
 迁移旧mvu卡/index
 使用编写模板/index
 mvu会让ai变蠢吗/index
+如何提问/index
 :::
