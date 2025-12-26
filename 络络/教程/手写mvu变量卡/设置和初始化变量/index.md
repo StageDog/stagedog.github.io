@@ -184,7 +184,7 @@ MVU 现在要设置不同的变量初始值很简单, 我们在开局消息中�
 :emphasize-lines: 3,7
 开局 2 的故事...
 
-<UpdateVariable>  <-- 为了方便之后设定变量提示词, 我们在外面再包裹一层 <UpdateVariable>
+<UpdateVariable>  <-- 为了方便之后用酒馆正则处理, 我们在外面再包裹一层 <UpdateVariable>
 <initvar>
 开局 2 的变量初始值...
 </initvar>
