@@ -114,31 +114,32 @@ MVU 有一个便利的设计: 它会在 AI 回复结束后, 自动在回复末�
 
 ### 前端界面
 
-至于包含复杂代码的前端界面状态栏, 这已超出本教程范围……但其实用{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`拷打 AI 写起来很简单!
+至于包含复杂代码的前端界面, 这已超出本教程范围……但其实用{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`拷打 AI 写起来很简单!
 
-在前端界面中, 你不仅仅可以显示变量值或做一些简单的美化——你还能让玩家和界面交互! 比如通过界面发布任务、请求 AI 生成、直接玩杀戮尖塔等 (是的, 有很多这类角色卡)!
+在前端界面中, 你不仅仅可以显示变量值或做一些简单的美化——你还能让玩家和界面交互! 比如通过界面修改变量发布任务、请求 AI 生成、直接玩杀戮尖塔等 (是的, 有很多这类角色卡)!
 
 :::{video} 任务界面状态栏.mp4
 :align: center
 :::
 
-当然, 如果你是手机端不方便使用{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 可以用{doc}`门之主写卡助手 </青空莉/作品集/index>`或[咩咩的 Gemini CLI 全自动写卡工作流](https://discord.com/channels/1291925535324110879/1425536223291904151/1425536223291904151)等写卡助手; \
-或者直接给 AI 发送以下提示词, 然后……祈祷🙏:
+总之, 电脑建议用{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 电脑建议用{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`, 电脑建议用{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`!
 
-:::{admonition} 推荐的前端界面模板
+当然, 如果你是手机端, 那想生成复杂前端界面是很困难的……可以尝试将*变量结构*和*下面的前端界面模板*发给 AI 来制作:
+
+:::{admonition} 手机上的简易前端界面模板
 :class: hint, dropdown
 
-- 使用 `const all_variables = getAllVariables()` 获取整个变量, 然后用 `_.get(all_variables, 'stat_data.角色.络络.好感度')` 获取具体某个变量.
-- 使用 jquery 处理显示逻辑
+- 如果需要能在界面里修改变量, 除了下面的提示词, 你还需要发送[这段提示词](https://github.com/StageDog/tavern_helper_template/blob/main/.cursor/rules/mvu变量框架.mdc)给 AI.
+- 如果需要能在界面里请求 AI 生成、修改世界书、修改预设、播放音乐等等, 你还需要按需发送[对应的类型定义文件](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/功能详情/请求生成.html)给 AI.
 
-**当然我更建议你用{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`来让 AI 边自己看酒馆网页边编写状态栏.**
+**当然如果你有电脑, 我更建议你用{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`来让 AI 边自己看酒馆网页边编写状态栏.**
 
 ````{code-block} html
 :force:
 ```html
 <head>
   <style>
-  ${设计样式}
+  ${纯 CSS 设计样式}
   </style>
   <script type="module">
     ${
@@ -153,6 +154,7 @@ MVU 有一个便利的设计: 它会在 AI 回复结束后, 自动在回复末�
         }
 
         function toggleSection($header) {
+          // 优先使用 jquery 而不是 javascript 的 DOM 操作
           const $content = $header.next('.section-content');
           $content.toggleClass('expanded');
 
