@@ -478,8 +478,13 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 ---
 变量输出格式:
   rule:
-    - you must output the update analysis and the actual update commands in the end of the next reply
-    - 'the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, but can only use the following operations: `replace` (replace the value of existing paths), `add` (insert new items into an object or array, "value" should be the result value instead of the delta value), `remove`; that is, the output must be a valid JSON array containing operation objects'
+    - you must output the update analysis and the actual update commands at once in the end of the next reply
+    - the update commands works like the **JSON Patch (RFC 6902)** standard, must be a valid JSON array containing operation objects, but supports the following operations instead:
+      - replace: replace the value of existing paths
+      - delta: update the value of existing number paths by a delta value
+      - insert: insert new items into an object or array
+      - remove
+    - don't update field names starts with `_` as they are readonly, such as `_变量`
   format: |-
     <UpdateVariable>
     <Analysis>$(IN ENGLISH, no more than 80 words)
@@ -490,7 +495,8 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     <JSONPatch>
     [
       { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
-      { "op": "add", "path": "${/path/to/object/new_key}", "value": "${new_value}" },
+      { "op": "delta", "path": "${/path/to/number/variable}", "value": "${positve_or_negative_delta}" },
+      { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
       { "op": "remove", "path": "${/path/to/array/0}" },
       ...
     ]
@@ -507,7 +513,12 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 变量输出格式:
   rule:
     - 你必须在回复末尾输出更新分析和实际的更新命令
-    - 更新命令必须严格遵循**JSON Patch (RFC 6902)**标准，但只能使用以下操作：`replace`、`add` (只用于为对象或数组插入新元素)、`remove`；也就是说，输出的更新命令必须是一个有效的 JSON 数组，其中每个元素都是表示单个操作的对象
+    - 更新命令效果与**JSON Patch (RFC 6902)**标准类似，有效的 JSON 数组，其中每个元素都是表示单个操作的对象，但支持的是以下操作而不是标准操作：
+      - replace: 替换已存在变量的值
+      - delta: 用一个变动值更新已存在的数值变量
+      - insert: 插入新元素到对象或数组中
+      - remove
+    - 不要更新以`_`开头的变量，因为它们是只读的，例如`_变量`
   format: |-
     <UpdateVariable>
     <Analysis>$(按英文输出，不超过80词)
@@ -518,7 +529,8 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     <JSONPatch>
     [
       { "op": "replace", "path": "${/到/变量/的路径}", "value": "${新值}" },
-      { "op": "add", "path": "${/到/对象/的路径/-}", "value": "${内容}" }
+      { "op": "delta", "path": "${/到/数值/变量/的路径}", "value": "${正或负的变动值}" },
+      { "op": "insert", "path": "${/到/对象/新键/的路径}", "value": "${新值}" },
       { "op": "remove", "path": "${/到/数组/的路径/0}" },
       ...
     ]
@@ -583,8 +595,13 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 ---
 变量输出格式:
   rule:
-    - you must output the update analysis and the actual update commands in the end of the next reply
-    - 'the update commands must strictly follow the **JSON Patch (RFC 6902)** standard, but can only use the following operations: `replace` (replace the value of existing paths), `add` (insert new items into an object or array, "value" should be the result value instead of the delta value), `remove`; that is, the output must be a valid JSON array containing operation objects'
+    - you must output the update analysis and the actual update commands at once in the end of the next reply
+    - the update commands works like the **JSON Patch (RFC 6902)** standard, must be a valid JSON array containing operation objects, but supports the following operations instead:
+      - replace: replace the value of existing paths
+      - delta: update the value of existing number paths by a delta value
+      - insert: insert new items into an object or array
+      - remove
+    - don't update field names starts with `_` as they are readonly, such as `_变量`
   format: |-
     <UpdateVariable>
     <Analysis>$(IN ENGLISH, no more than 80 words)
@@ -595,7 +612,8 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     <JSONPatch>
     [
       { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
-      { "op": "add", "path": "${/path/to/object/new_key}", "value": "${new_value}" },
+      { "op": "delta", "path": "${/path/to/number/variable}", "value": "${positve_or_negative_delta}" },
+      { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
       { "op": "remove", "path": "${/path/to/array/0}" },
       ...
     ]
@@ -612,7 +630,12 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 变量输出格式:
   rule:
     - 你必须在回复末尾输出更新分析和实际的更新命令
-    - 更新命令必须严格遵循**JSON Patch (RFC 6902)**标准，但只能使用以下操作：`replace`、`add` (只用于为对象或数组插入新元素)、`remove`；也就是说，输出的更新命令必须是一个有效的 JSON 数组，其中每个元素都是表示单个操作的对象
+    - 更新命令效果与**JSON Patch (RFC 6902)**标准类似，有效的 JSON 数组，其中每个元素都是表示单个操作的对象，但支持的是以下操作而不是标准操作：
+      - replace: 替换已存在变量的值
+      - delta: 用一个变动值更新已存在的数值变量
+      - insert: 插入新元素到对象或数组中
+      - remove
+    - 不要更新以`_`开头的变量，因为它们是只读的，例如`_变量`
   format: |-
     <UpdateVariable>
     <Analysis>$(按英文输出，不超过80词)
@@ -623,7 +646,8 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     <JSONPatch>
     [
       { "op": "replace", "path": "${/到/变量/的路径}", "value": "${新值}" },
-      { "op": "add", "path": "${/到/对象/的路径/-}", "value": "${内容}" }
+      { "op": "delta", "path": "${/到/数值/变量/的路径}", "value": "${正或负的变动值}" },
+      { "op": "insert", "path": "${/到/对象/新键/的路径}", "value": "${新值}" },
       { "op": "remove", "path": "${/到/数组/的路径/0}" },
       ...
     ]
