@@ -71,7 +71,7 @@
 [
   { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
   { "op": "delta", "path": "${/path/to/number/variable}", "value": "${positve_or_negative_delta}" },
-  { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
+  { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" },
   { "op": "remove", "path": "${/path/to/array/0}" },
   ...
 ]
@@ -98,7 +98,7 @@
 [
   { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
   { "op": "delta", "path": "${/path/to/number/variable}", "value": "${positve_or_negative_delta}" },
-  { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
+  { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" },
   { "op": "remove", "path": "${/path/to/array/0}" },
   ...
 ]
@@ -123,7 +123,7 @@
 [
   { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
   { "op": "delta", "path": "${/path/to/number/variable}", "value": "${positve_or_negative_delta}" },
-  { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
+  { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" },
   { "op": "remove", "path": "${/path/to/array/0}" },
   ...
 ]
@@ -149,7 +149,7 @@
 [
   { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
   { "op": "delta", "path": "${/path/to/number/variable}", "value": "${positve_or_negative_delta}" },
-  { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
+  { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" },
   { "op": "remove", "path": "${/path/to/array/0}" },
   ...
 ]
@@ -175,7 +175,7 @@ ${display every `check` in `变量更新规则` document before actual variable 
 [
   { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
   { "op": "delta", "path": "${/path/to/number/variable}", "value": "${positve_or_negative_delta}" },
-  { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
+  { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" },
   { "op": "remove", "path": "${/path/to/array/0}" },
   ...
 ]

@@ -496,7 +496,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     [
       { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
       { "op": "delta", "path": "${/path/to/number/variable}", "value": "${positve_or_negative_delta}" },
-      { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
+      { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" },
       { "op": "remove", "path": "${/path/to/array/0}" },
       ...
     ]
@@ -613,7 +613,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     [
       { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
       { "op": "delta", "path": "${/path/to/number/variable}", "value": "${positve_or_negative_delta}" },
-      { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" }
+      { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" },
       { "op": "remove", "path": "${/path/to/array/0}" },
       ...
     ]
