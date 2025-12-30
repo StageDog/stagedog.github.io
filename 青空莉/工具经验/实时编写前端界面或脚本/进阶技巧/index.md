@@ -279,19 +279,6 @@ noass 等压缩相邻消息、合并消息的功能就是这么做的, 例如{do
 - 在 `.cursor/mcp.json` 中, 我预先设置了 Browser MCP 来让 AI 能够查看酒馆网页. 你完全可以为 AI 找更多好用的 MCP, 如通过 figma MCP, 你可以**用大量预制好的组件像做 PPT 一样设计好界面**, 然后让 AI 生成代码结果.
 - 在 `package.json` 中, 我预先为项目代码添加了 jquery、zod 等方便的第三方库 (具体请查看 `dependencies` 部分). 你可以让 AI 或自己用 `pnpm add 第三方库` 添加更多需要的第三方库, 它们一般添加上就能直接使用.
 
-  :::{admonition} xxx库添加上了但使用失败
-  :class: warning, dropdown
-  (看不懂没事, 发给 AI)
-
-  一些第三方库添加上了不能正常使用, 可能是因为为了减小打包结果的大小, 模板将它以 jsdelivr 链接引入.
-
-  假如你使用库 `xxx` 时出现这个问题, 请尝试在 webpack.config.ts 最后调整 `externals` 函数: 在 `builtin` 数组中添加你要直接导入而不是从 jsdelivr 链接引入的库名 `xxx`.
-
-  需要注意的是, vue 第三方库可能在 `pnpm watch` 时表现正常, 而在 `pnpm build` 也就是打包发布版本代码时出现问题. \
-  如果你遇到了这种情况, 你也需要按上面那样将对应的第三方库添加到 `builtin` 中; \
-  或者, 你可以去掉 `externals` 函数中的一处 `argv.mode !== 'production' &&`, 让所有 vue 库均直接导入而不是从 jsdelivr 链接引入.
-  :::
-
 ### 使用 vue 编写前端界面
 
 酒馆助手前端界面和脚本可以直接使用 vue, 它会让界面制作变得更为简单. `src/界面示例` 就是这么做的.
