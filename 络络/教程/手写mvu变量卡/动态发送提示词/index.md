@@ -124,7 +124,7 @@ if (设定的条件) {
 :::{tab} 变量结构
 
 ```js
-export const Schema = z.object({
+export const Schema = z.looseObject({
  角色: z.object({
    络络: z.object({
      好感度: z.coerce.number().transform(value => _.clamp(value, 0, 100)),
