@@ -46,7 +46,7 @@ AI 很快给你生成出变量结构啦! 我得到的是这样的:
 ```js
 import { registerMvuSchema } from 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/util/mvu_zod.js';
 
-export const Schema = z.looseObject({
+export const Schema = z.object({
   世界: z.object({
     当前时间: z.string(),
     当前地点: z.string(),

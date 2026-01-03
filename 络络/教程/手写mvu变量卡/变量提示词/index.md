@@ -403,7 +403,7 @@ D0
 :emphasize-lines: 6
 import { registerMvuSchema } from 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/util/mvu_zod.js';
 
-export const Schema = z.looseObject({
+export const Schema = z.object({
   白娅: z
     .object({
       依存度: z.coerce.number().transform(v => _.clamp(v, 0, 100)),

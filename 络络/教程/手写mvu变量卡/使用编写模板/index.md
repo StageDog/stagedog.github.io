@@ -37,7 +37,7 @@
 ```ts
 import { registerMvuSchema } from 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/util/mvu_zod.js';
 
-export const Schema = z.looseObject({
+export const Schema = z.object({
   好感度: z.coerce.number().transform(value => _.clamp(0, 100));
 });
 
@@ -49,7 +49,7 @@ $(() => {
 然后, 删除开头的 `import` 行和尾部的 `$(() => ...)`:
 
 ```ts
-export const Schema = z.looseObject({
+export const Schema = z.object({
   好感度: z.coerce.number().transform(value => _.clamp(0, 100));
 });
 ```
@@ -78,7 +78,7 @@ export const Schema = z.looseObject({
 为什么说是主要部分呢? 因为 `schema.ts` 只包含变量结构脚本的 `export const Schema` 部分:
 
 ```ts
-export const Schema = z.looseObject({
+export const Schema = z.object({
   ...
 });
 export type Schema = z.output<typeof Schema>;
