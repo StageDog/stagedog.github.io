@@ -73,7 +73,7 @@
 
 代码块由以下部分组成:
 
-- 开头单独一行 <code class="docutils literal notranslate">\`\`\`代码语言</code> (建议用 <code class="docutils literal notranslate">\`\`\`text</code>, 原因在之后的{doc}`/青空莉/工具经验/实时编写前端界面或脚本/进阶技巧/index`中有解释)
+- 开头单独一行 <code class="docutils literal notranslate">\`\`\`</code>
 - 代码内容
 - 结尾单独一行 <code class="docutils literal notranslate">\`\`\`</code>
 
