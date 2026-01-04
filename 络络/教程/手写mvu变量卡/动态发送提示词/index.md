@@ -170,12 +170,12 @@ export const Schema = z.object({
 
 ### 用 `matchChatMessages()` 模拟绿灯
 
-除了 `getvar()`, 你也可以在 `if` 中使用 `matchChatMessages()` 来像绿灯那样, 只在正文最后一次用户输入和最后一次 AI 回复中提到了某个关键字时发送一段提示词. 例如:
+除了 `getvar()`, 你也可以在 `if` 中使用 `matchChatMessages()` 来像绿灯那样, 只在正文最后 2 楼 (最后一次用户输入和最后一次 AI 回复) 中提到了某个关键字时发送一段提示词. 例如:
 
 ```{code-block} js
 :force:
 <%_ if (matchChatMessages(['络络', '笨蛋'])) { _%>
-这里是当正文最后一次用户输入和最后一次 AI 回复中提到了 "络络" 或 "笨蛋" 时，我们希望AI看到的专属描述
+这里是当正文最后 2 楼 (最后一次用户输入和最后一次 AI 回复) 中提到了 "络络" 或 "笨蛋" 时，我们希望AI看到的专属描述
 <%_ } _%>
 ```
 
