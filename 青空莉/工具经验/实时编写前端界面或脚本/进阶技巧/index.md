@@ -517,14 +517,14 @@ import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆�
 @import url("https://testingcf.jsdelivr.net/gh/lolo-desu/lolocard/src/思维链美化/酒馆自带推理块版/暗色.css");
 ```
 
-为了方便你得到这样的 jsdelivr 链接, 编写模板已经配置了 github 自动工作流. 你可以在 <https://github.com/StageDog/tavern_helper_template> 用 {menuselection}`Use this template` 来创建一个新仓库, 将它克隆到本地使用. \
+为了方便你得到这样的 jsdelivr 链接, 编写模板已经配置了 github 自动工作流. 你可以在 <https://github.com/StageDog/tavern_helper_template> 用 {menuselection}`Use this template` 来创建一个新仓库, 并按照仓库 README 说明进行配置, 然后将它克隆到本地使用. \
 这样一来, 你只需要负责在 `src` 文件夹下修改代码, 完成后上传到 github 仓库; 上传后, 自动工作流将会为你自动打包最新结果到 `dist` 文件夹.
 
 然而, jsdelivr 主服务器、jsdelivr 镜像服务器 (为了国内直连) 和玩家的浏览器都会缓存文件, 因此并不是 github 上文件更新后, 这个链接就会立即得到最新的打包结果.
 
 除了等待服务器自行刷新缓存, 你可以通过以下方式来加快缓存刷新:
 
-- 如果你是从 <https://github.com/StageDog/tavern_helper_template> {menuselection}`Use this template` 来创建的新仓库, 它的自动工作流会自动打包结果并更新版本号, 从而做到 12h 刷新 jsdelivr 主服务器缓存
+- 如果你是从 <https://github.com/StageDog/tavern_helper_template> {menuselection}`Use this template` 来创建的新仓库, 并按照仓库 README 说明完成了配置, 它的自动工作流会自动打包结果并更新版本号, 从而做到 12h 刷新 jsdelivr 主服务器缓存
 - 等仓库更新版本号后，在 <https://www.jsdelivr.com/tools/purge> 中输入要使用的链接, 将 `testingcf.jsdelivr` 改成 `cdn.jsdelivr`, 然后点击确认, 能立即刷新 jsdelivr 主服务器缓存, 但镜像服务器缓存不会刷新
 - 玩家主动清除浏览器缓存
 

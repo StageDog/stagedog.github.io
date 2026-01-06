@@ -150,7 +150,8 @@ pnpm config set registry https://registry.npmmirror.com/
 :::
 
 :::{hint}
-如果你有代码和 Git 版本管理经验, 也可以 fork 本仓库或从网页右上角的 {menuselection}`Use this template` 按钮来创建一个新仓库. 这将为你带来仓库说明中所说的方便功能.
+如果你有代码和 Git 版本管理经验, 也可以 fork 本仓库或从网页右上角的 {menuselection}`Use this template` 按钮来创建一个新仓库, 并按照仓库 README 说明进行配置. \
+这将为你带来仓库 README 说明中所说的很多方便功能.
 :::
 
 下载完成后, 我们以管理员身份运行 bandizip 选择智能解压它 (别的解压软件我没试过, 可能会有问题), 按自己的意愿重命名文件夹, 然后通过 Cursor 左上角的{menuselection}`文件 --> 打开文件夹...`来打开它:
