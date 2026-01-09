@@ -83,6 +83,10 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/预设防误触/index.js'` 即可. \
   {stagedog_path}`源文件和说明 <src/酒馆助手/预设防误触>`
 
+最大化预设上下文长度: 避免酒馆错误处理本来可以完整发送的 AI 生成请求
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/最大化预设上下文长度/index.js'` 即可. \
+  {stagedog_path}`源文件和说明 <src/酒馆助手/最大化预设上下文长度>`
+
 文生图
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/文生图/index.js'` 即可. \
   [旅程](https://discord.com/channels/1291925535324110879/1368559983704146041) / {stagedog_path}`源文件和说明 <src/酒馆助手/文生图>`
