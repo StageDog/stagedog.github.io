@@ -482,7 +482,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     - the update commands works like the **JSON Patch (RFC 6902)** standard, must be a valid JSON array containing operation objects, but supports the following operations instead:
       - replace: replace the value of existing paths
       - delta: update the value of existing number paths by a delta value
-      - insert: insert new items into an object or array
+      - insert: insert new items into an object or array (using `-` as array index intends appending to the end)
       - remove
     - don't update field names starts with `_` as they are readonly, such as `_变量`
   format: |-
@@ -497,6 +497,8 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
       { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
       { "op": "delta", "path": "${/path/to/number/variable}", "value": "${positve_or_negative_delta}" },
       { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" },
+      { "op": "insert", "path": "${/path/to/array/-}", "value": "${new_value}" },
+      { "op": "remove", "path": "${/path/to/object/key}" },
       { "op": "remove", "path": "${/path/to/array/0}" },
       ...
     ]
@@ -516,7 +518,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     - 更新命令效果与**JSON Patch (RFC 6902)**标准类似，有效的 JSON 数组，其中每个元素都是表示单个操作的对象，但支持的是以下操作而不是标准操作：
       - replace: 替换已存在变量的值
       - delta: 用一个变动值更新已存在的数值变量
-      - insert: 插入新元素到对象或数组中
+      - insert: 插入新元素到对象或数组中 (使用`-`作为数组索引则表示追加到末尾)
       - remove
     - 不要更新以`_`开头的变量，因为它们是只读的，例如`_变量`
   format: |-
@@ -531,6 +533,8 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
       { "op": "replace", "path": "${/到/变量/的路径}", "value": "${新值}" },
       { "op": "delta", "path": "${/到/数值/变量/的路径}", "value": "${正或负的变动值}" },
       { "op": "insert", "path": "${/到/对象/新键/的路径}", "value": "${新值}" },
+      { "op": "insert", "path": "${/到/数组/-}", "value": "${新值}" },
+      { "op": "remove", "path": "${/到/对象/键/的路径}" },
       { "op": "remove", "path": "${/到/数组/的路径/0}" },
       ...
     ]
@@ -599,7 +603,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     - the update commands works like the **JSON Patch (RFC 6902)** standard, must be a valid JSON array containing operation objects, but supports the following operations instead:
       - replace: replace the value of existing paths
       - delta: update the value of existing number paths by a delta value
-      - insert: insert new items into an object or array
+      - insert: insert new items into an object or array (using `-` as array index intends appending to the end)
       - remove
     - don't update field names starts with `_` as they are readonly, such as `_变量`
   format: |-
@@ -614,6 +618,8 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
       { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
       { "op": "delta", "path": "${/path/to/number/variable}", "value": "${positve_or_negative_delta}" },
       { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" },
+      { "op": "insert", "path": "${/path/to/array/-}", "value": "${new_value}" },
+      { "op": "remove", "path": "${/path/to/object/key}" },
       { "op": "remove", "path": "${/path/to/array/0}" },
       ...
     ]
@@ -633,7 +639,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
     - 更新命令效果与**JSON Patch (RFC 6902)**标准类似，有效的 JSON 数组，其中每个元素都是表示单个操作的对象，但支持的是以下操作而不是标准操作：
       - replace: 替换已存在变量的值
       - delta: 用一个变动值更新已存在的数值变量
-      - insert: 插入新元素到对象或数组中
+      - insert: 插入新元素到对象或数组中 (使用`-`作为数组索引则表示追加到末尾)
       - remove
     - 不要更新以`_`开头的变量，因为它们是只读的，例如`_变量`
   format: |-
@@ -648,6 +654,8 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
       { "op": "replace", "path": "${/到/变量/的路径}", "value": "${新值}" },
       { "op": "delta", "path": "${/到/数值/变量/的路径}", "value": "${正或负的变动值}" },
       { "op": "insert", "path": "${/到/对象/新键/的路径}", "value": "${新值}" },
+      { "op": "insert", "path": "${/到/数组/-}", "value": "${新值}" },
+      { "op": "remove", "path": "${/到/对象/键/的路径}" },
       { "op": "remove", "path": "${/到/数组/的路径/0}" },
       ...
     ]
