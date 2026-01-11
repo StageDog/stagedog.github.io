@@ -89,6 +89,8 @@ pnpm config set registry https://registry.npmmirror.com/
 
 ### 初次打开 Cursor
 
+让我们{kbd}`右键` Cursor **以管理员身份运行它**. (以后也要记得以管理员身份运行它.)
+
 首次运行时, Cursor 将要求你登录一个账号, 请自行注册并登录 Cursor 账号 (也可以先点击跳过).
 
 :::{figure} 初次打开cursor.png
