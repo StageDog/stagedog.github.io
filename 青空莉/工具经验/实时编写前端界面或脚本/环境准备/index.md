@@ -75,7 +75,7 @@ pnpm config set registry https://registry.npmmirror.com/
 
 :::{hint}
 如果已经安装了 **VSCode**, 你可以直接跳到[导入配置文件](#导入配置文件), 区别只在于你将不能使用 Cursor 的 AI 编程助手. \
-如果已经安装了**谷歌基于 VSCode 改动的 Antigravity**, 你也可以直接跳到[导入配置文件](#导入配置文件), 但界面差异比较大, 可能有的步骤做起来和我在这里写的不一样.
+如果已经安装了**谷歌基于 VSCode 改动的 Antigravity**, 你也可以直接跳到[导入配置文件](#导入配置文件), 先将配置文件导入到 VSCode, 再在 Antigravity 中导入 VSCode 配置; 但它界面差异比较大, 可能有的步骤做起来和我在这里写的不一样.
 :::
 
 ### 安装
