@@ -298,12 +298,14 @@ noass 等压缩相邻消息、合并消息的功能就是这么做的, 例如{do
 :align: center
 :::
 
+[演示代码](https://codepen.io/GreenSock/pen/xxmaNYj)
+
 ```ts
 gsap.registerPlugin(SplitText);
 split = SplitText.create('.text', { type: 'chars' });
-gsap.set(split.chars, {
+gsap.from(split.chars, {
   opacity: 1,
-  duration: 0.7,
+  duration: 0.1,
   ease: 'power4',
   stagger: 0.04,
 });
