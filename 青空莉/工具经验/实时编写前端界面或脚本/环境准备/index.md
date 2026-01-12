@@ -162,7 +162,7 @@ pnpm config set registry https://registry.npmmirror.com/
 :::{figure} 打开文件夹.png
 :::
 
-如果你没有使用 bandizip, 请至少以管理员身份运行解压软件来解压文件, 但即便这样也可能解压存在问题. 具体地, 我们从 Cursor 里点击左侧 `.mcp.json` 文件, 如果只显示了一行 `cursor/mcp.json`, 那就是有问题的.
+如果你没有使用 bandizip, 请至少以管理员身份运行解压软件来解压文件, 但即便这样也可能解压存在问题. 具体地, 我们从 Cursor 里点击左侧 `.mcp.json` 文件, 如果只显示了一行文字, 其中包含 `cursor/mcp.json`, 那就是有问题的.
 
 ### 介绍 Cursor 界面
 
