@@ -365,10 +365,10 @@ AI 很会 Embedded JavaScript 语法, 你可以让它替你编写. 在其中, �
 
 ### 用 `<%= _%>` 填写提示词
 
-除了用 `<%_ 代码 _%>` 执行代码逻辑, 提示词模板还支持用 `<%= 表达式 _%>` 来将表达式的值直接填入提示词, 比如 `<%= _.random(0, 10) _%>` 会随机发送一个 0 到 10 之间的整数. \
-也就是说, `<%= 表达式 _%>` 起到了与宏类似的效果.
+除了用 `<%_ 代码 _%>` 执行代码逻辑, 提示词模板还支持用 `<%= 表达式 %>` 来将表达式的值直接填入提示词, 比如 `<%= _.random(0, 10) %>` 会随机发送一个 0 到 10 之间的整数. \
+也就是说, `<%= 表达式 %>` 起到了与宏类似的效果.
 
-当然 `<%= 表达式 _%>` 能直接执行代码, 所以比宏更灵活.
+当然 `<%= 表达式 %>` 能直接执行代码, 所以比宏更灵活.
 
 比如, 我们可以获取发送提示词时的时间发给 AI: (只是展示可以做到, 具体你可以让 AI 编写)
 
@@ -377,7 +377,7 @@ AI 很会 Embedded JavaScript 语法, 你可以让它替你编写. 在其中, �
 
 ```{code-block} js
 :force:
-<%= new Date(Date.now()).toISOString() _%>
+<%= new Date(Date.now()).toISOString() %>
 ```
 
 :::
@@ -397,7 +397,7 @@ AI 很会 Embedded JavaScript 语法, 你可以让它替你编写. 在其中, �
 
 ```{code-block} js
 :force:
-<%= _.sample(['一', '二', '三']) _%>
+<%= _.sample(['一', '二', '三']) %>
 ```
 
 :::
@@ -416,7 +416,7 @@ AI 很会 Embedded JavaScript 语法, 你可以让它替你编写. 在其中, �
 
 ```{code-block} js
 :force:
-<%= JSON.stringify(getvar('stat_data')) _%>
+<%= JSON.stringify(getvar('stat_data')) %>
 ```
 
 ```json
@@ -429,7 +429,7 @@ AI 很会 Embedded JavaScript 语法, 你可以让它替你编写. 在其中, �
 
 ```{code-block} js
 :force:
-<%= YAML.stringify(getvar('stat_data'), { blockQuote: 'literal' }) _%>
+<%= YAML.stringify(getvar('stat_data'), { blockQuote: 'literal' }) %>
 ```
 
 ```yaml
@@ -461,7 +461,7 @@ AI 很会 Embedded JavaScript 语法, 你可以让它替你编写. 在其中, �
       .values()
       .value(),
   )
-_%>
+%>
 ```
 
 ### 变量不存在该怎么办

@@ -183,7 +183,7 @@
   行为指导: 角色在这个阶段会采取的行为
   变化倾向: 随着associated variable接近下一阶段，角色逐渐发生的变化
 心爱:
-  associated variable: 心爱.好感度(<%= getvar('stat_data.心爱.好感度') _%>)
+  associated variable: 心爱.好感度(<%= getvar('stat_data.心爱.好感度') %>)
   stage name:
     阶段1: 羞涩抗拒(24以下)
     阶段2: 欲拒还迎(25~49)
