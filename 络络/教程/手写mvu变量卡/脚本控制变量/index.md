@@ -185,7 +185,7 @@ eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, variables => {
 
 ::::
 
-但变量结构脚本无法获取以前的变量情况, 因此无法利用 `old_variables` 做到下面这些:
+但变量结构脚本无法获取以前的变量情况, 因此无法利用 `old_variables` 做到下面这些, 而酒馆助手脚本能做到:
 
 ::::{tabs}
 
