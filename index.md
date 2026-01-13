@@ -14,14 +14,14 @@
 :caption: 络络
 :hidden:
 
-资源仓库 <https://gitgud.io/lolodesu/lolocard>
+资源仓库 <https://github.com/lolodesu/lolocard>
 络络/作品集/index
 络络/教程/index
 :::
 
 ## 络络
 
-- [资源仓库](https://gitgud.io/lolodesu/lolocard)
+- [资源仓库](https://github.com/lolodesu/lolocard)
 - {doc}`/络络/作品集/index`
 - 教程
   - {doc}`/络络/教程/手写mvu变量卡/index`
@@ -32,7 +32,7 @@
 :caption: 青空莉
 :hidden:
 
-资源仓库 <https://gitgud.io/StageDog/tavern_resource>
+资源仓库 <https://github.com/StageDog/tavern_resource>
 青空莉/作品集/index
 青空莉/写卡建议/index
 青空莉/工具经验/index
@@ -40,7 +40,7 @@
 
 ## 青空莉
 
-- [资源仓库](https://gitgud.io/StageDog/tavern_resource)
+- [资源仓库](https://github.com/StageDog/tavern_resource)
 - {doc}`/青空莉/作品集/index`
 - {doc}`/青空莉/写卡建议/index`
 - 工具经验

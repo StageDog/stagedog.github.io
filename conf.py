@@ -18,12 +18,12 @@ extensions = [
 extlinks = {
     'stagedog': ('https://gitgud.io/StageDog/tavern_resource/-/raw/main/%s?inline=false', '[青空莉资源 %s]'),
     'stagedog_commit': ('https://gitgud.io/StageDog/tavern_resource/-/raw/%s?inline=false', '[青空莉资源 %s]'),
-    'stagedog_path': ('https://gitgud.io/StageDog/tavern_resource/-/tree/main/%s', '[青空莉仓库 %s]'),
-    'stagedog_path_commit': ('https://gitgud.io/StageDog/tavern_resource/-/tree/%s', '[青空莉仓库 %s]'),
+    'stagedog_path': ('https://github.com/StageDog/tavern_resource/tree/main/%s', '[青空莉仓库 %s]'),
+    'stagedog_path_commit': ('https://github.com/StageDog/tavern_resource/tree/%s', '[青空莉仓库 %s]'),
     'lolodesu': ('https://gitgud.io/lolodesu/lolocard/-/raw/master/%s?inline=false', '[络络资源 %s]'),
     'lolodesu_commit': ('https://gitgud.io/lolodesu/lolocard/-/raw/%s?inline=false', '[络络资源 %s]'),
-    'lolodesu_path': ('https://gitgud.io/lolodesu/lolocard/-/tree/master/%s', '[络络仓库 %s]'),
-    'lolodesu_path_commit': ('https://gitgud.io/lolodesu/lolocard/-/tree/%s', '[络络仓库 %s]'),
+    'lolodesu_path': ('https://github.com/lolo-desu/lolocard/tree/master/%s', '[络络仓库 %s]'),
+    'lolodesu_path_commit': ('https://github.com/lolo-desu/lolocard/tree/%s', '[络络仓库 %s]'),
 }
 
 exclude_patterns = ['.venv', 'build', 'node_modules', 'README.md']

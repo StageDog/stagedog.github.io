@@ -60,7 +60,7 @@
     - 2024/11/21 角色阶段, [类脑原帖中的讨论迭代也很重要](https://discord.com/channels/1134557553011998840/1308984948794982421), 部分也汇总在了{doc}`/青空莉/工具经验/提示词个人写法/index`
     - 2024/12/16 我魔改自离的写卡预设, 内有角色详情、角色关键信息、角色阶段、角色列表等功能, 应该是最早的变量版角色阶段写卡预设
   - 额外输出格式提示词
-    - 我的各种卡/{doc}`露出系统 </青空莉/作品集/index>`/[邪恶指引](https://discord.com/channels/1134557553011998840/1322860907147034625)/[行动选择框](https://discord.com/channels/1291925535324110879/1339825625782816788)/Galgame界面([类脑](https://discord.com/channels/1134557553011998840)/[旅程](https://discord.com/channels/1291925535324110879)/[源文件](https://gitgud.io/lolodesu/lolocard/-/tree/master/src/日记络络?ref_type=heads))
+    - 我的各种卡/{doc}`露出系统 </青空莉/作品集/index>`/[邪恶指引](https://discord.com/channels/1134557553011998840/1322860907147034625)/[行动选择框](https://discord.com/channels/1291925535324110879/1339825625782816788)/Galgame界面([类脑](https://discord.com/channels/1134557553011998840)/[旅程](https://discord.com/channels/1291925535324110879)/[源文件](https://github.com/lolo-desu/lolocard/tree/master/src/日记络络?ref_type=heads))
     - 2024/12/01 [一种省 token 的多角色专属状态栏条目写法](https://discord.com/channels/1134557553011998840/1312448971054252092), 提及了我对于需要 AI 额外输出的内容的提示词写法
     - 2025/05/24 络络的解释 ([类脑](https://discord.com/channels/1134557553011998840/1375637557064237107)/[旅程](https://discord.com/channels/1291925535324110879/1375627330466349177))
 
