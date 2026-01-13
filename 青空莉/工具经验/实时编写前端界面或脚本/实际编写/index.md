@@ -104,7 +104,8 @@
 
 #### 将最新打包结果以链接形式导入
 
-我们点击 Cursor 右下角的 {menuselection}`Go Live` 来将文件夹中所有文件映射成一个网络链接:
+我们点击 Cursor 右下角的 {menuselection}`Go Live` 来将文件夹中所有文件映射成一个网络链接: \
+(如果没有这个按钮, 请重新{doc}`导入配置文件 </青空莉/工具经验/实时编写前端界面或脚本/环境准备/index>`; 实在不行可以自己去{menuselection}`侧边栏 --> 扩展`搜索 `Live Server` 并安装.)
 
 :::{figure} 启动live_server.png
 :::
