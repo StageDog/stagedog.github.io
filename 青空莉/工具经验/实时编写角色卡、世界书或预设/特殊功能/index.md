@@ -14,12 +14,14 @@
 - 不要将破限发给会收集聊天信息的 AI 渠道, 避免破限被标记 (例如 Claude 曾搞过破限挑战赛这样的 "钓鱼活动", 而有人真的将预设发过去了😨)
 - 检查预设有无授权问题!
 
-建议配置方法: (直接完成 Cursor、Augment、RooCode、Cline、Claude Code、Gemini CLI 的配置)
+比起获取破限, 你可以直接使用 Claude Code、Codex 等几乎不需要破限的 AI 编程助手, 具体参考{doc}`/青空莉/工具经验/实时编写前端界面或脚本/环境准备/index`.
 
-- 下载{doc}`实时编写前端界面或脚本模板 </青空莉/工具经验/实时编写前端界面或脚本/环境准备/index>`
-- 仿照 `.cursor/rules` 文件夹中的文件新建一个文件, 填写 `pull 预设 --inline` 所得到的预设内容
-- 删除 `.cursor/rules` 中的其他文件
-- 相应调整 `CLAUDE.md` 和 `GEMINI.md`, 引用你创建的文件
+获取预设破限的方法:
+
+- 在酒馆中选择预设, 关闭与破限无关的条目 (如世界信息、字数要求)
+- 新建一张空卡
+- 打开{menuselection}`酒馆输入框左下角魔棒 --> 提示词查看器`
+- 等待提示词加载完毕后, 点击右上角的复制按钮
 
 如果嫌文件夹内容太多, 你可以仅保留 `.augment`、`.claude`、`.clinerules`、`.cursor`、`.roo` 文件夹和 `.editorconfig`、`.prettierrc`、`mcp.json`、`CLAUDE.md`、`GEMINI.md` 文件.
 :::
