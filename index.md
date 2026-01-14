@@ -14,14 +14,14 @@
 :caption: 络络
 :hidden:
 
-资源仓库 <https://github.com/lolodesu/lolocard>
+资源仓库 <https://github.com/lolo-desu/lolocard>
 络络/作品集/index
 络络/教程/index
 :::
 
 ## 络络
 
-- [资源仓库](https://github.com/lolodesu/lolocard)
+- [资源仓库](https://github.com/lolo-desu/lolocard)
 - {doc}`/络络/作品集/index`
 - 教程
   - {doc}`/络络/教程/手写mvu变量卡/index`
