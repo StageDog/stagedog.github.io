@@ -2,12 +2,15 @@
 
 {{ prolog }}
 
-:::{hint}
-如果你有代码和 Git 版本管理经验, 你可以从模板文件夹 <https://github.com/StageDog/tavern_helper_template> 右上角的 {menuselection}`Use this template` 按钮来根据模板创建一个新仓库, **并按照仓库 README 说明进行配置**. \
-这样创建的仓库会自动检测模板更新并创建 pull request, 你无须自己检查更新.
-:::
+## 让模板能自动更新
 
-## 仅更新参考文件
+你可以从模板文件夹 <https://github.com/StageDog/tavern_helper_template> 右上角的 {menuselection}`Use this template` 按钮来根据模板创建一个新仓库, **并按照仓库 README 说明进行配置**.
+
+这样创建的仓库会自动检测模板更新并创建 pull request 来同步我的模板更新, **而你需要手动批准 pull request, 因此建议你时常查看 github 的邮件通知.**
+
+## 手动更新
+
+### 仅更新参考文件
 
 `@types` 文件夹中记录了酒馆助手所提供的接口定义, 它随着酒馆助手更新会发生变化, 因此酒馆助手更新后你需要下载更新它.
 
@@ -19,7 +22,7 @@
 :::{figure} 更新stscript参考文件.png
 :::
 
-## 更新整个模板
+### 更新整个模板
 
 但模板也可能存在编程助手规则、MCP、打包方式、依赖等的更新, 则你可以重新从 <https://github.com/StageDog/tavern_helper_template> 下载模板, 将你的 `src` 文件夹复制到新模板中, 然后输入 `pnpm install` 重新安装代码依赖.
 
