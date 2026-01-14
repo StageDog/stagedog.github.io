@@ -245,11 +245,26 @@ Codex (推荐)
   规则: 已经配置在了 AGENTS.md 中, AI 会自动读取 \
   MCP: 按照 .cursor/mcp.json 转换为 toml 格式, 然后从 codex 界面打开 mcp 配置文件并填入. 注意将 `mcpSevers` 改为 `mcp_servers`
 
-  ```toml
-  [mcp_servers.browsermcp]
+  :::{code-block} toml
+  :caption: Windows
+  [mcp_servers.chrome-devtools]
+  command = "cmd"
+  args = [
+      "/c",
+      "pnpx",
+      "chrome-devtools-mcp@latest",
+      "--autoConnect",
+  ]
+  env = { SystemRoot="C:\\Windows", PROGRAMFILES="C:\\Program Files" }
+  startup_timeout_ms = 20_000
+  :::
+  :::{code-block} toml
+  :caption: MacOS、Linux
+  [mcp_servers.chrome-devtools]
   command = "pnpx"
-  args = ["@browsermcp/mcp"]
-  ```
+  args = ["chrome-devtools-mcp@latest", "--autoConnet"]
+  startup_timeout_ms = 20_000
+  :::
 
 其他编程助手
 : 规则: 按照 .cursor/rules 自行配置 \
