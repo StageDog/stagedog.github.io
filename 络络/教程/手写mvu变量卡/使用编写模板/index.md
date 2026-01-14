@@ -32,7 +32,7 @@
 
 你依然可以直接像上面没有变量结构脚本那样操作, 只是在和 AI 对话时把变量结构脚本发给它.
 
-如果你还想更多手动操作……可以手动去`初始模板/角色卡`里复制`新建为src文件夹中的文件夹`到`src`文件夹中, 重命名成你想要的名字, 然后打开里面的 `schema.ts` 文件, 把你自己的变量结构脚本粘贴进去. 如:
+如果你还想更多手动操作……可以手动去`初始模板/角色卡`里复制`新建为src文件夹中的文件夹`到`src`文件夹中, 重命名成你想要的名字, 然后**打开里面的 `schema.ts` 文件, 清空内容, 把你自己的变量结构脚本粘贴进去**. 如:
 
 ```ts
 import { registerMvuSchema } from 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/util/mvu_zod.js';
