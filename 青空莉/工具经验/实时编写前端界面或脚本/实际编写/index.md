@@ -159,6 +159,15 @@
 网上也有让 Edge 浏览器接上这个功能的方法, 如果需要可以在**学完教程后**去试.
 :::
 
+#### 启用远程调试选项
+
+安装好 Chrome 后, 我们在 Chrome 浏览器中输入 `chrome://inspect/#remote-debugging` 并{kbd}`回车`跳转, 然后勾选 {menuselection}`Allow remote debugging for this browser instance` 即可.
+
+:::{figure} 远程调试选项.png
+:::
+
+如果没有这个选项, 请更新 Chrome 到 144 版本及以上.
+
 #### 添加 MCP
 
 然后, 我们在 AI 编程助手的 MCP 配置文件里添加 Chrome DevTools MCP 即可…… \
