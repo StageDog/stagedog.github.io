@@ -105,7 +105,18 @@ token 数过多提醒: 防止玩傻子 AI
 
 显示区间消息: 不卡顿地查看很久以前的楼层消息
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/显示区间消息/index.js'` 即可. \
+  其实就是调用一下 `SillyTavern.addOneMessage` 而已, 很简单. \
   [旅程](https://discord.com/channels/1291925535324110879/1371060550469029939) / {stagedog_path}`源文件和说明 <src/酒馆助手/显示区间消息>`
+
+删除区间楼层: 不卡顿地删除某个范围的楼层消息
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/删除区间楼层/index.js'` 即可. \
+  其实就是调用一下 `deleteChatMessages` 而已, 很简单. \
+  {stagedog_path}`源文件和说明 <src/酒馆助手/删除区间楼层>`
+
+快速切换开局: 一键跳转某个开局
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/快速切换开局/index.js'` 即可. \
+  其实就是调用一下 `setChatMessages([{ message_id: 0, swipe_id: 开局号 }])` 而已, 很简单. \
+  {stagedog_path}`源文件和说明 <src/酒馆助手/快速切换开局>`
 
 一键禁用条目递归
 : 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/一键禁用条目递归/index.js'` 即可. \
