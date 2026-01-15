@@ -24,7 +24,7 @@
 
 ### 更新整个模板
 
-但模板也可能存在编程助手规则、MCP、打包方式、依赖等的更新, 则你可以重新从 <https://github.com/StageDog/tavern_helper_template> 下载模板, 将你的 `src` 文件夹复制到新模板中, 然后输入 `pnpm install` 重新安装代码依赖.
+但模板也可能存在编程助手规则、MCP、打包方式、依赖等的更新, 则你可以重新从 <https://github.com/StageDog/tavern_helper_template> 下载模板, 在新模板文件夹里 `pnpm install` 重新安装代码依赖, 再 `pnpm build` 一下, 然后将你的 `src` 文件夹复制到新模板中.
 
 具体更新情况在 <https://github.com/StageDog/tavern_helper_template> 中有显示:
 
