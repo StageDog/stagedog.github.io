@@ -144,40 +144,62 @@ figma 是专业的前端原型设计软件, 它预制了大量模板 (包括很�
 
 编写模板已经在 slash_command.txt 中提供了命令列表给 AI; 如果需要人工查询, 请使用[命令手册](https://rentry.org/sillytavern-script-book)
 
-### 在脚本中用 jquery 修改页面元素
+### 在脚本中用 jquery 修改酒馆页面、添加新界面等
 
-在脚本中, 你可以用 jquery 来修改页面元素. 酒馆助手内置库中的[`预设条目更多按钮`](https://github.com/StageDog/tavern_resource/tree/main/src/酒馆助手/预设条目更多按钮)、[`预设防误触`](https://github.com/StageDog/tavern_resource/tree/main/src/酒馆助手/预设防误触)等脚本都是通过这种方式来实现的:
+在脚本中, 你可以用 jquery 来
 
-```{code-block} ts
-:caption: 预设防误触
-function lock_inputs(enable: boolean) {
-  // 用 jquery 访问酒馆页面元素, 让它们不能被修改
-  $('#range_block_openai :input').prop('disabled', enable);
-  $('#openai_settings > div:first-child :input').prop('disabled', enable);
-  $('#stream_toggle').prop('disabled', false);
-  $('#openai_show_thoughts').prop('disabled', false);
-}
+- 修改酒馆网页现有元素, 酒馆助手内置库中的{doc}`预设条目更多按钮、预设防误触 </青空莉/作品集/index>`等脚本.
+- 添加新界面, 如{doc}`日记络络中的流式 Galgame 界面 </络络/作品集/index>`、{doc}`输入助手、文生图、行动选择框、压缩相邻消息 </青空莉/作品集/index>`等脚本.
 
-$(() => {
-  // 启用脚本时锁定预设设置, 防止误触预设
-  lock_inputs(true);
-});
+也就是说, 给酒馆现在的界面做额外功能、悬浮框、外置手机、流式界面、完全去掉酒馆楼层换成你自己的界面等等, 都能脚本实现.
 
-$(window).on('pagehide', () => {
-  // 卸载脚本时解锁预设设置, 允许修改预设
-  lock_inputs(false)
-});
+**编写模板里的 AI 直接会这些**, 而我也在编写模板里提供了 `createScriptIdDiv` 和 `createScriptIdIframe` 方便制作这些功能.
+
+:::{video} 流式界面.mp4
+:align: center
+:caption: 日记络络中的流式 Galgame 界面
+:::
+
+### 制作流式或同层前端界面
+
+#### 简单方案
+
+要简单做流式传输, 我们使用酒馆助手的前端界面, 在其中设计{menuselection}`发送`按钮来触发酒馆助手的`generate`函数.
+
+也就是说:
+
+- 玩家只在一个前端界面内进行游玩
+- 对于玩家的输入, 我们通过前端助手的 `generate`、`generateRaw` 命令自行要求 ai 回复, 并监听 `iframe_events.STREAM_TOKEN_RECEIVED_FULLY` 和 `iframe_events.STREAM_TOKEN_RECEIVED_INCREMENTALLY` 事件来获取流式传输文本
+- 为了记录剧情, 我个人建议将前端界面正则调成最大深度 `0`, 然后用 `setChatMessages`、`createChatMessages`、`deleteChatMessages` 等函数的 `{ refresh: 'none' }` 参数来修改消息楼层但不刷新显示. 由于不会刷新显示, 玩家可以继续游玩你的界面, 但剧情记录等又能直接利用酒馆的消息楼层功能, **你不需要写一堆额外的代码来制作记录剧情功能**.
+
+#### 更自由的办法
+
+前面提到我们可以在酒馆助手脚本中用 jquery 修改页面元素, 那么我们完全可以把酒馆的楼层显示隐藏起来, 自己在它原本的位置制作一个楼层显示:
+
+- 监听 `tavern_events.MESSAGE_SEND -> message_id`, 我们可以知道玩家要求酒馆调用 ai 生成;
+- 监听 `tavern_events.STREAM_TOKEN_RECEIVED -> text`, 我们可以获取流式传输文本;
+- 监听 `tavern_events.MESSAGE_RECEIVED -> message_id`, 我们可以知道酒馆结束了回复.
+
+这样一来, 我们是自己获取流式传输文本, 自己控制该怎么显示界面.
+
+例如, 假设我们让 AI 以 YAML 的形式发送对话, 流式过程中可能得到:
+
+```{code-block} yaml
+:emphasize-lines: 6
+- 角色: 络络
+  对话: 杂鱼喵
+- 角色: 青空莉
+  对话: 杂鱼哦
+- 角色: 络络 
+  对
 ```
 
-甚至, 你可以不使用酒馆助手的前端界面渲染方式, 而是自己用 jquery 将代码块替换为要渲染的 jquery/vue 界面. {doc}`输入助手、文生图、行动选择框、压缩相邻消息 </青空莉/作品集/index>`等脚本就是如此:
+我们可以在还没收到消息时就显示 Galgame 对话界面, 而只将格式已经完整的对话添加到界面中, 允许玩家在流式时就翻页阅读.
 
-```{code-block} ts
-:caption: 替换第 0 楼中含 `<galgame>` 的代码块为 galgame 界面
-const $galgame = extract_galgame_element();
-
-const $mes_text = retrieveDisplayedMessage(0);
-$mes_text.find('pre:contains("<galgame>")').replaceWith($galgame);
-```
+:::{video} 流式界面.mp4
+:align: center
+:caption: 日记络络中的流式 Galgame 界面
+:::
 
 ### 对发送出的提示词进行修改
 
@@ -218,47 +240,6 @@ noass 等压缩相邻消息、合并消息的功能就是这么做的, 例如{do
 ### 控制世界书条目的激活
 
 见于{doc}`/青空莉/工具经验/酒馆如何处理世界书/index`.
-
-### 制作流式或同层前端界面
-
-#### 简单方案
-
-要简单做流式传输, 我们使用酒馆助手的前端界面, 在其中设计{menuselection}`发送`按钮来触发酒馆助手的`generate`函数.
-
-也就是说:
-
-- 玩家只在一个前端界面内进行游玩
-- 对于玩家的输入, 我们通过前端助手的 `generate`、`generateRaw` 命令自行要求 ai 回复, 并监听 `iframe_events.STREAM_TOKEN_RECEIVED_FULLY` 和 `iframe_events.STREAM_TOKEN_RECEIVED_INCREMENTALLY` 事件来获取流式传输文本
-- 为了记录剧情, 我个人建议将前端界面正则调成最大深度 `0`, 然后用 `setChatMessages`、`createChatMessages`、`deleteChatMessages` 等函数的 `{ refresh: 'none' }` 参数来修改消息楼层但不刷新显示. 由于不会刷新显示, 玩家可以继续游玩你的界面, 但剧情记录等又能直接利用酒馆的消息楼层功能, **你不需要写一堆额外的代码来制作记录剧情功能**.
-
-#### 更自由的办法
-
-前面提到我们可以在酒馆助手脚本中用 jquery 修改页面元素, 那么我们完全可以把酒馆的楼层显示隐藏起来, 自己在它原本的位置制作一个楼层显示:
-
-- 监听 `tavern_events.MESSAGE_SEND -> message_id`, 我们可以知道玩家要求酒馆调用 ai 生成;
-- 监听 `tavern_events.STREAM_TOKEN_RECEIVED -> text`, 我们可以获取流式传输文本;
-- 监听 `tavern_events.MESSAGE_RECEIVED -> message_id`, 我们可以知道酒馆结束了回复.
-
-这样一来, 我们是自己获取流式传输文本, 自己控制该怎么显示界面.
-
-例如, 假设我们让 AI 以 YAML 的形式发送对话, 流式过程中可能得到:
-
-```{code-block} yaml
-:emphasize-lines: 6
-- 角色: 络络
-  对话: 杂鱼喵
-- 角色: 青空莉
-  对话: 杂鱼哦
-- 角色: 络络 
-  对
-```
-
-我们可以在还没收到消息时就显示 Galgame 对话界面, 而只将格式已经完整的对话添加到界面中, 允许玩家在流式时就翻页阅读.
-
-:::{video} 流式界面.mp4
-:align: center
-:caption: <code class="docutils literal notranslate">@hakoyukaya</code> 的流式 Galgame 界面
-:::
 
 ### 导入文件文本内容
 
