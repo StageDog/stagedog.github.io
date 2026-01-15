@@ -132,12 +132,6 @@ figma 是专业的前端原型设计软件, 它预制了大量模板 (包括很�
 
 此外, figma 也推出了 AI 功能. 由于它是专业前端原型设计软件, 它的 AI 设计出的界面一般比其他 AI 好看许多.
 
-### 与外部应用程序通信
-
-模板可以安装和使用 `socket.io-client` 乃至所有浏览器环境支持的第三方库, 从而和外部应用程序进行通信. {doc}`/青空莉/工具经验/实时编写角色卡、世界书或预设/index` (<http://github.com/StageDog/tavern_sync>) 就是如此实现的.
-
-如果你要传输数据, 请注意调整服务器端的 [`maxHttpBufferSize`](https://socket.io/docs/v4/server-options/#maxhttpbuffersize) 参数, 它默认仅为 1mb.
-
 ### 执行酒馆的 /STScript 命令
 
 你可以通过 `triggerSlash` 或 `SillyTavern.executeSlashCommandsWithOptions` 来执行酒馆的 STScript 命令, 如触发 AI 回复 (`triggerSlash('/trigger')`)、刷新网页 (`triggerSlash('/reload-page')`) 等.
@@ -244,6 +238,12 @@ noass 等压缩相邻消息、合并消息的功能就是这么做的, 例如{do
 ### 导入文件文本内容
 
 你可能需要在代码里获取本地 json 等文件内容, 那么可以直接用 `import string from './文件?raw'` 来将文件内容作为字符串导入.
+
+### 与外部应用程序通信
+
+模板可以安装和使用 `socket.io-client` 乃至所有浏览器环境支持的第三方库, 从而和外部应用程序进行通信. {doc}`/青空莉/工具经验/实时编写角色卡、世界书或预设/index` (<http://github.com/StageDog/tavern_sync>) 就是如此实现的.
+
+如果你要传输数据, 请注意调整服务器端的 [`maxHttpBufferSize`](https://socket.io/docs/v4/server-options/#maxhttpbuffersize) 参数, 它默认仅为 1mb.
 
 ### 混淆代码
 
