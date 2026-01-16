@@ -285,7 +285,7 @@ Codex (推荐)
   :caption: MacOS、Linux
   [mcp_servers.chrome-devtools]
   command = "pnpx"
-  args = ["chrome-devtools-mcp@latest", "--autoConnet"]
+  args = ["chrome-devtools-mcp@latest", "--autoConnect"]
   startup_timeout_ms = 20_000
   :::
 
