@@ -49,135 +49,212 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
 
 所有脚本的源代码可以在[我的资源仓库](https://github.com/StageDog/tavern_resource)中找到. 这些脚本的源代码可以作为参考知识, 发给{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`的 AI, 让它制作新的脚本.
 
+**要使用以下脚本, 直接新建一个脚本, 将代码块里的内容 (如 `import 'xxx';`) 复制进去即可.** 几乎所有脚本都以这种 `import 'xxx'` 形式从资源仓库获取并能自动更新.
+
+- {ref}`酒馆助手脚本_建议常驻`
+- {ref}`酒馆助手脚本_酒馆使用优化`
+- {ref}`酒馆助手脚本_快速按钮/一次性功能`
+- {ref}`酒馆助手脚本_作者专用`
+- {ref}`酒馆助手脚本_杂项`
+
+(酒馆助手脚本_建议常驻)=
+
 ### 建议常驻
 
+<!-- markdownlint-disable MD031 MD034 MD040 -->
 最大化预设上下文长度: 避免酒馆错误地截断本来可以完整发给 AI 的提示词
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/最大化预设上下文长度/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/最大化预设上下文长度/index.js'
+  :::
   {stagedog_path}`源文件和说明 <src/酒馆助手/最大化预设上下文长度>`
 
 保存预设条目时直接保存预设: 再也不用担心切预设导致对预设的修改消失了!
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/保存提示词时保存预设/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/保存提示词时保存预设/index.js'
+  :::
   [旅程](https://discord.com/channels/1291925535324110879/1371874887156891689) / {stagedog_path}`源文件和说明 <src/酒馆助手/保存提示词时保存预设>`
 
 预设条目更多按钮: 一键新增预设条目
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/预设条目更多按钮/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/预设条目更多按钮/index.js'
+  :::
   [类脑](https://discord.com/channels/1134557553011998840/1405486208796069898) / [旅程](https://discord.com/channels/1291925535324110879/1405485289677525002) / {stagedog_path}`源文件和说明 <src/酒馆助手/预设条目更多按钮>`
 
 世界书强制自定义排序
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/世界书强制自定义排序/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/世界书强制自定义排序/index.js'
+  :::
   {stagedog_path}`源文件和说明 <src/酒馆助手/世界书强制自定义排序>`
 
 世界书强制用推荐的全局设置
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/世界书强制用推荐的全局设置/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/世界书强制用推荐的全局设置/index.js'
+  :::
   {stagedog_path}`源文件和说明 <src/酒馆助手/世界书强制用推荐的全局设置>`
+
+(酒馆助手脚本_酒馆使用优化)=
 
 ### 酒馆使用优化
 
 标签化: 随世界书、预设或链接配置自动开关正则、提示词条目
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/标签化/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/标签化/index.js'
+  :::
   [旅程](https://discord.com/channels/1291925535324110879/1344362686900605043) / {stagedog_path}`源文件和说明 <src/酒馆助手/标签化>`
 
 预设防误触
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/预设防误触/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/预设防误触/index.js'
+  :::
   {stagedog_path}`源文件和说明 <src/酒馆助手/预设防误触>`
 
 粘贴文本转为附加文件: 当对文本框粘贴过长文本时转为附加文件, 避免文本框字数太多而卡顿
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/粘贴文本转为附加文件/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/粘贴文本转为附加文件/index.js'
+  :::
   [类脑](https://discord.com/channels/1134557553011998840/1411315671794585660) / [旅程](https://discord.com/channels/1291925535324110879/1411315491225731122) / {stagedog_path}`源文件和说明 <src/酒馆助手/粘贴文本转为附加文件>`
 
 token 数过多提醒: 防止玩傻子 AI
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/token数过多提醒/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/token数过多提醒/index.js'
+  :::
   {stagedog_path}`源文件和说明 <src/酒馆助手/token数过多提醒>`
 
 删除角色卡时删除绑定的主要世界书
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/删除角色卡时删除绑定的主要世界书/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/删除角色卡时删除绑定的主要世界书/index.js'
+  :::
   [类脑](https://discord.com/channels/1134557553011998840/1404680275262308485) / [旅程](https://discord.com/channels/1291925535324110879/1404677401212092537/1404677401212092537) / {stagedog_path}`源文件和说明 <src/酒馆助手/删除角色卡时删除绑定的主要世界书>`
 
 角色卡绑定预设: 切换角色卡时自动切换预设
-: 新建脚本填入 `$(() => loadPreset('要绑定的预设名称'))` 即可. \
+: :::{code-block} js
+  $(() => loadPreset('要绑定的预设名称'))
+  :::
+  新建一个角色卡脚本, 把上面一行代码粘贴进去即可. \
   [预设函数文档](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/功能详情/预设/修改预设.html)
 
 消息接收完成时滚至消息开头
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/消息接收完成时滚至消息开头/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/消息接收完成时滚至消息开头/index.js'
+  :::
   {stagedog_path}`源文件和说明 <src/酒馆助手/消息接收完成时滚至消息开头>`
+
+(酒馆助手脚本_快速按钮/一次性功能)=
 
 ### 快速按钮/一次性功能
 
 输入助手 (改自[司马咩咩的插件](https://github.com/Mooooooon/st-input-helper)): 方便在输入框指定位置输入引号、括号或自定义内容，并指定输入后光标位置
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/输入助手/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/输入助手/index.js'
+  :::
   [旅程](https://discord.com/channels/1291925535324110879/1353370392705896468) / {stagedog_path}`源文件和说明 <src/酒馆助手/输入助手>`
 
 显示区间消息: 不卡顿地查看很久以前的楼层消息
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/显示区间消息/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/显示区间消息/index.js'
+  :::
   其实就是调用一下 `SillyTavern.addOneMessage` 而已, 很简单. \
   [旅程](https://discord.com/channels/1291925535324110879/1371060550469029939) / {stagedog_path}`源文件和说明 <src/酒馆助手/显示区间消息>`
 
 删除区间楼层: 不卡顿地删除某个范围的楼层消息
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/删除区间楼层/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/删除区间楼层/index.js'
+  :::
   其实就是调用一下 `deleteChatMessages` 而已, 很简单. \
   {stagedog_path}`源文件和说明 <src/酒馆助手/删除区间楼层>`
 
 快速切换开局: 一键跳转某个开局
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/快速切换开局/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/快速切换开局/index.js'
+  :::
   其实就是调用一下 `setChatMessages([{ message_id: 0, swipe_id: 开局号 }])` 而已, 很简单. \
   {stagedog_path}`源文件和说明 <src/酒馆助手/快速切换开局>`
 
 一键禁用条目递归
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/一键禁用条目递归/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/一键禁用条目递归/index.js'
+  :::
   {stagedog_path}`源文件和说明 <src/酒馆助手/一键禁用条目递归>`
 
 世界书繁简互换: 一键将繁体/简体世界书翻译成简体/繁体
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/世界书繁简互换/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/世界书繁简互换/index.js'
+  :::
   [类脑](https://discord.com/channels/1134557553011998840/1437376920500043836/1437376920500043836) / [旅程](https://discord.com/channels/1291925535324110879/1437377220170485881/1437377220170485881) / {stagedog_path}`源文件和说明 <src/酒馆助手/世界书繁简互换>`
 
 场景感: 我自己玩酒馆来一直常驻的几个快速用户输入
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/场景感/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/场景感/index.js'
+  :::
   [类脑](https://discord.com/channels/1134557553011998840/1308428327731855472) / {stagedog_path}`源文件和说明 <src/酒馆助手/场景感>`
 
 快速回复随角色卡导入导出 (酒馆助手脚本已经自带了按钮, 不建议你使用快速回复)
 : [类脑](https://discord.com/channels/1134557553011998840/1322585732962975915) / {stagedog}`说明和内容在角色卡中 <src/酒馆助手/快速回复随角色卡导入导出/快速回复随角色卡导入导出.png>` / {stagedog_path}`源文件和说明 <src/酒馆助手/快速回复随角色卡导入导出>`
 
-### 杂项
-
-压缩相邻消息: 合并同身份消息提高连贯性、整合聊天记录避免 AI 语料影响
-: 功能来自 [noass](https://gitgud.io/Monblant/noass) 但更改了实现方式, 性能应更好, 且与其他对提示词进行了调整的插件、脚本更兼容. \
-  新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/压缩相邻消息/index.js'` 即可. \
-  [类脑](https://discord.com/channels/1134557553011998840/1410317452029595658) / [旅程](https://discord.com/channels/1291925535324110879/1410316490690793644) / {stagedog_path}`源文件 <src/酒馆助手/压缩相邻消息>` / {doc}`说明 </青空莉/工具经验/提示词个人写法/组合和命名提示词/index>`
-
-深度条目排斥器：让深度条目只能在 D0 或 D999
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/深度条目排斥器/index.js'` 即可. \
-  这是为了方便世界书条目的深度设置同时适配 claude 和 gemini, 具体原因请点击说明链接查看.
-  [类脑](https://discord.com/channels/1134557553011998840/1438435347238359141) / [旅程](https://discord.com/channels/1291925535324110879/1438435527110950932) / {stagedog_path}`源文件和说明 <src/酒馆助手/深度条目排斥器>`
-
-文生图: 不怎么好用, 只是演示脚本能够做到
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/文生图/index.js'` 即可. \
-  [旅程](https://discord.com/channels/1291925535324110879/1368559983704146041) / {stagedog_path}`源文件和说明 <src/酒馆助手/文生图>`
-
-取消代码块高亮
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/取消代码块高亮/index.js'` 即可. \
-  [类脑](https://discord.com/channels/1134557553011998840/1415651993833439302) / [旅程](https://discord.com/channels/1291925535324110879/1415652313837735947) / {stagedog_path}`源文件和说明 <src/酒馆助手/取消代码块高亮>`
+(酒馆助手脚本_作者专用)=
 
 ### 作者专用
 
 禁用酒馆助手宏和提示词模板
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/禁用酒馆助手宏和提示词模板/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/禁用酒馆助手宏和提示词模板/index.js'
+  :::
   [类脑](https://discord.com/channels/1134557553011998840/1423948144072327229) / [旅程](https://discord.com/channels/1291925535324110879/1423948388906565794) / {stagedog_path}`源文件和说明 <src/酒馆助手/禁用酒馆助手宏和提示词模板>`
 
 流式传输前端框架 (建议自己阅读{doc}`流式传输前端界面 </青空莉/工具经验/实时编写前端界面或脚本/进阶技巧/index>`来制作)
 : [类脑](https://discord.com/channels/1134557553011998840/1330206359362211960) / {stagedog}`说明和内容在角色卡中 <src/酒馆助手/流式传输/流式传输.png>` / {stagedog_path}`源文件和说明 <src/酒馆助手/流式传输>`
 
 自动安装插件: 让酒馆助手自动安装你角色卡需要的其他插件
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/自动安装插件/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/自动安装插件/index.js'
+  :::
   [旅程](https://discord.com/channels/1291925535324110879/1346952067234660352) / {stagedog_path}`源文件和说明 <src/酒馆助手/自动安装插件>`
 
 实时修改css: 允许你在 VSCode 中实时修改酒馆主题, 无须复制粘贴
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/实时修改css/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/实时修改css/index.js'
+  :::
   [类脑](https://discord.com/channels/1134557553011998840/1333758463582404670) / {stagedog}`说明和内容在角色卡中 <src/酒馆助手/实时修改css/实时修改css.png>` / {stagedog_path}`源文件和说明 <src/酒馆助手/实时修改css>`
 
 样式加载: 像酒馆主题自定义 css 一样编写角色卡 css
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/样式加载/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/样式加载/index.js'
+  :::
   [旅程](https://discord.com/channels/1291925535324110879/1354783717910122496) / {stagedog_path}`源文件和说明 <src/酒馆助手/样式加载>`
 
 资源预载: 提前缓存角色卡的图片资源
-: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/资源预载/index.js'` 即可. \
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/资源预载/index.js'
+  :::
   [旅程](https://discord.com/channels/1291925535324110879/1354791063935520898) / {stagedog_path}`源文件和说明 <src/酒馆助手/资源预载>`
+<!-- markdownlint-enable MD031 MD040 -->
+
+(酒馆助手脚本_杂项)=
+
+### 杂项
+
+压缩相邻消息: 合并同身份消息提高连贯性、整合聊天记录避免 AI 语料影响
+: 功能来自 [noass](https://gitgud.io/Monblant/noass) 但更改了实现方式, 性能应更好, 且与其他对提示词进行了调整的插件、脚本更兼容. \
+  :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/压缩相邻消息/index.js'
+  :::
+  [类脑](https://discord.com/channels/1134557553011998840/1410317452029595658) / [旅程](https://discord.com/channels/1291925535324110879/1410316490690793644) / {stagedog_path}`源文件 <src/酒馆助手/压缩相邻消息>` / {doc}`说明 </青空莉/工具经验/提示词个人写法/组合和命名提示词/index>`
+
+深度条目排斥器：让深度条目只能在 D0 或 D999
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/深度条目排斥器/index.js'
+  :::
+  这是为了方便世界书条目的深度设置同时适配 claude 和 gemini, 具体原因请点击说明链接查看.
+  [类脑](https://discord.com/channels/1134557553011998840/1438435347238359141) / [旅程](https://discord.com/channels/1291925535324110879/1438435527110950932) / {stagedog_path}`源文件和说明 <src/酒馆助手/深度条目排斥器>`
+
+文生图: 不怎么好用, 只是演示脚本能够做到
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/文生图/index.js'
+  :::
+  [旅程](https://discord.com/channels/1291925535324110879/1368559983704146041) / {stagedog_path}`源文件和说明 <src/酒馆助手/文生图>`
+
+取消代码块高亮
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/取消代码块高亮/index.js'
+  :::
+  [类脑](https://discord.com/channels/1134557553011998840/1415651993833439302) / [旅程](https://discord.com/channels/1291925535324110879/1415652313837735947) / {stagedog_path}`源文件和说明 <src/酒馆助手/取消代码块高亮>`
