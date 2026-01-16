@@ -97,6 +97,10 @@ token 数过多提醒: 防止玩傻子 AI
 : 新建脚本填入 `$(() => loadPreset('要绑定的预设名称'))` 即可. \
   [预设函数文档](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/功能详情/预设/修改预设.html)
 
+消息接收完成时滚至消息开头
+: 新建脚本填入 `import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/消息接收完成时滚至消息开头/index.js'` 即可. \
+  {stagedog_path}`源文件和说明 <src/酒馆助手/消息接收完成时滚至消息开头>`
+
 ### 快速按钮/一次性功能
 
 输入助手 (改自[司马咩咩的插件](https://github.com/Mooooooon/st-input-helper)): 方便在输入框指定位置输入引号、括号或自定义内容，并指定输入后光标位置
