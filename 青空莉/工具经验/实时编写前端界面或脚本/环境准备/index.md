@@ -145,6 +145,27 @@ pnpm config set registry https://registry.npmmirror.com/
 :::{figure} 安装中文插件.png
 :::
 
+### 为 Windows 启用符号链接策略
+
+现在网络上有太多 AI 编程助手可用! 为了简化我对项目模板的配置, 我在你实时编写需要用到的模板文件夹里使用了符号链接文件: 它能将一个文件的内容映射到其他位置, 如我在 `.cursor/rules` 里调整了编写规则, `.kilocode/rules` 里的编写规则也会被调整.
+
+但 Windows 默认不允许非管理员创建符号链接——让我们来打开它!
+
+我们按 {kdb}`Win+R` 打开运行窗口, 输入 `gpedit.msc` 并{kbd}`回车`来打开本地组策略编辑器:
+
+:::{figure} 运行窗口.png
+:::
+
+依次展开{menuselection}`计算机配置 --> Windows 设置 --> 安全设置 --> 本地策略 --> 用户权限分配`, 点击{menuselection}`用户权限分配`, 在右侧找到{menuselection}`创建符号链接`:
+
+:::{figure} 创建符号链接.png
+:::
+
+{kbd}`双击`它, 选择{menuselection}`添加用户或组(U)... --> 高级(A)... --> 立即查找(N)`, 在查找结果中选择你的 Windows 用户名, 点击{menuselection}`确定`, 然后再依次{menuselection}`确定`两次来关闭窗口并应用更改:
+
+:::{figure} 用户搜索结果.png
+:::
+
 ### 打开模板文件夹
 
 实时编写前端界面或脚本依赖于我做好的项目模板, 我们打开 <https://github.com/StageDog/tavern_helper_template>, 点击 {menuselection}`Code --> Download ZIP` 来下载它:
