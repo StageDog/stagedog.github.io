@@ -118,7 +118,7 @@ MVU 有一个便利的设计: 它会在 AI 回复结束后, 自动在回复末�
 
 在前端界面中, 你不仅仅可以显示变量值或做一些简单的美化——你还能让玩家和界面交互!
 
-[角色卡示例](https://github.com/StageDog/tavern_helper_template/tree/main/src/角色卡示例)中为了演示这一点, 在界面中支持了直接增减白娅依存度; 同时, 变量管理器中对变量的修改也会实时更新在界面上:
+[角色卡示例](https://github.com/StageDog/tavern_helper_template/tree/main/示例/角色卡示例)中为了演示这一点, 在界面中支持了直接增减白娅依存度; 同时, 变量管理器中对变量的修改也会实时更新在界面上:
 
 :::{video} 依存度状态栏.mp4
 :align: center

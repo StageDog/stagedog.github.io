@@ -377,7 +377,7 @@ D0
 
 `format`: 变量必须满足的特定格式
 : 比如`世界.当前时间`必须是 `YYYY年MM月DD日 星期X HH:MM`. \
-  这也可以在变量结构中规定, 但在示例卡中没有这样做, 而只是在变量更新规则中写了一句 `format: YYYY年MM月DD日 星期X HH:MM` 让 AI 知道有这么回事. 为什么呢? 因为在[示例卡](https://github.com/StageDog/tavern_helper_template/tree/main/src/角色卡示例)中, `世界.当前时间`只是为了让 AI 知道当前时间是多少, 没满足格式也没关系, 哪怕是 `HH:MM YYYY/MM/DD` 等依旧能满足我的需要. \
+  这也可以在变量结构中规定, 但在示例卡中没有这样做, 而只是在变量更新规则中写了一句 `format: YYYY年MM月DD日 星期X HH:MM` 让 AI 知道有这么回事. 为什么呢? 因为在[示例卡](https://github.com/StageDog/tavern_helper_template/tree/main/示例/角色卡示例)中, `世界.当前时间`只是为了让 AI 知道当前时间是多少, 没满足格式也没关系, 哪怕是 `HH:MM YYYY/MM/DD` 等依旧能满足我的需要. \
   换句话说, **变量结构是对变量的硬性要求, 而变量更新规则中的 `type`、`range`、`format` 是对 AI 应该把变量更新成什么值的希望建议.**
 
 `check`: AI 在更新变量时应该考虑的因素

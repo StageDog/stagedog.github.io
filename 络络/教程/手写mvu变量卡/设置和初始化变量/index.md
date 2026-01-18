@@ -2,7 +2,7 @@
 
 {{ prolog }}
 
-教程所使用的示例卡可以在[角色卡示例](https://github.com/StageDog/tavern_helper_template/tree/main/src/角色卡示例)找到哦!
+教程所使用的示例卡可以在[角色卡示例](https://github.com/StageDog/tavern_helper_template/tree/main/示例/角色卡示例)找到哦!
 
 ## 思考需要什么变量
 
