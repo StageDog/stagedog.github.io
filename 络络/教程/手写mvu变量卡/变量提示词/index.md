@@ -487,6 +487,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
       - delta: update the value of existing number paths by a delta value
       - insert: insert new items into an object or array (using `-` as array index intends appending to the end)
       - remove
+      - move
     - don't update field names starts with `_` as they are readonly, such as `_变量`
   format: |-
     <UpdateVariable>
@@ -503,6 +504,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
       { "op": "insert", "path": "${/path/to/array/-}", "value": "${new_value}" },
       { "op": "remove", "path": "${/path/to/object/key}" },
       { "op": "remove", "path": "${/path/to/array/0}" },
+      { "op": "move", "from": "${/path/to/variable}", "to": "${/path/to/another/path}" },
       ...
     ]
     </JSONPatch>
@@ -608,6 +610,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
       - delta: update the value of existing number paths by a delta value
       - insert: insert new items into an object or array (using `-` as array index intends appending to the end)
       - remove
+      - move
     - don't update field names starts with `_` as they are readonly, such as `_变量`
   format: |-
     <UpdateVariable>
@@ -624,6 +627,7 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
       { "op": "insert", "path": "${/path/to/array/-}", "value": "${new_value}" },
       { "op": "remove", "path": "${/path/to/object/key}" },
       { "op": "remove", "path": "${/path/to/array/0}" },
+      { "op": "move", "from": "${/path/to/variable}", "to": "${/path/to/another/path}" },
       ...
     ]
     </JSONPatch>
