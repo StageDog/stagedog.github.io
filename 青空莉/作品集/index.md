@@ -252,7 +252,7 @@ token 数过多提醒: 防止玩傻子 AI
   :::
   [类脑](https://discord.com/channels/1134557553011998840/1410317452029595658) / [旅程](https://discord.com/channels/1291925535324110879/1410316490690793644) / {stagedog_path}`源文件 <src/酒馆助手/压缩相邻消息>` / {doc}`说明 </青空莉/工具经验/提示词个人写法/组合和命名提示词/index>`
 
-深度条目排斥器：让深度条目只能在 D0 或 D999
+深度条目排斥器：让深度条目只能在 D0 或 D9999
 : :::{code-block} js
   import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/深度条目排斥器/index.js'
   :::
