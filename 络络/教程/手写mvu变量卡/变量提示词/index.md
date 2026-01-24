@@ -46,7 +46,7 @@
 
 - 美化版 ([点此查看演示](https://gitgud.io/StageDog/tavern_resource/-/raw/main/src/正则/变量更新/美化版.mp4)): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[美化]变量更新中 <src/正则/变量更新/regex-[美化]变量更新中.json>`、{stagedog}`[美化]完整变量更新 <src/正则/变量更新/regex-[美化]完整变量更新.json>`
 - 折叠版 ([点此查看演示](https://gitgud.io/StageDog/tavern_resource/-/raw/main/src/正则/变量更新/折叠版.mp4)): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[折叠]变量更新中 <src/正则/变量更新/regex-[折叠]变量更新中.json>`、{stagedog}`[折叠]完整变量更新 <src/正则/变量更新/regex-[折叠]完整变量更新.json>`
-- 仅提示版 (不能展开查看更新内容): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[提示]变量更新中 <src/正则/变量更新/regex-[提示]变量更新中.json>`、{stagedog}`[提示]完整变量更新 <src/正则/变量更新/regex-[提示]完整变量更新.json>`
+- 仅提示版 (不能展开查看更新内容): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[仅提示]变量更新中 <src/正则/变量更新/regex-[仅提示]变量更新中.json>`、{stagedog}`[仅提示]完整变量更新 <src/正则/变量更新/regex-[仅提示]完整变量更新.json>`
 
 这样一来, 你就写好变量提示词, 可以进入下一章了! 但我建议你了解一下各个提示词到底做了啥, 又是怎么做到的:
 
