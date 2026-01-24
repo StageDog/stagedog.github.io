@@ -45,7 +45,7 @@
 1. (仅新开聊天时) 变量初始化完成 (`VARIABLE_INITIALIZED`)
 2. 变量更新开始 (`VARIABLE_UPDATE_STARTED`)
 3. 变量更新命令解析完成 (`COMMAND_PARSED`)
-4. 脚本使用解析出的更新命令依次更新变量, 每次更新后都使用变量结构检验结果
+4. 脚本使用解析出的更新命令依次更新变量, 每次更新后都使用变量结构检验/转换结果
 5. 变量更新结束 (`VARIABLE_UPDATE_ENDED`)
 6. 脚本将变量结果存储到对应楼层中之前 (`BEFORE_MESSAGE_UPDATE`)
 
