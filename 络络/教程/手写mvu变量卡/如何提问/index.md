@@ -19,7 +19,8 @@
 - {ref}`MVU_常见问题自查_stat_data`
 - {ref}`MVU_常见问题自查_变量结构注册`
 - {ref}`MVU_常见问题自查_变量结构初始化失败`
-- {ref}`MVU_常见问题自查_updatevariable`
+- {ref}`MVU_常见问题自查_没有updatevariable`
+- {ref}`MVU_常见问题自查_出现updatevariable但没更新`
 - {ref}`MVU_常见问题自查_发生变量更新错误`
 - {ref}`MVU_常见问题自查_状态栏`
 - {ref}`MVU_常见问题自查_重复更新`
@@ -59,6 +60,12 @@
 ### AI 回复中没有 `<UpdateVariable>`
 
 与下面一个问题解决思路相同:
+
+### AI 回复中出现 `<UpdateVariable>` 但变量管理器没更新
+
+首先排查有没有上面那些问题.
+
+如果没有, 与下面一个问题解决思路相同:
 
 (MVU_常见问题自查_发生变量更新错误)=
 
