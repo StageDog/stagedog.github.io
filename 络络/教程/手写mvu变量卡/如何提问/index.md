@@ -55,7 +55,7 @@
 - 请从日志查看器复制所有`【脚本|变量结构】`开头的日志, 将它发给 AI 来让它重新生成变量初始值 initvar 条目;
 - 没有`【脚本|变量结构】`开头的日志就直接告诉 AI 出错了需要修改.
 
-(MVU_常见问题自查_updatevariable)=
+(MVU_常见问题自查_没有updatevariable)=
 
 ### AI 回复中没有 `<UpdateVariable>`
 
