@@ -243,6 +243,86 @@ noass 等压缩相邻消息、合并消息的功能就是这么做的, 例如{do
 
 见于{doc}`/青空莉/工具经验/酒馆如何处理世界书/index`.
 
+(发布会自动更新的前端界面、脚本或美化样式)=
+
+### 发布会自动更新的前端界面、脚本或美化样式
+
+还记得我们是如何实现实时修改前端界面或脚本的吗? 我们利用 {menuselection}`Go Live` 将本地文件夹转换为了网络链接, 而正则或脚本通过网络链接来加载最新打包内容.
+
+既然这样, 我们完全可以发布一个网络链接给玩家, 从而让玩家永远加载到最新的前端界面或脚本!
+
+:::{hint}
+如果使用自己的服务器来部署链接, 请注意设置 https, 否则使用 https 的云酒馆玩家将不可访问.
+:::
+
+#### 利用 github 和 jsdelivr
+
+最简单的方式是利用 [jsdelivr](https://www.jsdelivr.com/) 为 github 文件提供的 CDN 功能. 对于上传在 `github.com/组织名/仓库名` 中 `路径` 下的文件, 你可以直接用 `https://testingcf.jsdelivr.net/gh/组织名/仓库名/路径` 来访问它们.
+
+酒馆助手内置库即采用了这种方法. 例如, 如果你从{menuselection}`酒馆助手 --> 脚本库 --> 内置库`中导入[`标签化`](https://github.com/StageDog/tavern_resource/blob/main/src/酒馆助手/标签化/index.ts), 编辑它就会发现它的代码里仅有一行:
+
+```js
+import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/标签化/index.js'
+```
+
+而前端界面可以写成:
+
+```html
+<body>
+<script>
+  $('body').load('https://testingcf.jsdelivr.net/gh/lolo-desu/lolocard/dist/日记络络/界面/介绍页/index.html')
+</script>
+</body>
+```
+
+甚至, 你也可以用 jsdelivr 发布会自动更新的酒馆美化:
+
+```css
+@import url("https://testingcf.jsdelivr.net/gh/lolo-desu/lolocard/src/思维链美化/酒馆自带推理块版/暗色.css");
+```
+
+为了方便你得到这样的 jsdelivr 链接, 编写模板已经配置了 github 自动工作流. 你可以在 <https://github.com/StageDog/tavern_helper_template> 用 {menuselection}`Use this template` 来创建一个新仓库, 并按照仓库 README 说明进行配置, 然后将它克隆到本地使用. \
+这样一来, 你只需要负责在 `src` 文件夹下修改代码, 完成后上传到 github 仓库; 上传后, 自动工作流将会为你自动打包最新结果到 `dist` 文件夹.
+
+然而, jsdelivr 主服务器、jsdelivr 镜像服务器 (为了国内直连) 和玩家的浏览器都会缓存文件, 因此并不是 github 上文件更新后, 这个链接就会立即得到最新的打包结果.
+
+除了等待服务器自行刷新缓存, 你可以通过以下方式来加快缓存刷新:
+
+- 如果你是从 <https://github.com/StageDog/tavern_helper_template> {menuselection}`Use this template` 来创建的新仓库, 并按照仓库 README 说明完成了配置, 它的自动工作流会自动打包结果并更新版本号, 从而做到 12h 刷新 jsdelivr 主服务器缓存
+- 等仓库更新版本号后，在 <https://www.jsdelivr.com/tools/purge> 中输入要使用的链接, 将 `testingcf.jsdelivr` 改成 `cdn.jsdelivr`, 然后点击确认, 能立即刷新 jsdelivr 主服务器缓存, 但镜像服务器缓存不会刷新
+- 玩家主动清除浏览器缓存
+
+或者, 你可以暂时换个还没缓存你文件的镜像网站来访问:
+
+```text
+testingcf.jsdelivr.net
+fastly.jsdelivr.net
+gcore.jsdelivr.net
+```
+
+#### 利用 cloudflare r2
+
+cloudflare 免费为你提供了 10GB 对象存储服务, 你可以将它作为图床、前端界面或脚本的上传仓库……具体用法请在网上搜索教程.
+
+### 发布会自动更新角色卡
+
+酒馆助手提供了导入/更新角色卡的接口 `importRawCharacter`, 我们可以利用它编写一个脚本来实现角色卡的自动更新.
+
+**编写模板所提供的角色卡示例已经实现了这一点, 你可以让 AI 直接参考它.**
+
+总的来说, 你需要以下内容:
+
+能够获取最新角色卡文件
+: 你可以直接像上文我们自动更新前端界面、脚本一样, 使用的 jsdelivr 网络链接; 也可以用你自己的云存储链接.
+
+能够获取角色卡最新版本号
+: 针对这个, 你也可以上传一个 `版本号` 文件到 github 仓库中, 然后通过 jsdelivr 网络链接获取它; \
+  或者, 你可以直接把最新版本号写在脚本里, 毕竟你应该已经让{ref}`脚本能自动更新 <发布会自动更新的前端界面、脚本或美化样式>`了.
+
+能够获取玩家当前所用角色卡的版本号
+: 你可以使用{menuselection}`酒馆角色卡面板 --> 地球仪旁边的高级定义按钮 --> 创作者的元数据 --> 角色版本`来记录版本号, 这在脚本中可以用 `getCharacter` 接口获取; \
+  你也可以直接在世界书中新开一个`版本号`条目来记录版本号, 然后使用 `getWorldbook` 接口获取.
+
 ### 导入文件文本内容
 
 你可能需要在代码里获取本地 json 等文件内容, 那么可以直接用 `import string from './文件?raw'` 来将文件内容作为字符串导入.
@@ -252,16 +332,6 @@ noass 等压缩相邻消息、合并消息的功能就是这么做的, 例如{do
 模板可以安装和使用 `socket.io-client` 乃至所有浏览器环境支持的第三方库, 从而和外部应用程序进行通信. {doc}`/青空莉/工具经验/实时编写角色卡、世界书或预设/index` (<http://github.com/StageDog/tavern_sync>) 就是如此实现的.
 
 如果你要传输数据, 请注意调整服务器端的 [`maxHttpBufferSize`](https://socket.io/docs/v4/server-options/#maxhttpbuffersize) 参数, 它默认仅为 1mb.
-
-### 混淆代码
-
-无论前端界面还是脚本, 你都可以在 `index.ts` 中添加一行 `// @obfuscate` 来指示打包时应该混淆代码.
-
-混淆后的代码依旧能正常使用, 只是代码本身很难辨认. (当然我更建议你将源代码分享出来供人学习, 我添加这个功能只是因为我将预设及破限塞进了代码里, 如果在 github 仓库里直接发布可能会被注意到)
-
-:::{figure} 混淆代码.png
-混淆后的代码
-:::
 
 ## 调整模板配置
 
@@ -473,72 +543,21 @@ count.value = 5;
 <!-- markdownlint-enable MD032 MD007 -->
 :::
 
-(发布会自动更新的前端界面、脚本或美化样式)=
-
-### 发布会自动更新的前端界面、脚本或美化样式
-
-还记得我们是如何实现实时修改前端界面或脚本的吗? 我们利用 {menuselection}`Go Live` 将本地文件夹转换为了网络链接, 而正则或脚本通过网络链接来加载最新打包内容.
-
-既然这样, 我们完全可以发布一个网络链接给玩家, 从而让玩家永远加载到最新的前端界面或脚本!
-
-:::{hint}
-如果使用自己的服务器来部署链接, 请注意设置 https, 否则使用 https 的云酒馆玩家将不可访问.
-:::
-
-#### 利用 github 和 jsdelivr
-
-最简单的方式是利用 [jsdelivr](https://www.jsdelivr.com/) 为 github 文件提供的 CDN 功能. 对于上传在 `github.com/组织名/仓库名` 中 `路径` 下的文件, 你可以直接用 `https://testingcf.jsdelivr.net/gh/组织名/仓库名/路径` 来访问它们.
-
-酒馆助手内置库即采用了这种方法. 例如, 如果你从{menuselection}`酒馆助手 --> 脚本库 --> 内置库`中导入[`标签化`](https://github.com/StageDog/tavern_resource/blob/main/src/酒馆助手/标签化/index.ts), 编辑它就会发现它的代码里仅有一行:
-
-```js
-import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/标签化/index.js'
-```
-
-而前端界面可以写成:
-
-```html
-<body>
-<script>
-  $('body').load('https://testingcf.jsdelivr.net/gh/lolo-desu/lolocard/dist/日记络络/界面/介绍页/index.html')
-</script>
-</body>
-```
-
-甚至, 你也可以用 jsdelivr 发布会自动更新的酒馆美化:
-
-```css
-@import url("https://testingcf.jsdelivr.net/gh/lolo-desu/lolocard/src/思维链美化/酒馆自带推理块版/暗色.css");
-```
-
-为了方便你得到这样的 jsdelivr 链接, 编写模板已经配置了 github 自动工作流. 你可以在 <https://github.com/StageDog/tavern_helper_template> 用 {menuselection}`Use this template` 来创建一个新仓库, 并按照仓库 README 说明进行配置, 然后将它克隆到本地使用. \
-这样一来, 你只需要负责在 `src` 文件夹下修改代码, 完成后上传到 github 仓库; 上传后, 自动工作流将会为你自动打包最新结果到 `dist` 文件夹.
-
-然而, jsdelivr 主服务器、jsdelivr 镜像服务器 (为了国内直连) 和玩家的浏览器都会缓存文件, 因此并不是 github 上文件更新后, 这个链接就会立即得到最新的打包结果.
-
-除了等待服务器自行刷新缓存, 你可以通过以下方式来加快缓存刷新:
-
-- 如果你是从 <https://github.com/StageDog/tavern_helper_template> {menuselection}`Use this template` 来创建的新仓库, 并按照仓库 README 说明完成了配置, 它的自动工作流会自动打包结果并更新版本号, 从而做到 12h 刷新 jsdelivr 主服务器缓存
-- 等仓库更新版本号后，在 <https://www.jsdelivr.com/tools/purge> 中输入要使用的链接, 将 `testingcf.jsdelivr` 改成 `cdn.jsdelivr`, 然后点击确认, 能立即刷新 jsdelivr 主服务器缓存, 但镜像服务器缓存不会刷新
-- 玩家主动清除浏览器缓存
-
-或者, 你可以暂时换个还没缓存你文件的镜像网站来访问:
-
-```text
-testingcf.jsdelivr.net
-fastly.jsdelivr.net
-gcore.jsdelivr.net
-```
-
-#### 利用 cloudflare r2
-
-cloudflare 免费为你提供了 10GB 对象存储服务, 你可以将它作为图床、前端界面或脚本的上传仓库……具体用法请在网上搜索教程.
-
 ### 允许代码分块
 
 默认情况下, 前端界面或脚本会打包成单个文件, 但如果你以网络链接的形式发布前端界面或脚本, 则可以打包成多个文件块让玩家在游玩中按需加载.
 
 为了允许代码分块, 你需要删去 `webpack.config.ts` 中的 `new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 })` 这一句.
+
+### 混淆代码
+
+无论前端界面还是脚本, 你都可以在 `index.ts` 中添加一行 `// @obfuscate` 来指示打包时应该混淆代码.
+
+混淆后的代码依旧能正常使用, 只是代码本身很难辨认. (当然我更建议你将源代码分享出来供人学习, 我添加这个功能只是因为我将预设及破限塞进了代码里, 如果在 github 仓库里直接发布可能会被注意到)
+
+:::{figure} 混淆代码.png
+混淆后的代码
+:::
 
 ### 不自动打包代码
 
