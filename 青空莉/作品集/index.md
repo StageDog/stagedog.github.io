@@ -74,18 +74,6 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
 ### 建议常驻
 
 <!-- markdownlint-disable MD031 MD034 MD040 -->
-最大化预设上下文长度: 避免酒馆错误地截断本来可以完整发给 AI 的提示词
-: :::{code-block} js
-  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/最大化预设上下文长度/index.js'
-  :::
-  {stagedog_path}`源文件和说明 <src/酒馆助手/最大化预设上下文长度>`
-
-保存预设条目时直接保存预设: 再也不用担心切预设导致对预设的修改消失了!
-: :::{code-block} js
-  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/保存提示词时保存预设/index.js'
-  :::
-  [旅程](https://discord.com/channels/1291925535324110879/1371874887156891689) / {stagedog_path}`源文件和说明 <src/酒馆助手/保存提示词时保存预设>`
-
 预设条目更多按钮: 一键新增预设条目
 : :::{code-block} js
   import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/预设条目更多按钮/index.js'
@@ -98,8 +86,23 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
   :::
   {stagedog_path}`源文件和说明 <src/酒馆助手/世界书强制自定义排序>`
 
+保存预设条目时直接保存预设: 再也不用担心切预设导致对预设的修改消失了!
+: 酒馆助手 4.7.0+ 将它作为了一个体验优化选项, 不再需要单独导入这个脚本.
+  :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/保存提示词时保存预设/index.js'
+  :::
+  [旅程](https://discord.com/channels/1291925535324110879/1371874887156891689) / {stagedog_path}`源文件和说明 <src/酒馆助手/保存提示词时保存预设>`
+
+最大化预设上下文长度: 避免酒馆错误地截断本来可以完整发给 AI 的提示词
+: 酒馆助手 4.7.0+ 将它作为了一个体验优化选项, 不再需要单独导入这个脚本.
+  :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/最大化预设上下文长度/index.js'
+  :::
+  {stagedog_path}`源文件和说明 <src/酒馆助手/最大化预设上下文长度>`
+
 世界书强制用推荐的全局设置
-: :::{code-block} js
+: 酒馆助手 4.7.0+ 将它作为了一个体验优化选项, 不再需要单独导入这个脚本.
+  :::{code-block} js
   import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/世界书强制用推荐的全局设置/index.js'
   :::
   {stagedog_path}`源文件和说明 <src/酒馆助手/世界书强制用推荐的全局设置>`
@@ -132,12 +135,6 @@ token 数过多提醒: 防止玩傻子 AI
   :::
   {stagedog_path}`源文件和说明 <src/酒馆助手/token数过多提醒>`
 
-删除角色卡时删除绑定的主要世界书
-: :::{code-block} js
-  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/删除角色卡时删除绑定的主要世界书/index.js'
-  :::
-  [类脑](https://discord.com/channels/1134557553011998840/1404680275262308485) / [旅程](https://discord.com/channels/1291925535324110879/1404677401212092537/1404677401212092537) / {stagedog_path}`源文件和说明 <src/酒馆助手/删除角色卡时删除绑定的主要世界书>`
-
 角色卡绑定预设: 切换角色卡时自动切换预设
 : :::{code-block} js
   $(() => loadPreset('要绑定的预设名称'))
@@ -150,6 +147,13 @@ token 数过多提醒: 防止玩傻子 AI
   import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/消息接收完成时滚至消息开头/index.js'
   :::
   {stagedog_path}`源文件和说明 <src/酒馆助手/消息接收完成时滚至消息开头>`
+
+删除角色卡时删除绑定的主要世界书
+: 酒馆助手 4.7.0+ 将它作为了一个体验优化选项, 不再需要单独导入这个脚本.
+  :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/删除角色卡时删除绑定的主要世界书/index.js'
+  :::
+  [类脑](https://discord.com/channels/1134557553011998840/1404680275262308485) / [旅程](https://discord.com/channels/1291925535324110879/1404677401212092537/1404677401212092537) / {stagedog_path}`源文件和说明 <src/酒馆助手/删除角色卡时删除绑定的主要世界书>`
 
 (青空莉作品集_快速按钮/一次性功能)=
 
