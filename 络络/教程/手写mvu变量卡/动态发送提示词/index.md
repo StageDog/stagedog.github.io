@@ -168,7 +168,7 @@ export const Schema = z.object({
 ::::
 
 那么请回想一下, 我们该怎么用 `{{format_message_variable::变量路径}}` 获取络络的好感度值? 答案是 `{{format_message_variable::stat_data.角色.络络.好感度}}`. \
-与之相应地, 我们用 `getvar()` 获取络络好感度的方法是 `getvar('stat_data.角色.络络.好感度')`.
+与之相应地, 我们用 `getvar('变量路径')` 获取络络好感度的方法是 `getvar('stat_data.角色.络络.好感度')`.
 
 所以, "络络好感度小于 30" 的代码是:
 
