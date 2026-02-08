@@ -117,6 +117,12 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
   :::
   {stagedog_path}`源文件和说明 <src/酒馆助手/预设防误触>`
 
+切换预设时提醒还没有保存
+: :::{code-block} js
+  import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/切换预设时提醒还没有保存/index.js'
+  :::
+  {stagedog_path}`源文件和说明 <src/酒馆助手/切换预设时提醒还没有保存>`
+
 删除角色卡时删除绑定的主要世界书
 : :::{code-block} js
   import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/删除角色卡时删除绑定的主要世界书/index.js'
