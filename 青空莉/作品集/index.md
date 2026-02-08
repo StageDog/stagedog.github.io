@@ -87,8 +87,7 @@ MVU 变量更新正则 ([类脑](https://discord.com/channels/113455755301199884
   {stagedog_path}`源文件和说明 <src/酒馆助手/世界书强制自定义排序>`
 
 保存预设条目时直接保存预设: 再也不用担心切预设导致对预设的修改消失了!
-: 酒馆助手 4.7.0+ 将它作为了一个体验优化选项, 不再需要单独导入这个脚本.
-  :::{code-block} js
+: :::{code-block} js
   import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/保存提示词时保存预设/index.js'
   :::
   [旅程](https://discord.com/channels/1291925535324110879/1371874887156891689) / {stagedog_path}`源文件和说明 <src/酒馆助手/保存提示词时保存预设>`
