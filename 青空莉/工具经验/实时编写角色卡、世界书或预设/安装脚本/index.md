@@ -10,7 +10,7 @@
 
 为了让酒馆能接收本地服务端脚本的信息, 我们需要在酒馆中安装客户端脚本.
 
-这也很简单: 我们先安装[酒馆助手](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/关于酒馆助手/安装与更新.html), 然后在{menuselection}`酒馆助手设置页 --> 脚本库 --> 新建`脚本, 内容填写为:
+这也很简单: 我们先安装[酒馆助手](https://n0vi028.github.io/JS-Slash-Runner-Doc/guide/关于酒馆助手/安装与更新.html), 然后在{menuselection}`酒馆助手设置页 --> 脚本 --> 新建`脚本, 内容填写为:
 
 ```ts
 import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_sync/dist/script.js'

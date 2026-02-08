@@ -15,7 +15,7 @@
 
 在安装好插件后, 我们就能为角色卡添加 MVU 变量框架了——
 
-让我们像视频里那样新建一个角色卡, 点开{menuselection}`酒馆右上角积木按钮 --> 酒馆助手 --> 脚本库`, 点击{menuselection}`+ 脚本`来新建一个角色脚本, 命名……不如就叫 `MVU` 吧! 内容按下面这样填写:
+让我们像视频里那样新建一个角色卡, 点开{menuselection}`酒馆右上角积木按钮 --> 酒馆助手 --> 脚本`, 点击{menuselection}`+ 脚本`来新建一个角色脚本, 命名……不如就叫 `MVU` 吧! 内容按下面这样填写:
 
 ```ts
 import 'https://testingcf.jsdelivr.net/gh/MagicalAstrogy/MagVarUpdate/artifact/bundle.js';
