@@ -116,7 +116,7 @@
 
 ## 考虑插入深度
 
-在此我给的状态栏例子比较简单, 但你可能需要输出[露出系统](https://github.com/StageDog/tavern_resource/blob/main/src/角色卡/妹妹请求你保护她露出/世界书/露出系统输出.yaml)、[Galgame 界面](https://github.com/lolo-desu/lolocard/blob/master/src/日记络络/世界书/特殊界面/下次响应界面选择判断系统.yaml)等更为复杂的格式.
+在此我给的状态栏例子比较简单, 但你可能需要输出[露出系统](https://github.com/StageDog/tavern_resource/blob/main/src/角色卡/妹妹请求你保护她露出/世界书/露出系统输出.yaml)、[Galgame 界面](https://github.com/lolo-desu/lolocard/tree/master/src/日记络络/世界书/特殊界面)等更为复杂的格式.
 
 我们显然不希望将这些东西一股脑插入到 D1/D0, 这很容易{doc}`让 AI 失去对末尾剧情的连贯理解 </青空莉/工具经验/酒馆如何处理世界书/插入/index>`.
 
