@@ -44,7 +44,7 @@ node tavern_sync.mjs
     本地文件路径: 呕吐内心的少女 # 将配置映射为 `呕吐内心的少女.yaml` 文件
 ```
 
-然后我们就能用 `pull` 命令提取它:
+然后我们就能用 `pull` 命令提取它. 我们的配置名称是`角色卡示例`, 因此我们输入:
 
 ```bash
 node tavern_sync.mjs pull 角色卡示例
