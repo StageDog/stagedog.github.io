@@ -40,7 +40,7 @@
 :::
 ::::
 
-::::{tab} Galgame 界面
+::::{tab} 流式 Galgame 界面
 :::{video} ../../实时编写前端界面或脚本/进阶技巧/流式界面.mp4
 :align: center
 :::
