@@ -51,9 +51,9 @@
 
 然后, 我们前往{menuselection}`酒馆右上角积木按钮 --> 正则`, 选择以下某个版本的三个正则导入到局部正则中:
 
-- 美化版 ([点此查看演示](https://gitgud.io/StageDog/tavern_resource/-/raw/main/src/正则/变量更新/美化版.mp4)): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[美化]变量更新中 <src/正则/变量更新/regex-[美化]变量更新中.json>`、{stagedog}`[美化]完整变量更新 <src/正则/变量更新/regex-[美化]完整变量更新.json>`
-- 折叠版 ([点此查看演示](https://gitgud.io/StageDog/tavern_resource/-/raw/main/src/正则/变量更新/折叠版.mp4)): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[折叠]变量更新中 <src/正则/变量更新/regex-[折叠]变量更新中.json>`、{stagedog}`[折叠]完整变量更新 <src/正则/变量更新/regex-[折叠]完整变量更新.json>`
-- 仅提示版 (不能展开查看更新内容): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[仅提示]变量更新中 <src/正则/变量更新/regex-[仅提示]变量更新中.json>`、{stagedog}`[仅提示]完整变量更新 <src/正则/变量更新/regex-[仅提示]完整变量更新.json>`
+- 美化版 ({stagedog_view}`点此查看演示 <src/正则/变量更新/美化版.mp4>`): {stagedog_download}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog_download}`[美化]变量更新中 <src/正则/变量更新/regex-[美化]变量更新中.json>`、{stagedog_download}`[美化]完整变量更新 <src/正则/变量更新/regex-[美化]完整变量更新.json>`
+- 折叠版 ({stagedog_view}`点此查看演示 <src/正则/变量更新/折叠版.mp4>`): {stagedog_download}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog_download}`[折叠]变量更新中 <src/正则/变量更新/regex-[折叠]变量更新中.json>`、{stagedog_download}`[折叠]完整变量更新 <src/正则/变量更新/regex-[折叠]完整变量更新.json>`
+- 仅提示版 (不能展开查看更新内容): {stagedog_download}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog_download}`[仅提示]变量更新中 <src/正则/变量更新/regex-[仅提示]变量更新中.json>`、{stagedog_download}`[仅提示]完整变量更新 <src/正则/变量更新/regex-[仅提示]完整变量更新.json>`
 
 这样一来, 你就写好变量提示词, 可以进入下一章了! 但我建议你了解一下各个提示词到底做了啥, 又是怎么做到的:
 
@@ -878,9 +878,9 @@ AI 于是在回复中按`变量输出格式`所指定的格式更新变量:
 
 为了便于大家操作, 青空莉已经提前制作了处理 `<UpdateVariable>` 变量更新的酒馆正则, 你只需下载导入其中一个版本的三个正则即可:
 
-- 美化版 ([点此查看演示](https://gitgud.io/StageDog/tavern_resource/-/raw/main/src/正则/变量更新/美化版.mp4)): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[美化]变量更新中 <src/正则/变量更新/regex-[美化]变量更新中.json>`、{stagedog}`[美化]完整变量更新 <src/正则/变量更新/regex-[美化]完整变量更新.json>`
-- 折叠版 ([点此查看演示](https://gitgud.io/StageDog/tavern_resource/-/raw/main/src/正则/变量更新/折叠版.mp4)): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[折叠]变量更新中 <src/正则/变量更新/regex-[折叠]变量更新中.json>`、{stagedog}`[折叠]完整变量更新 <src/正则/变量更新/regex-[折叠]完整变量更新.json>`
-- 仅提示版 (不能展开查看更新内容): {stagedog}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog}`[仅提示]变量更新中 <src/正则/变量更新/regex-[仅提示]变量更新中.json>`、{stagedog}`[仅提示]完整变量更新 <src/正则/变量更新/regex-[仅提示]完整变量更新.json>`
+- 美化版 ({stagedog_view}`点此查看演示 <src/正则/变量更新/美化版.mp4>`): {stagedog_download}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog_download}`[美化]变量更新中 <src/正则/变量更新/regex-[美化]变量更新中.json>`、{stagedog_download}`[美化]完整变量更新 <src/正则/变量更新/regex-[美化]完整变量更新.json>`
+- 折叠版 ({stagedog_view}`点此查看演示 <src/正则/变量更新/折叠版.mp4>`): {stagedog_download}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog_download}`[折叠]变量更新中 <src/正则/变量更新/regex-[折叠]变量更新中.json>`、{stagedog_download}`[折叠]完整变量更新 <src/正则/变量更新/regex-[折叠]完整变量更新.json>`
+- 仅提示版 (不能展开查看更新内容): {stagedog_download}`[不发送]去除变量更新 <src/正则/变量更新/regex-[不发送]去除变量更新.json>`、{stagedog_download}`[仅提示]变量更新中 <src/正则/变量更新/regex-[仅提示]变量更新中.json>`、{stagedog_download}`[仅提示]完整变量更新 <src/正则/变量更新/regex-[仅提示]完整变量更新.json>`
 
 其中,
 
