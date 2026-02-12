@@ -233,13 +233,13 @@ token 数过多提醒: 防止玩傻子 AI
 : :::{code-block} js
   import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/自动更新角色卡/index.js'
   :::
-  [旅程](https://discord.com/channels/1291925535324110879/1440612560425101342) / {stagedog_path}`源文件和说明 <src/酒馆助手/自动更新角色卡>`
+  [类脑](https://discord.com/channels/1134557553011998840/1471168832562266168) / [旅程](https://discord.com/channels/1291925535324110879/1471153008019509258) / {stagedog_path}`源文件和说明 <src/酒馆助手/自动更新角色卡>`
 
 自动更新预设: 让玩家可以在酒馆里直接更新预设
 : :::{code-block} js
   import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/酒馆助手/自动更新预设/index.js'
   :::
-  [旅程](https://discord.com/channels/1291925535324110879/1440612560425101342) / {stagedog_path}`源文件和说明 <src/酒馆助手/自动更新预设>`
+  [类脑](https://discord.com/channels/1134557553011998840/1471168832562266168) / [旅程](https://discord.com/channels/1291925535324110879/1471153008019509258) / {stagedog_path}`源文件和说明 <src/酒馆助手/自动更新预设>`
 
 自动安装插件: 让酒馆助手自动安装你角色卡需要的其他插件
 : :::{code-block} js
