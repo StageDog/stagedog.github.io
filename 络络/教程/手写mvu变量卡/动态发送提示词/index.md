@@ -419,7 +419,7 @@ MVU zod 允许你给变量名前面加一个 `_`, 来表示这个变量不能被
 <%_ } _%>
 ```
 
-当然你也许想扫描更多楼层或者仅扫描用户输入, 那么你可以按 [matchChatMessages 接口](https://github.com/zonde306/ST-Prompt-Template/blob/main/docs/reference_cn.md?plain=1#L450-L469)来调整扫描方式. 例如:
+当然你也许想扫描更多楼层或者仅扫描用户输入, 那么你可以按 [matchChatMessages 接口](https://github.com/zonde306/ST-Prompt-Template/blob/09180e305e6035c9a88a26f3d7491626734a44cc/docs/reference_cn.md?plain=1#L477-L496)来调整扫描方式. 例如:
 
 ```{code-block} js
 :force:
