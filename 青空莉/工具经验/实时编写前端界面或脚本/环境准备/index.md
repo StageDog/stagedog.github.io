@@ -249,7 +249,7 @@ RooCode
 Kilo Code (推荐)
 : 有中文, 改自 RooCode, 支持自定义 API, 据说更好 \
   规则: 已经配置在了 .kilocode/rules 中, AI 会自动读取 \
-  MCP: 已经配置在了 .kilo/mcp.json 中, AI 会自动读取
+  MCP: 已经配置在了 .kilocode/mcp.json 中, AI 会自动读取
 
 Gemini CLI
 : 谷歌的编程助手, emmm你真的要拿 gemini 做前端界面吗? 配置可以参考[司马咩咩的用 GEMINI CLI 写卡教程](https://discord.com/channels/1291925535324110879/1418158780927049779) \
