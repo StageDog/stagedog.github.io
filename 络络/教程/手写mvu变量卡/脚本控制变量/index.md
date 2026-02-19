@@ -402,16 +402,27 @@ await waitGlobalInitialized('Mvu');
 const old_data = Mvu.getMvuData({ type: 'message', message_id: getCurrentMessageId() });
 
 // 请求 AI 生成
-const content = await generate({ user_input: '你好' });
+const message = await generate({ user_input: '你好' });
 
 // 解析生成结果
-const new_data = await Mvu.parseMessage(content, old_data);
-
-// 将更新后的变量写回楼层
-await Mvu.replaceMvuData(new_data, { type: 'message', message_id: getCurrentMessageId() });
+const data = await Mvu.parseMessage(message, old_data);
 ```
 
-自然地, 你也可以用这种方式直接让玩家在界面里玩 AI, 具体请参考{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`.
+得到 AI 回复 `message` 和变量更新结果 `data` 后, 你可以自行选择如何使用它们.
+
+也许这个 AI 请求只是为了专门进行一次变量更新, 那么你可以抛弃 `message`, 将 `data` 写回到当前楼层:
+
+```ts
+// 将更新后的变量写回楼层
+await Mvu.replaceMvuData(data, { type: 'message', message_id: getCurrentMessageId() });
+```
+
+也许你是想让玩家直接在同层界面里玩 AI (具体请参考{doc}`/青空莉/工具经验/实时编写前端界面或脚本/index`), 这个 AI 请求是在请求 AI 回复剧情和更新变量, 那么你可以将回复和变量创建成新的楼层:
+
+```ts
+// 将回复和变量结果创建为新的楼层
+await createChatMessages([{ role: 'assistant', message, data }]);
+```
 
 ## 用脚本实现更多功能
 
