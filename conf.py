@@ -1,5 +1,5 @@
 project = '白化蓝染的酒馆'
-copyright = '2025. 络络, 青空莉想做舞台少女的狗'
+copyright = '2026. 络络, 青空莉想做舞台少女的狗'
 author = '络络, 青空莉想做舞台少女的狗'
 html_title = f'{project}'
 
