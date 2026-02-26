@@ -93,7 +93,7 @@ pnpm config set registry https://registry.npmmirror.com/
 :::{figure} 安装pnpm.png
 :::
 
-## 安装和配置 Cursor
+## 安装和配置 VSCode/Cursor/Antigravity
 
 :::{hint}
 如果已经安装了 **VSCode**, 你可以直接跳到[导入配置文件](#导入配置文件), 区别只在于你将不能使用 Cursor 的 AI 编程助手. \
