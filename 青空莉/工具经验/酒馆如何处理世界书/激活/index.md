@@ -424,14 +424,14 @@
 
 <!-- markdownlint-disable MD032 MD007 -->
 mvu 变量框架
-: - [类脑](https://discord.com/channels/1134557553011998840/1367871200235229234)
-  - [旅程](https://discord.com/channels/1291925535324110879/1382007156928151693)
+: - [帖子1](https://discord.com/channels/1134557553011998840/1367871200235229234)
+  - [帖子2](https://discord.com/channels/1291925535324110879/1382007156928151693)
   <!-- markdownlint-enable MD032 MD007 -->
 
 <!-- markdownlint-disable MD032 MD007 -->
 络络的 mvu 教程
-: - [类脑](https://discord.com/channels/1134557553011998840/1400321862235328552)
-  - [旅程](https://discord.com/channels/1291925535324110879/1400321714298294272)
+: - [帖子1](https://discord.com/channels/1134557553011998840/1400321862235328552)
+  - [帖子2](https://discord.com/channels/1291925535324110879/1400321714298294272)
   - {doc}`文档 </络络/教程/手写mvu变量卡/index>`
   <!-- markdownlint-enable MD032 MD007 -->
 
