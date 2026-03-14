@@ -13,8 +13,7 @@
 
 > 网聊多年女网友和你同居，线下这么容易脸红 | 和网友开始同居的第N天
 
-➡️ **角色卡发布页:** [帖子](https://discord.com/channels/1134557553011998840/1320057359929839666/1320057359929839666) \
-➡️ **直接下载:** [络络](https://gitgud.io/lolodesu/lolobabytutorial/-/raw/master/角色卡/手机络络/络络.png?inline=false)
+➡️ **角色卡发布页:** [帖子](https://discord.com/channels/1134557553011998840/1320057359929839666/1320057359929839666)
 
 :::{image} 手机络络.png
 :width: 200px
@@ -23,14 +22,12 @@
 ### 🎓 黑川时雨
 
 ➡️ **角色卡发布页:** [帖子](https://discord.com/channels/1134557553011998840/1324600870293471303/1324600870293471303)
-➡️ **直接下载:** {lolodesu_download}`黑川时雨 <src/黑川时雨/黑川时雨.png>`
 
 ### 🎤 主播络络
 
 > 最喜欢的文学向虚拟主播深陷舆论风波……是帮助她度过难关还是让她沉沦于温柔乡?
 
-➡️ **角色卡发布页:** [帖子](https://discord.com/channels/1134557553011998840/1324381761198751845/1324381761198751845) \
-➡️ **直接下载:** [杂鱼络络](https://gitgud.io/lolodesu/lolobabytutorial/-/raw/master/角色卡/主播络络/杂鱼络络.png?inline=false)
+➡️ **角色卡发布页:** [帖子](https://discord.com/channels/1134557553011998840/1324381761198751845/1324381761198751845)
 
 :::{image} 主播络络.png
 :width: 200px
@@ -41,8 +38,7 @@
 > 草莓蛋糕不要再多淋半勺疼痛
 
 ➡️ **前置插件:** [酒馆助手](https://github.com/N0VI028/JS-Slash-Runner)、[提示词模板](https://github.com/zonde306/ST-Prompt-Template) \
-➡️ **角色卡发布页:** [帖子1](https://discord.com/channels/1134557553011998840/1383035029957115985)/[帖子2](https://discord.com/channels/1291925535324110879/1358681112351871028) \
-➡️ **直接下载:** {lolodesu_download}`白化蓝染的日记本 <src/日记络络/白化蓝染的日记本.png>`
+➡️ **角色卡发布页:** [帖子1](https://discord.com/channels/1134557553011998840/1383035029957115985)/[帖子2](https://discord.com/channels/1291925535324110879/1358681112351871028)
 
 :::{image} 日记络络.png
 :width: 200px
@@ -51,7 +47,6 @@
 ### 🌍 罗落大陆
 
 ➡️ **角色卡发布页:** [帖子](https://discord.com/channels/1291925535324110879/1361980244822851706/1361980244822851706)
-➡️ **直接下载:** {lolodesu_download}`罗落大陆 <src/罗落大陆/罗落大陆.png>`
 
 ### 💐 白川璃
 
@@ -59,7 +54,6 @@
 
 ➡️ **前置插件:** [酒馆助手](https://github.com/N0VI028/JS-Slash-Runner)、[提示词模板](https://github.com/zonde306/ST-Prompt-Template) \
 ➡️ **角色卡发布页:** [帖子](https://discord.com/channels/1291925535324110879/1371896736028692571)
-➡️ **直接下载:** {lolodesu_download}`有点奇怪的新同桌 <src/白川璃/白川璃.png>`
 
 :::{image} 白川璃.png
 :width: 200px
@@ -68,13 +62,11 @@
 ### 🐱 郁娇病娇小猫娘
 
 ➡️ **角色卡发布页:** [帖子](https://discord.com/channels/1291925535324110879/1384191265561772222)
-➡️ **直接下载:** {lolodesu_download}`男user版 <src/郁娇病娇小猫娘/男user版.png>` / {lolodesu_download}`女user版 <src/郁娇病娇小猫娘/女user版.png>` / {lolodesu_download}`Dark <src/郁娇病娇小猫娘/Dark.png>` / {lolodesu_download}`Seul <src/郁娇病娇小猫娘/Seul.png>`
 
 ### 😈 魔王与勇者在现代社会终于放下了争端
 
 ➡️ **前置插件:** [酒馆助手](https://github.com/N0VI028/JS-Slash-Runner)、[提示词模板](https://github.com/zonde306/ST-Prompt-Template) \
 ➡️ **角色卡发布页:** [帖子](https://discord.com/channels/1291925535324110879/1379005638218350613)
-➡️ **直接下载:** {lolodesu_download}`魔王与勇者在现代社会终于放下了争端 <src/魔王与勇者放下争端/魔王与勇者放下争端.png>`
 
 ### 🐈 会喵喵叫的宠物妹妹
 
@@ -82,7 +74,6 @@
 
 ➡️ **前置插件:** [酒馆助手](https://github.com/N0VI028/JS-Slash-Runner)、[提示词模板](https://github.com/zonde306/ST-Prompt-Template) \
 ➡️ **角色卡发布页:** [帖子](https://discord.com/channels/1291925535324110879/1382401657169776813)
-➡️ **直接下载:** {lolodesu_download}`会喵喵叫的宠物妹妹 <src/会喵喵叫的宠物妹妹/会喵喵叫的宠物妹妹.png>`
 
 ### ⭐️ 其他络络们
 

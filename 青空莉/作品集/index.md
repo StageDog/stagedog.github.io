@@ -15,19 +15,19 @@
 ## 角色卡
 
 恩赐之主
-: [帖子](https://discord.com/channels/1134557553011998840/1303936998913867836) / {stagedog_download}`直接下载 <src/角色卡/恩赐之主/恩赐之主.png>` / {stagedog_path}`源文件 <src/角色卡/恩赐之主>`
+: [帖子](https://discord.com/channels/1134557553011998840/1303936998913867836)
 
 三个女孩各有秘密
-: [帖子](https://discord.com/channels/1134557553011998840/1309438694557487145) / {stagedog_download}`直接下载 <src/角色卡/三个女孩各有秘密/三个女孩各有秘密.png>` / {stagedog_path}`源文件 <src/角色卡/三个女孩各有秘密>`
+: [帖子](https://discord.com/channels/1134557553011998840/1309438694557487145)
 
-妹妹请求你保护她露出
-: [帖子](https://discord.com/channels/1134557553011998840/1309438694557487145) / {stagedog_download}`直接下载 <src/角色卡/妹妹请求你保护她露出/妹妹请求你保护她露出.png>` / {stagedog_path}`源文件 <src/角色卡/妹妹请求你保护她露出>`
+妹妹的请求
+: [帖子](https://discord.com/channels/1134557553011998840/1309438694557487145)
 
 呕吐内心的少女
-: [帖子](https://discord.com/channels/1291925535324110879/1339557809137778688) / {stagedog_download}`直接下载 <src/角色卡/呕吐内心的少女/呕吐内心的少女.png>` / {stagedog_path}`源文件 <src/角色卡/呕吐内心的少女>`
+: [帖子](https://discord.com/channels/1291925535324110879/1339557809137778688)
 
 晚安络络
-: [帖子](https://discord.com/channels/1291925535324110879/1351974085030314036) / {stagedog_download}`直接下载 <src/角色卡/晚安络络/晚安络络.png>` / {stagedog_path}`源文件 <src/角色卡/晚安络络>`
+: [帖子](https://discord.com/channels/1291925535324110879/1351974085030314036)
 
 (青空莉作品集_预设)=
 
