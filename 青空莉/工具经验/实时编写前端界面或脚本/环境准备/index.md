@@ -123,9 +123,14 @@ pnpm config set registry https://registry.npmmirror.com/
 :::{figure} 选择ai回复语言.png
 :::
 
-### 设置侧边栏
-
 进入主界面后, 看看右上角有没有 {menuselection}`Editor Window`, 有的话点一下切换编辑器模式, 没有不管.
+
+通过{menuselection}`右上角齿轮 --> Agents` 找到 {menuselection}`Open Agents Window on startup`，禁用它.
+
+:::{figure} cursor默认运行editor_window.png
+:::
+
+### 设置侧边栏
 
 通过 {kbd}`Ctrl-Shift+P` 打开命令菜单, 输入 `open vscode settings` 以找到 {menuselection}`Open VSCode Settings`, 从而打开 VSCode 设置面板, 搜索 `orientation`, 然后将搜索到的选项从 {menuselection}`horizontal` 改为 {menuselection}`vertical`:
 
