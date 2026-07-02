@@ -238,41 +238,16 @@ pnpm install
 因此, 如果你需要使用其他编程助手, 除了编程助手本身的配置外还需要按照以下说明对它们也配置规则和 MCP.
 
 <!-- markdownlint-disable MD032 MD007 -->
-Augment
-: 很强, 但越来越难白嫖了 \
-  规则: 已经配置在了 .augment/rules 中, AI 会自动读取 \
-  MCP: 按照 .cursor/mcp.json 自行配置
-
-Cline
-: 无中文, 支持自定义 API \
-  规则: 已经配置在了 .clinerules 中, AI 会自动读取 \
-  MCP: 按照 .cursor/mcp.json 自行配置
-
-RooCode
-: 有中文, 改自 Cline, 支持自定义 API, 比 Cline 省 token \
-  规则: 已经配置在了 .roo/rules 中, AI 会自动读取 \
-  MCP: 已经配置在了 .roo/mcp.json 中, AI 会自动读取
-
-Kilo Code (推荐)
-: 有中文, 改自 RooCode, 支持自定义 API, 据说更好 \
-  规则: 已经配置在了 .kilocode/rules 中, AI 会自动读取 \
-  MCP: 已经配置在了 .kilocode/mcp.json 中, AI 会自动读取
-
-Gemini CLI
-: 谷歌的编程助手, emmm你真的要拿 gemini 做前端界面吗? 配置可以参考[司马咩咩的用 GEMINI CLI 写卡教程](https://discord.com/channels/1291925535324110879/1418158780927049779) \
-  规则: 已经配置在了 GEMINI.md 中, AI 会自动读取 \
-  MCP: 按照 .cursor/mcp.json 自行配置到 .gemini/settings.json 里
-
 Claude Code (推荐)
-: Anthropic 的编程助手, 和 Gemini CLI 类似 (或者反过来?), 有 claude pro 账号即可使用; 你也可以用 Claude Code Router 接入自定义 API. \
+: Anthropic 的编程助手, 也可以接入自定义 API, 方法自行搜索. \
   你还可以执行一句 `npx claude-plugins skills install @anthropics/claude-code/frontend-design` 为 Claude Code 全局添加官方提供的[前端设计提示词](https://claude-plugins.dev/skills/@anthropics/claude-code/frontend-design). \
   规则: 已经配置在了 CLAUDE.md 中, AI 会自动读取 \
   MCP: 已经配置在了 .mcp.json 中, AI 会自动读取
 
 Codex (推荐)
-: OpenAI 的编程助手, **据说目前最好用**. \
+: OpenAI 的编程助手, 也可以接入自定义 API, 方法自行搜索. \
   规则: 已经配置在了 AGENTS.md 中, AI 会自动读取 \
-  MCP: 从 codex 界面的设置按钮里打开 mcp 配置文件, 填入以下内容: (也就是 .cursor/mcp.json 转换成 toml 格式后的结果)
+  MCP: 从 codex 界面的设置按钮里打开 mcp 配置文件, 填入以下内容:
 
   :::{code-block} toml
   :caption: Windows
@@ -294,6 +269,31 @@ Codex (推荐)
   args = ["chrome-devtools-mcp@latest", "--autoConnect"]
   startup_timeout_ms = 20_000
   :::
+
+Augment
+: 很强, 但越来越难白嫖了 \
+  规则: 已经配置在了 .augment/rules 中, AI 会自动读取 \
+  MCP: 按照 .cursor/mcp.json 自行配置
+
+Cline
+: 无中文, 支持自定义 API \
+  规则: 已经配置在了 .clinerules 中, AI 会自动读取 \
+  MCP: 按照 .cursor/mcp.json 自行配置
+
+RooCode
+: 有中文, 改自 Cline, 支持自定义 API, 比 Cline 省 token \
+  规则: 已经配置在了 .roo/rules 中, AI 会自动读取 \
+  MCP: 已经配置在了 .roo/mcp.json 中, AI 会自动读取
+
+Kilo Code
+: 有中文, 改自 RooCode, 支持自定义 API, 据说更好 \
+  规则: 已经配置在了 .kilocode/rules 中, AI 会自动读取 \
+  MCP: 已经配置在了 .kilocode/mcp.json 中, AI 会自动读取
+
+Gemini CLI
+: 谷歌的编程助手, emmm你真的要拿 gemini 做前端界面吗? 配置可以参考[司马咩咩的用 GEMINI CLI 写卡教程](https://discord.com/channels/1291925535324110879/1418158780927049779) \
+  规则: 已经配置在了 GEMINI.md 中, AI 会自动读取 \
+  MCP: 按照 .cursor/mcp.json 自行配置到 .gemini/settings.json 里
 
 其他编程助手
 : 规则: 按照 .cursor/rules 自行配置 \
