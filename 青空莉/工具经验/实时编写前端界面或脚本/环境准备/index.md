@@ -114,7 +114,7 @@ pnpm config set registry https://registry.npmmirror.com/
 
 让我们{kbd}`右键` VSCode **以管理员身份运行它**. (以后也要记得以管理员身份运行它.)
 
-接下来, 请下载 {download}`VSCode 配置文件 <../sillytavern.code-profile.json>`. 其中有我由网上已有配置文件改动来的, 酒馆助手编写教程所需的所有 VSCode 配置, 我们将会导入它来配置 VSCode 自动保存文件、保存时格式化文件、安装扩展等许多功能.
+接下来, 请下载 {download}`VSCode 配置文件 <../sillytavern.code-profile>`. 其中有我由网上已有配置文件改动来的, 酒馆助手编写教程所需的所有 VSCode 配置, 我们将会导入它来配置 VSCode 自动保存文件、保存时格式化文件、安装扩展等许多功能.
 
 要导入配置文件, 我们首先从{menuselection}`左下角齿轮 --> Profiles` 打开配置文件页面:
 
