@@ -93,57 +93,28 @@ pnpm config set registry https://registry.npmmirror.com/
 :::{figure} 安装pnpm.png
 :::
 
-## 安装和配置 VSCode/Cursor/Antigravity
+## 安装和配置 VSCode
 
 :::{hint}
-如果已经安装了 **VSCode**, 你可以直接跳到[导入配置文件](#导入配置文件), 区别只在于你将不能使用 Cursor 的 AI 编程助手. \
 如果已经安装了**谷歌基于 VSCode 改动的 Antigravity**, 你可以通过{kbd}`Ctrl-Shift-P` 打开命令菜单, 输入 `profiles new profile` 切出配置文件窗口, 然后跳到[导入配置文件](#导入配置文件)一步配置; 但它界面差异比较大, 可能有的步骤做起来和我在这里写的不一样.
 :::
 
 ### 安装
 
-请通过 [Cursor 官网](https://cursor.com/cn/downloads) 下载 Cursor 安装包:
+请通过 [VSCode 官网](https://code.visualstudio.com/download) 下载 VSCode 安装包:
 
-:::{figure} cursor官网.png
+:::{figure} vscode官网.png
 :::
 
 下载好安装包后, 双击安装包, 勾选{menuselection}`我同意此协议`, 然后一步步点击{menuselection}`下一步`安装即可.
-
-### 初次打开 Cursor
-
-让我们{kbd}`右键` Cursor **以管理员身份运行它**. (以后也要记得以管理员身份运行它.)
-
-首次运行时, Cursor 将要求你登录一个账号, 请自行注册并登录 Cursor 账号 (也可以先点击跳过).
-
-:::{figure} 初次打开cursor.png
-:::
-
-然后一直点击继续, 勾选 {menuselection}`I'm fine with Cursor learning from my code or I'll turn it off in Settings` (是的, 神人软件先强制你同意数据共享, 如果不愿意再之后自己去设置里取消.), 最后选择 AI 回复语言为中文, 即可进入 Cursor 主界面.
-
-:::{figure} 选择ai回复语言.png
-:::
-
-进入主界面后, 看看右上角有没有 {menuselection}`Editor Window`, 有的话点一下切换编辑器模式, 没有不管.
-
-通过{menuselection}`右上角齿轮 --> Agents` 找到 {menuselection}`Open Agents Window on startup`，禁用它.
-
-:::{figure} cursor默认运行editor_window.png
-:::
-
-### 设置侧边栏
-
-通过 {kbd}`Ctrl-Shift+P` 打开命令菜单, 输入 `open vscode settings` 以找到 {menuselection}`Open VSCode Settings`, 从而打开 VSCode 设置面板, 搜索 `orientation`, 然后将搜索到的选项从 {menuselection}`horizontal` 改为 {menuselection}`vertical`:
-
-:::{figure} 设置侧边栏.png
-:::
-
-在设置后, 将会弹窗提示我们重启 Cursor, 点击 {menuselection}`Restart` 即可.
 
 (导入配置文件)=
 
 ### 导入配置文件
 
-接下来, 请下载 {download}`Cursor 配置文件 <../sillytavern.code-profile>`. 其中有我由网上已有配置文件改动来的, 酒馆助手编写教程所需的所有 Cursor 配置, 我们将会导入它来配置 Cursor 自动保存文件、保存时格式化文件、安装扩展等许多功能.
+让我们{kbd}`右键` VSCode **以管理员身份运行它**. (以后也要记得以管理员身份运行它.)
+
+接下来, 请下载 {download}`VSCode 配置文件 <../sillytavern.code-profile.json>`. 其中有我由网上已有配置文件改动来的, 酒馆助手编写教程所需的所有 VSCode 配置, 我们将会导入它来配置 VSCode 自动保存文件、保存时格式化文件、安装扩展等许多功能.
 
 要导入配置文件, 我们首先从{menuselection}`左下角齿轮 --> Profiles` 打开配置文件页面:
 
@@ -155,7 +126,7 @@ pnpm config set registry https://registry.npmmirror.com/
 :::{figure} 导入配置文件.png
 :::
 
-在选择配置文件后, 我们点击 {menuselection}`Create` 来导入它, 在弹出的窗口中选择 {menuselection}`Trust Publishers & Install` 然后等待 Cursor 导入完成.
+在选择配置文件后, 我们点击 {menuselection}`Create` 来导入它, 在弹出的窗口中选择 {menuselection}`Trust Publishers & Install` 然后等待 VSCode 导入完成.
 
 :::{figure} 确认导入配置文件.png
 :::
@@ -165,14 +136,21 @@ pnpm config set registry https://registry.npmmirror.com/
 :::{figure} 默认使用配置文件.png
 :::
 
-此时, Cursor 左下角的齿轮将会显示 `SI` 字样; 以后遇到齿轮没有显示 `SI` 字样时, 也请注意通过{menuselection}`左下角齿轮 --> Profiles` 进行切换.
+此时, VSCode 左下角的齿轮将会显示 `SI` 字样; 以后遇到齿轮没有显示 `SI` 字样时, 也请注意通过{menuselection}`左下角齿轮 --> Profiles` 进行切换.
 
 ### 切换中文
 
-在导入完成后, 我们从侧边栏点击 {menuselection}`Extensions` 再搜索 `Chinese` 来安装中文插件. 安装完毕后再重启 Cursor, 则会发现 Cursor 变成了中文.
+在导入完成后, 我们从侧边栏点击 {menuselection}`Extensions` 再搜索 `Chinese` 来安装中文插件.
 
 :::{figure} 安装中文插件.png
 :::
+
+当然也许你已经安装中文插件, 则中文插件右下角会显示{menuselection}`齿轮` 而不是 {menuselection}`Install`, 就不用再点击安装了.
+
+:::{figure} 已经安装中文插件.png
+:::
+
+安装完毕后, 我们通过{kbd}`Ctrl-Shift-P` 打开命令菜单, 输入 `configure display language` 并{kbd}`回车`, 然后选择 {menuselection}`中文(简体) (zh-cn)` 来切换成中文.
 
 ### 打开模板文件夹
 
@@ -186,32 +164,23 @@ pnpm config set registry https://registry.npmmirror.com/
 这将为你带来仓库 README 说明中所说的很多方便功能.
 :::
 
-下载完成后, 我们以管理员身份运行 bandizip 选择智能解压它 (别的解压软件我没试过, 可能会有问题), 按自己的意愿重命名文件夹, 然后通过 Cursor 左上角的{menuselection}`文件 --> 打开文件夹...`来打开它:
+下载完成后, 我们以管理员身份运行 bandizip 选择智能解压它 (别的解压软件我没试过, 可能会有问题), 按自己的意愿重命名文件夹, 然后通过 VSCode 左上角的{menuselection}`文件 --> 打开文件夹...`来打开它:
 
 :::{figure} 打开文件夹.png
 :::
 
-如果你没有使用 bandizip, 请至少以管理员身份运行解压软件来解压文件, 但即便这样也可能解压存在问题. 具体地, 我们从 Cursor 里点击左侧 `.mcp.json` 文件, 如果只显示了一行文字, 其中包含 `cursor/mcp.json`, 那就是有问题的.
+如果你没有使用 bandizip, 请至少以管理员身份运行解压软件来解压文件, 但即便这样也可能解压存在问题. 具体地, 我们从 VSCode 里点击左侧 `.mcp.json` 文件, 如果只显示了一行文字, 其中包含 `cursor/mcp.json`, 那就是有问题的.
 
-### 介绍 Cursor 界面
+### 介绍 VSCode 界面
 
-Cursor 界面的总体情况如下所示. 如果哪一部分没有显示, 你可以点击右上角的三个按钮来展开显示它. (新版这三个按钮的图标改了, 但功能一样.)
+VSCode 界面的总体情况如下所示. 如果哪一部分没有显示, 你可以点击右上角的三个按钮来展开显示它.
 
-:::{figure} cursor界面介绍.png
-:::
-
-### 禁用 Cursor 的数据共享
-
-根据上图的简单介绍, 我们应该从 {menuselection}`右上角齿轮` (新版不再是齿轮图标, 但功能一样) 来调整 Cursor 的特殊设置.
-
-在此我们先关闭 Cursor 强制我们开启的数据共享:
-
-:::{figure} 关闭数据共享.png
+:::{figure} vscode界面介绍.png
 :::
 
 ### 安装代码依赖
 
-根据 Cursor 界面, 我们展开{menuselection}`终端`, 然后输入以下命令来安装代码依赖:
+根据 VSCode 界面, 我们展开{menuselection}`终端`, 然后输入以下命令来安装代码依赖:
 
 ```bash
 pnpm install
@@ -224,13 +193,24 @@ pnpm install
 
 ## 安装字体
 
-为了让代码更易阅读, 建议你寻找中英文的等宽字体安装并自行配置给 Cursor.
+为了让代码更易阅读, 建议你寻找中英文的等宽字体安装并自行配置给 VSCode.
+
+## 安装 AI 编程助手
+
+VSCode 自带的编程助手并不好用, 接下来我们来安装 Claude Code 插件作为编程助手: 在 VSCode 侧边栏的{menuselection}`扩展`中搜索 `Claude Code` 即可找到安装.
+
+安装好后, VSCode 左边侧边栏会多出 {menuselction}`Claude Code` 选项:
+
+:::{figure} 打开claudecode.png
+:::
+
+你可以下载 CC Mate、CC Switch 之类的工具来为 Claude Code 配置自定义 API, 配置好后重启 VSCode 即可使用. 网上有很多这类教程, 这里不再展开.
 
 ## 其他 AI 编程助手
 
-**Cursor 变得越来越蠢了**, 建议你尝试其他 AI 编程助手. 它们有的以 Cursor/VSCode 插件的形式发布, 你可以在 Cursor 侧边栏的{menuselection}`扩展`中搜索安装, 有的是单独的命令行软件.
+你也可以尝试其他 AI 编程助手. 它们有的以 VSCode 插件的形式发布, 你可以在 VSCode 侧边栏的{menuselection}`扩展`中搜索安装, 有的是单独的命令行软件.
 
-本教程所提供的模板除了项目本身的配置外, 也为 Cursor 和一些编程助手设置了:
+本教程所提供的模板除了项目本身的配置外, 也为 VSCode 一些编程助手设置了:
 
 - **规则**: 相当于添加了一个全局世界书, 里面我为项目结构、酒馆助手、前端界面、脚本、MVU 等进行了说明
 - **MCP**: 为编程助手添加额外工具, 例如允许编程助手直接查看酒馆网页
