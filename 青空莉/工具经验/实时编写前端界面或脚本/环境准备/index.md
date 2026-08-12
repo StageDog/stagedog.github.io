@@ -181,7 +181,7 @@ VSCode 自带的编程助手并不好用, 接下来我们来安装 Claude Code �
 
 你可以下载 CC Mate、CC Switch 之类的工具来为 Claude Code 配置自定义 API, 配置好后重启 VSCode 即可使用. 网上有很多这类教程, 这里不再展开.
 
-另外, 你还可以安装官方提供的[前端设计提示词](https://skillsmp.com/zh/creators/anthropics/skills/skills-frontend-design).
+另外, 你还可以安装官方提供的[前端设计提示词](https://skillsmp.com/zh/creators/anthropics/skills/skills-frontend-design), 或者自己补充别的 skill 来自定义编写体验.
 
 ## 其他 AI 编程助手
 
