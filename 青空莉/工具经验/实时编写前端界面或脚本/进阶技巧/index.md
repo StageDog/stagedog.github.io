@@ -624,9 +624,9 @@ tailwindcss 提供了许多组件类, 允许你不总是自定义类然后设置
       { printWidth: 120 }
     ],
 
-    // 禁止在 html 中使用未经 tailwindcss 注册的类
+    // 禁止在 html 中使用 tailwindcss 不支持的类
     //   由此, 如果写了 tailwindcss 不支持的类, 将会报错
-    'better-tailwindcss/no-unregistered-classes': [
+    'better-tailwindcss/no-unknown-classes': [
       'off',
       { ignore: ['fa-*'] }  // FontAwesome 图标类没有被 tailwindcss 注册, 我们应该让检查忽略它避免报错
     ],
