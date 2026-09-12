@@ -68,7 +68,7 @@
 
 ```js
 await waitGlobalInitialized('Mvu');
-eventOn(Mvu.events.COMMAND_PARSED, commands => {
+eventOn(Mvu.events.COMMAND_PARSED, (_variables, commands) => {
   commands.forEach(command => {
     command.args[0] = command.args[0].replaceAll('-', '');
   });
@@ -81,7 +81,7 @@ eventOn(Mvu.events.COMMAND_PARSED, commands => {
 import { toSimplified } from 'chinese-simple2traditional';
 
 await waitGlobalInitialized('Mvu');
-eventOn(Mvu.events.COMMAND_PARSED, commands => {
+eventOn(Mvu.events.COMMAND_PARSED, (_variables, commands) => {
   commands.forEach(command => {
     command.args[0] = toSimplified(command.args[0]);
   });
