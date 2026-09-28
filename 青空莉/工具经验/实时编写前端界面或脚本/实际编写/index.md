@@ -26,8 +26,6 @@
 
 :::{warning}
 需要注意的是, 我这里只是演示因此直接提出了一个完整要求, 但你在实际编写时应该尽量先和 AI 沟通好, 让 AI 一点点做, 做出来一部分就测试一部分, 而不是指望它能一次性生成完整可用的界面.
-
-另外, 虽然我给 AI 编程助手添加了全局编写规则, **但它依然可能不阅读**. 你可以把 `.cursor/rules` 中的文档全拖给 AI 来强调它必须阅读.
 :::
 
 编写完毕后, 我们在终端执行 `pnpm build` 来打包代码.
@@ -112,7 +110,7 @@
 
 #### 将最新打包结果以链接形式导入
 
-我们点击 Cursor 右下角的 {menuselection}`Go Live` 来将文件夹中所有文件映射成一个网络链接: \
+我们点击 VSCode 右下角的 {menuselection}`Go Live` 来将文件夹中所有文件映射成一个网络链接: \
 (如果没有这个按钮, 请重新{doc}`导入配置文件 </青空莉/工具经验/实时编写前端界面或脚本/环境准备/index>`; 实在不行可以自己去{menuselection}`侧边栏 --> 扩展`搜索 `Live Server` 并安装.)
 
 :::{figure} 启动live_server.png
@@ -172,8 +170,7 @@
 
 #### 添加 MCP
 
-然后, 我们在 AI 编程助手的 MCP 配置文件里添加 Chrome DevTools MCP 即可…… \
-模板文件夹已经为很多编程助手配置好了它, 但部分编程助手如 Codex 需要自己配置一下. 具体请参考{doc}`/青空莉/工具经验/实时编写前端界面或脚本/环境准备/index`最后所列出的编程助手配置情况.
+然后, 我们在 AI 编程助手的 MCP 配置文件里添加 Chrome DevTools MCP 即可…… 你可以让 AI 编程助手自己配置好.
 
 配置好后, AI 编程助手就能在编写时自行查看操控酒馆网页了.
 
@@ -184,49 +181,6 @@
 - 让它像素级复刻网页样式
 - 自己点击网页、填写表单……甚至如果你说明清楚, 它可以像你一样玩酒馆
 - ……
-
-### 选项2: Browser MCP
-
-或者你可以使用 Browser MCP, 但它比 Chrome DevTools MCP 在使用体验上差了很多.
-
-#### 添加 MCP
-
-首先, 我们来为 AI 编程助手添加 MCP. 我们将 `.cursor/mcp.json` 清空, 粘贴以下内容:
-
-```json
-{
-  "mcpServers": {
-    "browsermcp": {
-      "command": "pnpx",
-      "args": [
-        "@browsermcp/mcp"
-      ]
-    }
-  }
-}
-```
-
-这会为很多编程助手配置好它, 但部分编程助手如 Codex 需要自己配置一下. 具体请参考{doc}`/青空莉/工具经验/实时编写前端界面或脚本/环境准备/index`最后所列出的编程助手配置情况.
-
-#### 安装浏览器扩展
-
-然后, 我们去安装它所需要的浏览器扩展.
-
-我们打开浏览器, 从 [chrome 应用商店](https://chromewebstore.google.com/detail/browser-mcp-automate-your/bjfgambnhccakkhmkepdoekmckoijdlc)或你浏览器的应用商店安装最新的浏览器扩展.
-
-如此, 我们回到酒馆网页, 点击扩展图标然后点击 {menuselection}`连接` 即可.
-
-:::{figure} 连接browser_mcp.png
-:::
-
-你的 AI 编程助手现在可以: (AI 不一定主动使用, 你可以在提示词中告诉它 `用 browsermcp 来访问酒馆网页`)
-
-- 读取酒馆网页显示情况、控制台 (Console) 日志情况、网络情况
-- 读取你通过 {menuselection}`开发者工具 --> 左上角的选择元素` 选择到的网页元素
-
-:::{figure} mcp连接成功.png
-AI 使用 MCP 时会有很明显的显示
-:::
 
 ## 断点调试错误
 
@@ -245,7 +199,7 @@ AI 使用 MCP 时会有很明显的显示
 ### 进行编写
 
 - 将修改结果实时更新到酒馆
-  1. 点击 Cursor 右下角的 {menuselection}`Go Live` 将文件夹映射为网络链接
+  1. 点击 VSCode 右下角的 {menuselection}`Go Live` 将文件夹映射为网络链接
   2. 在终端输入 `pnpm watch` 并{kbd}`回车`来运行监听打包任务
 - 让 AI 能看到、操控酒馆网页
   - 如果用的是 Chrome DevTools MCP, 什么都不用做直接用
